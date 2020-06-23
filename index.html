@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>westben 2020</title>
+  <script src="p5.min.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <script src="westben.js"></script>
+  <script src="utilities.js"></script>
+  
+  
+  <link rel="stylesheet" href="style.css">
+
+  <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
+  <meta property="og:image" content="">
+</head>
+
+<body>
+    <div class="mapContainer">
+        <div class="theme" onclick="themeToggle()"><p id="themeIcon">☼</p></div>
+        <!-- <p>map goes here!</p> -->
+        <p><a href='sampleContent.html' onclick="contentExpand()" target="content">internal content link</a></p>
+        <p><a href='http://rogerkimmusic.com/westben/' onclick="contentExpand()" target="content">external content link</a></p>
+    </div> 
+
+    <div id="contentContainer" class="contentContainer" onclick="contentToggle()">
+        <div class="contentHeader">
+            <div class="contentIcon">
+                <h1 id="contentIcon">⤴</h1>
+            </div>
+        </div>
+
+        <iframe id='content' name='content' src="welcome.html"></iframe>
+
+    </div>
+</body>
