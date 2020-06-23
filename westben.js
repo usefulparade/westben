@@ -4,7 +4,7 @@ var foregroundColor, backgroundColor;
 var font;
 
 function preload(){
-    font = loadFont('/RobotoMono-ExtraLight.ttf');
+    font = loadFont('RobotoMono-ExtraLight.ttf');
 }
 
 function setup(){
