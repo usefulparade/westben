@@ -47,11 +47,11 @@ function nightTheme(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument != null){
         // iframe.contentDocument.documentElement.style.setProperty('--background-color', 'black');
-        iframe.contentDocument.documentElement.style.setProperty('--foreground-color', '#ffffff');
+        iframe.contentDocument.documentElement.style.setProperty('--fg-color', '#ffffff');
     }
-    document.documentElement.style.setProperty('--background-color', '#000000');
-    document.documentElement.style.setProperty('--background-color-transparent', '#000000d9');
-    document.documentElement.style.setProperty('--foreground-color', '#ffffff');
+    document.documentElement.style.setProperty('--bg-color', '#000000');
+    document.documentElement.style.setProperty('--bg-color-transparent', '#000000d9');
+    document.documentElement.style.setProperty('--fg-color', '#ffffff');
 
     document.getElementById('themeIcon').innerHTML = '☼';
     foregroundColor = color(255);
@@ -62,11 +62,11 @@ function dayTheme(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument != null){
         // iframe.contentDocument.documentElement.style.setProperty('--background-color', 'white');
-        iframe.contentDocument.documentElement.style.setProperty('--foreground-color', '#000000');
+        iframe.contentDocument.documentElement.style.setProperty('--fg-color', '#000000');
     }
-    document.documentElement.style.setProperty('--background-color', '#ffffff');
-    document.documentElement.style.setProperty('--background-color-transparent', '#ffffffd9');
-    document.documentElement.style.setProperty('--foreground-color', '#000000');
+    document.documentElement.style.setProperty('--bg-color', '#ffffff');
+    document.documentElement.style.setProperty('--bg-color-transparent', '#ffffffd9');
+    document.documentElement.style.setProperty('--fg-color', '#000000');
 
     document.getElementById('themeIcon').innerHTML = '☽';
     foregroundColor = color(0);
