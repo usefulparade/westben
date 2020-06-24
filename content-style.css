@@ -1,3 +1,6 @@
 body {
-    background-color: none;
+    background-color: transparent;
+    height: 100%;
+    overflow: scroll;
+    padding-top: 90px;
 }

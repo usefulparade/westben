@@ -3,9 +3,10 @@
 
 :root {
     --background-color: #000000;
+    --background-color-transparent: #000000d9;
     --foreground-color: #ffffff;
     --accent-color: #add8e6;
-    
+    --full-transparent: #00000000;
 }
 
 body{
@@ -13,7 +14,7 @@ body{
     font-weight: 200;
     background-color: var(--background-color);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     margin: 0px;
     transition: background-color 1s, color 0.5s;
 }
@@ -83,7 +84,7 @@ a:hover {
     text-align: center;
     border-top: 2px solid var(--foreground-color);
     box-sizing: border-box;
-    background-color: var(--background-color);
+    background-color: var(--background-color-transparent);
     color: var(--foreground-color);
     transition: height 0.5s, background-color 1s, color 0.5s;
     overflow: scroll;
@@ -94,23 +95,24 @@ a:hover {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
     border: 0px;
     
 }
 
-.contentIcon{
+.contentIcon {
     display: block;
-    position: relative;
+    position: fixed;
     width: 70px;
     height: 70px;
     margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    right: calc(50% - 35px);
     padding: 10px;
     transition: border 1s;
     box-sizing: border-box;
     border: 2px solid var(--background-color);
     border-radius: 100px;
+    z-index: 100;
     /* cursor: pointer; */
 }
 
@@ -130,15 +132,26 @@ a:hover {
 .programNotes {
     display: block;
     position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--foreground-color);
+    text-align: center;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: black; */
-    color: var(--foreground-color);
-    text-align: center;
-    overflow: hidden;
-}
+  }
 
 .programNotesInner {
     display: block;
@@ -149,3 +162,16 @@ a:hover {
     text-align: left;
 }
 
+.canvasParent {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+@media only screen and (max-width: 720px){
+    .videoWrapper {
+        max-width: 100%;
+    }
+}

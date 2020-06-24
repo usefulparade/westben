@@ -18,11 +18,15 @@
 </head>
 
 <body>
-    <div class="mapContainer">
+    <div class="mapContainer" id="mapContainer">
+        
         <div class="theme" onclick="themeToggle()"><p id="themeIcon">☼</p></div>
         <!-- <p>map goes here!</p> -->
+        <h1 id='caption'></h1>
+        <!-- <p><a href='welcome.html' onclick="contentExpand()" target="content">welcome</a></p>
         <p><a href='sampleContent.html' onclick="contentExpand()" target="content">internal content link</a></p>
-        <p><a href='http://rogerkimmusic.com/westben/' onclick="contentExpand()" target="content">external content link</a></p>
+        <p><a href='http://rogerkimmusic.com/westben/' onclick="contentExpand()" target="content">external content link</a></p> -->
+        <div class='canvasParent' id='canvasParent'></div>
     </div> 
 
     <div id="contentContainer" class="contentContainer" onclick="contentToggle()">
@@ -32,7 +36,7 @@
             </div>
         </div>
 
-        <iframe id='content' name='content' src="welcome.html"></iframe>
+        <iframe id='content' name='content' onload="matchTheme()" src="welcome.html"></iframe>
 
     </div>
 </body>
