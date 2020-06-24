@@ -39,6 +39,8 @@ function themeToggle(){
     } else {
         nightTheme();
     }
+
+    matchTheme();
 }
 
 function nightTheme(){

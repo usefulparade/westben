@@ -94,6 +94,10 @@ var Landmark = function(_pos, _type, _link){
 
         if (mouseX > this.pos.x-this.half && mouseX < this.pos.x+this.half && mouseY > this.pos.y-this.half && mouseY < this.pos.y+this.half){
             this.over = true;
+        } else if (touches[0] != null){
+            if (touches[0].x > this.pos.x-this.half && touches[0].x < this.pos.x+this.half && touches[0].y > this.pos.y-this.half && touches[0].y < this.pos.y+this.half){
+                this.over = true;
+            }
         } else {
             this.over = false;
         }
@@ -187,7 +191,16 @@ function mouseClicked(){
     for (var i in landmarks){
         if (landmarks[i].over){
             loadNewIframeContent(landmarks[i].link);
-            contentToggle();
+            contentExpand();
+        }
+    }
+}
+
+function touchStarted(){
+    for (var i in landmarks){
+        if (landmarks[i].over){
+            loadNewIframeContent(landmarks[i].link);
+            contentExpand();
         }
     }
 }
