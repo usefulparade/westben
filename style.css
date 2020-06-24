@@ -29,17 +29,16 @@ h2 {
 
 a {
     color: var(--fg-color);
-
 }
 
 a:active {
-    background: var(--accent-color);
+    background-color: var(--accent-color);
     color: var(--fg-color);
 }
 
 a:hover {
     color: var(--bg-color);
-    background: var(--fg-color);
+    background-color: var(--fg-color);
     text-decoration: none;
     
 }
