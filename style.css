@@ -26,6 +26,9 @@ h2 {
     font-weight: 200;
     font-style: italic;
 }
+h2#caption {
+    font-size: 1em;
+}
 
 a {
     color: var(--fg-color);
