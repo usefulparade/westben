@@ -48,13 +48,13 @@ function setup(){
     accentColors[1] = color(255, 108, 108);
     accentColors[2] = color(108, 108, 255);
 
-    landmarkVectors = [ new p5.Vector(width*0.66, height*0.4), //barn
+    landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
-                        new p5.Vector(width*0.55, height*0.45), //ticketShed
-                        new p5.Vector(width*0.6, height*0.3), //milkShed
+                        new p5.Vector(width*0.54, height*0.55), //ticketShed
+                        new p5.Vector(width*0.64, height*0.37), //milkShed
                         new p5.Vector(width*0.8, height*0.2), //maple
                         new p5.Vector(width*0.1, height*0.7), //watermelon
-                        new p5.Vector(width*0.42, height*0.3), //parking lot
+                        new p5.Vector(width*0.46, height*0.3), //parking lot
                         new p5.Vector(width*0.6, height*0.2)]; //pond
                         
 
@@ -138,14 +138,15 @@ function roads(){
         var y1 = bezierPoint(0, height, height, height*0.66, 0.1);
         // ellipse(x1, y1, 100);
 
-        bezier(x1, y1, width*0.7, 0, width*0.3, height*0.8, landmarks[0].pos.x, landmarks[0].pos.y+landmarks[0].half);
+        bezier(x1, y1, width*0.7, 0, width*0.4, height*0.7, landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
+        bezier(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half, width*0.7, height*0.4, width*0.75, height*0.45, landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
 
-        var x2 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.27);
-        var y2 = bezierPoint(0, height, height, height*0.66, 0.27);
-        var x3 = bezierPoint(x1, width*0.7, width*0.3, landmarks[0].pos.x, 0.75);
-        var y3 = bezierPoint(y1, 0, height*0.8, landmarks[0].pos.y+landmarks[0].half, 0.75);
+        // var x2 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.27);
+        // var y2 = bezierPoint(0, height, height, height*0.66, 0.27);
+        // var x3 = bezierPoint(x1, width*0.7, width*0.3, landmarks[0].pos.x, 0.75);
+        // var y3 = bezierPoint(y1, 0, height*0.8, landmarks[0].pos.y+landmarks[0].half, 0.75);
 
-        line(x2, y2, x3, y3);
+        // line(x2, y2, x3, y3);
 
     pop();
 
@@ -505,13 +506,13 @@ function touchEnded(){
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
 
-    landmarkVectors = [ new p5.Vector(width*0.66, height*0.4), //barn
+    landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
-                        new p5.Vector(width*0.55, height*0.45), //ticketShed
-                        new p5.Vector(width*0.6, height*0.3), //milkShed
+                        new p5.Vector(width*0.54, height*0.55), //ticketShed
+                        new p5.Vector(width*0.64, height*0.37), //milkShed
                         new p5.Vector(width*0.8, height*0.2), //maple
                         new p5.Vector(width*0.1, height*0.7), //watermelon
-                        new p5.Vector(width*0.42, height*0.3), //parking lot
+                        new p5.Vector(width*0.46, height*0.3), //parking lot
                         new p5.Vector(width*0.6, height*0.2)]; //pond
 
 
