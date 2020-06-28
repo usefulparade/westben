@@ -1,6 +1,7 @@
 var contentContainerHidden;
 var content;
 
+// ☼ ☽
 
 function contentToggle(){
     if (contentContainerHidden){
@@ -16,6 +17,7 @@ function contentExpand(){
     content.style = 'height: 95%';
     contentContainerHidden = false;
     resizeIframe();
+    matchTheme();
 }
 
 function contentContract(){
@@ -23,6 +25,14 @@ function contentContract(){
     contentIcon.style.setProperty('transform', 'rotate(0deg)');
     content.style = 'height: 10%';
     contentContainerHidden = true;
+}
+
+function contentContractFromInside(){
+    var parentIcon = window.parent.document.getElementById('contentIcon');
+    var parentContent = window.parent.document.getElementById('contentContainer');
+    parentIcon.style.setProperty('transform', 'rotate(0deg)');
+    parentContent.style = 'height: 10%';
+    window.parent.contentContainerHidden = true;
 }
 
 function resizeIframe(){
@@ -43,40 +53,48 @@ function themeToggle(){
     matchTheme();
 }
 
+function paletteToggle(){
+    colorPalette = (colorPalette+1)%4;
+    document.getElementById('paletteIcon').innerHTML = paletteIcons[colorPalette];
+
+    matchTheme();
+}
+
 function nightTheme(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument != null){
-        iframe.contentDocument.documentElement.style.setProperty('--fg-color', '#ffffff');
-        iframe.contentDocument.documentElement.style.setProperty('--bg-color', '#043710');
+        iframe.contentDocument.documentElement.style.setProperty('--fg-color', lightHexColors[colorPalette]);
+        iframe.contentDocument.documentElement.style.setProperty('--bg-color', darkHexColors[colorPalette]);
     }
-    document.documentElement.style.setProperty('--bg-color', '#043710');
-    document.documentElement.style.setProperty('--bg-color-transparent', '#043710d9');
-    document.documentElement.style.setProperty('--fg-color', '#ffffff');
+    document.documentElement.style.setProperty('--bg-color', darkHexColors[colorPalette]);
+    document.documentElement.style.setProperty('--bg-color-transparent', darkHexColors[colorPalette] + 'd9');
+    document.documentElement.style.setProperty('--fg-color', lightHexColors[colorPalette]);
 
-    document.getElementById('themeIcon').innerHTML = '☼';
-    foregroundColor = color(255);
+    document.getElementById('themeIcon').innerHTML = '☽';
+    foregroundColor = lightColors[colorPalette];
     theme = 'night';
 }
 
 function dayTheme(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument != null){
-        iframe.contentDocument.documentElement.style.setProperty('--fg-color', '#043710');
-        iframe.contentDocument.documentElement.style.setProperty('--bg-color', '#ffffff');
+        iframe.contentDocument.documentElement.style.setProperty('--fg-color', darkHexColors[colorPalette]);
+        iframe.contentDocument.documentElement.style.setProperty('--bg-color', lightHexColors[colorPalette]);
     }
-    document.documentElement.style.setProperty('--bg-color', '#ffffff');
-    document.documentElement.style.setProperty('--bg-color-transparent', '#ffffffd9');
-    document.documentElement.style.setProperty('--fg-color', '#043710');
+    document.documentElement.style.setProperty('--bg-color', lightHexColors[colorPalette]);
+    document.documentElement.style.setProperty('--bg-color-transparent', lightHexColors[colorPalette] + 'd9');
+    document.documentElement.style.setProperty('--fg-color', darkHexColors[colorPalette]);
 
-    document.getElementById('themeIcon').innerHTML = '☽';
-    foregroundColor = color(4, 55, 16);
+    document.getElementById('themeIcon').innerHTML = '☼';
+    foregroundColor = darkColors[colorPalette];
     theme = 'day';
 }
 
 function loadNewIframeContent(_link){
     
     window.frames[0].location = _link;
-    console.log('changing iframe');
+    // console.log('changing iframe');
+    // matchTheme();
 
 }
 
@@ -85,5 +103,15 @@ function matchTheme(){
         dayTheme();
     } else {
         nightTheme();
+    }
+}
+
+function matchThemeInner(){
+    if (window.parent.theme == 'day'){
+        document.documentElement.style.setProperty('--bg-color', window.parent.darkHexColors[window.parent.colorPalette]);
+        document.documentElement.style.setProperty('--fg-color', window.parent.lightHexColors[window.parent.colorPalette]);
+    } else {
+        document.documentElement.style.setProperty('--bg-color', window.parent.lightHexColors[window.parent.colorPalette]);
+        document.documentElement.style.setProperty('--fg-color', window.parent.darkHexColors[window.parent.colorPalette]);
     }
 }

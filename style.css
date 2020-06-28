@@ -76,7 +76,7 @@ a:hover {
 .mapContainer .theme {
     display: block;
     position: fixed;
-    top: -5px;
+    top: -7px;
     right: 12px;
     cursor: pointer;
 }
@@ -84,6 +84,19 @@ a:hover {
 .mapContainer .theme p {
     margin: 0px;
     font-size: 3em;
+}
+
+.mapContainer .palette {
+    display: block;
+    position: fixed;
+    top: 5px;
+    left: 12px;
+    cursor: pointer;
+}
+
+.mapContainer .palette p {
+    margin: 0px;
+    font-size: 2em;
 }
 
 .mapContainer .wb-logo {

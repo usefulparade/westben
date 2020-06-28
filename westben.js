@@ -5,26 +5,37 @@ var accentColors = [];
 var font;
 var landmarks = [];
 var landmarkVectors = [];
+var ensembles = [];
+var ensembleNames = [];
+var ensembleVectors = [];
+var secrets = [];
+var secretVectors = [];
 var barn, tree, ticketShed, milkShed, maple, watermelon;
+var ensembleVectors = [];
 var pond, parkingLot;
 var totalVisited, pondExists, lotExists;
 var mouseOrTouch;
 var touchIsDown;
 var fieldRecordings = [];
-var ensembles = [];
+
+
+var lightColors = [];
+var lightHexColors = [];
+var darkColors = [];
+var darkHexColors = [];
+var colorPalette, paletteIcons;
 
 function preload(){
     font = loadFont('RobotoMono-ExtraLight.ttf');
-    soundFormats('mp3');
 }
 
 function setup(){
     fieldRecordings[0] = loadSound('audio/piano-A.mp3');
-    fieldRecordings[0].playMode('restart');
+    fieldRecordings[0].playMode('sustain');
     fieldRecordings[1] = loadSound('audio/piano-B.mp3');
-    fieldRecordings[1].playMode('restart');
+    fieldRecordings[1].playMode('sustain');
 
-    ensembles = ['An-Laurence / Finley / Kim / McElwain',
+    ensembleNames = ['An-Laurence / Finley / Kim / McElwain',
                 'Name / Name / Name / Name',
                 'Name / Name / Name / Name',
                 'Name / Name / Name / Name',
@@ -43,36 +54,38 @@ function setup(){
     theme = 'night';
     touchIsDown = false;
 
-    foregroundColor = color(255);
-    accentColors[0] = color(95, 163, 50);
-    accentColors[1] = color(255, 108, 108);
-    accentColors[2] = color(108, 108, 255);
+    
 
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37), //milkShed
-                        new p5.Vector(width*0.8, height*0.2), //maple
-                        new p5.Vector(width*0.1, height*0.7), //watermelon
-                        new p5.Vector(width*0.46, height*0.3), //parking lot
-                        new p5.Vector(width*0.6, height*0.2)]; //pond
+                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+
+    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), //maple
+                        new p5.Vector(width*0.1, height*0.7)]; //watermelon
+
+    secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
+                    new p5.Vector(width*0.6, height*0.2)]; //pond];
                         
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
     tree = new Landmark(landmarkVectors[1], 'conservancy', 'conservancy.html');
     ticketShed = new Landmark(landmarkVectors[2], 'ticket shed', 'https://www.westben.ca/donate');
     milkShed = new Landmark(landmarkVectors[3], 'milk shed', 'milkshed.html');
-    maple = new Landmark(landmarkVectors[4], 'maple group', 'maple.html');
-    maple.names = ensembles[0];
-    watermelon = new Landmark(landmarkVectors[5], 'watermelon group', 'watermelon.html');
-    watermelon.names = ensembles[1];
+
+    maple = new Landmark(ensembleVectors[0], 'maple group', 'maple.html');
+    watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'watermelon.html');
 
     landmarks.push(barn);
     landmarks.push(tree);
     landmarks.push(ticketShed);
     landmarks.push(milkShed);
-    landmarks.push(maple);
-    landmarks.push(watermelon);
+
+    ensembles.push(maple);
+    ensembles.push(watermelon);
+    for (var i in ensembles){
+        ensembles[i].names = ensembleNames[i];
+    }
 
     // landmarks.push(pond);
 
@@ -80,6 +93,27 @@ function setup(){
     totalVisited = 0;
     pondExists = false;
     lotExists = false;
+
+    colorPalette = 0;
+    lightColors = [color(153, 231, 255), color(255,193, 68), color(193, 166, 209), color(255, 255, 255)];
+    darkColors = [color(55, 100, 0), color(30, 45, 0), color(51, 11, 0), color(0, 16, 43)];
+    lightHexColors = ['#99E7FF', '#FFC144', '#C1A6D1', '#ffffff'];
+    //#A77C83
+    darkHexColors = ['#376400', '#1E2D00', '#330B00', '#00102B'];
+    paletteIcons = ['◐', '◓', '◑', '◒'];
+
+    foregroundColor = lightColors[colorPalette];
+    accentColors[0] = color(95, 163, 50);
+    accentColors[1] = color(255, 108, 108);
+    accentColors[2] = color(108, 108, 255);
+
+    colorPalette = int(random(1, 5))-1;
+    paletteToggle();
+    if (random() > 0.5){
+        themeToggle();
+    }
+
+    matchTheme();
 
     contentToggle();
 }
@@ -91,16 +125,12 @@ function draw(){
 
     for (var i in landmarks){
         landmarks[i].show();
-
-        // if (landmarks[i].over){
-        //     if (landmarks[i].names != ''){
-        //         document.getElementById('caption').innerHTML = landmarks[i].names;
-        //     } else {
-        //         document.getElementById('caption').innerHTML = landmarks[i].caption;
-        //     }
-        // }
-
-    
+    }
+    for (var j in ensembles){
+        ensembles[j].show();
+    }
+    for (var k in secrets){
+        secrets[k].show();
     }
     
 
@@ -150,7 +180,6 @@ function roads(){
 
     pop();
 
-    // console.log(mouseX/width, mouseY/height);
 }
 
 var Landmark = function(_pos, _type, _link){
@@ -193,10 +222,13 @@ var Landmark = function(_pos, _type, _link){
         if (mouseX > this.pos.x-this.collide && mouseX < this.pos.x+this.collide && mouseY > this.pos.y-this.collide && mouseY < this.pos.y+this.collide){
             this.over = true;
         } else if (touchIsDown){
-            if (touches[0].x > this.pos.x-this.collide && touches[0].x < this.pos.x+this.collide && touches[0].y > this.pos.y-this.collide && touches[0].y < this.pos.y+this.collide){
-                this.over = true;
-            } else {
-                this.over = false;
+            if (touches[0] != null){
+                if (touches[0].x > this.pos.x-this.collide && touches[0].x < this.pos.x+this.collide && touches[0].y > this.pos.y-this.collide && touches[0].y < this.pos.y+this.collide){
+                    
+                    this.over = true;
+                } else {
+                    this.over = false;
+                }
             }
         } else {
             this.over = false;
@@ -218,10 +250,12 @@ var Landmark = function(_pos, _type, _link){
 
     this.clicked = function(){
         if (this.linkIsAudio){
+            
+            userStartAudio();
             for (var i in fieldRecordings){
                 if (fieldRecordings[i] == this.link){
                     if (fieldRecordings[i].isPlaying()){
-                        fieldRecordings[i].pause();
+                        fieldRecordings[i].stop();
                     } else {
                         fieldRecordings[i].play();
                     }
@@ -236,7 +270,6 @@ var Landmark = function(_pos, _type, _link){
         if (!this.visited){
             totalVisited++;
             this.visited = true;
-            console.log(totalVisited);
         }
 
         if (totalVisited >= 5 && fieldRecordings[0].isLoaded()){
@@ -459,14 +492,14 @@ var Landmark = function(_pos, _type, _link){
 };
 
 function makePond(){
-    pond = new Landmark(landmarkVectors[7], 'pond', fieldRecordings[0]);
+    pond = new Landmark(secretVectors[1], 'pond', fieldRecordings[0]);
     pond.linkIsAudio = true;
-    landmarks.push(pond);
+    secrets.push(pond);
 }
 function makeParkingLot(){
-    parkingLot = new Landmark(landmarkVectors[6], 'parking lot', fieldRecordings[1]);
+    parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[1]);
     parkingLot.linkIsAudio = true;
-    landmarks.push(parkingLot);
+    secrets.push(parkingLot);
 }
 
 function flicker(){
@@ -477,13 +510,25 @@ function mouseHandler(){
 
 }
 
-function mouseClicked(){
-
-    for (var i in landmarks){
-        if (landmarks[i].over){
-            landmarks[i].clicked();
+function mousePressed(){
+    if (!touchIsDown){
+        for (var i in landmarks){
+            if (landmarks[i].over){
+                landmarks[i].clicked();
+            }
+        }
+        for (var j in ensembles){
+            if (ensembles[j].over){
+                ensembles[j].clicked();
+            }
+        }
+        for (var k in secrets){
+            if (secrets[k].over){
+                secrets[k].clicked();
+            }
         }
     }
+    
 }
 
 function touchStarted(){
@@ -499,6 +544,16 @@ function touchEnded(){
                 landmarks[i].clicked();
             }
         }
+        for (var j in ensembles){
+            if (ensembles[j].over){
+                ensembles[j].clicked();
+            }
+        }
+        for (var k in secrets){
+            if (secrets[k].over){
+                secrets[k].clicked();
+            }
+        }
         touchIsDown = false;
     }
 }
@@ -509,20 +564,35 @@ function windowResized(){
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37), //milkShed
-                        new p5.Vector(width*0.8, height*0.2), //maple
-                        new p5.Vector(width*0.1, height*0.7), //watermelon
-                        new p5.Vector(width*0.46, height*0.3), //parking lot
-                        new p5.Vector(width*0.6, height*0.2)]; //pond
+                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+
+    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), //maple
+                        new p5.Vector(width*0.1, height*0.7)]; //watermelon
+
+    secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
+                    new p5.Vector(width*0.6, height*0.2)]; //pond];
 
 
     for (var i in landmarks){
-        var newSize = map(((width+height)/2), 500, 1200, 30, 50);
+        var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
         landmarks[i].pos = new p5.Vector(landmarkVectors[i].x, landmarkVectors[i].y);
-        landmarks[i].size = newSize;
-        landmarks[i].half = newSize*0.5;
-        landmarks[i].collide = newSize*0.7;
-        console.log(newSize);
+        landmarks[i].size = landmarkSize;
+        landmarks[i].half = landmarkSize*0.5;
+        landmarks[i].collide = landmarkSize*0.7;
+    }
+    for (var j in ensembles){
+        var ensembleSize = map(((width+height)/2), 500, 1200, 30, 50);
+        ensembles[j].pos = new p5.Vector(ensembleVectors[j].x, ensembleVectors[j].y);
+        ensembles[j].size = ensembleSize;
+        ensembles[j].half = ensembleSize*0.5;
+        ensembles[j].collide = ensembleSize*0.7;
+    }
+    for (var k in secrets){
+        var secretSize = map(((width+height)/2), 500, 1200, 30, 50);
+        secrets[k].pos = new p5.Vector(secretVectors[k].x, secretVectors[k].y);
+        secrets[k].size = secretSize;
+        secrets[k].half = secretSize*0.5;
+        secrets[k].collide = secretSize*0.7;
     }
 
 }
