@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;500&display=swap');
 
 :root {
-    --bg-color: #000000;
+    --bg-color: #00000000;
     /* --bg-color: rgb(4, 55, 16); */
-    --bg-color-transparent: #000000d9;
-    --fg-color: #ffffff;
+    --bg-color-transparent: #00000000;
+    --fg-color: #ffffff00;
     /* --fg-color: #ffe373; */
-    --accent-color: #add8e6;
+    --accent-color: #add8e600;
     --fg-transparent: #ffffff00;
 }
 
@@ -196,7 +196,7 @@ a:hover {
 .programNotesInner {
     display: block;
     position: relative;
-    max-width: 60%;
+    max-width: 50%;
     margin-left: auto;
     margin-right: auto;
     text-align: left;

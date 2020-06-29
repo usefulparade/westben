@@ -15,7 +15,8 @@ function contentExpand(){
     var contentIcon = document.getElementById('contentIcon');
     contentIcon.style.setProperty('transform', 'rotate(-180deg)');
     content.style = 'height: 95%';
-    contentContainerHidden = false;
+    setTimeout(function(){contentContainerHidden = false;}, 1000);
+    
     resizeIframe();
     matchTheme();
 }

@@ -3,4 +3,5 @@ body {
     height: 100%;
     overflow: scroll;
     padding-top: 90px;
+    color: transparent;
 }

@@ -8,6 +8,7 @@ var landmarkVectors = [];
 var ensembles = [];
 var ensembleNames = [];
 var ensembleVectors = [];
+var ensembleLinks = [];
 var secrets = [];
 var secretVectors = [];
 var barn, tree, ticketShed, milkShed, maple, watermelon;
@@ -35,16 +36,35 @@ function setup(){
     fieldRecordings[1] = loadSound('audio/piano-B.mp3');
     fieldRecordings[1].playMode('sustain');
 
-    ensembleNames = ['An-Laurence / Finley / Kim / McElwain',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-                'Name / Name / Name / Name',
-    ];
+    ensembleNames = ['Piece Title: Ensemble 1',
+                'Piece Title: Ensemble 2',
+                'Piece Title: Ensemble 3',
+                'Piece Title: Ensemble 4',
+                'Piece Title: Ensemble 5',
+                'Piece Title: Ensemble 6',
+                'Piece Title: Ensemble 7',
+                'Piece Title: Ensemble 8',
+                'Piece Title: Ensemble 9',
+                'Piece Title: Ensemble 10',
+                'Piece Title: Ensemble 11',
+                'Piece Title: Ensemble 12',
+                'The Evolutionary Traits of Birds',
+                ];
+
+    ensembleLinks = ['ensembles/pine.html',
+                    'ensembles/oak.html',
+                    'ensembles/maple.html',
+                    'ensembles/cedar.html',
+                    'ensembles/green.html',
+                    'ensembles/purple.html',
+                    'ensembles/pink.html',
+                    'ensembles/turquoise.html',
+                    'ensembles/yellow.html',
+                    'ensembles/apple.html',
+                    'ensembles/banana.html',
+                    'ensembles/lemon.html',
+                    'ensembles/watermelon.html',  
+                    ];
 
     contentContainerHidden = true;
     content = document.getElementById('contentContainer');
@@ -61,30 +81,46 @@ function setup(){
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
                         new p5.Vector(width*0.64, height*0.37)]; //milkShed
 
-    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), //maple
-                        new p5.Vector(width*0.1, height*0.7)]; //watermelon
+    
+
+    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
+                        new p5.Vector(width*0.15, height*0.15),
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.2, height*0.6),
+                        new p5.Vector(width*0.4, height*0.65),
+                        new p5.Vector(width*0.75, height*0.1),
+                        new p5.Vector(width*0.4, height*0.08),
+                        new p5.Vector(width*0.6, height*0.68),
+                        new p5.Vector(width*0.8, height*0.52),
+                        new p5.Vector(width*0.85, height*0.6),
+                        new p5.Vector(width*0.9, height*0.3),
+                        new p5.Vector(width*0.25, height*0.5),
+                        new p5.Vector(width*0.15, height*0.4)]; //watermelon
 
     secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
                     new p5.Vector(width*0.6, height*0.2)]; //pond];
-                        
+    
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
     tree = new Landmark(landmarkVectors[1], 'conservancy', 'conservancy.html');
     ticketShed = new Landmark(landmarkVectors[2], 'ticket shed', 'https://www.westben.ca/donate');
     milkShed = new Landmark(landmarkVectors[3], 'milk shed', 'milkshed.html');
 
-    maple = new Landmark(ensembleVectors[0], 'maple group', 'maple.html');
-    watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'watermelon.html');
+    // maple = new Landmark(ensembleVectors[0], 'maple group', 'ensembles/maple.html');
+    // watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'ensembles/watermelon.html');
+
 
     landmarks.push(barn);
     landmarks.push(tree);
     landmarks.push(ticketShed);
     landmarks.push(milkShed);
 
-    ensembles.push(maple);
-    ensembles.push(watermelon);
-    for (var i in ensembles){
+    
+    for (var i = 0; i<13; i++){
+        ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
+        ensembles[i].rotation = random(0, TWO_PI);
+        ensembles[i].ensembleNum = i;
     }
 
     // landmarks.push(pond);
@@ -95,11 +131,11 @@ function setup(){
     lotExists = false;
 
     colorPalette = 0;
-    lightColors = [color(153, 231, 255), color(255,193, 68), color(193, 166, 209), color(255, 255, 255)];
-    darkColors = [color(55, 100, 0), color(30, 45, 0), color(51, 11, 0), color(0, 16, 43)];
-    lightHexColors = ['#99E7FF', '#FFC144', '#C1A6D1', '#ffffff'];
+    lightColors = [color(206, 192, 196), color(227, 241, 246), color(255,193, 68), color(255, 255, 255)];
+    darkColors = [color(51, 11, 0), color(51, 28, 0), color(30, 45, 0), color(28, 25, 41)];
+    lightHexColors = [ '#CEC0C4', '#E3F1F6', '#FFC144', '#ffffff'];
     //#A77C83
-    darkHexColors = ['#376400', '#1E2D00', '#330B00', '#00102B'];
+    darkHexColors = ['#330B00', '#331C00', '#1E2D00', '#1C1929'];
     paletteIcons = ['◐', '◓', '◑', '◒'];
 
     foregroundColor = lightColors[colorPalette];
@@ -115,12 +151,13 @@ function setup(){
 
     matchTheme();
 
-    contentToggle();
+    contentExpand();
 }
 
 function draw(){
     clear();
     roads();
+
     document.getElementById('caption').innerHTML = '';
 
     for (var i in landmarks){
@@ -199,6 +236,8 @@ var Landmark = function(_pos, _type, _link){
     this.visited = false;
     this.sinCounter = 0;
     this.names = '';
+    this.ensembleNum = 0;
+    this.vol = 0;
 
     this.show = function(){
         if (this.type == 'barn'){
@@ -209,29 +248,32 @@ var Landmark = function(_pos, _type, _link){
             this.ticket();
         } else if (this.type == 'maple group'){
             this.maple();
-        } else if (this.type == 'watermelon group'){
-            this.watermelon();
-        } else if (this.type == 'pond'){
-            this.pond();
         } else if (this.type == 'milk shed'){
             this.milk();
         } else if (this.type == 'parking lot'){
             this.parking();
+        } else if (this.type == 'pond'){
+            this.pond();
+        } else {
+            this.ensemble();
         }
 
-        if (mouseX > this.pos.x-this.collide && mouseX < this.pos.x+this.collide && mouseY > this.pos.y-this.collide && mouseY < this.pos.y+this.collide){
-            this.over = true;
+        if (!touchIsDown){
+            if (mouseX > this.pos.x-this.collide && mouseX < this.pos.x+this.collide && mouseY > this.pos.y-this.collide && mouseY < this.pos.y+this.collide){
+                this.over = true;
+            } else {
+                this.over = false;
+            }
         } else if (touchIsDown){
             if (touches[0] != null){
                 if (touches[0].x > this.pos.x-this.collide && touches[0].x < this.pos.x+this.collide && touches[0].y > this.pos.y-this.collide && touches[0].y < this.pos.y+this.collide){
-                    
                     this.over = true;
                 } else {
                     this.over = false;
                 }
+            } else {
+                this.over = false;
             }
-        } else {
-            this.over = false;
         }
 
         if (this.over){
@@ -249,6 +291,9 @@ var Landmark = function(_pos, _type, _link){
     };
 
     this.clicked = function(){
+        // loadNewIframeContent(this.link);
+        // contentExpand();
+
         if (this.linkIsAudio){
             
             userStartAudio();
@@ -270,21 +315,24 @@ var Landmark = function(_pos, _type, _link){
         if (!this.visited){
             totalVisited++;
             this.visited = true;
+            console.log(totalVisited);
         }
 
-        if (totalVisited >= 5 && fieldRecordings[0].isLoaded()){
+        if (totalVisited >= 5 && fieldRecordings[1].isLoaded()){
             if (!pondExists){
                 makePond();
                 pondExists = true;
             }
         }
 
-        if (totalVisited >= 3 && fieldRecordings[1].isLoaded()){
+        if (totalVisited >= 3 && fieldRecordings[0].isLoaded()){
             if (!lotExists){
                 makeParkingLot();
                 lotExists = true;
             }
         }
+
+        
         
     };
 
@@ -411,37 +459,92 @@ var Landmark = function(_pos, _type, _link){
         pop();
     };
 
-    this.maple = function(){
+    this.ensemble = function(){
+        this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
         push();
             translate(this.pos.x, this.pos.y);
-            rotate(this.rotation);
+            rotate(this.rotation + this.sinCounter);
             scale(this.scale);
             noFill();
             stroke(accentColors[0]);
             strokeWeight(2);
             ellipse(0, 0, this.size, this.size);
-            strokeWeight(5);
-            point(0, 0);
             
-        pop();
-    };
-
-    this.watermelon = function(){
-        push();
-            translate(this.pos.x, this.pos.y);
-            rotate(-PI/8);
-            scale(this.scale);
-            noFill();
-            strokeWeight(2);
-            stroke(accentColors[0]);
-            ellipse(0, 0, this.size, this.size);
-
-            // strokeWeight(5);
-            for (i=0;i<1;i++){
+            if (this.ensembleNum == 0){                 // POINTS
+                strokeWeight(5);
+                point(this.half*0.3, 0);
+            } else if (this.ensembleNum == 1){
+                strokeWeight(5);
+                point(-this.half*0.3, 0);
+                point(this.half*0.3, 0);
+            } else if (this.ensembleNum == 2){
+                strokeWeight(5);
+                point(-this.half*0.3, this.half*0.2);
+                point(this.half*0.3, this.half*0.2);
+                point(0, -this.half*0.3);
+            }  else if (this.ensembleNum == 3){
+                strokeWeight(5);
+                point(-this.half*0.3, -this.half*0.3);
+                point(-this.half*0.3, this.half*0.3);
+                point(this.half*0.3, this.half*0.3);
+                point(this.half*0.3, -this.half*0.3);
+            } else if (this.ensembleNum == 4){          // ONE LINE
+                for (i=0;i<1;i++){
+                    push();
+                    rotate(i * PI/1);
+                        line(0, -this.half, 0, this.half);
+                    pop();
+                }
+            }  else if (this.ensembleNum == 5){          // CROSS LINES
+                for (i=0;i<2;i++){
+                    push();
+                    rotate(i * PI/2);
+                        line(0, -this.half, 0, this.half);
+                    pop();
+                }
+            }  else if (this.ensembleNum == 6){          // CROSS LINES
+                for (i=0;i<3;i++){
+                    push();
+                    rotate(i * PI/3);
+                        line(0, -this.half, 0, this.half);
+                    pop();
+                }
+            }  else if (this.ensembleNum == 7){          // PARALLEL LINES
+                    push();
+                        line(-this.half*0.33, -this.half*0.9, -this.half*0.33, this.half*0.9);
+                        line(this.half*0.33, -this.half*0.9, this.half*0.33, this.half*0.9);
+                    pop();
+            }  else if (this.ensembleNum == 8){          // PARALLEL LINES
+                    push();
+                        line(-this.half*0.5, -this.half*0.8, -this.half*0.5, this.half*0.8);
+                        line(0, -this.half, 0, this.half);
+                        line(this.half*0.5, -this.half*0.8, this.half*0.5, this.half*0.8);
+                    pop();
+            } else if (this.ensembleNum == 9){          // CONCENTRIC
+                    push();
+                        ellipse(-this.half*0.5, 0, this.size*0.5);
+                    pop();
+            } else if (this.ensembleNum == 10){          // CONCENTRIC
                 push();
-                rotate(i * PI/1);
-                    line(0, -this.half, 0, this.half);
+                    ellipse(-this.half*0.33, 0, this.size*0.66);
+                    ellipse(-this.half*0.66, 0, this.size*0.33);
                 pop();
+            } else if (this.ensembleNum == 11){          // TRIANGLE
+                push();
+                    beginShape();
+                        vertex(-this.half*0.6, this.half*0.4);
+                        vertex(this.half*0.6, this.half*0.4);
+                        vertex(0, -this.half*0.7);
+                    endShape(CLOSE);
+                pop();
+            } else if (this.ensembleNum == 12){          // SQUARE
+                push();
+                    rectMode(CENTER);
+                    rect(0, 0, this.half, this.half);
+                pop();
+            } else {
+                strokeWeight(5);
+                point(0, 0);
             }
             
         pop();
@@ -465,7 +568,7 @@ var Landmark = function(_pos, _type, _link){
             arc(this.half, 0, this.half, this.half, 0, HALF_PI);
             arc(this.size, 0, this.half, this.half, HALF_PI, PI);
             
-            if (fieldRecordings[0].isPlaying()){
+            if (fieldRecordings[1].isPlaying()){
                 this.sinCounter += 0.1;
             }
             
@@ -483,7 +586,7 @@ var Landmark = function(_pos, _type, _link){
 
             quad(this.collide, -this.collide, this.collide, this.collide, -this.collide, this.collide*0.9, -this.collide, -this.collide*0.9);
         
-            if (fieldRecordings[1].isPlaying()){
+            if (fieldRecordings[0].isPlaying()){
                 this.sinCounter += 0.1;
             }
 
@@ -492,23 +595,17 @@ var Landmark = function(_pos, _type, _link){
 };
 
 function makePond(){
-    pond = new Landmark(secretVectors[1], 'pond', fieldRecordings[0]);
+    pond = new Landmark(secretVectors[1], 'pond', fieldRecordings[1]);
     pond.linkIsAudio = true;
     secrets.push(pond);
 }
+
 function makeParkingLot(){
-    parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[1]);
+    parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[0]);
     parkingLot.linkIsAudio = true;
     secrets.push(parkingLot);
 }
 
-function flicker(){
-
-}
-
-function mouseHandler(){
-
-}
 
 function mousePressed(){
     if (!touchIsDown){
@@ -525,6 +622,7 @@ function mousePressed(){
         for (var k in secrets){
             if (secrets[k].over){
                 secrets[k].clicked();
+                // console.log('fired from mouseClicked');
             }
         }
     }
@@ -532,30 +630,57 @@ function mousePressed(){
 }
 
 function touchStarted(){
-
     touchIsDown = true;
-
+    // console.log(touches[0]);
+    // for (var i in landmarks){
+    //     if (landmarks[i].over){
+    //         landmarks[i].clicked();
+    //         // landmarks[i].over = false;
+    //     }
+    // }
+    // for (var j in ensembles){
+    //     if (ensembles[j].over){
+    //         ensembles[j].clicked();
+    //         // ensembles[j].over = false;
+    //     }
+    // }
+    // for (var k in secrets){
+    //     if (secrets[k].over){
+    //         secrets[k].clicked();
+    //         // secrets[k].over = false;
+    //     }
+    // }
+    return false;
 }
 
 function touchEnded(){
+    // console.log(touchIsDown);
     if (touchIsDown){
+        
         for (var i in landmarks){
             if (landmarks[i].over){
                 landmarks[i].clicked();
+                landmarks[i].over = false;
+                console.log('clicked landmark from touchended')
             }
         }
         for (var j in ensembles){
             if (ensembles[j].over){
                 ensembles[j].clicked();
+                ensembles[j].over = false;
             }
         }
         for (var k in secrets){
             if (secrets[k].over){
                 secrets[k].clicked();
+                secrets[k].over = false;
+                console.log('fired from touchEnded');
+                
             }
         }
-        touchIsDown = false;
+        // touchIsDown = false;
     }
+    return false;
 }
 
 function windowResized(){
@@ -566,8 +691,19 @@ function windowResized(){
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
                         new p5.Vector(width*0.64, height*0.37)]; //milkShed
 
-    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), //maple
-                        new p5.Vector(width*0.1, height*0.7)]; //watermelon
+    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
+                            new p5.Vector(width*0.15, height*0.15),
+                            new p5.Vector(width*0.05, height*0.3), //maple
+                            new p5.Vector(width*0.2, height*0.6),
+                            new p5.Vector(width*0.4, height*0.65),
+                            new p5.Vector(width*0.75, height*0.1),
+                            new p5.Vector(width*0.4, height*0.08),
+                            new p5.Vector(width*0.6, height*0.68),
+                            new p5.Vector(width*0.8, height*0.52),
+                            new p5.Vector(width*0.85, height*0.6),
+                            new p5.Vector(width*0.9, height*0.3),
+                            new p5.Vector(width*0.25, height*0.5),
+                            new p5.Vector(width*0.15, height*0.4)]; //watermelon
 
     secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
                     new p5.Vector(width*0.6, height*0.2)]; //pond];
