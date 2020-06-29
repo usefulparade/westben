@@ -650,7 +650,7 @@ function touchStarted(){
     //         // secrets[k].over = false;
     //     }
     // }
-    return false;
+    // return false;
 }
 
 function touchEnded(){
@@ -680,7 +680,7 @@ function touchEnded(){
         }
         // touchIsDown = false;
     }
-    return false;
+    // return false;
 }
 
 function windowResized(){
