@@ -23,11 +23,11 @@
 <body>
     <div class="backgroundColor"></div>
     <div class="mapContainer" id="mapContainer">
-        
-        <div class="theme" onclick="themeToggle()"><p id="themeIcon"></p></div>
-        <div class="palette" onclick="paletteToggle()"><p id="paletteIcon"></p></div>
-        <!-- <p>map goes here!</p> -->
-        <h2 id='caption'></h2>
+        <div class="top">
+            <div class="theme" onclick="themeToggle()"><p id="themeIcon"></p></div>
+            <div class="palette" onclick="paletteToggle()"><p id="paletteIcon"></p></div>
+            <h2 id='caption'></h2>
+        </div>
         <!-- <p><a href='welcome.html' onclick="contentExpand()" target="content">welcome</a></p>
         <p><a href='sampleContent.html' onclick="contentExpand()" target="content">internal content link</a></p>
         <p><a href='http://rogerkimmusic.com/westben/' onclick="contentExpand()" target="content">external content link</a></p> -->
@@ -40,9 +40,10 @@
                 <h1 id="contentIcon">&#10548;&#xFE0E;</h1>
             </div>
         </div>
-
+        
         <iframe id='content' name='content' onload="matchTheme()" src="welcome.html"></iframe>
 
     </div>
+    
 </body>
 <!-- ⤴ -->

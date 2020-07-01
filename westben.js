@@ -18,7 +18,9 @@ var totalVisited, pondExists, lotExists;
 var mouseOrTouch;
 var touchIsDown;
 var fieldRecordings = [];
+var contentContainerHidden;
 
+var currentIconTarget, currentIcon;
 
 var lightColors = [];
 var lightHexColors = [];
@@ -36,18 +38,18 @@ function setup(){
     fieldRecordings[1] = loadSound('audio/piano-B.mp3');
     fieldRecordings[1].playMode('sustain');
 
-    ensembleNames = ['Piece Title: Ensemble 1',
-                'Piece Title: Ensemble 2',
-                'Piece Title: Ensemble 3',
-                'Piece Title: Ensemble 4',
-                'Piece Title: Ensemble 5',
-                'Piece Title: Ensemble 6',
-                'Piece Title: Ensemble 7',
-                'Piece Title: Ensemble 8',
-                'Piece Title: Ensemble 9',
-                'Piece Title: Ensemble 10',
-                'Piece Title: Ensemble 11',
-                'Piece Title: Ensemble 12',
+    ensembleNames = ['Piece Title: pine',
+                'Piece Title: oak',
+                'Piece Title: maple',
+                'Piece Title: cedar',
+                'Piece Title: green',
+                'Piece Title: purple',
+                'Piece Title: pink',
+                'Piece Title: turquoise',
+                'Piece Title: yellow',
+                'Might Not Find What You Saw',
+                'Piece Title: banana',
+                'Piece Title: lemon',
                 'The Evolutionary Traits of Birds',
                 ];
 
@@ -60,7 +62,7 @@ function setup(){
                     'ensembles/pink.html',
                     'ensembles/turquoise.html',
                     'ensembles/yellow.html',
-                    'ensembles/apple.html',
+                    'ensembles/mightnotfindwhatyousaw/index.html',
                     'ensembles/banana.html',
                     'ensembles/lemon.html',
                     'ensembles/watermelon.html',  
@@ -73,7 +75,7 @@ function setup(){
     c.parent(cParent);
     theme = 'night';
     touchIsDown = false;
-
+    currentIconTarget = new p5.Vector(width/2, 0);
     
 
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
@@ -89,7 +91,7 @@ function setup(){
                         new p5.Vector(width*0.2, height*0.6),
                         new p5.Vector(width*0.4, height*0.65),
                         new p5.Vector(width*0.75, height*0.1),
-                        new p5.Vector(width*0.4, height*0.08),
+                        new p5.Vector(width*0.35, height*0.08),
                         new p5.Vector(width*0.6, height*0.68),
                         new p5.Vector(width*0.8, height*0.52),
                         new p5.Vector(width*0.85, height*0.6),
@@ -102,9 +104,11 @@ function setup(){
     
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
+    barn.isCurrentContent = true;
+    currentIcon = barn;
     tree = new Landmark(landmarkVectors[1], 'conservancy', 'conservancy.html');
     ticketShed = new Landmark(landmarkVectors[2], 'ticket shed', 'https://www.westben.ca/donate');
-    milkShed = new Landmark(landmarkVectors[3], 'milk shed', 'milkshed.html');
+    milkShed = new Landmark(landmarkVectors[3], 'milkshed', 'milkshed.html');
 
     // maple = new Landmark(ensembleVectors[0], 'maple group', 'ensembles/maple.html');
     // watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'ensembles/watermelon.html');
@@ -139,6 +143,7 @@ function setup(){
     paletteIcons = ['◐', '◓', '◑', '◒'];
 
     foregroundColor = lightColors[colorPalette];
+    backgroundColor = darkColors[colorPalette];
     accentColors[0] = color(95, 163, 50);
     accentColors[1] = color(255, 108, 108);
     accentColors[2] = color(108, 108, 255);
@@ -152,22 +157,24 @@ function setup(){
     matchTheme();
 
     contentExpand();
+
 }
 
 function draw(){
+
     clear();
     roads();
 
     document.getElementById('caption').innerHTML = '';
 
-    for (var i in landmarks){
-        landmarks[i].show();
+    for (var k in secrets){
+        secrets[k].show();
     }
     for (var j in ensembles){
         ensembles[j].show();
     }
-    for (var k in secrets){
-        secrets[k].show();
+    for (var i in landmarks){
+        landmarks[i].show();
     }
     
 
@@ -238,25 +245,47 @@ var Landmark = function(_pos, _type, _link){
     this.names = '';
     this.ensembleNum = 0;
     this.vol = 0;
+    this.isCurrentContent = false;
 
     this.show = function(){
-        if (this.type == 'barn'){
-            this.barn();
-        } else if (this.type == 'conservancy'){
-            this.tree();
-        } else if (this.type == 'ticket shed'){
-            this.ticket();
-        } else if (this.type == 'maple group'){
-            this.maple();
-        } else if (this.type == 'milk shed'){
-            this.milk();
-        } else if (this.type == 'parking lot'){
-            this.parking();
-        } else if (this.type == 'pond'){
-            this.pond();
-        } else {
-            this.ensemble();
-        }
+        push();
+            // if this is the current content, put it at the top of the screen
+            if (this.isCurrentContent && !contentContainerHidden){
+                this.scale = 1;
+                this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
+                translate(-this.pos.x + width/2, -this.pos.y + 50);
+                push();
+                    fill(foregroundColor);
+                    noStroke();
+                    strokeWeight(3);
+                    // ellipse(this.pos.x, this.pos.y, this.size*1.8);
+                    rectMode(CENTER);
+                    rect(this.pos.x, this.pos.y, 100, 100);
+                pop();
+
+                translate(0, sin(this.sinCounter)*5)
+                
+                document.getElementById('caption').innerHTML = '';
+            }
+
+            if (this.type == 'barn'){
+                this.barn();
+            } else if (this.type == 'conservancy'){
+                this.tree();
+            } else if (this.type == 'ticket shed'){
+                this.ticket();
+            } else if (this.type == 'maple group'){
+                this.maple();
+            } else if (this.type == 'milkshed'){
+                this.milk();
+            } else if (this.type == 'parking lot'){
+                this.parking();
+            } else if (this.type == 'pond'){
+                this.pond();
+            } else {
+                this.ensemble();
+            }
+        pop();
 
         if (!touchIsDown){
             if (mouseX > this.pos.x-this.collide && mouseX < this.pos.x+this.collide && mouseY > this.pos.y-this.collide && mouseY < this.pos.y+this.collide){
@@ -277,20 +306,27 @@ var Landmark = function(_pos, _type, _link){
         }
 
         if (this.over){
-            if (this.names != ''){
-                document.getElementById('caption').innerHTML = this.names;
-            } else {
-                document.getElementById('caption').innerHTML = this.caption;
+            if (!this.isCurrentContent && contentContainerHidden){
+                if (this.names != ''){
+                    document.getElementById('caption').innerHTML = this.names;
+                } else {
+                    document.getElementById('caption').innerHTML = this.caption;
+                }
+
+                this.scale = 1.5;
             }
-            this.scale = 1.5;
+            
         } else {
-            this.scale = 1;
+            if (!this.isCurrentContent){
+                this.scale = 1;
+            }
 
         }   
 
     };
 
     this.clicked = function(){
+
         // loadNewIframeContent(this.link);
         // contentExpand();
 
@@ -308,8 +344,10 @@ var Landmark = function(_pos, _type, _link){
                 }
             }
         } else {
+            currentIcon = this;
             loadNewIframeContent(this.link);
             contentExpand();
+           
         }
 
         if (!this.visited){
@@ -339,10 +377,16 @@ var Landmark = function(_pos, _type, _link){
     this.barn = function(){
 
         push();
-            translate(this.pos.x, this.pos.y);
+            translate(this.pos.x, this.pos.y + this.half*0.1);
             scale(this.scale);
             noFill();
-            stroke(foregroundColor);
+            if (!this.isCurrentContent){
+                stroke(foregroundColor);
+            } else if (!contentContainerHidden){
+                stroke(backgroundColor);
+            } else {
+                stroke(foregroundColor);
+            }
             strokeWeight(2);
             // MAIN BARN
             beginShape();
@@ -387,10 +431,16 @@ var Landmark = function(_pos, _type, _link){
 
         push();
             
-            translate(this.pos.x, this.pos.y);
+            translate(this.pos.x, this.pos.y-this.half*0.4);
             noFill();
             scale(this.scale);
-            stroke(foregroundColor);
+            if (!this.isCurrentContent){
+                stroke(foregroundColor);
+            } else if (!contentContainerHidden){
+                stroke(backgroundColor);
+            } else {
+                stroke(foregroundColor);
+            }
             strokeWeight(2);
             // ellipse(0, 0, this.size);
             line(0, -this.half, 0, this.size*0.6);
@@ -413,7 +463,13 @@ var Landmark = function(_pos, _type, _link){
             scale(this.scale);
             noFill();
             strokeWeight(2);
-            stroke(foregroundColor);
+            if (!this.isCurrentContent){
+                stroke(foregroundColor);
+            } else if (!contentContainerHidden){
+                stroke(backgroundColor);
+            } else {
+                stroke(foregroundColor);
+            }
 
             // textFont(font);
             for (i=0;i<5;i++){
@@ -430,7 +486,13 @@ var Landmark = function(_pos, _type, _link){
             scale(this.scale);
             noFill();
             strokeWeight(2);
-            stroke(foregroundColor);
+            if (!this.isCurrentContent){
+                stroke(foregroundColor);
+            } else if (!contentContainerHidden){
+                stroke(backgroundColor);
+            } else {
+                stroke(foregroundColor);
+            }
 
             // front face
             line(0, 0, this.half, -this.half*0.2);
@@ -608,24 +670,38 @@ function makeParkingLot(){
 
 
 function mousePressed(){
+    
+
     if (!touchIsDown){
+        if (!contentContainerHidden){
+            if (mouseY < 100){
+                contentContract();
+            }
+        }
         for (var i in landmarks){
-            if (landmarks[i].over){
+            if (landmarks[i].over && contentContainerHidden){
                 landmarks[i].clicked();
+                landmarks[i].isCurrentContent = true;
+            } else {
+                landmarks[i].isCurrentContent = false;
             }
         }
         for (var j in ensembles){
-            if (ensembles[j].over){
+            if (ensembles[j].over && contentContainerHidden){
                 ensembles[j].clicked();
+                ensembles[j].isCurrentContent = true;
+            } else {
+                ensembles[j].isCurrentContent = false;
             }
         }
         for (var k in secrets){
             if (secrets[k].over){
                 secrets[k].clicked();
-                // console.log('fired from mouseClicked');
             }
         }
     }
+
+    
     
 }
 
@@ -656,25 +732,35 @@ function touchStarted(){
 function touchEnded(){
     // console.log(touchIsDown);
     if (touchIsDown){
-        
+        if (!contentContainerHidden){
+            if (touches[0] != null && touches[0].y < 100){
+                contentContract();
+                console.log('hello');
+            }
+        }
+
         for (var i in landmarks){
-            if (landmarks[i].over){
+            if (landmarks[i].over && contentContainerHidden){
                 landmarks[i].clicked();
                 landmarks[i].over = false;
-                console.log('clicked landmark from touchended')
+                landmarks[i].isCurrentContent = true;
+            } else {
+                landmarks[i].isCurrentContent = false;
             }
         }
         for (var j in ensembles){
-            if (ensembles[j].over){
+            if (ensembles[j].over && contentContainerHidden){
                 ensembles[j].clicked();
                 ensembles[j].over = false;
+                ensembles[j].isCurrentContent = true;
+            } else {
+                ensembles[j].isCurrentContent = false;
             }
         }
         for (var k in secrets){
             if (secrets[k].over){
                 secrets[k].clicked();
                 secrets[k].over = false;
-                console.log('fired from touchEnded');
                 
             }
         }
@@ -697,7 +783,7 @@ function windowResized(){
                             new p5.Vector(width*0.2, height*0.6),
                             new p5.Vector(width*0.4, height*0.65),
                             new p5.Vector(width*0.75, height*0.1),
-                            new p5.Vector(width*0.4, height*0.08),
+                            new p5.Vector(width*0.35, height*0.08),
                             new p5.Vector(width*0.6, height*0.68),
                             new p5.Vector(width*0.8, height*0.52),
                             new p5.Vector(width*0.85, height*0.6),

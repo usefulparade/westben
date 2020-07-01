@@ -32,6 +32,11 @@ h2#caption {
     font-size: 1em;
 }
 
+h3{
+    font-weight: 200;
+    font-size: 2em;
+}
+
 a {
     color: var(--fg-color);
 }
@@ -71,6 +76,18 @@ a:hover {
     color: var(--fg-color);
     text-align: center;
     overflow: hidden;
+}
+
+.mapContainer .top {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* background-color: var(--bg-color); */
+    color: var(--fg-color);
+    /* border-bottom: 2px solid var(--fg-color); */
 }
 
 .mapContainer .theme {
@@ -123,6 +140,10 @@ a:hover {
     overflow: hidden;
 }
 
+.indent {
+    margin-left: 10%;
+}
+
 .contentContainer iframe{
     display: block;
     position: relative;
@@ -146,6 +167,8 @@ a:hover {
     border: 2px solid var(--fg-transparent);
     border-radius: 100px;
     z-index: 100;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
     /* cursor: pointer; */
 }
 
@@ -154,6 +177,8 @@ a:hover {
     transition: transform 0.5s;
     cursor: pointer;
     border: 2px solid var(--fg-color);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
     
 }
 
@@ -202,6 +227,27 @@ a:hover {
     text-align: left;
 }
 
+.bio img {
+    display: inline-block;
+    width: 40%;
+    min-width: 300px;
+    /* margin-right: 10px; */
+    margin-top: 18px;
+    vertical-align: top;
+    border: 4px solid var(--fg-color);
+}
+
+.bio .bioText {
+    display: inline-block;
+    max-width: 50%;
+    vertical-align: top;
+}
+
+.bio p {
+    font-size: 1em;
+    margin: 0px;
+}
+
 .canvasParent {
     display: block;
     position: fixed;
@@ -215,11 +261,30 @@ a:hover {
 }
 
 @media only screen and (max-width: 720px){
+
+    .programNotes h1 {
+        font-size: 1.5em;
+    }
     .videoWrapper {
         max-width: 100%;
     }
 
     .programNotesInner {
         max-width: 95%;
+    }
+
+    .bio img {
+        display: inline-block;
+        max-width: 100%;
+        width: 100%;
+        /* margin-right: 10px; */
+        margin-top: 18px;
+        vertical-align: top;
+    }
+    
+    .bio .bioText {
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: top;
     }
 }
