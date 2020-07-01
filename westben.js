@@ -33,23 +33,23 @@ function preload(){
 }
 
 function setup(){
-    fieldRecordings[0] = loadSound('audio/piano-A.mp3');
+    fieldRecordings[0] = loadSound('audio/dove.mp3'); // parking lot
     fieldRecordings[0].playMode('sustain');
-    fieldRecordings[1] = loadSound('audio/piano-B.mp3');
+    fieldRecordings[1] = loadSound('audio/frogs.mp3'); // pond
     fieldRecordings[1].playMode('sustain');
 
-    ensembleNames = ['Piece Title: pine',
-                'Piece Title: oak',
-                'Piece Title: maple',
-                'Piece Title: cedar',
-                'Piece Title: green',
-                'Piece Title: purple',
-                'Piece Title: pink',
+    ensembleNames = ['Generations of Decay',
+                'Cada Mañana Una Nueva Llegada',
+                'Arc Diffusion',
+                'Lullabies for Late Capitalism',
+                'Chirr',
+                'Non-Equivalent Changes',
+                'Response',
                 'Piece Title: turquoise',
-                'Piece Title: yellow',
+                'Communicating Gratitude',
                 'Might Not Find What You Saw',
-                'Piece Title: banana',
-                'Piece Title: lemon',
+                'Iso-',
+                'In Paralysis',
                 'The Evolutionary Traits of Birds',
                 ];
 
@@ -86,12 +86,12 @@ function setup(){
     
 
     ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
-                        new p5.Vector(width*0.15, height*0.15),
+                        new p5.Vector(width*0.15, height*0.21),
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.2, height*0.6),
                         new p5.Vector(width*0.4, height*0.65),
-                        new p5.Vector(width*0.75, height*0.1),
-                        new p5.Vector(width*0.35, height*0.08),
+                        new p5.Vector(width*0.79, height*0.4),
+                        new p5.Vector(width*0.35, height*0.19),
                         new p5.Vector(width*0.6, height*0.68),
                         new p5.Vector(width*0.8, height*0.52),
                         new p5.Vector(width*0.85, height*0.6),
@@ -99,8 +99,8 @@ function setup(){
                         new p5.Vector(width*0.25, height*0.5),
                         new p5.Vector(width*0.15, height*0.4)]; //watermelon
 
-    secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
-                    new p5.Vector(width*0.6, height*0.2)]; //pond];
+    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
+                    new p5.Vector(width*0.6, height*0.3)]; //pond];
     
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
@@ -356,7 +356,7 @@ var Landmark = function(_pos, _type, _link){
             console.log(totalVisited);
         }
 
-        if (totalVisited >= 5 && fieldRecordings[1].isLoaded()){
+        if (totalVisited >= 5 && fieldRecordings[1].isLoaded() && lotExists){
             if (!pondExists){
                 makePond();
                 pondExists = true;
@@ -666,6 +666,7 @@ function makeParkingLot(){
     parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[0]);
     parkingLot.linkIsAudio = true;
     secrets.push(parkingLot);
+    console.log('parking lot');
 }
 
 
@@ -778,12 +779,12 @@ function windowResized(){
                         new p5.Vector(width*0.64, height*0.37)]; //milkShed
 
     ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
-                            new p5.Vector(width*0.15, height*0.15),
+                            new p5.Vector(width*0.15, height*0.21),
                             new p5.Vector(width*0.05, height*0.3), //maple
                             new p5.Vector(width*0.2, height*0.6),
                             new p5.Vector(width*0.4, height*0.65),
-                            new p5.Vector(width*0.75, height*0.1),
-                            new p5.Vector(width*0.35, height*0.08),
+                            new p5.Vector(width*0.79, height*0.4),
+                            new p5.Vector(width*0.35, height*0.19),
                             new p5.Vector(width*0.6, height*0.68),
                             new p5.Vector(width*0.8, height*0.52),
                             new p5.Vector(width*0.85, height*0.6),
@@ -791,8 +792,8 @@ function windowResized(){
                             new p5.Vector(width*0.25, height*0.5),
                             new p5.Vector(width*0.15, height*0.4)]; //watermelon
 
-    secretVectors = [new p5.Vector(width*0.46, height*0.3), //parking lot
-                    new p5.Vector(width*0.6, height*0.2)]; //pond];
+    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
+                            new p5.Vector(width*0.6, height*0.3)]; //pond];
 
 
     for (var i in landmarks){

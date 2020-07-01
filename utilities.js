@@ -16,6 +16,7 @@ function contentExpand(){
     var contentIcon = document.getElementById('contentIcon');
     contentIcon.style.setProperty('transform', 'rotate(-180deg)');
     content.style = 'height: calc(100% - 100px)';
+    document.getElementById('aboveContent').style = 'height: 100px';
     currentIcon.isCurrentContent = true;
     setTimeout(function(){contentContainerHidden = false;}, 400);
     resizeIframe();
@@ -27,6 +28,7 @@ function contentContract(){
     contentIcon.style.setProperty('transform', 'rotate(0deg)');
     contentContainerHidden = true;
     // currentIcon.isCurrentContent = false;
+    document.getElementById('aboveContent').style = 'height: 0px';
     content.style = 'height: 10%';
 }
 
@@ -35,6 +37,7 @@ function contentContractFromInside(){
     var parentContent = window.parent.document.getElementById('contentContainer');
     parentIcon.style.setProperty('transform', 'rotate(0deg)');
     parentContent.style = 'height: 10%';
+    window.parent.document.getElementById('aboveContent').style = 'height: 0px';
     window.parent.currentIcon.isCurrentIcon = false;
     window.parent.contentContainerHidden = true;
     
