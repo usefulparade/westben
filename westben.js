@@ -38,34 +38,38 @@ function setup(){
     fieldRecordings[1] = loadSound('audio/frogs.mp3'); // pond
     fieldRecordings[1].playMode('sustain');
 
-    ensembleNames = ['Generations of Decay',
-                'Cada Mañana Una Nueva Llegada',
-                'Arc Diffusion',
-                'Lullabies for Late Capitalism',
-                'Chirr',
-                'Non-Equivalent Changes',
-                'Response',
-                'Piece Title: turquoise',
-                'Communicating Gratitude',
-                'Might Not Find What You Saw',
-                'Iso-',
+    ensembleNames = ['Might Not Find What You Saw',
+                'Turquoise Time Capsule',
                 'In Paralysis',
+                'Chirr',
                 'The Evolutionary Traits of Birds',
+                'Non-Equivalent Changes',
+                'Cada Mañana Una Nueva Llegada',
+                'Communicating Gratitude',
+                'Response',
+                'Lullabies for Late Capitalism',
+                'Arc Diffusion',
+                'Generations of Decay',
+                'Iso-',
+                
+                
                 ];
 
-    ensembleLinks = ['ensembles/pine.html',
-                    'ensembles/oak.html',
-                    'ensembles/maple.html',
-                    'ensembles/cedar.html',
-                    'ensembles/green.html',
-                    'ensembles/purple.html',
-                    'ensembles/pink.html',
+    ensembleLinks = ['ensembles/mightnotfindwhatyousaw/index.html',
                     'ensembles/turquoise.html',
-                    'ensembles/yellow.html',
-                    'ensembles/mightnotfindwhatyousaw/index.html',
-                    'ensembles/banana.html',
                     'ensembles/lemon.html',
-                    'ensembles/watermelon.html',  
+                    'ensembles/green.html',
+                    'ensembles/watermelon.html',
+                    'ensembles/purple.html',
+                    'ensembles/oak.html',
+                    'ensembles/yellow.html',
+                    'ensembles/pink.html',
+                    'ensembles/cedar.html',
+                    'ensembles/maple.html',
+                    'ensembles/pine.html',
+                    'ensembles/banana.html',
+                    
+                      
                     ];
 
     contentContainerHidden = true;
@@ -85,19 +89,21 @@ function setup(){
 
     
 
-    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
-                        new p5.Vector(width*0.15, height*0.21),
+    ensembleVectors = [new p5.Vector(width*0.85, height*0.6), //apple (might not find)
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
-                        new p5.Vector(width*0.2, height*0.6),
-                        new p5.Vector(width*0.4, height*0.65),
-                        new p5.Vector(width*0.79, height*0.4),
-                        new p5.Vector(width*0.35, height*0.19),
-                        new p5.Vector(width*0.6, height*0.68),
-                        new p5.Vector(width*0.8, height*0.52),
-                        new p5.Vector(width*0.85, height*0.6),
-                        new p5.Vector(width*0.9, height*0.3),
-                        new p5.Vector(width*0.25, height*0.5),
-                        new p5.Vector(width*0.15, height*0.4)]; //watermelon
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3)]; //banana
+                        
+                        
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
                     new p5.Vector(width*0.6, height*0.3)]; //pond];
@@ -180,16 +186,6 @@ function draw(){
 
 }
 
-function mouseOverHandler(){
-    for (var i in landmarks){
-        if (landmarks[i].over){
-            
-        } else {
-
-        }
-    }
-}
-
 function roads(){
     // highway
 
@@ -253,17 +249,17 @@ var Landmark = function(_pos, _type, _link){
             if (this.isCurrentContent && !contentContainerHidden){
                 this.scale = 1;
                 this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
-                translate(-this.pos.x + width/2, -this.pos.y + 50);
+                translate(-this.pos.x + width/2, -this.pos.y + 35);
                 push();
                     fill(foregroundColor);
                     noStroke();
                     strokeWeight(3);
                     // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    rect(this.pos.x, this.pos.y, 100, 100);
+                    rect(this.pos.x, this.pos.y, 90, 70);
                 pop();
 
-                translate(0, sin(this.sinCounter)*5)
+                translate(0, sin(this.sinCounter)*5);
                 
                 document.getElementById('caption').innerHTML = '';
             }
@@ -675,9 +671,9 @@ function mousePressed(){
 
     if (!touchIsDown){
         if (!contentContainerHidden){
-            if (mouseY < 100){
-                contentContract();
-            }
+            // if (mouseY < 100){
+            //     contentContract();
+            // }
         }
         for (var i in landmarks){
             if (landmarks[i].over && contentContainerHidden){
@@ -696,7 +692,7 @@ function mousePressed(){
             }
         }
         for (var k in secrets){
-            if (secrets[k].over){
+            if (secrets[k].over && contentContainerHidden){
                 secrets[k].clicked();
             }
         }
@@ -708,36 +704,16 @@ function mousePressed(){
 
 function touchStarted(){
     touchIsDown = true;
-    // console.log(touches[0]);
-    // for (var i in landmarks){
-    //     if (landmarks[i].over){
-    //         landmarks[i].clicked();
-    //         // landmarks[i].over = false;
-    //     }
-    // }
-    // for (var j in ensembles){
-    //     if (ensembles[j].over){
-    //         ensembles[j].clicked();
-    //         // ensembles[j].over = false;
-    //     }
-    // }
-    // for (var k in secrets){
-    //     if (secrets[k].over){
-    //         secrets[k].clicked();
-    //         // secrets[k].over = false;
-    //     }
-    // }
-    // return false;
 }
 
 function touchEnded(){
     // console.log(touchIsDown);
     if (touchIsDown){
         if (!contentContainerHidden){
-            if (touches[0] != null && touches[0].y < 100){
-                contentContract();
-                console.log('hello');
-            }
+            // if (touches[0] != null && touches[0].y < 100){
+            //     contentContract();
+            //     console.log('hello');
+            // }
         }
 
         for (var i in landmarks){
@@ -758,7 +734,7 @@ function touchEnded(){
                 ensembles[j].isCurrentContent = false;
             }
         }
-        for (var k in secrets){
+        for (var k in secrets && contentContainerHidden){
             if (secrets[k].over){
                 secrets[k].clicked();
                 secrets[k].over = false;
@@ -778,22 +754,22 @@ function windowResized(){
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
                         new p5.Vector(width*0.64, height*0.37)]; //milkShed
 
-    ensembleVectors = [new p5.Vector(width*0.8, height*0.2), 
-                            new p5.Vector(width*0.15, height*0.21),
-                            new p5.Vector(width*0.05, height*0.3), //maple
-                            new p5.Vector(width*0.2, height*0.6),
-                            new p5.Vector(width*0.4, height*0.65),
-                            new p5.Vector(width*0.79, height*0.4),
-                            new p5.Vector(width*0.35, height*0.19),
-                            new p5.Vector(width*0.6, height*0.68),
-                            new p5.Vector(width*0.8, height*0.52),
-                            new p5.Vector(width*0.85, height*0.6),
-                            new p5.Vector(width*0.9, height*0.3),
-                            new p5.Vector(width*0.25, height*0.5),
-                            new p5.Vector(width*0.15, height*0.4)]; //watermelon
+    ensembleVectors = [new p5.Vector(width*0.85, height*0.6), //apple (might not find)
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3)]; //banana
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                            new p5.Vector(width*0.6, height*0.3)]; //pond];
+                        new p5.Vector(width*0.6, height*0.3)]; //pond];
 
 
     for (var i in landmarks){

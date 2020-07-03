@@ -15,8 +15,12 @@ function contentExpand(){
     var size = landmarks[0].size;
     var contentIcon = document.getElementById('contentIcon');
     contentIcon.style.setProperty('transform', 'rotate(-180deg)');
-    content.style = 'height: calc(100% - 100px)';
-    document.getElementById('aboveContent').style = 'height: 100px';
+    if (windowWidth < 720){
+        content.style = 'height: calc(100% - 70px)';
+    } else {
+        content.style = 'height: calc(100% - 70px)';
+    }
+    document.getElementById('aboveContent').style = 'height: 70px';
     currentIcon.isCurrentContent = true;
     setTimeout(function(){contentContainerHidden = false;}, 400);
     resizeIframe();
@@ -26,7 +30,7 @@ function contentExpand(){
 function contentContract(){
     var contentIcon = document.getElementById('contentIcon');
     contentIcon.style.setProperty('transform', 'rotate(0deg)');
-    contentContainerHidden = true;
+    setTimeout(function(){contentContainerHidden = true;}, 400);
     // currentIcon.isCurrentContent = false;
     document.getElementById('aboveContent').style = 'height: 0px';
     content.style = 'height: 10%';
@@ -137,4 +141,81 @@ function changeCurrentIcon(type, num){
         window.parent.currentIcon = window.parent.landmarks[num];
         window.parent.landmarks[num].isCurrentContent = true;
     }
+}
+
+
+
+
+/// PINK GROUP UTILITIES
+
+var lv2;
+
+function responseLv1Toggle(){
+    var lv2Buttons = document.getElementsByClassName('lv2Button');
+    
+        if (lv2 == null || lv2 == false){
+            for (var i in lv2Buttons){
+                lv2Buttons[i].style = 'height: 100px; width: 100px';
+            }
+            // document.getElementById('lv2').style = 'max-height: auto';
+            lv2 = true;
+        } else {
+            for (var i in lv2Buttons){
+                lv2Buttons[i].style = 'height: 0px; width: 0px';
+            }
+            // document.getElementById('lv2').style = 'max-height: 300px';
+            lv2 = false;
+        }
+}
+
+function responseLv2Toggle(_type){
+    var mainContent = [];
+    var hope = document.getElementById('hopeContent');
+    var guilt = document.getElementById('guiltContent');
+    var changes = document.getElementById('changesContent');
+    var realization = document.getElementById('realizationContent');
+    var unrest = document.getElementById('unrestContent');
+    var exploration = document.getElementById('explorationContent');
+
+    mainContent.push(hope, guilt, changes, realization, unrest, exploration);
+    
+    for (var i in mainContent){
+        mainContent[i].style = 'display: none';
+    }
+
+    mainContent[_type].style = 'display: block';
+    var responses;
+    if (_type == 0){
+        responses = document.getElementsByClassName('hopeResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    } else if (_type == 1){
+        responses = document.getElementsByClassName('guiltResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    } else if (_type == 2){
+        responses = document.getElementsByClassName('changesResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    } else if (_type == 3){
+        responses = document.getElementsByClassName('realizationResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    } else if (_type == 4){
+        responses = document.getElementsByClassName('unrestResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    } else if (_type == 5){
+        responses = document.getElementsByClassName('explorationResponseButton');
+        for (var j in responses){
+            responses[j].style = 'width: 30px; height: 30px;';
+        }
+    }
+
+
 }

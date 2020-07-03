@@ -11,8 +11,9 @@
   <title>maple group</title>
   
   <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../content-style.css">
-    <script src="../utilities.js"></script>
+  <link rel="stylesheet" href="../content-style.css">
+  <link rel="stylesheet" href="../pink-style.css">
+  <script src="../utilities.js"></script> 
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
@@ -23,9 +24,117 @@
       
       <div class="programNotesInner">
         <h2>Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</h2>
-        <h1>Response</h1>
-        
-        <h2>this one's complicated, working on it :)</h2>
+        <!-- <h1>Response</h1> -->
+        <div class="buttonContainer">
+
+          <div id="lv1" class="lv1">
+            <button onclick="responseLv1Toggle();"><p>Response</p></button>
+          </div>
+          <div id="lv2" class="lv2">
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(0)"><p>Hope</p></button>
+
+              <div class="hopeResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="hopeResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(1)"><p>Guilt</p></button>
+
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(2)"><p>Changes</p></button>
+
+              <div class="changesResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="changesResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="changesResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(3)"><p>Realization</p></button>
+
+              <div class="realizationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="realizationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="realizationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="realizationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(4)"><p>Unrest</p></button>
+
+              <div class="unrestResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="unrestResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+            <div class="lv2Button">
+              <button onclick="responseLv2Toggle(5)"><p>Exploration</p></button>
+
+              <div class="explorationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="explorationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="explorationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+              <div class="explorationResponseButton lv3Button">
+                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              </div>
+
+            </div>
+          </div>
+          
+          
+
+        </div>
+
+        <div class="responseContainer">
+          <div id="hopeContent" class="responseContent"><p>hope</p></div>
+          <div id="guiltContent" class="responseContent"><p>guilt</p></div>
+          <div id="changesContent" class="responseContent"><p>changes</p></div>
+          <div id="realizationContent" class="responseContent"><p>realization</p></div>
+          <div id="unrestContent" class="responseContent"><p>unrest</p></div>
+          <div id="explorationContent" class="responseContent"><p>exploration</p></div>
+        </div>
         <br>
         <p>go back to <a onclick='changeCurrentIcon("landmark", 0)' href='../welcome.html' target="content">the barn</a></p>
         <p>explore <a href='' onclick='contentContractFromInside()'>the map</a></p>

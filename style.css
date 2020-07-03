@@ -11,14 +11,20 @@
     --fg-transparent: #ffffff00;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: 'Roboto Mono', monospace;
     font-weight: 200;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     margin: 0px;
     background-color: var(--fg-color);
     transition: background-color 1s, color 0.5s;
+    scroll-behavior: smooth;
 }
 
 h1 {
@@ -51,6 +57,11 @@ a:hover {
     background-color: var(--fg-color);
     text-decoration: none;
     
+}
+
+hr {
+    /* color: var(--fg-color); */
+    border: 1px dashed var(--fg-color);
 }
 
 .backgroundColor {
@@ -151,7 +162,7 @@ a:hover {
     height: 100%;
     overflow-y: scroll;
     border: 0px;
-    
+    scroll-behavior: smooth;
 }
 
 .aboveContent {
@@ -204,6 +215,7 @@ a:hover {
     height: 100%;
     color: var(--fg-color);
     text-align: center;
+    scroll-behavior: smooth;
 }
 
 .videoWrapper {
