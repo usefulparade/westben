@@ -799,8 +799,8 @@ function touchEnded(){
                 ensembles[j].isCurrentContent = false;
             }
         }
-        for (var k in secrets && contentContainerHidden){
-            if (secrets[k].over){
+        for (var k in secrets){
+            if (secrets[k].over && contentContainerHidden){
                 secrets[k].clicked();
                 secrets[k].over = false;
                 
