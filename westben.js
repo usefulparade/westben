@@ -108,7 +108,7 @@ function setup(){
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
                     new p5.Vector(width*0.6, height*0.3),//pond;
-                    new p5.Vector(width*0.4, height*0.5)]; //tractor
+                    new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
     
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
@@ -353,10 +353,11 @@ var Landmark = function(_pos, _type, _link){
            
         }
 
-        if (!this.visited){
-            totalVisited++;
-            this.visited = true;
-            console.log(totalVisited);
+        if (!this.linkIsAudio){
+            if (!this.visited){
+                totalVisited++;
+                this.visited = true;
+            }
         }
 
         if (totalVisited >= 7 && fieldRecordings[2].isLoaded() && lotExists){
