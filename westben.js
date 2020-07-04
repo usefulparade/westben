@@ -108,7 +108,7 @@ function setup(){
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
                     new p5.Vector(width*0.6, height*0.3),//pond;
-                    new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
+                    new p5.Vector(landmarkVectors[2].x - map(((width+height)/2), 500, 1200, 30, 50)*1.9, landmarkVectors[2].y - 50)]; //tractor
     
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
