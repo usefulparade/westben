@@ -219,3 +219,71 @@ function responseLv2Toggle(_type){
 
 
 }
+
+var coordinates = [];
+
+function appendImage(_type, _img){
+    var coordinateContent = document.getElementsByClassName('coordinate');
+    coordinateContent[_type].appendChild(_img);
+}
+
+
+function coordinateToggle(_type){
+    var coordinateContent = document.getElementsByClassName('coordinate');
+    // if (coordinates[_type] == null){
+    //     if (_type == 0){
+    //         // console.log('hello!');
+    //         for (i=1;i<4;i++){
+    //             var img = new Image();
+    //             img.src = "img/chirr/spencer/spen-0" + i + ".jpeg";
+    //             // img.setAttribute('loading', 'lazy');
+    //             img.onload = appendImage(_type, img);
+    //         }
+    //     } else if (_type == 1){
+    //         for (i=1;i<9;i++){
+    //             var img = new Image();
+    //             img.src = "../img/chirr/ap/ap-0" + i + ".jpg";
+    //             // img.setAttribute('loading', 'lazy');
+    //             img.onload = appendImage(_type, img);
+    //         }
+    //     } else if (_type == 2){
+    //         for (i=1;i<11;i++){
+    //             var img = new Image();
+    //             if (i<10){
+    //                 img.src = "../img/chirr/glen/glen-0" + i + ".jpg";
+    //             } else {
+    //                 img.src = "../img/chirr/glen/glen-" + i + ".jpg";
+    //             }
+    //             // img.setAttribute('loading', 'lazy');
+    //             img.onload = appendImage(_type, img);
+    //         }
+    //     } else if (_type == 3){
+    //         for (i=5;i<9;i++){
+    //             var img = new Image();
+    //             img.src = "../img/chirr/gordon/gordon-0" + i + ".jpg";
+    //             // img.setAttribute('loading', 'lazy');
+    //             img.onload = appendImage(_type, img);
+    //         }
+    //     } else if (_type == 4){
+    //         for (i=1;i<5;i++){
+    //             var img = new Image();
+    //             img.src = "../img/chirr/gordon/gordon-0" + i + ".jpg";
+    //             // img.setAttribute('loading', 'lazy');
+    //             img.onload = appendImage(_type, img);
+    //         }
+    //     }
+    // }
+
+
+    if (coordinates[_type] == null || coordinates[_type] == false){
+        coordinateContent[_type].style = 'height: auto;';
+        
+        coordinates[_type] = true;
+    } else {
+        coordinateContent[_type].style = 'height: 0px;';
+        coordinates[_type] = false;
+    }
+
+    
+
+}

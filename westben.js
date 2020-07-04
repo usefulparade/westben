@@ -13,8 +13,8 @@ var secrets = [];
 var secretVectors = [];
 var barn, tree, ticketShed, milkShed, maple, watermelon;
 var ensembleVectors = [];
-var pond, parkingLot;
-var totalVisited, pondExists, lotExists;
+var pond, parkingLot, tractor;
+var totalVisited, pondExists, lotExists, tractorExists;
 var mouseOrTouch;
 var touchIsDown;
 var fieldRecordings = [];
@@ -37,6 +37,7 @@ function setup(){
     fieldRecordings[0].playMode('sustain');
     fieldRecordings[1] = loadSound('audio/frogs.mp3'); // pond
     fieldRecordings[1].playMode('sustain');
+    fieldRecordings[2] = loadSound('audio/call-response.mp3'); // tractor
 
     ensembleNames = ['Might Not Find What You Saw',
                 'Turquoise Time Capsule',
@@ -85,7 +86,7 @@ function setup(){
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+                        new p5.Vector(width*0.64, height*0.37)]; //milkshed
 
     
 
@@ -106,7 +107,8 @@ function setup(){
                         
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                    new p5.Vector(width*0.6, height*0.3)]; //pond];
+                    new p5.Vector(width*0.6, height*0.3),//pond;
+                    new p5.Vector(width*0.4, height*0.5)]; //tractor
     
 
     barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
@@ -116,6 +118,7 @@ function setup(){
     ticketShed = new Landmark(landmarkVectors[2], 'ticket shed', 'https://www.westben.ca/donate');
     milkShed = new Landmark(landmarkVectors[3], 'milkshed', 'milkshed.html');
 
+    
     // maple = new Landmark(ensembleVectors[0], 'maple group', 'ensembles/maple.html');
     // watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'ensembles/watermelon.html');
 
@@ -139,13 +142,14 @@ function setup(){
     totalVisited = 0;
     pondExists = false;
     lotExists = false;
+    tractorExists = false;
 
     colorPalette = 0;
-    lightColors = [color(206, 192, 196), color(227, 241, 246), color(255,193, 68), color(255, 255, 255)];
-    darkColors = [color(51, 11, 0), color(51, 28, 0), color(30, 45, 0), color(28, 25, 41)];
-    lightHexColors = [ '#CEC0C4', '#E3F1F6', '#FFC144', '#ffffff'];
+    lightColors = [color(255, 174, 189), color(116, 230, 255), color(255,193, 68), color(234, 255, 255)];
+    darkColors = [color(72, 0, 93), color(0, 66, 71), color(30, 45, 0), color(28, 25, 41)];
+    lightHexColors = [ '#FFAEBD', '#74CAFF', '#FFC144', '#eaffff'];
     //#A77C83
-    darkHexColors = ['#330B00', '#331C00', '#1E2D00', '#1C1929'];
+    darkHexColors = ['#48005D', '#004247', '#1E2D00', '#1C1929'];
     paletteIcons = ['◐', '◓', '◑', '◒'];
 
     foregroundColor = lightColors[colorPalette];
@@ -182,6 +186,7 @@ function draw(){
     for (var i in landmarks){
         landmarks[i].show();
     }
+
     
 
 }
@@ -278,6 +283,8 @@ var Landmark = function(_pos, _type, _link){
                 this.parking();
             } else if (this.type == 'pond'){
                 this.pond();
+            } else if (this.type == 'tractor'){
+                this.tractor();
             } else {
                 this.ensemble();
             }
@@ -352,6 +359,13 @@ var Landmark = function(_pos, _type, _link){
             console.log(totalVisited);
         }
 
+        if (totalVisited >= 7 && fieldRecordings[2].isLoaded() && lotExists){
+            if (!tractorExists){
+                makeTractor();
+                tractorExists = true;
+            }
+        }
+
         if (totalVisited >= 5 && fieldRecordings[1].isLoaded() && lotExists){
             if (!pondExists){
                 makePond();
@@ -387,12 +401,12 @@ var Landmark = function(_pos, _type, _link){
             // MAIN BARN
             beginShape();
                 vertex(0, -this.half*0.8);
-                vertex(this.half, 0);
+                vertex(this.half*1.05, 0);
                 vertex(this.half-this.size*0.1, 0);
                 vertex(this.half-this.size*0.1, this.half*0.5);
                 vertex(-this.half+this.size*0.1, this.half*0.5);
                 vertex(-this.half+this.size*0.1, 0);
-                vertex(-this.half, 0);
+                vertex(-this.half*1.05, 0);
             endShape(CLOSE);
 
             // BIG ROOF
@@ -650,6 +664,51 @@ var Landmark = function(_pos, _type, _link){
 
         pop();
     };
+
+    this.tractor = function(){
+        push();
+
+            translate(this.pos.x, this.pos.y + sin(this.sinCounter)*5);
+            rotate(-PI/12);
+            scale(this.scale);
+
+            noFill();
+            strokeWeight(2);
+            stroke(accentColors[2]);
+
+            //wheels
+            ellipse(-this.half, this.half, this.half*0.6, this.half*0.6);
+            // ellipse(-this.half, this.half, this.half*0.4);
+            ellipse(this.half, this.half*0.8, this.size*0.8);
+            // ellipse(this.half, this.half*0.8, this.size*0.4);
+            arc(this.half, this.half*0.8, this.size, this.size, -HALF_PI - QUARTER_PI, 0);
+
+            //body
+
+            beginShape();
+                vertex(0, -this.half*0.3);
+                vertex(-this.half, -this.half*0.3);
+                vertex(-this.half, this.half);
+                vertex(-this.half*0.5, this.half);
+                vertex(0, 0);
+            endShape(CLOSE);
+
+            // pipes
+            line(-this.half*0.7, -this.half*0.3, -this.half*0.7, -this.half*0.5);
+            line(-this.half*0.6, -this.half*0.3, -this.half*0.6, -this.half*0.6);
+
+            // vent
+            line(-this.half, 0, -this.half*0.8, 0);
+            line(-this.half, this.half*0.1, -this.half*0.8, this.half*0.1);
+            line(-this.half, this.half*0.2, -this.half*0.8, this.half*0.2);
+
+            
+            if (fieldRecordings[2].isPlaying()){
+                this.sinCounter += 0.1;
+            }
+            
+        pop();
+    };
 };
 
 function makePond(){
@@ -662,7 +721,12 @@ function makeParkingLot(){
     parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[0]);
     parkingLot.linkIsAudio = true;
     secrets.push(parkingLot);
-    console.log('parking lot');
+}
+
+function makeTractor(){
+    tractor = new Landmark(secretVectors[2], 'tractor', fieldRecordings[2]);
+    tractor.linkIsAudio = true;
+    secrets.push(tractor);
 }
 
 
@@ -769,7 +833,8 @@ function windowResized(){
                         new p5.Vector(width*0.9, height*0.3)]; //banana
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                        new p5.Vector(width*0.6, height*0.3)]; //pond];
+                        new p5.Vector(width*0.6, height*0.3),//pond;
+                        new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
 
 
     for (var i in landmarks){
@@ -794,4 +859,13 @@ function windowResized(){
         secrets[k].collide = secretSize*0.7;
     }
 
+}
+
+
+function keyTyped(){
+    // if (key == 'b'){
+    //     makeParkingLot();
+    //     makePond();
+    //     makeTractor();
+    // }
 }

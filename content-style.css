@@ -19,3 +19,18 @@ body {
     left: 0;
     top: 0;
 }
+
+.coordinate {
+    display: block;
+    position: relative;
+    height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.coordinate img {
+    display: inline-block;
+    position: relative;
+    max-width: 45%;
+
+}
