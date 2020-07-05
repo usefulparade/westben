@@ -8,7 +8,7 @@
   <meta http-equiv=“Pragma” content=”no-cache”>
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-  <title>maple group</title>
+  <title>pink group</title>
   
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../content-style.css">
@@ -24,100 +24,115 @@
       
       <div class="programNotesInner">
         <h2>Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</h2>
-        <!-- <h1>Response</h1> -->
+        <h1>Response</h1>
+          <p>2020 has been a challenging year for many. We each chose an individual word. Below are our six responses, and our responses to our responses. </p>
+
+          <p>Choose a word that speaks to you today. The choice is up to you. Listen to all, some, one, or none.
+          </p>
+
+          
+
+
         <div class="buttonContainer">
 
           <div id="lv1" class="lv1">
-            <button onclick="responseLv1Toggle();"><p>Response</p></button>
+            <button onclick="responseLv1Toggle('lv2');"><p>Response</p></button>
           </div>
           <div id="lv2" class="lv2">
             <div class="lv2Button">
-              <button onclick="responseLv2Toggle(0)"><p>Hope</p></button>
+              <button onclick="responseToggle('hopeContent', 'hopeResponseButton')"><p>Hope</p></button>
+              
+                <div class="hopeResponseButton lv3Button">
+                  <button onclick="responseToggle('REhopeContent1')"><p>RE: Hope I</p></button>
+                </div>
+                <div class="hopeResponseButton lv3Button">
+                  <button onclick="responseToggle('REhopeContent2')"><p>RE: Hope II</p></button>
+                </div>
 
-              <div class="hopeResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+            </div>
+
+            <div class="lv2Button">
+              <button onclick="responseToggle('guiltContent', 'guiltResponseButton')"><p>Guilt</p></button>
+
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseToggle('REguiltContent1')"><p>RE: Guilt I</p></button>
               </div>
-              <div class="hopeResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseToggle('REguiltContent2')"><p>RE: Guilt II</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseToggle('REguiltContent3')"><p>RE: Guilt III</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseToggle('REguiltContent4')"><p>RE: Guilt IV</p></button>
+              </div>
+              <div class="guiltResponseButton lv3Button">
+                <button onclick="responseToggle('REguiltContent5')"><p>RE: Guilt V</p></button>
               </div>
 
             </div>
             <div class="lv2Button">
-              <button onclick="responseLv2Toggle(1)"><p>Guilt</p></button>
-
-              <div class="guiltResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
-              </div>
-              <div class="guiltResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
-              </div>
-              <div class="guiltResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
-              </div>
-              <div class="guiltResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
-              </div>
-              <div class="guiltResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
-              </div>
-
-            </div>
-            <div class="lv2Button">
-              <button onclick="responseLv2Toggle(2)"><p>Changes</p></button>
+              <button onclick="responseToggle('changesContent', 'changesResponseButton')"><p>Changes</p></button>
 
               <div class="changesResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REchangesContent1', 'changesREREButton')"><p>RE: Changes I</p></button>
+                <div class="changesREREButton lv4Button">
+                  <button onclick="responseToggle('REREchangesContent1')"><p>RE: RE: Changes I</p></button>
+                </div>
               </div>
               <div class="changesResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REchangesContent2')"><p>RE: Changes II</p></button>
               </div>
               <div class="changesResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REchangesContent3')"><p>RE: Changes III</p></button>
               </div>
 
             </div>
             <div class="lv2Button">
-              <button onclick="responseLv2Toggle(3)"><p>Realization</p></button>
+              <button onclick="responseToggle('realizationContent', 'realizationResponseButton')"><p>Realization</p></button>
 
               <div class="realizationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('RErealizationContent1')"><p>RE: Realization I</p></button>
               </div>
               <div class="realizationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('RErealizationContent2')"><p>RE: Realization II</p></button>
               </div>
               <div class="realizationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('RErealizationContent3')"><p>RE: Realization III</p></button>
               </div>
               <div class="realizationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('RErealizationContent4')"><p>RE: Realization IV</p></button>
               </div>
 
             </div>
             <div class="lv2Button">
-              <button onclick="responseLv2Toggle(4)"><p>Unrest</p></button>
+              <button onclick="responseToggle('unrestContent', 'unrestResponseButton')"><p>Unrest</p></button>
 
               <div class="unrestResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REunrestContent1')"><p>RE: Unrest I</p></button>
               </div>
               <div class="unrestResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REunrestContent2')"><p>RE: Unrest II</p></button>
               </div>
 
             </div>
             <div class="lv2Button">
-              <button onclick="responseLv2Toggle(5)"><p>Exploration</p></button>
+              <button onclick="responseToggle('explorationContent', 'explorationResponseButton')"><p>Exploration</p></button>
 
               <div class="explorationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REexplorationContent1', 'explorationREREButton')"><p>RE: Exploration I</p></button>
+                <div class="explorationREREButton lv4Button">
+                  <button onclick="responseToggle('REREexplorationContent1')"><p>RE: RE: Exploration I</p></button>
+                </div>
               </div>
               <div class="explorationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REexplorationContent2')"><p>RE: Exploration II</p></button>
               </div>
               <div class="explorationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REexplorationContent3')"><p>RE: Exploration III</p></button>
               </div>
               <div class="explorationResponseButton lv3Button">
-                <button onclick="responseLv3Toggle(0)"><p>?</p></button>
+                <button onclick="responseToggle('REexplorationContent4')"><p>RE: Exploration IV</p></button>
               </div>
 
             </div>
@@ -127,14 +142,187 @@
 
         </div>
 
-        <div class="responseContainer">
-          <div id="hopeContent" class="responseContent"><p>hope</p></div>
-          <div id="guiltContent" class="responseContent"><p>guilt</p></div>
-          <div id="changesContent" class="responseContent"><p>changes</p></div>
-          <div id="realizationContent" class="responseContent"><p>realization</p></div>
-          <div id="unrestContent" class="responseContent"><p>unrest</p></div>
-          <div id="explorationContent" class="responseContent"><p>exploration</p></div>
+        <div id="responseContainer" class="responseContainer">
+          <div id="hopeContent" class="responseContent">
+            <h2>Hope — Bang Lang Do</h2>
+            <p>The piece Hope follows the storyline in the left column, using motifs from pieces created by our team in the order presented in the right column.</p>
+            <!-- <img src="../img/response/banglang-hope.jpeg"> -->
+            <div class="videoWrapper">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/5W8u3wuUnTw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+            <div id="REhopeContent1" class="responseContent">
+              <h2>Response to "Hope" — Kent Baker</h2>
+              <p>Numb, from a sparse and isolated soundscape comes a narrative of fomenting
+                progress, nascent hope, fragile in its corporealness.</p>
+              <p>Crystal chords, non-triadic and unresolved, compete with arpeggiation for a way
+                forward. Descending scalar passages continue in extended harmony as our
+                protagonist dares to feel again.</p>
+              <p>Rhythmic instability, duples against triples, compete for attention in
+                segmentation and in stretto, unsettled and anxious.</p>
+              <p>As chromaticism and chord planing with sevenths and ninths builds to a series of
+                dissonant trills, a final tonic is established from the initial soundscape string
+                motive, our hope in its final and stable iteration.</p>
+            </div>
+            <div id="REhopeContent2" class="responseContent">
+              <h2>yearn — Response to "Hope" — Matthew Bridgham</h2>
+              <audio controls src="../audio/response/REhope/yearn-Matthew.mp3"></audio>
+            </div>
+
+          <div id="guiltContent" class="responseContent">
+            <h2>Guilt — Ivonne Paredes</h2>
+            <p>For the times I stayed silent</p>
+            <p>For the times I turned the other way</p>
+            <p>For the times I did nothing</p>
+            <br>
+            <p>Now it is time to take <i>action</i>.</p>
+            <audio controls src="../audio/response/Guilt.mp3"?></audio>
+          </div>
+            <div id="REguiltContent1" class="responseContent">
+              <h2>Response to "Guilt" — Bang Lang Do</h2>
+              <audio controls src="../audio/response/REguilt/Guilt-BangLang.mp3"></audio>
+            </div>
+            <div id="REguiltContent2" class="responseContent">
+              <h2>Synchronous Response to "Guilt" — Bang Lang Do</h2>
+              <audio controls src="../audio/response/REguilt/Guilt-BangLang-synchronous.mp3"></audio>
+            </div>
+            <div id="REguiltContent3" class="responseContent">
+              <h2>Response to "Guilt" — James Sherry</h2>
+              <audio controls src="../audio/response/REguilt/Guilt-Jim.mp3"></audio>
+            </div>
+            <div id="REguiltContent4" class="responseContent">
+              <h2>Response to "Guilt" — Kent Baker</h2>
+              <p>A quick series of tonics, strident, are introduced, percussively accompanied into
+                slow arpeggiations. A lone bell competes for pitch dominance, unsure. This is
+                new, this feeling of culpability. Am I at fault?</p>
+
+              <p>The repetition of a tom, slow then fast, beats a stringendo into a new iteration of
+                the descension, an evolving chord, sinking to tonic in the realization that guilt is
+                mine.</p>
+
+              <p>The violin is anxious, nervous, in its final trill, then slowly at peace as the
+                percussive heartbeat slows with acceptance. The final breath is released.
+                Acknowledged.</p>
+            </div>
+            <div id="REguiltContent5" class="responseContent">
+              <h2>sorrow — Response to "Guilt" — Matthew Bridgham</h2>
+              <audio controls src="../audio/response/REguilt/Guilt-Matthew.mp3"></audio>
+            </div>
+
+          <div id="changesContent" class="responseContent">
+            <h2>Changes — James Sherry</h2>
+            <p><i>Changes 2020</i>, for violin, trumpet, horn, and piano, is a short, improvisatory, through-composed work that was inspired by Nina Simone, David Bowie, and the words of Sam Cooke,”It's been a long, a long time coming. . . but I know a change gonna come.”
+            </p>
+            <p>Rodney King. Abner Louisa. Amadou Diallo. Danziger Bridge. Sean Bell. Oscar Grant. Kelly Thomas. Eric Garner. Michael Brown. Walter Scott. Freddie Gray. Terence Crutcher. Antwon Rose. George Floyd. Tony McDade. Sean Reed. Breonna Taylor.</p>
+            <p>“He is going to change the world,” were the words spoken by Rodney Floyd at his brother George’s funeral. Our society is at a critical juncture, with the choice of whether or not to address systemic social and economic inequities. Changes are necessary and the tipping point is 2020.</p>
+            
+            <audio controls src="../audio/response/Changes.mp3"></audio>
+          </div>
+            <div id="REchangesContent1" class="responseContent">
+              <h2>change — Response to "Changes" — Matthew Bridgham</h2>
+              <audio controls src="../audio/response/REchanges/change-Matthew.mp3"></audio>
+            </div>
+              <div id="REREchangesContent1" class="responseContent">
+                <h2>Response to Matthew's Response to "Changes" — Bang Lang Do</h2>
+                <audio controls src="../audio/response/REchanges/Changes-BangLang.mp3"></audio>
+              </div>
+            <div id="REchangesContent2" class="responseContent">
+              <h2>Response to "Changes" — Kent Baker</h2>
+              <p>An initial stability, harmonically, competes for rhythmic peace as the agogic pulse
+                is uneven throughout. Change is necessary.</p>
+              <p>The melodic trumpet and the countermelodic horn vie for space sonically. Brief
+                silence makes fools of them both. Change is uncomfortable.</p>
+              <p>All three melodic voices learn to work together, briefly. Change is a team effort.</p>
+              <p>Chord substitutions in minor, in suspension, in anticipation, lead us to the final
+                change of triadic stability. When no one voice is dominant, change has been
+                effective.</p>
+            </div>
+            <div id="REchangesContent3" class="responseContent">
+              <h2>Response to "Changes" — James Sherry</h2>
+              <audio controls src="../audio/response/REchanges/Changes-Jim.mp3"></audio>
+            </div>
+
+          <div id="realizationContent" class="responseContent">
+            <h2>Realization — Kent Philip Baker</h2>
+            <p>Despite the Civil Rights Acts being a landmark in anti-discriminatory legislation, it unfortunately did not mark the end of institutionalized demonization, marginalization and violence against Black people in America. That a single Black American would be murdered because of hate is unacceptable; that our legal systems and social institutions continue to disadvantage Black Americans is unacceptable; that we don’t honor and love Black Lives is unacceptable.</p>
+            <p>I, a white man, grew up in a notorious “sundown town” called Anna, IL, one of thousands across the United States at some point. These towns hold the embarrassing historical legacy of excluding non-whites and enforcing Jim Crow laws and other violent racist practices. These practices effectively continue to exclude Black people today. I realized that I too am to blame; for my silence, for my inaction, for my acceptance and complicity with the status quo.</p>
+            <p>The Moment I Realized is a collaboration from discussions with members of my ensemble during the 2020 Digital Performer-Composer Residency at Westben—discussing our reactions, realizations and needed responses to creating a more just and caring world.</p>
+            <audio controls src="../audio/response/Realization.mp3"></audio>
+          </div>
+            <div id="RErealizationContent1" class="responseContent">
+              <h2>know — Response to "Realization" — Matthew Bridgham</h2>
+              <audio controls src="../audio/response/RErealization/know-Matthew.mp3"></audio>
+            </div>
+            <div id="RErealizationContent2" class="responseContent">
+              <h2>Response to "Realization" — Bang Lang Do</h2>
+              <audio controls src="../audio/response/RErealization/Realization-BangLang.mp3"></audio>
+            </div>
+            <div id="RErealizationContent3" class="responseContent">
+              <h2>Response to "Realization" — Ivonne Paredes</h2>
+              <audio controls src="../audio/response/RErealization/Realization-Ivonne.mp3"></audio>
+            </div>
+            <div id="RErealizationContent4" class="responseContent">
+              <h2>Response to "Realization" — James Sherry</h2>
+              <audio controls src="../audio/response/RErealization/Realization-Jim.mp3"></audio>
+            </div>
+          <div id="unrestContent" class="responseContent">
+            <h2>Unrest — Matthew Bridgham</h2>
+            
+            <div class="videoWrapper">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/z-5l49sJ9L8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+            <div id="REunrestContent1" class="responseContent">
+              <h2>Response to "Unrest" — Bang Lang Do</h2>
+              <audio controls src="../audio/response/REunrest/Unrest-Jim-BangLang.mp3"></audio>
+            </div>
+            <div id="REunrestContent2" class="responseContent">
+              <h2>Response to "Realization" — Kent Baker</h2>
+              <p>A palpable sense of unease, atmospheric, ethereal, permeates the introduction.
+                Seconds, both minor and major, in unequal arpeggiation, speak the tension into
+                being.</p>
+              <p>A nominal tonic and upper neighbor tone darken the score in a lower tessitura.
+                Competing dissonances in fragmented clusters, irregular meter, grow with
+                intensity as the density of the work increases.</p>
+              <p>Chromaticism and scalar ascension bring this work to a conclusion as the tempo
+                slows. Chords never establish themselves as triadic. The seconds return,
+                descending to the lower register before a final coda, broken chord and
+                fragmented harmony. A final triad and ending punctuation complete the sense of
+                unrest in dramatic fashion.</p>
+            </div>
+          <div id="explorationContent" class="responseContent">
+            <h2>Exploration — Michael Shingo Crawford</h2>
+            <p>Being in quarantine has led me to consider what is possible to create from what I already have in my own home. Since the only acoustic instrument I own is a violin, I used this instrument exclusively in my piece but added an unconventional twist to the sound in the form of a fourth violin part that is entirely percussive. In a regular concert setting these sounds would be too soft to be usable, but when recorded and amplified, they contribute to the texture beautifully.</p>
+            <audio controls src="../audio/response/Explorations.mp3"></audio>
+          </div>
+            <div id="REexplorationContent1" class="responseContent">
+              <h2>Response to "Exploration" — Ivonne Paredes</h2>
+              <audio controls src="../audio/response/REexploration/Explorations-Ivonne.mp3"></audio>
+            </div>
+              <div id="REREexplorationContent1" class="responseContent">
+                <h2>Response to Ivonne's Response to "Exploration" — Bang Lang Do</h2>
+                <audio controls src="../audio/response/REexploration/Explorations-RERE-BangLang.mp3"></audio>
+              </div>
+            <div id="REexplorationContent2" class="responseContent">
+              <h2>Response to "Exploration" — James Sherry & Bang Lang Do</h2>
+              <audio controls src="../audio/response/REexploration/Explorations-Jim-BangLang.mp3"></audio>
+            </div>
+            <div id="REexplorationContent3" class="responseContent">
+              <h2>Response to "Exploration" — Kent Baker</h2>
+              <p>This one interests me most. In a lengthy Tristan chord, we rarely encounter a
+                stable triad. A series of second and fourth suspensions keep the narrative
+                unstable until an arrival point on a diminished chord. This keeps the listener from
+                experiencing a traditional major or minor triadic moment in favor of triadic
+                substitutes. The tension built near the end is a nod to Barber, but with a major
+                resolution in the upper tessitura. Bravo.</p>
+            </div>
+            <div id="REexplorationContent4" class="responseContent">
+              <h2>search — Response to "Exploration" — Matthew Bridgham</h2>
+              <audio controls src="../audio/response/REexploration/search-Matthew.mp3"></audio>
+            </div>
         </div>
+
+        
         <br>
         <p>go back to <a onclick='changeCurrentIcon("landmark", 0)' href='../welcome.html' target="content">the barn</a></p>
         <p>explore <a href='' onclick='contentContractFromInside()'>the map</a></p>
@@ -142,3 +330,5 @@
     </div> 
 
 </body>
+
+</html>

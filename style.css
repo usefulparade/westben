@@ -5,7 +5,7 @@
     --bg-color: #00000000;
     /* --bg-color: rgb(4, 55, 16); */
     --bg-color-transparent: #00000000;
-    --fg-color: #ffffff00;
+    --fg-color: #5FA332;
     /* --fg-color: #ffe373; */
     --accent-color: #add8e600;
     --fg-transparent: #ffffff00;
@@ -22,7 +22,7 @@ body {
     width: 100%;
     /* height: 100%; */
     margin: 0px;
-    background-color: var(--fg-color);
+    background-color: transparent;
     transition: background-color 1s, color 0.5s;
     scroll-behavior: smooth;
 }

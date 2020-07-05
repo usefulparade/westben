@@ -37,10 +37,11 @@ function setup(){
     fieldRecordings[0].playMode('sustain');
     fieldRecordings[1] = loadSound('audio/frogs.mp3'); // pond
     fieldRecordings[1].playMode('sustain');
+    fieldRecordings[1].setVolume(0.5);
     fieldRecordings[2] = loadSound('audio/call-response.mp3'); // tractor
 
-    ensembleNames = ['Might Not Find What You Saw',
-                'Turquoise Time Capsule',
+    ensembleNames = ['might not find what you saw',
+                'Hello Over There',
                 'In Paralysis',
                 'Chirr',
                 'The Evolutionary Traits of Birds',
@@ -111,12 +112,12 @@ function setup(){
                     new p5.Vector(landmarkVectors[2].x - map(((width+height)/2), 500, 1200, 30, 50)*1.9, landmarkVectors[2].y - 50)]; //tractor
     
 
-    barn = new Landmark(landmarkVectors[0], 'barn', 'welcome.html');
+    barn = new Landmark(landmarkVectors[0], 'Barn', 'welcome.html');
     barn.isCurrentContent = true;
     currentIcon = barn;
-    tree = new Landmark(landmarkVectors[1], 'conservancy', 'conservancy.html');
-    ticketShed = new Landmark(landmarkVectors[2], 'ticket shed', 'https://www.westben.ca/donate');
-    milkShed = new Landmark(landmarkVectors[3], 'milkshed', 'milkshed.html');
+    tree = new Landmark(landmarkVectors[1], 'Conservancy', 'conservancy.html');
+    ticketShed = new Landmark(landmarkVectors[2], 'Ticket Shed', 'https://www.westben.ca/donate');
+    milkShed = new Landmark(landmarkVectors[3], 'Milkshed', 'milkshed.html');
 
     
     // maple = new Landmark(ensembleVectors[0], 'maple group', 'ensembles/maple.html');
@@ -129,7 +130,7 @@ function setup(){
     landmarks.push(milkShed);
 
     
-    for (var i = 0; i<13; i++){
+    for (var i = 0; i<11; i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
@@ -238,7 +239,7 @@ var Landmark = function(_pos, _type, _link){
     this.collide = this.size*0.7;
     this.type = _type;
     this.over = false;
-    this.caption = "the " + this.type;
+    this.caption = "The " + this.type;
     this.link = _link;
     this.linkIsAudio = false;
     this.visited = false;
@@ -269,15 +270,15 @@ var Landmark = function(_pos, _type, _link){
                 document.getElementById('caption').innerHTML = '';
             }
 
-            if (this.type == 'barn'){
+            if (this.type == 'Barn'){
                 this.barn();
-            } else if (this.type == 'conservancy'){
+            } else if (this.type == 'Conservancy'){
                 this.tree();
-            } else if (this.type == 'ticket shed'){
+            } else if (this.type == 'Ticket Shed'){
                 this.ticket();
             } else if (this.type == 'maple group'){
                 this.maple();
-            } else if (this.type == 'milkshed'){
+            } else if (this.type == 'Milkshed'){
                 this.milk();
             } else if (this.type == 'parking lot'){
                 this.parking();
@@ -860,6 +861,56 @@ function windowResized(){
         secrets[k].collide = secretSize*0.7;
     }
 
+}
+
+function deviceTurned(){
+    resizeCanvas(windowWidth, windowHeight);
+
+    landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
+                        new p5.Vector(width*0.2, height*0.3), //tree
+                        new p5.Vector(width*0.54, height*0.55), //ticketShed
+                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+
+    ensembleVectors = [new p5.Vector(width*0.85, height*0.6), //apple (might not find)
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3)]; //banana
+
+    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
+                        new p5.Vector(width*0.6, height*0.3),//pond;
+                        new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
+
+
+    for (var i in landmarks){
+        var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
+        landmarks[i].pos = new p5.Vector(landmarkVectors[i].x, landmarkVectors[i].y);
+        landmarks[i].size = landmarkSize;
+        landmarks[i].half = landmarkSize*0.5;
+        landmarks[i].collide = landmarkSize*0.7;
+    }
+    for (var j in ensembles){
+        var ensembleSize = map(((width+height)/2), 500, 1200, 30, 50);
+        ensembles[j].pos = new p5.Vector(ensembleVectors[j].x, ensembleVectors[j].y);
+        ensembles[j].size = ensembleSize;
+        ensembles[j].half = ensembleSize*0.5;
+        ensembles[j].collide = ensembleSize*0.7;
+    }
+    for (var k in secrets){
+        var secretSize = map(((width+height)/2), 500, 1200, 30, 50);
+        secrets[k].pos = new p5.Vector(secretVectors[k].x, secretVectors[k].y);
+        secrets[k].size = secretSize;
+        secrets[k].half = secretSize*0.5;
+        secrets[k].collide = secretSize*0.7;
+    }
 }
 
 

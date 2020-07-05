@@ -149,23 +149,67 @@ function changeCurrentIcon(type, num){
 /// PINK GROUP UTILITIES
 
 var lv2;
+var lv2Buttons;
 
-function responseLv1Toggle(){
-    var lv2Buttons = document.getElementsByClassName('lv2Button');
+function responseLv1Toggle(_id){
+    // lv2Buttons = document.getElementsByClassName('lv2Button');
+    lv2Buttons = document.getElementById(_id).childNodes;
     
-        if (lv2 == null || lv2 == false){
-            for (var i in lv2Buttons){
-                lv2Buttons[i].style = 'height: 100px; width: 100px';
+        if (lv2 == null){
+            for (var j in lv2Buttons){
+                lv2Buttons[0].parentNode.insertBefore(lv2Buttons[0], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
+                lv2Buttons[0].parentNode.insertBefore(lv2Buttons[5], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
+                lv2Buttons = document.getElementsByClassName('lv2Button');
             }
-            // document.getElementById('lv2').style = 'max-height: auto';
+            
+            for (var i in lv2Buttons){
+                // lv2Buttons[i].parentNode.insertBefore(lv2Buttons[i], lv2Buttons[Math.floor(Math.random() * Math.floor(6))]);
+                lv2Buttons[i].style = 'display: inline-block';
+            }
+            lv2 = true;
+        } else if (lv2 == false){
+            // lv2Buttons[0].parentNode.insertBefore(lv2Buttons[0], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
+            // lv2Buttons = document.getElementsByClassName('lv2Button');
+
+            for (var i in lv2Buttons){
+                
+                lv2Buttons[i].style = 'display: inline-block';
+            }
             lv2 = true;
         } else {
-            for (var i in lv2Buttons){
-                lv2Buttons[i].style = 'height: 0px; width: 0px';
+            for (var j in lv2Buttons){
+                lv2Buttons[0].parentNode.insertBefore(lv2Buttons[0], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
+                lv2Buttons[0].parentNode.insertBefore(lv2Buttons[5], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
+                lv2Buttons = document.getElementsByClassName('lv2Button');
             }
-            // document.getElementById('lv2').style = 'max-height: 300px';
-            lv2 = false;
+
+            for (var i in lv2Buttons){
+                
+                
+            }
+
+            
         }
+}
+
+function responseToggle(_contentID, _buttonsID){
+    var content = document.getElementById(_contentID);
+    var buttons = document.getElementsByClassName(_buttonsID);
+
+    var allContent = document.getElementById('responseContainer').childNodes;
+
+    for (var i in allContent){
+        allContent[i].style = 'display: none';
+    }
+    if (content != null){
+        content.style = 'display: inline-block';
+    }
+
+    if (buttons != null){
+        for (var j in buttons){
+            buttons[j].style = 'display: inline-block';
+        }
+    }
 }
 
 function responseLv2Toggle(_type){
@@ -188,37 +232,40 @@ function responseLv2Toggle(_type){
     if (_type == 0){
         responses = document.getElementsByClassName('hopeResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     } else if (_type == 1){
         responses = document.getElementsByClassName('guiltResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     } else if (_type == 2){
         responses = document.getElementsByClassName('changesResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     } else if (_type == 3){
         responses = document.getElementsByClassName('realizationResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     } else if (_type == 4){
         responses = document.getElementsByClassName('unrestResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     } else if (_type == 5){
         responses = document.getElementsByClassName('explorationResponseButton');
         for (var j in responses){
-            responses[j].style = 'width: 30px; height: 30px;';
+            responses[j].style = 'display: inline-block';
         }
     }
 
 
 }
+
+
+// GREEN GROUP UTILITIES
 
 var coordinates = [];
 
