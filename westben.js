@@ -115,7 +115,7 @@ function setup(){
     barn = new Landmark(landmarkVectors[0], 'Barn', 'welcome.html');
     barn.isCurrentContent = true;
     currentIcon = barn;
-    tree = new Landmark(landmarkVectors[1], 'Conservancy', 'conservancy.html');
+    tree = new Landmark(landmarkVectors[1], 'Conservancy', 'https://www.westben.ca/music-for-seeds');
     ticketShed = new Landmark(landmarkVectors[2], 'Ticket Shed', 'https://www.westben.ca/donate');
     milkShed = new Landmark(landmarkVectors[3], 'Milkshed', 'milkshed.html');
 
@@ -130,7 +130,7 @@ function setup(){
     landmarks.push(milkShed);
 
     
-    for (var i = 0; i<11; i++){
+    for (var i = 0; i<13; i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
