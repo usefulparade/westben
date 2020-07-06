@@ -130,7 +130,7 @@ function setup(){
     landmarks.push(milkShed);
 
     
-    for (var i = 0; i<13; i++){
+    for (var i = 0; i<2; i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
@@ -146,7 +146,7 @@ function setup(){
     tractorExists = false;
 
     colorPalette = 0;
-    lightColors = [color(255, 174, 189), color(116, 230, 255), color(255,193, 68), color(234, 255, 255)];
+    lightColors = [color(255, 174, 189), color(116, 202, 255), color(255,193, 68), color(234, 255, 255)];
     darkColors = [color(72, 0, 93), color(0, 66, 71), color(30, 45, 0), color(28, 25, 41)];
     lightHexColors = [ '#FFAEBD', '#74CAFF', '#FFC144', '#eaffff'];
     //#A77C83
