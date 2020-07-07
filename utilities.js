@@ -155,8 +155,8 @@ var lv2Buttons;
 function responseLv1Toggle(_id){
     // lv2Buttons = document.getElementsByClassName('lv2Button');
     lv2Buttons = document.getElementById(_id).childNodes;
-    // lv1Text = document.getElementById('lv1Text');
-    // lv1Text.innerHTML = 'Randomize';
+    lv1Text = document.getElementById('lv1Text');
+    lv1Text.innerHTML = 'Randomize';
     
         if (lv2 == null){
             for (var j in lv2Buttons){
@@ -185,9 +185,14 @@ function responseLv1Toggle(_id){
             }
 
             var allContent = document.getElementById('responseContainer').childNodes;
+            // console.log(allContent);
 
-            var randomChoice = Math.floor(Math.random()*(allContent.length-1));
-            console.log(allContent[randomChoice]);
+            var randomChoice = (Math.floor(Math.random()*(allContent.length*0.5))*2)-1;
+            while (randomChoice < 0 || randomChoice > allContent.length-1){
+                randomChoice = (Math.floor(Math.random()*(allContent.length*0.5))*2)-1;
+            }
+
+            console.log(randomChoice);
             for (var i in allContent){
                 allContent[i].style = 'display: none';
 
