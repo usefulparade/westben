@@ -149,11 +149,14 @@ function changeCurrentIcon(type, num){
 /// PINK GROUP UTILITIES
 
 var lv2;
+var lv1Text;
 var lv2Buttons;
 
 function responseLv1Toggle(_id){
     // lv2Buttons = document.getElementsByClassName('lv2Button');
     lv2Buttons = document.getElementById(_id).childNodes;
+    // lv1Text = document.getElementById('lv1Text');
+    // lv1Text.innerHTML = 'Randomize';
     
         if (lv2 == null){
             for (var j in lv2Buttons){
@@ -168,8 +171,6 @@ function responseLv1Toggle(_id){
             }
             lv2 = true;
         } else if (lv2 == false){
-            // lv2Buttons[0].parentNode.insertBefore(lv2Buttons[0], lv2Buttons[(Math.floor(Math.random() * Math.floor(3)))+3]);
-            // lv2Buttons = document.getElementsByClassName('lv2Button');
 
             for (var i in lv2Buttons){
                 
@@ -183,16 +184,47 @@ function responseLv1Toggle(_id){
                 lv2Buttons = document.getElementsByClassName('lv2Button');
             }
 
-            for (var i in lv2Buttons){
-                
-                
+            var allContent = document.getElementById('responseContainer').childNodes;
+
+            var randomChoice = Math.floor(Math.random()*(allContent.length-1));
+            console.log(allContent[randomChoice]);
+            for (var i in allContent){
+                allContent[i].style = 'display: none';
+
             }
+            allContent[randomChoice].style = 'display: inline-block';
 
             
         }
 }
 
+var lv2ButtonToggles = {
+    hopeContent: false,
+    guiltContent: false,
+    changesContent: false,
+    realizationContent: false,
+    unrestContent: false,
+    explorationContent: false
+};
+var currentToggle;
+
 function responseToggle(_contentID, _buttonsID){
+    // console.log(lv2ButtonToggles._contentID);
+
+    if (_contentID == 'hopeContent'){
+        currentToggle = lv2ButtonToggles.hopeContent;
+    } else if (_contentID == 'guiltContent'){
+        currentToggle = lv2ButtonToggles.guiltContent;
+    } else if (_contentID == 'changesContent'){
+        currentToggle = lv2ButtonToggles.changesContent;
+    } else if (_contentID == 'realizationContent'){
+        currentToggle = lv2ButtonToggles.realizationContent;
+    } else if (_contentID == 'unrestContent'){
+        currentToggle = lv2ButtonToggles.unrestContent;
+    } else if (_contentID == 'explorationContent'){
+        currentToggle = lv2ButtonToggles.explorationContent;
+    }
+
     var content = document.getElementById(_contentID);
     var buttons = document.getElementsByClassName(_buttonsID);
 
@@ -207,9 +239,46 @@ function responseToggle(_contentID, _buttonsID){
 
     if (buttons != null){
         for (var j in buttons){
-            buttons[j].style = 'display: inline-block';
+            if (currentToggle == false){
+                buttons[j].style = 'display: inline-block';
+            } else {
+                buttons[j].style = 'display: none';
+            }
         }
     }
+
+    currentToggle = !currentToggle;
+
+    if (_contentID == 'hopeContent'){
+        lv2ButtonToggles.hopeContent = currentToggle;
+    } else if (_contentID == 'guiltContent'){
+        lv2ButtonToggles.guiltContent = currentToggle;
+    } else if (_contentID == 'changesContent'){
+        lv2ButtonToggles.changesContent = currentToggle;
+    } else if (_contentID == 'realizationContent'){
+        lv2ButtonToggles.realizationContent = currentToggle;
+    } else if (_contentID == 'unrestContent'){
+        lv2ButtonToggles.unrestContent = currentToggle;
+    } else if (_contentID == 'explorationContent'){
+        lv2ButtonToggles.explorationContent = currentToggle;
+    }
+
+    // lv2ButtonToggles._contentID = !lv2ButtonToggles._contentID;
+    // console.log(lv2ButtonToggles._contentID);
+
+    // if (_contentID == 'hopeContent'){
+    //     lv2ButtonToggles.hope = !lv2ButtonToggles.hope;
+    // } else if (_contentID == 'guiltContent'){
+    //     lv2ButtonToggles.guilt = !lv2ButtonToggles.guilt;
+    // } else if (_contentID == 'changesContent'){
+    //     lv2ButtonToggles.changes = !lv2ButtonToggles.changes;
+    // } else if (_contentID == 'realizationContent'){
+    //     lv2ButtonToggles.realization = !lv2ButtonToggles.realization;
+    // } else if (_contentID == 'unrestContent'){
+    //     lv2ButtonToggles.unrest = !lv2ButtonToggles.unrest;
+    // } else if (_contentID == 'explorationContent'){
+    //     lv2ButtonToggles.exploration = !lv2ButtonToggles.exploration;
+    // }
 }
 
 function responseLv2Toggle(_type){
