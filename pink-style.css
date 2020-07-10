@@ -11,6 +11,10 @@ button {
     /* margin-left: 5px; */
 }
 
+button:focus {
+    outline: 0;
+}
+
 .buttonContainer{
     display: block;
     position: relative;
