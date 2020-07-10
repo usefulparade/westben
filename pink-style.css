@@ -82,7 +82,7 @@ button {
 }
 
 .lv4Button{
-    display: none;
+    display: inline-block;
     position: relative;
     width: 100px;
     height: auto;
