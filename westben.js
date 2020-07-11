@@ -130,7 +130,7 @@ function setup(){
     landmarks.push(milkShed);
 
     
-    for (var i = 0; i<10; i++){
+    for (var i = 0; i<13; i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
