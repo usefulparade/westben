@@ -73,6 +73,16 @@ function paletteToggle(){
     matchTheme();
 }
 
+function layerToggle(){
+    pcr2020Toggle = !pcr2020Toggle;
+
+    if (pcr2020Toggle){
+        document.getElementById('layerIcon').style.setProperty('transform', 'rotate(0deg)');
+    } else {
+        document.getElementById('layerIcon').style.setProperty('transform', 'rotate(-90deg)');
+    }
+}
+
 function nightTheme(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument != null){
@@ -408,3 +418,4 @@ function coordinateToggle(_type){
     
 
 }
+

@@ -20,6 +20,10 @@ var touchIsDown;
 var fieldRecordings = [];
 var contentContainerHidden;
 
+var concerts = [];
+var concertVectors = [];
+var concertLinks = [];
+
 var currentIconTarget, currentIcon;
 
 var lightColors = [];
@@ -27,6 +31,9 @@ var lightHexColors = [];
 var darkColors = [];
 var darkHexColors = [];
 var colorPalette, paletteIcons;
+
+var pcr2020Toggle;
+var currentLayer;
 
 function preload(){
     font = loadFont('RobotoMono-ExtraLight.ttf');
@@ -53,9 +60,9 @@ function setup(){
                 'Arc Diffusion',
                 'Generations of Decay',
                 'Iso-',
-                
-                
                 ];
+
+    
 
     ensembleLinks = ['ensembles/mightnotfindwhatyousaw/index.html',
                     'ensembles/turquoise.html',
@@ -70,8 +77,13 @@ function setup(){
                     'ensembles/maple.html',
                     'ensembles/pine.html',
                     'ensembles/banana.html',
-                    
-                      
+                    ];
+
+    concertNames = ['Co-Presence, Ben Finley',
+                    'Mount Carmel, Brain Finley'];
+
+    concertLinks = ['concerts/2020/copresence.html',
+                    'concerts/2020/mountcarmel.html'
                     ];
 
     contentContainerHidden = true;
@@ -112,6 +124,12 @@ function setup(){
                     new p5.Vector(landmarkVectors[2].x - map(((width+height)/2), 500, 1200, 30, 50)*1.9, landmarkVectors[2].y - 50)]; //tractor
     
 
+    concertVectors = [
+                    new p5.Vector(width*0.8, height*0.55), //Co-presence
+                    new p5.Vector(width*0.4, height*0.15), //Mt Carmel
+    ];
+
+
     barn = new Landmark(landmarkVectors[0], 'Barn', 'welcome.html');
     barn.isCurrentContent = true;
     currentIcon = barn;
@@ -135,6 +153,13 @@ function setup(){
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
         ensembles[i].ensembleNum = i;
+    }
+
+    for (j=0;j<concertLinks.length;j++){
+        concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
+        concerts[j].names = concertNames[j];
+        concerts[j].rotation = random(0, TWO_PI);
+        concerts[j].ensembleNum = j;
     }
 
     // landmarks.push(pond);
@@ -169,6 +194,11 @@ function setup(){
 
     contentExpand();
 
+    pcr2020Toggle = true;
+    currentLayer = 0;
+
+    layerToggle();
+
 }
 
 function draw(){
@@ -178,12 +208,21 @@ function draw(){
 
     document.getElementById('caption').innerHTML = '';
 
+   
     for (var k in secrets){
         secrets[k].show();
     }
-    for (var j in ensembles){
-        ensembles[j].show();
+
+    if (pcr2020Toggle){
+        for (var j in ensembles){
+            ensembles[j].show();
+        }
+    } else {
+        for (var j in concerts){
+            concerts[j].show();
+        }
     }
+    
     for (var i in landmarks){
         landmarks[i].show();
     }
@@ -286,6 +325,8 @@ var Landmark = function(_pos, _type, _link){
                 this.pond();
             } else if (this.type == 'tractor'){
                 this.tractor();
+            } else if (this.type == 'concert'){
+                this.concert();
             } else {
                 this.ensemble();
             }
@@ -533,6 +574,44 @@ var Landmark = function(_pos, _type, _link){
         pop();
     };
 
+    this.concert = function(){
+        this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
+
+        push();
+            translate(this.pos.x, this.pos.y);
+            rotate(this.rotation + this.sinCounter);
+            scale(this.scale);
+            noFill();
+            stroke(accentColors[1]);
+            strokeWeight(2);
+            ellipse(0, 0, this.size, this.size);
+
+            if (this.ensembleNum == 0){ // bass
+                for (i=-this.half*0.5;i<=this.half*0.5;i+=(this.half*0.33)){
+                    line(i, -this.half, i, this.half);
+                }
+            } else if (this.ensembleNum == 1){ // piano
+                rectMode(CENTER);
+                for (i=0;i<5;i++){
+                    var spacer = i*this.half*0.25;
+                    rect(-this.half*0.5 + spacer, 0, this.half*0.25, this.half);
+                }
+                push();
+                    translate(-this.half*0.07, 0);
+                    rectMode(CORNER);
+                    fill(accentColors[1]);
+                    rect(-this.half*0.6, 0, this.half*0.1, this.half*0.6);
+                    rect(-this.half*0.35, 0, this.half*0.1, this.half*0.6);
+                    rect(-this.half*0.1, 0, this.half*0.1, this.half*0.6);
+                    rect(this.half*0.4, 0, this.half*0.1, this.half*0.6);
+                    rect(this.half*0.65, 0, this.half*0.1, this.half*0.6);
+                    
+                pop();
+            }
+
+        pop();
+    };
+
     this.ensemble = function(){
         this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
         push();
@@ -757,9 +836,19 @@ function mousePressed(){
                 ensembles[j].isCurrentContent = false;
             }
         }
+        
         for (var k in secrets){
             if (secrets[k].over && contentContainerHidden){
                 secrets[k].clicked();
+            }
+        }
+
+        for (var l in concerts){
+            if (concerts[l].over && contentContainerHidden){
+                concerts[l].clicked();
+                concerts[l].isCurrentContent = true;
+            } else {
+                concerts[l].isCurrentContent = false;
             }
         }
     }
@@ -838,6 +927,10 @@ function windowResized(){
                         new p5.Vector(width*0.6, height*0.3),//pond;
                         new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
 
+    concertVectors = [
+                        new p5.Vector(width*0.8, height*0.55), //Co-presence
+                        new p5.Vector(width*0.4, height*0.15), //Mt Carmel
+    ];
 
     for (var i in landmarks){
         var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
@@ -859,6 +952,14 @@ function windowResized(){
         secrets[k].size = secretSize;
         secrets[k].half = secretSize*0.5;
         secrets[k].collide = secretSize*0.7;
+    }
+
+    for (var l in concerts){
+        var concertSize = map(((width+height)/2), 500, 1200, 30, 50);
+        concerts[l].pos = new p5.Vector(concertVectors[l].x, concertVectors[l].y);
+        concerts[l].size = concertSize;
+        concerts[l].half = concertSize*0.5;
+        concerts[l].collide = concertSize*0.7;
     }
 
 }
@@ -889,6 +990,10 @@ function deviceTurned(){
                         new p5.Vector(width*0.6, height*0.3),//pond;
                         new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
 
+    concertVectors = [
+                        new p5.Vector(width*0.8, height*0.55), //Co-presence
+                        new p5.Vector(width*0.4, height*0.15), //Mt Carmel
+            ];
 
     for (var i in landmarks){
         var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
@@ -915,9 +1020,11 @@ function deviceTurned(){
 
 
 function keyTyped(){
-    // if (key == 'b'){
-    //     makeParkingLot();
-    //     makePond();
-    //     makeTractor();
-    // }
+    if (key == 'b'){
+        // makeParkingLot();
+        // makePond();
+        // makeTractor();
+
+        pcr2020Toggle = !pcr2020Toggle;
+    }
 }

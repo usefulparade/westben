@@ -107,11 +107,13 @@ hr {
     top: -7px;
     right: 12px;
     cursor: pointer;
+    user-select: none;
 }
 
 .mapContainer .theme p {
     margin: 0px;
     font-size: 3em;
+    user-select: none;
 }
 
 .mapContainer .palette {
@@ -120,11 +122,30 @@ hr {
     top: 5px;
     left: 12px;
     cursor: pointer;
+    user-select: none;
 }
 
 .mapContainer .palette p {
     margin: 0px;
     font-size: 2em;
+    user-select: none;
+}
+
+.mapContainer .layer {
+    display: block;
+    position: fixed;
+    bottom: 120px;
+    right: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.mapContainer .layer p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 3em;
+    user-select: none;
+    /* transition: transform 0.2s; */
 }
 
 .mapContainer .wb-logo {
