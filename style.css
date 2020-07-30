@@ -64,6 +64,29 @@ hr {
     border: 1px dashed var(--fg-color);
 }
 
+button {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    min-width: 80%;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 200;
+    background-color: var(--bg-color);
+    outline: none;
+    border: var(--fg-color) 2px solid;
+    border-radius: 20px;
+    color: var(--fg-color);
+    transition: background-color 0.05s, color 0.05s;
+    
+}
+
+button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
 .backgroundColor {
     display: block;
     position: fixed;
@@ -114,6 +137,11 @@ hr {
     margin: 0px;
     font-size: 3em;
     user-select: none;
+    transform: scale(1);
+}
+
+.mapContainer .theme p:hover {
+    transform: scale(1.5);
 }
 
 .mapContainer .palette {
@@ -129,6 +157,11 @@ hr {
     margin: 0px;
     font-size: 2em;
     user-select: none;
+    transform: scale(1);
+}
+
+.mapContainer .palette p:hover {
+    transform: scale(1.5);
 }
 
 .mapContainer .layer {
@@ -145,7 +178,23 @@ hr {
     padding: 0px;
     font-size: 3em;
     user-select: none;
-    /* transition: transform 0.2s; */
+    transform: scale(1);
+    
+}
+.mapContainer .layer p:hover {
+   transform: scale(1.5);
+}
+
+.layerCaption {
+    display: none;
+    position: fixed;
+    bottom: 120px;
+    margin-left: 25%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50%;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
 }
 
 .mapContainer .wb-logo {
@@ -174,6 +223,22 @@ hr {
 
 .indent {
     margin-left: 10%;
+}
+
+.donateModal {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    width: 80%;
+    min-height: 60vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    border: 5px solid var(--fg-color);
+    border-radius: 30px;
+    z-index: 100;
 }
 
 .contentContainer iframe{
@@ -326,5 +391,10 @@ hr {
         display: inline-block;
         max-width: 100%;
         vertical-align: top;
+    }
+
+    .layerCaption {
+        margin-left: 0%;
+        width: 70%;
     }
 }

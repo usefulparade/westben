@@ -197,7 +197,7 @@ function setup(){
     pcr2020Toggle = true;
     currentLayer = 0;
 
-    layerToggle();
+    // layerToggle();
 
 }
 
@@ -213,13 +213,13 @@ function draw(){
         secrets[k].show();
     }
 
-    if (pcr2020Toggle){
+    if (currentLayer == 1){
         for (var j in ensembles){
             ensembles[j].show();
         }
-    } else {
-        for (var j in concerts){
-            concerts[j].show();
+    } else if (currentLayer == 0){
+        for (var l in concerts){
+            concerts[l].show();
         }
     }
     
@@ -391,6 +391,9 @@ var Landmark = function(_pos, _type, _link){
         } else {
             currentIcon = this;
             loadNewIframeContent(this.link);
+            if (this.type == 'concert'){
+                // openDonateModal();
+            }
             contentExpand();
            
         }
@@ -1025,6 +1028,7 @@ function keyTyped(){
         // makePond();
         // makeTractor();
 
+        currentLayer = (currentLayer + 1)%2;
         pcr2020Toggle = !pcr2020Toggle;
     }
 }

@@ -25,6 +25,7 @@ function contentExpand(){
     setTimeout(function(){contentContainerHidden = false;}, 400);
     resizeIframe();
     matchTheme();
+    programLayerMatch();
 }
 
 function contentContract(){
@@ -59,8 +60,10 @@ function resizeIframe(){
 function themeToggle(){
     if (theme == 'night'){
         dayTheme();
+        document.getElementById('themeCaption').innerHTML = 'Day';
     } else {
         nightTheme();
+        document.getElementById('themeCaption').innerHTML = 'Night';
     }
 
     matchTheme();
@@ -69,18 +72,92 @@ function themeToggle(){
 function paletteToggle(){
     colorPalette = (colorPalette+1)%4;
     document.getElementById('paletteIcon').innerHTML = paletteIcons[colorPalette];
-
+    if (colorPalette == 0){
+        document.getElementById('paletteCaption').innerHTML = 'Palette A';
+    } else if (colorPalette == 1){
+        document.getElementById('paletteCaption').innerHTML = 'Palette B';
+    } else if (colorPalette == 2){
+        document.getElementById('paletteCaption').innerHTML = 'Palette C';
+    } else if (colorPalette == 3){
+        document.getElementById('paletteCaption').innerHTML = 'Palette D';
+    }
     matchTheme();
+}
+
+function layerToggleFromInside(_x){
+
+    window.parent.currentLayer = _x;
+    if (_x == 0){
+        window.parent.pcr2020Toggle = true;
+    } else {
+        window.parent.pcr2020Toggle = false;
+    }
+    // document.getElementById('layerIcon').innerHTML = '❏';
+    // document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
+}
+
+function programLayerMatch(){
+    var iframe = document.getElementById('content');
+
+    if (iframe.contentDocument.getElementById('layerSpecific') != null){
+        console.log('hi');
+        if (currentLayer == 0){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+        } else if (currentLayer == 1){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'inline-block');
+        }
+    }
 }
 
 function layerToggle(){
     pcr2020Toggle = !pcr2020Toggle;
 
-    if (pcr2020Toggle){
-        document.getElementById('layerIcon').style.setProperty('transform', 'rotate(0deg)');
-    } else {
-        document.getElementById('layerIcon').style.setProperty('transform', 'rotate(-90deg)');
+    currentLayer = (currentLayer+1)%2;
+
+    if (currentLayer == 1){
+        document.getElementById('layerIcon').innerHTML = '❏';
+        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
+    } else if (currentLayer == 0) {
+        document.getElementById('layerIcon').innerHTML = '❐';
+        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
     }
+}
+
+function layerHover(_inOut){
+
+    if (_inOut == 1){
+        document.getElementById('layerCaption').style.setProperty('display', 'block');
+    } else {
+        document.getElementById('layerCaption').style.setProperty('display', 'none');
+    }
+}
+
+function paletteHover(_inOut){
+
+    if (_inOut == 1){
+        document.getElementById('paletteCaption').style.setProperty('display', 'block');
+    } else {
+        document.getElementById('paletteCaption').style.setProperty('display', 'none');
+    }
+}
+
+function themeHover(_inOut){
+
+    if (_inOut == 1){
+        document.getElementById('themeCaption').style.setProperty('display', 'block');
+    } else {
+        document.getElementById('themeCaption').style.setProperty('display', 'none');
+    }
+}
+
+function closeDonateModal(){
+    document.getElementById('donateModal').style.setProperty('display', 'none');
+}
+
+function openDonateModal(){
+    document.getElementById('donateModal').style.setProperty('display', 'block');
 }
 
 function nightTheme(){
@@ -150,6 +227,9 @@ function changeCurrentIcon(type, num){
     } else if (type == 'landmark'){
         window.parent.currentIcon = window.parent.landmarks[num];
         window.parent.landmarks[num].isCurrentContent = true;
+    } else if (type == 'concert'){
+        window.parent.currentIcon = window.parent.concerts[num];
+        window.parent.concerts[num].isCurrentContent = true;
     }
 }
 

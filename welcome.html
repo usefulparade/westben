@@ -33,74 +33,100 @@
         
         
         <div class="programNotesInner">
-              <!-- <p>[ [ [ imagine this is a very cool and nice welcome video by ben ] ] ]</p> -->
-            <h1>Welcome to The Barn!</h1>
-              <h2>And welcome to Westben's Digital Venue!</h2>
-              <p>The Barn will serve as your digital concert program for Westben’s 2020 Digital Performer-Composer Residency (PCR).</p>
-              <p>PCR usually meets in person. But with the disruptions of COVID-19, Westben invited anyone who applied to PCR to participate in a digitally facilitated residency. What you experience on this site is the creative harvest of a month-long experiment in international musical collaborations from 61 participants in over 10 countries.</p>
-              <!-- <p>The Barn will serve as your digital concert program. Here you'll find <a href="#ensembles">the work produced by the 2020 PCR ensembles</a>, as well as <a href="#other">other offerings</a> from around the property.</p>  -->
-              <p>Westben welcomes you to listen and engage during the week of the premieres (​July 5-July 11, 2020)​ and beyond, right here in Westben’s new digital venue​! On this program, you'll find <a href="#ensembles">13 pieces co-created by the 2020 PCR ensembles</a>, as well as <a href="#other">other exciting offerings</a>, and <a href="#info">more information about PCR</a> and its participants.</p>
-              <p>Use the links below, or <a href="" onclick="contentContractFromInside()">explore the map</a> to hear the music!</p>
+          <h1>Welcome to the Barn!</h1>
+          <p>This is your hub for Westben's Digital Venue. What would you like to do?</p>
+            <form><button onclick='changeCurrentIcon("concert", 0)' formaction="concerts/2020/copresence.html" target="content"><h3>Watch the Latest Concert</h3></button></form>
+            
+            <form><button onclick="contentContractFromInside()"><h3>Explore the Map</h3></button></form>
+            <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='content'><h3>Become a Member</h3></button></form>
+            <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
+            <hr>
+            <h1>Program</h1>
+            <div id="layerSpecific" class="layerSpecific">
+
+                  <!-- 2020 DIGITAL CONCERT PROGRAM -->
+
+                <div class="program" id="concerts2020">
+                <h2>Digital Concerts At the Barn // 2020-2021</h2>
+                  <div class="indent"><h2>August 15</h2></div>
               
-              <hr id="ensembles">
-            <h1>2020 Ensembles</h1>
-            <p><i>Pieces will premiere at ~12PM EDT on the scheduled dates.</i></p>
-              <div class="indent"><h2>July 6</h2></div>
-            
-            <p>1. <a onclick='changeCurrentIcon("ensemble", 0)' href='ensembles/mightnotfindwhatyousaw/' target="content">
-              might not find what you saw</a>: 
-              An-Laurence Higgins / Eve Parker Finley / Kirin McElwain / Roger Kim</p>
-            <p>2. <a onclick='changeCurrentIcon("ensemble", 1)' href='ensembles/turquoise.html' target="content">
-              Hello Over There</a>: 
-              Kaze Patricio Chan / Thomas Fedorchik / Sheenah Ko / Sascha Ram / Soumaya Snoussi</p>
+                  <p><a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
+                    Co-presence</a>: 
+                    Ben Finley</p>
 
-              <div class="indent"><h2>July 7</h2></div>
-            <p>3. <a onclick='changeCurrentIcon("ensemble", 2)' href='ensembles/lemon.html' target="content" >
-              In Paralysis</a>: 
-              Kate Amrine / Che Buford / Marcus Carline / Daniel Lemer / Saman Shahi</p>
-            <p>4. <a onclick='changeCurrentIcon("ensemble", 3)' href='ensembles/green.html' target="content">
-              Chirr</a>: 
-              A.P. Bergeron / Spencer Friedman / Gordon Fry / Glen Whitehead</p>
+                    <div class="indent"><h2>September 15</h2></div>
+                  <p><a onclick='changeCurrentIcon("concert", 1)' href='concerts/2020/mountcarmel.html' target="content">
+                    Mount Carmel</a>: 
+                    Brian Finley</p>
 
+                    <div class="indent"><h2>October 15</h2></div>
+                  <p>
+                    Amazing Harp Piece: 
+                    Incredible Harp Player</p>
+                </div>
 
-              <div class="indent"><h2>July 8</h2></div>
-            <p>5. <a onclick='changeCurrentIcon("ensemble", 4)' href='ensembles/watermelon.html' target="content">
-              The Evolutionary Traits of Birds</a>: 
-              Ernesto Cárcamo Cavazos / Sarah Grace Graves / Mark Gurrola / Cory Harper-Latkovich</p>
-            <p>6. <a onclick='changeCurrentIcon("ensemble", 5)' href='ensembles/purple.html' target="content">
-              Non-Equivalent Changes</a>: 
-              Malcolm Jackson / Emily Kennedy / Sean Riddle / Reza Yazdanpanah</p>
+                  <!-- 2020 DIGITAL CONCERT PROGRAM -->
 
-              <div class="indent"><h2>July 9</h2></div>
-            
-            <p>7. <a onclick='changeCurrentIcon("ensemble", 6)' href='ensembles/oak.html' target="content" >
-              Cada Mañana Una Nueva Llegada / Every Morning A New Arrival</a>: 
-              Rodrigo Barriga / Krissy Bergmark / Gordon H. Williams / Leandro Daniel Gimenez</p>
-            <p>8. <a onclick='changeCurrentIcon("ensemble", 7)' href='ensembles/yellow.html' target="content">
-              Communicating Gratitude</a>: 
-              Dustin Finer / Gabriel Genest / Ben Morris / Michael Sarian</p>
-              
-              <div class="indent"><h2>July 10</h2></div>
-            
-            <p>9. <a onclick='changeCurrentIcon("ensemble", 8)' href='ensembles/pink.html' target="content" >
-              Response</a>: 
-              Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</p>
-            <p>10. <a onclick='changeCurrentIcon("ensemble", 9)' href='ensembles/cedar.html' target="content">
-              Lullabies for Late Capitalism</a>: 
-              Zach Aliotta / Danielle Gonzalez / Olivia Khoury / Matt Norman / Carey West</p>
+                <div class="program" id="pcr2020" style="display: none;">
+                  <h2>Performer/Composer Residency // 2020</h2>
+                    <div class="indent"><h2>July 6</h2></div>
+                  
+                  <p>1. <a onclick='changeCurrentIcon("ensemble", 0)' href='ensembles/mightnotfindwhatyousaw/' target="content">
+                    might not find what you saw</a>: 
+                    An-Laurence Higgins / Eve Parker Finley / Kirin McElwain / Roger Kim</p>
+                  <p>2. <a onclick='changeCurrentIcon("ensemble", 1)' href='ensembles/turquoise.html' target="content">
+                    Hello Over There</a>: 
+                    Kaze Patricio Chan / Thomas Fedorchik / Sheenah Ko / Sascha Ram / Soumaya Snoussi</p>
+      
+                    <div class="indent"><h2>July 7</h2></div>
+                  <p>3. <a onclick='changeCurrentIcon("ensemble", 2)' href='ensembles/lemon.html' target="content" >
+                    In Paralysis</a>: 
+                    Kate Amrine / Che Buford / Marcus Carline / Daniel Lemer / Saman Shahi</p>
+                  <p>4. <a onclick='changeCurrentIcon("ensemble", 3)' href='ensembles/green.html' target="content">
+                    Chirr</a>: 
+                    A.P. Bergeron / Spencer Friedman / Gordon Fry / Glen Whitehead</p>
+      
+      
+                    <div class="indent"><h2>July 8</h2></div>
+                  <p>5. <a onclick='changeCurrentIcon("ensemble", 4)' href='ensembles/watermelon.html' target="content">
+                    The Evolutionary Traits of Birds</a>: 
+                    Ernesto Cárcamo Cavazos / Sarah Grace Graves / Mark Gurrola / Cory Harper-Latkovich</p>
+                  <p>6. <a onclick='changeCurrentIcon("ensemble", 5)' href='ensembles/purple.html' target="content">
+                    Non-Equivalent Changes</a>: 
+                    Malcolm Jackson / Emily Kennedy / Sean Riddle / Reza Yazdanpanah</p>
+      
+                    <div class="indent"><h2>July 9</h2></div>
+                  
+                  <p>7. <a onclick='changeCurrentIcon("ensemble", 6)' href='ensembles/oak.html' target="content" >
+                    Cada Mañana Una Nueva Llegada / Every Morning A New Arrival</a>: 
+                    Rodrigo Barriga / Krissy Bergmark / Gordon H. Williams / Leandro Daniel Gimenez</p>
+                  <p>8. <a onclick='changeCurrentIcon("ensemble", 7)' href='ensembles/yellow.html' target="content">
+                    Communicating Gratitude</a>: 
+                    Dustin Finer / Gabriel Genest / Ben Morris / Michael Sarian</p>
+                    
+                    <div class="indent"><h2>July 10</h2></div>
+                  
+                  <p>9. <a onclick='changeCurrentIcon("ensemble", 8)' href='ensembles/pink.html' target="content" >
+                    Response</a>: 
+                    Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</p>
+                  <p>10. <a onclick='changeCurrentIcon("ensemble", 9)' href='ensembles/cedar.html' target="content">
+                    Lullabies for Late Capitalism</a>: 
+                    Zach Aliotta / Danielle Gonzalez / Olivia Khoury / Matt Norman / Carey West</p>
+      
+                    <div class="indent"><h2>July 11</h2></div>
+                  
+                  <p>11. <a onclick='changeCurrentIcon("ensemble", 10)' href='ensembles/maple.html' target="content" >
+                    Arc Diffusion</a>: 
+                    Brandon Auger / Andrew Dyet / Matt Magerkurth / Gregory J. Watson</p>
+                  <p>12. <a onclick='changeCurrentIcon("ensemble", 11)' href='ensembles/pine.html' target="content">
+                    Generations of Decay</a>: 
+                    Simone Baron / Ethan Cohn / Abigail Johnson / Ethan Mitchell / Olivia Valenza</p>
+                  <p>13. <a onclick='changeCurrentIcon("ensemble", 12)' href='ensembles/banana.html' target="content">
+                    Iso-</a>: 
+                    Erich Barganier / Thomas Echols / Ford Fourqurean / Cristina Lord / Alex Tibbits</p>
 
-              <div class="indent"><h2>July 11</h2></div>
-            
-            <p>11. <a onclick='changeCurrentIcon("ensemble", 10)' href='ensembles/maple.html' target="content" >
-              Arc Diffusion</a>: 
-              Brandon Auger / Andrew Dyet / Matt Magerkurth / Gregory J. Watson</p>
-            <p>12. <a onclick='changeCurrentIcon("ensemble", 11)' href='ensembles/pine.html' target="content">
-              Generations of Decay</a>: 
-              Simone Baron / Ethan Cohn / Abigail Johnson / Ethan Mitchell / Olivia Valenza</p>
-            <p>13. <a onclick='changeCurrentIcon("ensemble", 12)' href='ensembles/banana.html' target="content">
-              Iso-</a>: 
-              Erich Barganier / Thomas Echols / Ford Fourqurean / Cristina Lord / Alex Tibbits</p>
-            
+                </div>
+            </div>
             <hr id="other">
             <h1>Other Offerings</h1>
 
@@ -113,27 +139,6 @@
               <div class="indent"><h2><a onclick='changeCurrentIcon("landmark", 1)' href='https://www.westben.ca/music-for-seeds' target="content">The Conservancy</a></h2></div>
             <p>Participate in our Music for Seeds project, in partnership with the Mary West Nature Reserve</p>
 
-              
-            <hr id="info">
-            <h1>More Information</h1>
-
-              <div class="indent"><h2><a href='bios.html' target="content">Participant Bios</a></h2></div>
-              <p>Meet the 2020 PCR participants!</p>
-
-              <div id="about" class="indent"><h2>Where is this exactly?</h2></div>
-            <p>We acknowledge that the physical Westben Barn sits on the traditional territory of the Mississauga Ojibway, which includes neighbouring Alderville, Hiawatha and Curve Lake First Nations. We recognize that the idea of map making has historically been a violent and oppressive tool of colonization. We humbly hope to offer an alternative kind of digital map, one that highlights relations between people, sounds, landforms, landmarks and experiences. This map is not meant to represent an exclusionary property border — it’s meant to be learned and experienced; it’s flexible; it’s adaptable. To find out more about traditional indigenous nations, territories, languages and treaties on a global scale, please visit the community-sourced map: <a href="http://www.native-land.ca" target="_blank">www.native-land.ca</a>. Also, we invite you to visit and support Westben’s neighbors <a href="http://www.aldervillesavanna.ca" target="_blank">Alderville Black Oak Savanna</a>, located on Alderville First Nation, just a few minutes from Westben; they preserve, restore and expand the largest intact tract of native grassland habitats in Central Ontario (a carbon sequestration powerhouse by the way) and provide important ecological research and educational group tours.</p>
-              <div id="about" class="indent"><h2>What is this?</h2></div>
-              <div class="videoWrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/iwbI9XmU3n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            <p>A hello from the PCR’s Creative Director Ben Finley</p>
-            <p>The international and intergenerational Westben Performer-Composer Residency (PCR) is a supportive and vibrant meeting ​space​ welcoming all kinds of listeners and music makers who have some hybrid of compositional and performance practices. PCR—digitally and in person—is a ​place t​o exchange and connect diverse musical backgrounds in community.</p>
-            <p>For the past two years, Westben’s PCR has had the in-person capacity to accept 11 applicants. This year, with COVID-19, Westben flipped the adjudication script and invited anyone who applied to join. 62 were able to participate. These multi-geographical performer-composers, all in isolation, digitally collaborated across 10 countries and many time zones, including: Argentina, Mexico, Germany, Iran, Tunisia, Panama, China, Netherlands, and all across the United States and Canada. Participants were assigned to one of 13 unique ensembles of intersecting interests. They collaborated from June 1st-June 30th, 2020. They started by getting to know each other and their environments, creating work from their local soil. With the organizing of facilitators Ben Finley, Sarah Belle Reid and Davy Sumner, each ensemble has co-created a 15 minute multimedia work to share with you here.</p>
-            <p>This is not an ordinary time. COVID-19 has rippled a tremendous impact. How do we digest the tragedies of this pandemic? What can music provide to our ailing cultural ecosystems? What artistic and environmental partnerships may be possible? Although many digital adaptations have already been made, this digital residency experiment asks: can music help cultivate meaningful connections to navigate and re-orchestrate our (often alienating and oversaturated) digital public spaces? ...For this moment and post pandemic? How can we listen and respectfully engage with each other as we ground in our local environments?</p>
-            <p>We are in a historic reckoning of the ongoing realities of anti-Black and anti-indigenous racism in our societies. We are also witnessing a moment where people are coming together to imagine, organize and participate in an anti-racist and decolonized world. We need creative and adaptive musical institutions that make space for all of us. Although still in its infancy, the PCR aims to support creative musical communities as we, musicians and humans, figure out the many possible roles we can take to grow mutually supportive living communities. This global residency is an (imperfect) experiment towards creating a more equitable, caring and inclusive musical ecosystem.</p>
-            <p>As Westben sits in a wondrous rural setting of rolling hills, music from this residency usually comes directly from The Barn. As a committed artist-run year-round centre, Westben is thrilled to offer a digital venue to house and cross-pollinate creative musical hives into the future. </p>
-            <p>PCR is a call to being open to listening to each other’s musical souls and shared humanity. Let’s respond to the injustices we see in our communities and model compassion, empathy and community in our human ensembles—and take that beyond our time together here. Although these are challenging times, the PCR believes that we listen to each other, support each other and co-create new digital music making spaces, we may build invaluable tools to weather many future challenges. Join us!</p>
-
             <hr>
             <div class="bottom">
               <div class="indent"><h2>Share your experience</h2></div>
@@ -144,7 +149,7 @@
                 #westbenpcr</p>
 
             <hr>
-              <p>PCR is run by <a href="https://www.westben.ca" target="_blank">Westben</a></p>
+              <p>Westben Digital Venue is run by <a href="https://www.westben.ca" target="_blank">Westben</a></p>
               <p>a <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>
               <br>
             </div>

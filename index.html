@@ -36,10 +36,13 @@
     <div class="mapContainer" id="mapContainer">
     <div onclick="contentToggle()" id="aboveContent" class="aboveContent"></div>
         <!-- <div class="top"> -->
-            <div class="theme" onclick="themeToggle()"><p id="themeIcon"></p></div>
-            <div class="palette" onclick="paletteToggle()"><p id="paletteIcon"></p></div>
-            <div class="layer" onclick="layerToggle()"><p id="layerIcon">❏</p></div>
+            <div class="theme" onclick="themeToggle()"><p onmouseover="themeHover(1)" onmouseout="themeHover(0)" id="themeIcon"></p></div>
+            <div class="palette" onclick="paletteToggle()"><p onmouseover="paletteHover(1)" onmouseout="paletteHover(0)" id="paletteIcon"></p></div>
+            <div class="layer" onclick="layerToggle()"><p onmouseover="layerHover(1)" onmouseout="layerHover(0)" id="layerIcon">❏</p></div>
             <h2 id='caption'></h2>
+            <p class='layerCaption' id='layerCaption'></p>
+            <p class='layerCaption' id='paletteCaption'></p>
+            <p class='layerCaption' id='themeCaption'>Night</p>
         <!-- </div> -->
         <!-- <p><a href='welcome.html' onclick="contentExpand()" target="content">welcome</a></p>
         <p><a href='sampleContent.html' onclick="contentExpand()" target="content">internal content link</a></p>
@@ -53,6 +56,12 @@
             <div class="contentIcon" onclick="contentToggle()">
                 <h1 id="contentIcon">&#10548;&#xFE0E;</h1>
             </div>
+        </div>
+        <div class="donateModal" id="donateModal">
+            <h1>Wait!</h1>
+            <p>Before you enjoy the show, consider donating the price of a ticket, or becoming a sustaining member of Westben!</p>
+            <button><h3>Cool, take me to the donations!</h3></button>
+            <button onclick="closeDonateModal()"><h3>No thanks, just give me the music!</h3></button>
         </div>
         
         <iframe id='content' name='content' onload="matchTheme()" src="welcome.html"></iframe>
