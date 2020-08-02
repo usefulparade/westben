@@ -41,28 +41,33 @@
             <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='content'><h3>Become a Member</h3></button></form>
             <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
             <hr>
-            <h1>Program</h1>
+            <div class="schedlule">
+              <h1 class="concertSchedule">Concert Schedule for</h1>
+              <select class="programSelect" name='layers' id='layers' onchange="layerToggleFromInside(this)">
+                <option value='0'>2020 Digital Concerts</option>
+                <option value='1'>2020 PCR</option>
+              </select>
+            </div>
             <div id="layerSpecific" class="layerSpecific">
 
                   <!-- 2020 DIGITAL CONCERT PROGRAM -->
 
                 <div class="program" id="concerts2020">
                 <h2>Digital Concerts At the Barn // 2020-2021</h2>
-                  <div class="indent"><h2>August 15</h2></div>
-              
-                  <p><a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
-                    Co-presence</a>: 
-                    Ben Finley</p>
+                  <div><p>August 15</p></div>
+                  <h2 class="indent"><a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
+                    Co-presence: 
+                    Ben Finley</a></h2>
 
-                    <div class="indent"><h2>September 15</h2></div>
-                  <p><a onclick='changeCurrentIcon("concert", 1)' href='concerts/2020/mountcarmel.html' target="content">
-                    Mount Carmel</a>: 
-                    Brian Finley</p>
+                    <div><p>September 15</p></div>
+                  <h2 class="indent"><a onclick='changeCurrentIcon("concert", 1)' href='concerts/2020/mountcarmel.html' target="content">
+                    Mount Carmel: 
+                    Brian Finley</a></h2>
 
-                    <div class="indent"><h2>October 15</h2></div>
-                  <p>
+                    <div><p>October 15</p></div>
+                  <h2 class="indent">
                     Amazing Harp Piece: 
-                    Incredible Harp Player</p>
+                    Incredible Harp Player<h2>
                 </div>
 
                   <!-- 2020 DIGITAL CONCERT PROGRAM -->

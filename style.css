@@ -196,12 +196,27 @@ button:hover {
     background-color: var(--fg-color);
     color: var(--bg-color);
 }
-
-.mapContainer .wb-logo {
+.logo {
     display: block;
-    position: fixed;
-    top: -5px;
-    left: 12px;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    bottom: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.logo a:hover {
+    background: none;
+}
+
+.svgLogo {
+    fill: var(--fg-color);
+    stroke: none;
+}
+
+.svgLogo:hover {
+    transform: scale(1.2);
 }
 
 .contentContainer {
@@ -332,6 +347,37 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+}
+
+.schedule {
+    vertical-align: center;
+}
+
+.concertSchedule {
+    display: inline-block;
+    position: relative;
+}
+
+select.programSelect {
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+    width: 45%;
+    color: var(--fg-color);
+    border: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
+    font-family: "Courier New", monospace;
+    font-size: 1em;
+    -moz-appearance: none;
+	-webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+select.programSelect:hover {
+    color: var(--bg-color);
+    border: 1px solid var(--bg-color);
+    background-color: var(--fg-color);
 }
 
 .bio img {

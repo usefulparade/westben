@@ -35,6 +35,8 @@ var colorPalette, paletteIcons;
 var pcr2020Toggle;
 var currentLayer;
 
+var navSketch;
+
 function preload(){
     font = loadFont('RobotoMono-ExtraLight.ttf');
 }
@@ -197,7 +199,10 @@ function setup(){
     pcr2020Toggle = true;
     currentLayer = 0;
 
-    // layerToggle();
+    layerToggle();
+    layerToggle();
+
+    navSketch = new p5(navInstance, window.document.getElementById('navSketch'));
 
 }
 
@@ -227,7 +232,7 @@ function draw(){
         landmarks[i].show();
     }
 
-    
+    navSketch.currentIcon = Object.assign({}, currentIcon);
 
 }
 
@@ -368,6 +373,38 @@ var Landmark = function(_pos, _type, _link){
 
         }   
 
+    };
+
+    this.showInstance = function(){
+        push();
+            
+            this.scale = 1;
+            this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
+            translate(-this.pos.x + width/2, -this.pos.y + 35);
+            translate(0, sin(this.sinCounter)*5);
+                
+            if (this.type == 'Barn'){
+                this.barn();
+            } else if (this.type == 'Conservancy'){
+                this.tree();
+            } else if (this.type == 'Ticket Shed'){
+                this.ticket();
+            } else if (this.type == 'maple group'){
+                this.maple();
+            } else if (this.type == 'Milkshed'){
+                this.milk();
+            } else if (this.type == 'parking lot'){
+                this.parking();
+            } else if (this.type == 'pond'){
+                this.pond();
+            } else if (this.type == 'tractor'){
+                this.tractor();
+            } else if (this.type == 'concert'){
+                this.concert();
+            } else {
+                this.ensemble();
+            }
+        pop();
     };
 
     this.clicked = function(){
@@ -1031,4 +1068,37 @@ function keyTyped(){
         currentLayer = (currentLayer + 1)%2;
         pcr2020Toggle = !pcr2020Toggle;
     }
+
+    if (key == 'c'){
+        navSketch.foregroundColor = foregroundColor;
+    };
 }
+
+var navInstance = function(p){
+    p.foregroundColor = p.color(255);
+    p.currentIcon = null;
+    p.icon = new Landmark(new p5.Vector(0,0), 'contentIcon');
+    p.icon.type = "Barn";
+    p.setup = function(){
+
+        var canv = p.createCanvas(90,90);
+        // p.background(255);
+        var parent = select('#navSketch');
+        canv.parent(parent);
+    };
+
+    p.draw = function(){
+        p.strokeWeight(1);
+        p.noFill();
+        p.stroke(p.foregroundColor);
+        // p.ellipse(p.width/2, p.height/2, 70, 70);
+
+        if (p.currentIcon != null){
+            push();
+                // p.translate(-p.currentIcon.pos.x, -currentIcon.pos.y);
+                p.currentIcon.show();
+            pop();
+            // console.log(p.currentIcon.type);
+        }
+    };
+};

@@ -84,23 +84,48 @@ function paletteToggle(){
     matchTheme();
 }
 
+
+function layerToggle(_layer){
+    pcr2020Toggle = !pcr2020Toggle;
+    
+    if (_layer != null){
+        currentLayer = _layer;
+    } else {
+        currentLayer = (currentLayer+1)%2;
+    }
+
+    if (currentLayer == 1){
+        document.getElementById('layerIcon').innerHTML = '❏';
+        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
+    } else if (currentLayer == 0) {
+        document.getElementById('layerIcon').innerHTML = '❐';
+        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
+    }
+}
+
 function layerToggleFromInside(_x){
 
-    window.parent.currentLayer = _x;
-    if (_x == 0){
+    window.parent.currentLayer = _x.value;
+    if (_x.value == 0){
         window.parent.pcr2020Toggle = true;
-    } else {
+        window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
+        document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
+    } else if (_x.value == 1) {
         window.parent.pcr2020Toggle = false;
+        window.parent.document.getElementById('layerIcon').innerHTML = '❐';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
+        document.getElementById('concerts2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
     }
-    // document.getElementById('layerIcon').innerHTML = '❏';
-    // document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
 }
 
 function programLayerMatch(){
     var iframe = document.getElementById('content');
 
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
-        console.log('hi');
+        // console.log('hi');
         if (currentLayer == 0){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
@@ -111,19 +136,7 @@ function programLayerMatch(){
     }
 }
 
-function layerToggle(){
-    pcr2020Toggle = !pcr2020Toggle;
 
-    currentLayer = (currentLayer+1)%2;
-
-    if (currentLayer == 1){
-        document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
-    } else if (currentLayer == 0) {
-        document.getElementById('layerIcon').innerHTML = '❐';
-        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
-    }
-}
 
 function layerHover(_inOut){
 
