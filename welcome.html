@@ -33,7 +33,7 @@
         
         
         <div class="programNotesInner">
-          <h1>Welcome to the Barn!</h1>
+          <h1 style="text-align: center;">Welcome to The Barn!</h1>
           <p>This is your hub for Westben's Digital Venue. What would you like to do?</p>
             <form><button onclick='changeCurrentIcon("concert", 0)' formaction="concerts/2020/copresence.html" target="content"><h3>Watch the Latest Concert</h3></button></form>
             
@@ -42,11 +42,11 @@
             <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
             <hr>
             <div class="schedlule">
-              <h1 class="concertSchedule">Concert Schedule for</h1>
-              <select class="programSelect" name='layers' id='layers' onchange="layerToggleFromInside(this)">
-                <option value='0'>2020 Digital Concerts</option>
+              <h1 class="concertSchedule">Concert Schedule:
+              <select class="programSelect" name='layers' id='layers' autocomplete="off" onchange="layerToggleFromInside(this)">
+                <option value='0' selected>2020 Digital Concerts</option>
                 <option value='1'>2020 PCR</option>
-              </select>
+              </select></h1>
             </div>
             <div id="layerSpecific" class="layerSpecific">
 

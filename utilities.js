@@ -44,6 +44,7 @@ function contentContractFromInside(){
     parentContent.style = 'height: 10%';
     window.parent.document.getElementById('aboveContent').style = 'height: 0px';
     window.parent.currentIcon.isCurrentIcon = false;
+    window.parent.currentIcon.isCurrentContent = false;
     window.parent.contentContainerHidden = true;
     
     

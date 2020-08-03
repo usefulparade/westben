@@ -306,7 +306,20 @@ var Landmark = function(_pos, _type, _link){
                     strokeWeight(3);
                     // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    rect(this.pos.x, this.pos.y, 90, 70);
+                    rect(this.pos.x, this.pos.y, 2*width/3, 70);
+
+
+                    fill(backgroundColor);
+                    textFont(font);
+                    if (width > 720){
+                        textSize(18);
+                    } else {
+                        textSize(12);
+                    }
+                    textAlign(RIGHT, CENTER);
+                    text("you're at:", this.pos.x-this.size, this.pos.y);
+                    textAlign(LEFT, CENTER);
+                    text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
                 pop();
 
                 translate(0, sin(this.sinCounter)*5);
@@ -356,55 +369,24 @@ var Landmark = function(_pos, _type, _link){
         }
 
         if (this.over){
-            if (!this.isCurrentContent && contentContainerHidden){
+
+            if (contentContainerHidden){
                 if (this.names != ''){
                     document.getElementById('caption').innerHTML = this.names;
                 } else {
                     document.getElementById('caption').innerHTML = this.caption;
                 }
-
-                this.scale = 1.5;
             }
+
+            this.scale = 1.5;
+
             
         } else {
-            if (!this.isCurrentContent){
-                this.scale = 1;
-            }
+            
+            this.scale = 1;
 
         }   
 
-    };
-
-    this.showInstance = function(){
-        push();
-            
-            this.scale = 1;
-            this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
-            translate(-this.pos.x + width/2, -this.pos.y + 35);
-            translate(0, sin(this.sinCounter)*5);
-                
-            if (this.type == 'Barn'){
-                this.barn();
-            } else if (this.type == 'Conservancy'){
-                this.tree();
-            } else if (this.type == 'Ticket Shed'){
-                this.ticket();
-            } else if (this.type == 'maple group'){
-                this.maple();
-            } else if (this.type == 'Milkshed'){
-                this.milk();
-            } else if (this.type == 'parking lot'){
-                this.parking();
-            } else if (this.type == 'pond'){
-                this.pond();
-            } else if (this.type == 'tractor'){
-                this.tractor();
-            } else if (this.type == 'concert'){
-                this.concert();
-            } else {
-                this.ensemble();
-            }
-        pop();
     };
 
     this.clicked = function(){
@@ -865,7 +847,9 @@ function mousePressed(){
                 landmarks[i].clicked();
                 landmarks[i].isCurrentContent = true;
             } else {
-                landmarks[i].isCurrentContent = false;
+                if (contentContainerHidden){
+                    landmarks[i].isCurrentContent = false;
+                }
             }
         }
         for (var j in ensembles){
@@ -873,7 +857,9 @@ function mousePressed(){
                 ensembles[j].clicked();
                 ensembles[j].isCurrentContent = true;
             } else {
-                ensembles[j].isCurrentContent = false;
+                if (contentContainerHidden){
+                    ensembles[j].isCurrentContent = false;
+                }
             }
         }
         
@@ -888,7 +874,9 @@ function mousePressed(){
                 concerts[l].clicked();
                 concerts[l].isCurrentContent = true;
             } else {
-                concerts[l].isCurrentContent = false;
+                if (contentContainerHidden){
+                    concerts[l].isCurrentContent = false;
+                }
             }
         }
     }
@@ -917,7 +905,9 @@ function touchEnded(){
                 landmarks[i].over = false;
                 landmarks[i].isCurrentContent = true;
             } else {
-                landmarks[i].isCurrentContent = false;
+                if (contentContainerHidden){
+                    landmarks[i].isCurrentContent = false;
+                }
             }
         }
         for (var j in ensembles){
@@ -926,7 +916,9 @@ function touchEnded(){
                 ensembles[j].over = false;
                 ensembles[j].isCurrentContent = true;
             } else {
-                ensembles[j].isCurrentContent = false;
+                if (contentContainerHidden){
+                    ensembles[j].isCurrentContent = false;
+                }
             }
         }
         for (var k in secrets){
@@ -934,6 +926,17 @@ function touchEnded(){
                 secrets[k].clicked();
                 secrets[k].over = false;
                 
+            }
+        }
+
+        for (var l in concerts){
+            if (concerts[l].over && contentContainerHidden){
+                concerts[l].clicked();
+                concerts[l].isCurrentContent = true;
+            } else {
+                if (contentContainerHidden){
+                    concerts[l].isCurrentContent = false;
+                }
             }
         }
         // touchIsDown = false;
