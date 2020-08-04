@@ -25,7 +25,8 @@ function contentExpand(){
     setTimeout(function(){contentContainerHidden = false;}, 400);
     resizeIframe();
     matchTheme();
-    programLayerMatch();
+
+    // programLayerMatch();
 }
 
 function contentContract(){
@@ -124,6 +125,8 @@ function layerToggleFromInside(_x){
 
 function programLayerMatch(){
     var iframe = document.getElementById('content');
+    var layerSelect = iframe.contentDocument.getElementById('layers');
+    layerSelect.value = currentLayer;
 
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
         // console.log('hi');
@@ -510,6 +513,11 @@ function coordinateToggle(_type){
     }
 
     
+
+}
+
+function startWithWelcome(){
+    document.getElementById('content').src = 'welcome.html';
 
 }
 

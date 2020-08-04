@@ -28,7 +28,7 @@
   <meta property="og:image" content="">
 </head>
 
-<body>
+<body onload="changeCurrentIcon('landmark', 0)">
     <div class="programNotes">
         
         
@@ -43,6 +43,7 @@
             <hr>
             <div class="schedlule">
               <h1 class="concertSchedule">Concert Schedule:
+                
               <select class="programSelect" name='layers' id='layers' autocomplete="off" onchange="layerToggleFromInside(this)">
                 <option value='0' selected>2020 Digital Concerts</option>
                 <option value='1'>2020 PCR</option>

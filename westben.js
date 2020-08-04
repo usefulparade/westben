@@ -151,7 +151,7 @@ function setup(){
 
     
     for (var i = 0; i<13; i++){
-        ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble' + i, ensembleLinks[i]);
+        ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble', ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
         ensembles[i].rotation = random(0, TWO_PI);
         ensembles[i].ensembleNum = i;
@@ -163,6 +163,7 @@ function setup(){
         concerts[j].rotation = random(0, TWO_PI);
         concerts[j].ensembleNum = j;
     }
+    concerts[concerts.length-1].newest = true;
 
     // landmarks.push(pond);
 
@@ -193,7 +194,7 @@ function setup(){
     }
 
     matchTheme();
-
+    startWithWelcome();
     contentExpand();
 
     pcr2020Toggle = true;
@@ -292,6 +293,7 @@ var Landmark = function(_pos, _type, _link){
     this.ensembleNum = 0;
     this.vol = 0;
     this.isCurrentContent = false;
+    this.newest = false;
 
     this.show = function(){
         push();
@@ -319,12 +321,22 @@ var Landmark = function(_pos, _type, _link){
                     textAlign(RIGHT, CENTER);
                     text("you're at:", this.pos.x-this.size, this.pos.y);
                     textAlign(LEFT, CENTER);
-                    text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                    if (this.type == 'concert'){
+                        text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                    } else if (this.type == 'ensemble'){
+                        text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                    } else {
+                        text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                    }
                 pop();
 
                 translate(0, sin(this.sinCounter)*5);
                 
                 document.getElementById('caption').innerHTML = '';
+            }
+
+            if (this.newest && !this.visited && contentContainerHidden){
+                this.sparkle();
             }
 
             if (this.type == 'Barn'){
@@ -812,6 +824,28 @@ var Landmark = function(_pos, _type, _link){
             
         pop();
     };
+
+    this.sparkle = function(){
+        push();
+            translate(0, sin(frameCount*0.1)*5);
+            translate(this.pos.x, this.pos.y - this.size*1.2);
+            noStroke();
+            fill(foregroundColor);
+            rectMode(CENTER);
+            rect(0,0, 50, 30);
+            beginShape();
+                vertex(5, 15);
+                vertex(0, 20);
+                vertex(-5, 15);
+            endShape(CLOSE);
+            fill(backgroundColor);
+            textFont(font);
+            textSize(16);
+            textAlign(CENTER, CENTER);
+            text('NEW!', 0, -2);
+        pop();
+
+    };
 };
 
 function makePond(){
@@ -904,6 +938,7 @@ function touchEnded(){
                 landmarks[i].clicked();
                 landmarks[i].over = false;
                 landmarks[i].isCurrentContent = true;
+                
             } else {
                 if (contentContainerHidden){
                     landmarks[i].isCurrentContent = false;
