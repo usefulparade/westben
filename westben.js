@@ -308,7 +308,7 @@ var Landmark = function(_pos, _type, _link){
                     strokeWeight(3);
                     // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    rect(this.pos.x, this.pos.y, 2*width/3, 70);
+                    rect(this.pos.x, this.pos.y, width/2, 70);
 
 
                     fill(backgroundColor);
