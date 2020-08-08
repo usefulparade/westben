@@ -33,20 +33,19 @@
         
         
         <div class="programNotesInner">
-          <h1 style="text-align: center;">Welcome to The Barn,</h1>
-          <h2 style="text-align: center;">your hub at the Westben Digital Venue!</h2>
-            <!-- <form><button onclick='changeCurrentIcon("concert", 0)' formaction="concerts/2020/copresence.html" target="content"><h3>Watch the Latest Concert</h3></button></form>
-            
-            <form><button onclick="contentContractFromInside()"><h3>Explore the Map</h3></button></form>
-            <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='content'><h3>Become a Member</h3></button></form> -->
+          <h1>Welcome to The Barn</h1>
+          <p>The Barn is your hub at Westben Digital Venue. So happy you're here!</p>
+            <form><button onclick='changeCurrentIcon("concert", 0)' formaction="concerts/2020/copresence.html" target="content"><h3>Watch Newest</h3><p>Jump to the latest Digital Concert at The Barn</p></button></form>
+            <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='_blank'><h3>Donate</h3><p>Make a tax deductible donation to support this experience</p></button></form>
+            <form><button onclick='contentContractFromInside()'><h3>Explore</h3><p>Visit and experience layers of digital concerts</p></button></form>
             <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
             <hr>
             <div class="schedlule">
               <h1 class="concertSchedule">Concert Schedule:
                 
               <select class="programSelect" name='layers' id='layers' autocomplete="off" onchange="layerToggleFromInside(this)">
-                <option value='0' selected>2020 Digital Concerts</option>
-                <option value='1'>2020 PCR</option>
+                <option value='1' selected>2020 Digital Concerts</option>
+                <option value='0'>2020 PCR</option>
               </select></h1>
             </div>
             <div id="layerSpecific" class="layerSpecific">
@@ -55,80 +54,135 @@
 
                 <div class="program" id="concerts2020">
                 <!-- <h2>Digital Concerts At the Barn // 2020-2021</h2> -->
-                    <h2>August 15 | 
-                    <a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
-                    Co-presence, 
-                    Ben Finley</a></h2>
 
-                    <h2>September 15 |
-                    <a onclick='changeCurrentIcon("concert", 1)' href='concerts/2020/mountcarmel.html' target="content">
-                    Mount Carmel, 
-                    Brian Finley</a></h2>
+                    <!-- <h2>UPCOMING | Colin Mochrie, Deb McGrath, improv; Chick Reid, Tom McCamus, actors</h2> -->
+                    <table class="schedule">
+                      <!-- <tr>
+                        <th>Date</th>
+                        <th>Concert</th>
+                      </tr> -->
+                      <tr>
+                        <td><h2>April 20</h2></td>
+                        <td><h2><a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
+                        Ben Finley,  
+                        Co-Presence</a></h2></td>
+                      </tr>
 
-                    <h2>October 15 | 
-                    Harp Piece, Harpist<h2>
+                      <tr>
+                        <td><h2>May 26</h2></td>
+                        <td><h2><a onclick='changeCurrentIcon("concert", 1)' href='concerts/2020/mountcarmel.html' target="content">
+                        Brian Finley,  
+                        Mount Carmel</a></h2></td>
+                      </tr> 
+
+                      <tr>
+                        <td><h2>August 15</h2></td>
+                        <td><h2>Valérie Milot, Solo Harp
+                        </h2></td>
+                      </tr>
+
+                      <tr>
+                        <td><h2>September 15</h2></td>
+                        <td><h2>Debra McGrath, Colin Mochrie & Friends, For The Birds
+                        </h2></td>
+                      </tr>
+
+                      <tr>
+                        <td><h2>October 15</h2></td>
+                        <td><h2>Brian Manker, Solo Cello
+                        </h2></td>
+                      </tr>
+
+                      <tr>
+                        <td><h2>November 15</h2></td>
+                        <td><h2>Jordan Mowat, Ojibway Drum / Singer-Songwriter
+                          
+                        </h2></td>
+                      </tr>
+                    </table>
                 </div>
 
                   <!-- 2020 DIGITAL CONCERT PROGRAM -->
 
                 <div class="program" id="pcr2020" style="display: none;">
                   <!-- <h2>Performer/Composer Residency // 2020</h2> -->
-                    <div><h2>July 6</h2></div>
-                  
-                  <p>1. <a onclick='changeCurrentIcon("ensemble", 0)' href='ensembles/mightnotfindwhatyousaw/' target="content">
-                    might not find what you saw</a>: 
-                    An-Laurence Higgins / Eve Parker Finley / Kirin McElwain / Roger Kim</p>
-                  <p>2. <a onclick='changeCurrentIcon("ensemble", 1)' href='ensembles/turquoise.html' target="content">
-                    Hello Over There</a>: 
-                    Kaze Patricio Chan / Thomas Fedorchik / Sheenah Ko / Sascha Ram / Soumaya Snoussi</p>
-      
-                    <div><h2>July 7</h2></div>
-                  <p>3. <a onclick='changeCurrentIcon("ensemble", 2)' href='ensembles/lemon.html' target="content" >
-                    In Paralysis</a>: 
-                    Kate Amrine / Che Buford / Marcus Carline / Daniel Lemer / Saman Shahi</p>
-                  <p>4. <a onclick='changeCurrentIcon("ensemble", 3)' href='ensembles/green.html' target="content">
-                    Chirr</a>: 
-                    A.P. Bergeron / Spencer Friedman / Gordon Fry / Glen Whitehead</p>
-      
-      
-                    <div><h2>July 8</h2></div>
-                  <p>5. <a onclick='changeCurrentIcon("ensemble", 4)' href='ensembles/watermelon.html' target="content">
-                    The Evolutionary Traits of Birds</a>: 
-                    Ernesto Cárcamo Cavazos / Sarah Grace Graves / Mark Gurrola / Cory Harper-Latkovich</p>
-                  <p>6. <a onclick='changeCurrentIcon("ensemble", 5)' href='ensembles/purple.html' target="content">
-                    Non-Equivalent Changes</a>: 
-                    Malcolm Jackson / Emily Kennedy / Sean Riddle / Reza Yazdanpanah</p>
-      
-                    <div><h2>July 9</h2></div>
-                  
-                  <p>7. <a onclick='changeCurrentIcon("ensemble", 6)' href='ensembles/oak.html' target="content" >
-                    Cada Mañana Una Nueva Llegada / Every Morning A New Arrival</a>: 
-                    Rodrigo Barriga / Krissy Bergmark / Gordon H. Williams / Leandro Daniel Gimenez</p>
-                  <p>8. <a onclick='changeCurrentIcon("ensemble", 7)' href='ensembles/yellow.html' target="content">
-                    Communicating Gratitude</a>: 
-                    Dustin Finer / Gabriel Genest / Ben Morris / Michael Sarian</p>
-                    
-                    <div><h2>July 10</h2></div>
-                  
-                  <p>9. <a onclick='changeCurrentIcon("ensemble", 8)' href='ensembles/pink.html' target="content" >
-                    Response</a>: 
-                    Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</p>
-                  <p>10. <a onclick='changeCurrentIcon("ensemble", 9)' href='ensembles/cedar.html' target="content">
-                    Lullabies for Late Capitalism</a>: 
-                    Zach Aliotta / Danielle Gonzalez / Olivia Khoury / Matt Norman / Carey West</p>
-      
-                    <div><h2>July 11</h2></div>
-                  
-                  <p>11. <a onclick='changeCurrentIcon("ensemble", 10)' href='ensembles/maple.html' target="content" >
-                    Arc Diffusion</a>: 
-                    Brandon Auger / Andrew Dyet / Matt Magerkurth / Gregory J. Watson</p>
-                  <p>12. <a onclick='changeCurrentIcon("ensemble", 11)' href='ensembles/pine.html' target="content">
-                    Generations of Decay</a>: 
-                    Simone Baron / Ethan Cohn / Abigail Johnson / Ethan Mitchell / Olivia Valenza</p>
-                  <p>13. <a onclick='changeCurrentIcon("ensemble", 12)' href='ensembles/banana.html' target="content">
-                    Iso-</a>: 
-                    Erich Barganier / Thomas Echols / Ford Fourqurean / Cristina Lord / Alex Tibbits</p>
+                  <table class="schedule">
+                    <tr>
+                      <td><h2>July 6</h2></td>
+                      <td>
+                        <p><a onclick='changeCurrentIcon("ensemble", 0)' href='ensembles/mightnotfindwhatyousaw/' target="content">
+                          might not find what you saw</a>
+                          An-Laurence Higgins / Eve Parker Finley / Kirin McElwain / Roger Kim</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 1)' href='ensembles/turquoise.html' target="content">
+                          Hello Over There</a> 
+                          Kaze Patricio Chan / Thomas Fedorchik / Sheenah Ko / Sascha Ram / Soumaya Snoussi</p>
+                      </td>
+                    </tr>
 
+                    <tr>
+                        <td><div><h2>July 7</h2></div></td>
+                        <td>
+                          <p><a onclick='changeCurrentIcon("ensemble", 2)' href='ensembles/lemon.html' target="content" >
+                            In Paralysis</a>
+                            Kate Amrine / Che Buford / Marcus Carline / Daniel Lemer / Saman Shahi</p>
+                          <p><a onclick='changeCurrentIcon("ensemble", 3)' href='ensembles/green.html' target="content">
+                            Chirr</a> 
+                            A.P. Bergeron / Spencer Friedman / Gordon Fry / Glen Whitehead</p>
+                        </td>
+                    </tr>
+        
+                    <tr>
+                      <td><div><h2>July 8</h2></div></td>
+                      <td>
+                        <p><a onclick='changeCurrentIcon("ensemble", 4)' href='ensembles/watermelon.html' target="content">
+                          The Evolutionary Traits of Birds</a> 
+                          Ernesto Cárcamo Cavazos / Sarah Grace Graves / Mark Gurrola / Cory Harper-Latkovich</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 5)' href='ensembles/purple.html' target="content">
+                          Non-Equivalent Changes</a> 
+                          Malcolm Jackson / Emily Kennedy / Sean Riddle / Reza Yazdanpanah</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><div><h2>July 9</h2></div></td>
+                      <td>
+                        <p><a onclick='changeCurrentIcon("ensemble", 6)' href='ensembles/oak.html' target="content" >
+                          Cada Mañana Una Nueva Llegada / Every Morning A New Arrival</a> 
+                          Rodrigo Barriga / Krissy Bergmark / Gordon H. Williams / Leandro Daniel Gimenez</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 7)' href='ensembles/yellow.html' target="content">
+                          Communicating Gratitude</a> 
+                          Dustin Finer / Gabriel Genest / Ben Morris / Michael Sarian</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><div><h2>July 10</h2></div></td>
+                      <td>
+                        <p><a onclick='changeCurrentIcon("ensemble", 8)' href='ensembles/pink.html' target="content" >
+                          Response</a> 
+                          Kent Baker, Matthew Bridgham / Bang Lang Do / Ivonne Paredes / James Sherry / Michael Shingo Crawford</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 9)' href='ensembles/cedar.html' target="content">
+                          Lullabies for Late Capitalism</a> 
+                          Zach Aliotta / Danielle Gonzalez / Olivia Khoury / Matt Norman / Carey West</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><div><h2>July 11</h2></div></td>
+                      <td>
+                        <p><a onclick='changeCurrentIcon("ensemble", 10)' href='ensembles/maple.html' target="content" >
+                          Arc Diffusion</a> 
+                          Brandon Auger / Andrew Dyet / Matt Magerkurth / Gregory J. Watson</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 11)' href='ensembles/pine.html' target="content">
+                          Generations of Decay</a> 
+                          Simone Baron / Ethan Cohn / Abigail Johnson / Ethan Mitchell / Olivia Valenza</p>
+                        <p><a onclick='changeCurrentIcon("ensemble", 12)' href='ensembles/banana.html' target="content">
+                          Iso-</a> 
+                          Erich Barganier / Thomas Echols / Ford Fourqurean / Cristina Lord / Alex Tibbits</p>
+                      </td>
+
+                    </tr>
+                  </table>
                 </div>
             </div>
             <hr id="other">
@@ -145,15 +199,16 @@
 
             <hr>
             <div class="bottom">
-              <div class="indent"><h2>Share your experience</h2></div>
+              <div><h1>Share your experience</h1></div>
+              <p>We sincerely hope you enjoy your experience in this digital venue. Be sure to let us know!</p>
               <p>Email: westben@westben.ca<br>
-                Insta: <a href="https://www.instagram.com/westben/" target="_blank">@westben</a><br>
+                Instagram: <a href="https://www.instagram.com/westben/" target="_blank">@westben</a><br>
                 Twitter: <a href="https://twitter.com/westbencentre" target="_blank">@westbencentre</a><br>
                 Facebook: <a href="https://www.facebook.com/westbenconcerts" target="_blank">/westbenconcerts</a><br>
-                #westbenpcr</p>
+                </p>
 
             <hr>
-              <p>Westben Digital Venue is run by <a href="https://www.westben.ca" target="_blank">Westben</a></p>
+              <p>Westben's Digital Venue is run by <a href="https://www.westben.ca" target="_blank">Westben</a></p>
               <p>a <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>
               <br>
             </div>

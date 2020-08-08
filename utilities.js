@@ -13,8 +13,12 @@ function contentToggle(){
 
 function contentExpand(){
     var size = landmarks[0].size;
-    var contentIcon = document.getElementById('contentIcon');
-    contentIcon.style.setProperty('transform', 'rotate(-180deg)');
+    // var contentIcon = document.getElementById('contentIcon');
+    // contentIcon.style.setProperty('transform', 'rotate(-180deg)');
+    var mapIcon = document.getElementById('mapIcon');
+    var pinIcon = document.getElementById('pinIcon');
+    mapIcon.style.setProperty('display', 'block');
+    pinIcon.style.setProperty('display', 'none');
     if (windowWidth < 720){
         content.style = 'height: calc(100% - 70px)';
     } else {
@@ -29,9 +33,18 @@ function contentExpand(){
     // programLayerMatch();
 }
 
+function showCurrentIcon(){
+    currentIcon.isCurrentContent = true;
+}
+
 function contentContract(){
-    var contentIcon = document.getElementById('contentIcon');
-    contentIcon.style.setProperty('transform', 'rotate(0deg)');
+    // var contentIcon = document.getElementById('contentIcon');
+    // contentIcon.style.setProperty('transform', 'rotate(0deg)');
+    var mapIcon = document.getElementById('mapIcon');
+    var pinIcon = document.getElementById('pinIcon');
+    mapIcon.style.setProperty('display', 'none');
+    pinIcon.style.setProperty('display', 'block');
+
     setTimeout(function(){contentContainerHidden = true;}, 400);
     // currentIcon.isCurrentContent = false;
     document.getElementById('aboveContent').style = 'height: 0px';
@@ -39,9 +52,9 @@ function contentContract(){
 }
 
 function contentContractFromInside(){
-    var parentIcon = window.parent.document.getElementById('contentIcon');
+    // var parentIcon = window.parent.document.getElementById('contentIcon');
     var parentContent = window.parent.document.getElementById('contentContainer');
-    parentIcon.style.setProperty('transform', 'rotate(0deg)');
+    // parentIcon.style.setProperty('transform', 'rotate(0deg)');
     parentContent.style = 'height: 10%';
     window.parent.document.getElementById('aboveContent').style = 'height: 0px';
     window.parent.currentIcon.isCurrentIcon = false;
@@ -75,13 +88,13 @@ function paletteToggle(){
     colorPalette = (colorPalette+1)%4;
     document.getElementById('paletteIcon').innerHTML = paletteIcons[colorPalette];
     if (colorPalette == 0){
-        document.getElementById('paletteCaption').innerHTML = 'Palette A';
+        document.getElementById('paletteCaption').innerHTML = 'Palette: Blossom';
     } else if (colorPalette == 1){
-        document.getElementById('paletteCaption').innerHTML = 'Palette B';
+        document.getElementById('paletteCaption').innerHTML = 'Palette: Sky';
     } else if (colorPalette == 2){
-        document.getElementById('paletteCaption').innerHTML = 'Palette C';
+        document.getElementById('paletteCaption').innerHTML = 'Palette: Leaf';
     } else if (colorPalette == 3){
-        document.getElementById('paletteCaption').innerHTML = 'Palette D';
+        document.getElementById('paletteCaption').innerHTML = 'Palette: Snow';
     }
     matchTheme();
 }
@@ -96,31 +109,37 @@ function layerToggle(_layer){
         currentLayer = (currentLayer+1)%2;
     }
 
-    if (currentLayer == 1){
+    document.getElementById('layerNumber').innerHTML = currentLayer+1;
+
+    if (currentLayer == 0){
         document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
-    } else if (currentLayer == 0) {
-        document.getElementById('layerIcon').innerHTML = '❐';
-        document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
+        document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
+    } else if (currentLayer == 1) {
+        document.getElementById('layerIcon').innerHTML = '❏';
+        document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
     }
 }
 
 function layerToggleFromInside(_x){
 
     window.parent.currentLayer = _x.value;
+    var currentLayerNum = (parseInt(_x.value, 10)+1);
+    window.parent.document.getElementById('layerNumber').innerHTML = currentLayerNum;
+
     if (_x.value == 0){
         window.parent.pcr2020Toggle = true;
         window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Layer: 2020 PCR';
-        document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
-        document.getElementById('pcr2020').style.setProperty('display', 'none');
-    } else if (_x.value == 1) {
-        window.parent.pcr2020Toggle = false;
-        window.parent.document.getElementById('layerIcon').innerHTML = '❐';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Layer: 2020 Digital Concerts';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
+    } else if (_x.value == 1) {
+        window.parent.pcr2020Toggle = false;
+        window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
+        document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
     }
+    
 }
 
 function programLayerMatch(){
@@ -131,16 +150,39 @@ function programLayerMatch(){
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
         // console.log('hi');
         if (currentLayer == 0){
-            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
-            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
-        } else if (currentLayer == 1){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'inline-block');
+        } else if (currentLayer == 1){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
         }
     }
 }
 
+function navHover(_nav){
+    var navCaption = document.getElementById('navCaption');
+    if (_nav == 'barn'){
+        navCaption.innerHTML = "Go back to The Barn";
+        navCaption.style.setProperty('display', 'block');
+    } else if (_nav == 'map'){
+        if (!contentContainerHidden){
+            navCaption.innerHTML = "Explore the map";
+        } else {
+            navCaption.innerHTML = "See current content";
+        }
+        navCaption.style.setProperty('display', 'block');
+    } else if (_nav == 'westben'){
+        navCaption.innerHTML = "Head to <u>westben.ca</u>";
+        navCaption.style.setProperty('display', 'block');
+    } else if (_nav == 'latest'){
+        navCaption.innerHTML = "Watch the latest concert";
+        navCaption.style.setProperty('display', 'block');
+    }
+}
 
+function navHide(){
+    document.getElementById('navCaption').style.setProperty('display', 'none');
+}
 
 function layerHover(_inOut){
 
@@ -238,6 +280,7 @@ function matchThemeInner(){
 function changeCurrentIcon(type, num){
     console.log('hi!');
     window.parent.currentIcon.isCurrentContent = false;
+    // window.parent.currentIcon = null;
     if (type == 'ensemble'){
         window.parent.currentIcon = window.parent.ensembles[num];
         window.parent.ensembles[num].isCurrentContent = true;

@@ -35,13 +35,13 @@ var colorPalette, paletteIcons;
 var pcr2020Toggle;
 var currentLayer;
 
-var navSketch;
 
 function preload(){
     font = loadFont('RobotoMono-ExtraLight.ttf');
 }
 
 function setup(){
+    document.getElementById('body').style.setProperty('display', 'block');
     fieldRecordings[0] = loadSound('audio/dove.mp3'); // parking lot
     fieldRecordings[0].playMode('sustain');
     fieldRecordings[1] = loadSound('audio/frogs.mp3'); // pond
@@ -81,8 +81,8 @@ function setup(){
                     'ensembles/banana.html',
                     ];
 
-    concertNames = ['Co-Presence, Ben Finley',
-                    'Mount Carmel, Brain Finley'];
+    concertNames = ['Co-Presence',
+                    'Mount Carmel'];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html'
@@ -191,6 +191,9 @@ function setup(){
     paletteToggle();
     if (random() > 0.5){
         themeToggle();
+    } else {
+        themeToggle();
+        themeToggle();
     }
 
     matchTheme();
@@ -198,13 +201,12 @@ function setup(){
     contentExpand();
 
     pcr2020Toggle = true;
-    currentLayer = 0;
+    currentLayer = 1;
 
     layerToggle();
     layerToggle();
 
-    navSketch = new p5(navInstance, window.document.getElementById('navSketch'));
-
+    
 }
 
 function draw(){
@@ -213,28 +215,27 @@ function draw(){
     roads();
 
     document.getElementById('caption').innerHTML = '';
-
+    document.getElementById('caption').style.setProperty('display', 'none');
+    // cursor('wait');
    
     for (var k in secrets){
         secrets[k].show();
     }
 
-    if (currentLayer == 1){
+    if (currentLayer == 0){
         for (var j in ensembles){
             ensembles[j].show();
         }
-    } else if (currentLayer == 0){
+    } else if (currentLayer == 1){
         for (var l in concerts){
             concerts[l].show();
         }
     }
-    
     for (var i in landmarks){
         landmarks[i].show();
     }
 
-    navSketch.currentIcon = Object.assign({}, currentIcon);
-
+    
 }
 
 function roads(){
@@ -277,12 +278,17 @@ var Landmark = function(_pos, _type, _link){
     this.pos = _pos;
     this.x = this.pos.x;
     this.y = this.pos.y;
-    this.size = map(((width+height)/2), 500, 1200, 30, 50);
+    this.type = _type;
+    if (this.type == 'Barn'){
+        this.size = map(((width+height)/2), 500, 1200, 50, 70);
+    } else {
+        this.size = map(((width+height)/2), 500, 1200, 30, 50);
+    }
+    
     this.scale = 1;
     this.rotation = random(-PI*0.05, PI*0.05);
     this.half = this.size*0.5;
     this.collide = this.size*0.7;
-    this.type = _type;
     this.over = false;
     this.caption = "The " + this.type;
     this.link = _link;
@@ -301,38 +307,62 @@ var Landmark = function(_pos, _type, _link){
             if (this.isCurrentContent && !contentContainerHidden){
                 this.scale = 1;
                 this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
-                translate(-this.pos.x + width/2, -this.pos.y + 35);
+                if (width < 720){
+                    translate(-this.pos.x + width/2, -this.pos.y + 35);
+                } else {
+                    translate(-this.pos.x + width/2, -this.pos.y + 35);
+                }
                 push();
                     fill(foregroundColor);
                     noStroke();
-                    strokeWeight(3);
+                    // strokeWeight(3);
                     // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    rect(this.pos.x, this.pos.y, width/2, 70);
+                    if (width < 720){
+                        rect(this.pos.x + ((2*width/3) - (width/2)), this.pos.y, 2*width/3, 70);
+                    } else {
+                        rect(this.pos.x, this.pos.y, width/2, 70);
+                    }
 
 
                     fill(backgroundColor);
+                    stroke(backgroundColor);
                     textFont(font);
                     if (width > 720){
                         textSize(18);
                     } else {
-                        textSize(12);
+                        textSize(14);
                     }
-                    textAlign(RIGHT, CENTER);
-                    text("you're at:", this.pos.x-this.size, this.pos.y);
-                    textAlign(LEFT, CENTER);
-                    if (this.type == 'concert'){
-                        text('A CONCERT', this.pos.x+this.size, this.pos.y);
-                    } else if (this.type == 'ensemble'){
-                        text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                    if (width < 720){
+                        // textAlign(LEFT, CENTER);
+                        // text("You're at", this.pos.x+this.size*2, this.pos.y - this.half);
+                        textAlign(LEFT, CENTER);
+                        rectMode(CORNER);
+                        if (this.type == 'concert'){
+                            text("You're at " + this.names.toUpperCase(), this.pos.x+this.size*1.5, this.pos.y-35, width/3-10, 70);
+                        } else if (this.type == 'ensemble'){
+                            text("You're at " + this.names.toUpperCase(), this.pos.x+this.size*1.5, this.pos.y-35, width/3-10, 70);
+                        } else {
+                            text("You're at THE " + this.type.toUpperCase(), this.pos.x+(this.size*1.5), this.pos.y-35, width/3-10, 70);
+                        }
                     } else {
-                        text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                        textAlign(RIGHT, CENTER);
+                        text("You're at", this.pos.x-this.size, this.pos.y);
+                        textAlign(LEFT, CENTER);
+                        if (this.type == 'concert'){
+                            text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                        } else if (this.type == 'ensemble'){
+                            text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                        } else {
+                            text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                        }
                     }
                 pop();
 
                 translate(0, sin(this.sinCounter)*5);
                 
                 document.getElementById('caption').innerHTML = '';
+                document.getElementById('caption').style.setProperty('display', 'none');
             }
 
             if (this.newest && !this.visited && contentContainerHidden){
@@ -381,18 +411,17 @@ var Landmark = function(_pos, _type, _link){
         }
 
         if (this.over){
-
             if (contentContainerHidden){
                 if (this.names != ''){
                     document.getElementById('caption').innerHTML = this.names;
+                    document.getElementById('caption').style.setProperty('display', 'block');
                 } else {
                     document.getElementById('caption').innerHTML = this.caption;
+                    document.getElementById('caption').style.setProperty('display', 'block');
                 }
             }
 
             this.scale = 1.5;
-
-            
         } else {
             
             this.scale = 1;
@@ -462,9 +491,9 @@ var Landmark = function(_pos, _type, _link){
     };
 
     this.barn = function(){
-
+        // this.barnScale = this.scale + 0.5;
         push();
-            translate(this.pos.x, this.pos.y + this.half*0.1);
+            translate(this.pos.x, this.pos.y + this.half*0.3);
             scale(this.scale);
             noFill();
             if (!this.isCurrentContent){
@@ -827,16 +856,16 @@ var Landmark = function(_pos, _type, _link){
 
     this.sparkle = function(){
         push();
-            translate(0, sin(frameCount*0.1)*5);
+            translate(0, this.size*2.2 + sin(frameCount*0.1)*5);
             translate(this.pos.x, this.pos.y - this.size*1.2);
             noStroke();
             fill(foregroundColor);
             rectMode(CENTER);
             rect(0,0, 50, 30);
             beginShape();
-                vertex(5, 15);
-                vertex(0, 20);
-                vertex(-5, 15);
+                vertex(5, -15);
+                vertex(0, -20);
+                vertex(-5, -15);
             endShape(CLOSE);
             fill(backgroundColor);
             textFont(font);
@@ -921,6 +950,8 @@ function mousePressed(){
 
 function touchStarted(){
     touchIsDown = true;
+
+    
 }
 
 function touchEnded(){
@@ -937,10 +968,11 @@ function touchEnded(){
             if (landmarks[i].over && contentContainerHidden){
                 landmarks[i].clicked();
                 landmarks[i].over = false;
+                // currentIcon.isCurrentContent = false;
+                currentIcon = landmarks[i];
                 landmarks[i].isCurrentContent = true;
-                
             } else {
-                if (contentContainerHidden){
+                if (!contentContainerHidden){
                     landmarks[i].isCurrentContent = false;
                 }
             }
@@ -949,9 +981,10 @@ function touchEnded(){
             if (ensembles[j].over && contentContainerHidden){
                 ensembles[j].clicked();
                 ensembles[j].over = false;
+                // currentIcon.isCurrentContent = false;
                 ensembles[j].isCurrentContent = true;
             } else {
-                if (contentContainerHidden){
+                if (!contentContainerHidden){
                     ensembles[j].isCurrentContent = false;
                 }
             }
@@ -967,13 +1000,16 @@ function touchEnded(){
         for (var l in concerts){
             if (concerts[l].over && contentContainerHidden){
                 concerts[l].clicked();
+                // currentIcon.isCurrentContent = false;
                 concerts[l].isCurrentContent = true;
             } else {
-                if (contentContainerHidden){
+                if (!contentContainerHidden){
                     concerts[l].isCurrentContent = false;
                 }
             }
         }
+
+        navHide();
         // touchIsDown = false;
     }
     // return false;
@@ -1011,7 +1047,12 @@ function windowResized(){
     ];
 
     for (var i in landmarks){
-        var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
+        var landmarkSize = 0;
+        if (landmarks[i].type == 'Barn'){
+            landmarkSize = map(((width+height)/2), 500, 1200, 50, 70);
+        } else {
+            landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
+        }
         landmarks[i].pos = new p5.Vector(landmarkVectors[i].x, landmarkVectors[i].y);
         landmarks[i].size = landmarkSize;
         landmarks[i].half = landmarkSize*0.5;
@@ -1107,36 +1148,4 @@ function keyTyped(){
         pcr2020Toggle = !pcr2020Toggle;
     }
 
-    if (key == 'c'){
-        navSketch.foregroundColor = foregroundColor;
-    };
 }
-
-var navInstance = function(p){
-    p.foregroundColor = p.color(255);
-    p.currentIcon = null;
-    p.icon = new Landmark(new p5.Vector(0,0), 'contentIcon');
-    p.icon.type = "Barn";
-    p.setup = function(){
-
-        var canv = p.createCanvas(90,90);
-        // p.background(255);
-        var parent = select('#navSketch');
-        canv.parent(parent);
-    };
-
-    p.draw = function(){
-        p.strokeWeight(1);
-        p.noFill();
-        p.stroke(p.foregroundColor);
-        // p.ellipse(p.width/2, p.height/2, 70, 70);
-
-        if (p.currentIcon != null){
-            push();
-                // p.translate(-p.currentIcon.pos.x, -currentIcon.pos.y);
-                p.currentIcon.show();
-            pop();
-            // console.log(p.currentIcon.type);
-        }
-    };
-};
