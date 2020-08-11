@@ -114,10 +114,10 @@ function layerToggle(_layer){
 
     if (currentLayer == 0){
         // document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
+        document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Performer-Composer Residency';
     } else if (currentLayer == 1) {
         // document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
+        document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Digital Concerts';
     }
 }
 
@@ -130,13 +130,13 @@ function layerToggleFromInside(_x){
     if (_x.value == 0){
         window.parent.pcr2020Toggle = true;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Performer-Composer Residency';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
     } else if (_x.value == 1) {
         window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Digital Concerts';
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
     }
@@ -164,7 +164,11 @@ function navHover(_nav){
     var navCaption = document.getElementById('navCaption');
 
     if (_nav == 'barn'){
-        navCaption.innerHTML = "Go back to The Barn";
+        if (currentIcon.type == "Barn"){
+            navCaption.innerHTML = "The Barn (you're already here!)";
+        } else {
+            navCaption.innerHTML = "Go back to The Barn";
+        }
         
     } else if (_nav == 'map'){
         if (!contentContainerHidden){
@@ -323,7 +327,9 @@ function iframeLoaded(){
         endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" + 
         '<p>A <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>';
     }
-    console.log('themeMatched');
+
+    programLayerMatch();
+    // console.log('themeMatched');
 }
 
 function matchThemeInner(){
@@ -559,62 +565,32 @@ function appendImage(_type, _img){
 
 
 function coordinateToggle(_type){
-    var coordinateContent = document.getElementsByClassName('coordinate');
-    // if (coordinates[_type] == null){
-    //     if (_type == 0){
-    //         // console.log('hello!');
-    //         for (i=1;i<4;i++){
-    //             var img = new Image();
-    //             img.src = "img/chirr/spencer/spen-0" + i + ".jpeg";
-    //             // img.setAttribute('loading', 'lazy');
-    //             img.onload = appendImage(_type, img);
-    //         }
-    //     } else if (_type == 1){
-    //         for (i=1;i<9;i++){
-    //             var img = new Image();
-    //             img.src = "../img/chirr/ap/ap-0" + i + ".jpg";
-    //             // img.setAttribute('loading', 'lazy');
-    //             img.onload = appendImage(_type, img);
-    //         }
-    //     } else if (_type == 2){
-    //         for (i=1;i<11;i++){
-    //             var img = new Image();
-    //             if (i<10){
-    //                 img.src = "../img/chirr/glen/glen-0" + i + ".jpg";
-    //             } else {
-    //                 img.src = "../img/chirr/glen/glen-" + i + ".jpg";
-    //             }
-    //             // img.setAttribute('loading', 'lazy');
-    //             img.onload = appendImage(_type, img);
-    //         }
-    //     } else if (_type == 3){
-    //         for (i=5;i<9;i++){
-    //             var img = new Image();
-    //             img.src = "../img/chirr/gordon/gordon-0" + i + ".jpg";
-    //             // img.setAttribute('loading', 'lazy');
-    //             img.onload = appendImage(_type, img);
-    //         }
-    //     } else if (_type == 4){
-    //         for (i=1;i<5;i++){
-    //             var img = new Image();
-    //             img.src = "../img/chirr/gordon/gordon-0" + i + ".jpg";
-    //             // img.setAttribute('loading', 'lazy');
-    //             img.onload = appendImage(_type, img);
-    //         }
-    //     }
-    // }
 
+    var coordinateContent = document.getElementsByClassName('coordinate');
 
     if (coordinates[_type] == null || coordinates[_type] == false){
         coordinateContent[_type].style = 'height: auto;';
-        
         coordinates[_type] = true;
     } else {
         coordinateContent[_type].style = 'height: 0px;';
         coordinates[_type] = false;
     }
 
-    
+}
+
+var sections = [];
+
+function sectionToggle(_num){
+
+    var sectionContent = document.getElementsByClassName('toggleSection');
+
+    if (sections[_num] == null || sections[_num] == false){
+        sectionContent[_num].style = 'height: auto;';
+        sections[_num] = true;
+    } else {
+        sectionContent[_num].style = 'height: 0px;';
+        sections[_num] = false;
+    }
 
 }
 

@@ -265,10 +265,12 @@ function draw(){
 function youAreHerePanel(){
     if (contentContainerHidden){
         if (overSomething > 0){
-            if (slideIn < 35){
-                slideIn+=5;
-            } else {
-                slideIn = 35;
+            if (!touchIsDown){
+                if (slideIn < 35){
+                    slideIn+=5;
+                } else {
+                    slideIn = 35;
+                }
             }
         } else {
             if (slideIn > -35){
@@ -414,9 +416,9 @@ var Landmark = function(_pos, _type, _link){
                         text("You're at", this.pos.x-this.size, this.pos.y);
                         textAlign(LEFT, CENTER);
                         if (this.type == 'concert'){
-                            text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y);
                         } else if (this.type == 'ensemble'){
-                            text('A CONCERT', this.pos.x+this.size, this.pos.y);
+                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y);
                         } else {
                             text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
                         }

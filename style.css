@@ -132,7 +132,7 @@ table.schedule tr:nth-child(1){
 }
 
 table.schedule tr:nth-child(1) td:nth-child(1){
-    text-align: right;
+    text-align: left;
 }
 table.schedule tr:last-child td:nth-child(even){
     border-bottom: 0px;
@@ -348,7 +348,7 @@ button:hover {
     fill: var(--fg-color);
     stroke: none;
     background-color: var(--bg-color);
-    border: 2px solid var(--fg-color);
+    border: 3px solid var(--fg-color);
     border-radius: 100px;
     box-sizing: border-box;
     outline: none;
@@ -358,7 +358,7 @@ button:hover {
     /* transform: scale(1.2); */
     fill: var(--bg-color);
     background-color: var(--fg-color);
-    border: 2px solid var(--bg-color);
+    border: 3px solid var(--bg-color);
 }
 
 .contentContainer {
@@ -426,7 +426,7 @@ button:hover {
     padding: 10px;
     /* transition: border 1s; */
     box-sizing: border-box;
-    border: 2px solid var(--fg-color);
+    border: 3px solid var(--fg-color);
     border-radius: 100px;
     z-index: 100;
     background-color: var(--bg-color);
@@ -442,7 +442,7 @@ button:hover {
 .contentIcon:hover{
     transition: transform 0.5s;
     cursor: pointer;
-    border: 2px solid var(--bg-color);
+    border: 3px solid var(--bg-color);
     background-color: var(--fg-color);
     color: var(--bg-color);
     
@@ -565,6 +565,11 @@ select.programSelect:hover {
     top: 0;
     left: 0;
     z-index: -100;
+}
+
+.toggleSection {
+    height: 0px;
+    overflow: hidden;
 }
 
 ::-webkit-scrollbar {
