@@ -20,6 +20,9 @@ var touchIsDown;
 var fieldRecordings = [];
 var contentContainerHidden;
 
+var slideIn;
+var overSomething;
+
 var concerts = [];
 var concertVectors = [];
 var concertLinks = [];
@@ -53,7 +56,7 @@ function setup(){
                 'Hello Over There',
                 'In Paralysis',
                 'Chirr',
-                'The Evolutionary Traits of Birds',
+                'The Evolutionary Traits...',
                 'Non-Equivalent Changes',
                 'Cada Mañana Una Nueva Llegada',
                 'Communicating Gratitude',
@@ -179,7 +182,7 @@ function setup(){
     lightHexColors = [ '#FFAEBD', '#74CAFF', '#FFC144', '#eaffff'];
     //#A77C83
     darkHexColors = ['#48005D', '#004247', '#1E2D00', '#1C1929'];
-    paletteIcons = ['◐', '◓', '◑', '◒'];
+    paletteIcons = ['0', '90', '180', '270'];
 
     foregroundColor = lightColors[colorPalette];
     backgroundColor = darkColors[colorPalette];
@@ -202,6 +205,7 @@ function setup(){
 
     pcr2020Toggle = true;
     currentLayer = 1;
+    slideIn = -35;
 
     layerToggle();
     layerToggle();
@@ -217,25 +221,83 @@ function draw(){
     document.getElementById('caption').innerHTML = '';
     document.getElementById('caption').style.setProperty('display', 'none');
     // cursor('wait');
+
+    
    
     for (var k in secrets){
         secrets[k].show();
+        
     }
+    overSomething = 0;
 
     if (currentLayer == 0){
         for (var j in ensembles){
             ensembles[j].show();
+            if (ensembles[j].over){
+                overSomething++;
+            }
         }
+        
     } else if (currentLayer == 1){
         for (var l in concerts){
             concerts[l].show();
+            if (concerts[l].over){
+                overSomething++;
+            }
         }
+        
     }
     for (var i in landmarks){
         landmarks[i].show();
+        if (landmarks[i].over){
+            overSomething++;
+        }
+    }
+
+    youAreHerePanel();
+    if (!contentContainerHidden){
+        currentIcon.show();
     }
 
     
+}
+
+function youAreHerePanel(){
+    if (contentContainerHidden){
+        if (overSomething > 0){
+            if (slideIn < 35){
+                slideIn+=5;
+            } else {
+                slideIn = 35;
+            }
+        } else {
+            if (slideIn > -35){
+                slideIn-=5;
+            } else {
+                slideIn = -35;
+            }
+        }
+    } else {
+        if (slideIn < 35){
+            slideIn+=5;
+        } else {
+            slideIn = 35;
+        }
+    }
+
+    push();
+        fill(foregroundColor);
+        noStroke();
+        // strokeWeight(3);
+        // ellipse(this.pos.x, this.pos.y, this.size*1.8);
+        rectMode(CENTER);
+        if (width < 720){
+            rect((2*width/3), slideIn, 2*width/3, 70);
+        } else {
+            rect(width/2, slideIn, width/2, 70);
+        }
+
+    pop();
 }
 
 function roads(){
@@ -299,6 +361,8 @@ var Landmark = function(_pos, _type, _link){
     this.ensembleNum = 0;
     this.vol = 0;
     this.isCurrentContent = false;
+    
+
     this.newest = false;
 
     this.show = function(){
@@ -308,9 +372,9 @@ var Landmark = function(_pos, _type, _link){
                 this.scale = 1;
                 this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
                 if (width < 720){
-                    translate(-this.pos.x + width/2, -this.pos.y + 35);
+                    translate(-this.pos.x + width/2, -this.pos.y + slideIn);
                 } else {
-                    translate(-this.pos.x + width/2, -this.pos.y + 35);
+                    translate(-this.pos.x + width/2, -this.pos.y + slideIn);
                 }
                 push();
                     fill(foregroundColor);
@@ -318,11 +382,11 @@ var Landmark = function(_pos, _type, _link){
                     // strokeWeight(3);
                     // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    if (width < 720){
-                        rect(this.pos.x + ((2*width/3) - (width/2)), this.pos.y, 2*width/3, 70);
-                    } else {
-                        rect(this.pos.x, this.pos.y, width/2, 70);
-                    }
+                    // if (width < 720){
+                    //     rect(this.pos.x + ((2*width/3) - (width/2)), this.pos.y, 2*width/3, 70);
+                    // } else {
+                    //     rect(this.pos.x, this.pos.y, width/2, 70);
+                    // }
 
 
                     fill(backgroundColor);
@@ -415,9 +479,11 @@ var Landmark = function(_pos, _type, _link){
                 if (this.names != ''){
                     document.getElementById('caption').innerHTML = this.names;
                     document.getElementById('caption').style.setProperty('display', 'block');
+                    // document.getElementById('caption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
                 } else {
                     document.getElementById('caption').innerHTML = this.caption;
                     document.getElementById('caption').style.setProperty('display', 'block');
+                    // document.getElementById('caption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
                 }
             }
 

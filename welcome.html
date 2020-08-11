@@ -35,7 +35,7 @@
         <div class="programNotesInner">
           <h1>Welcome to The Barn</h1>
           <p>The Barn is your hub at Westben Digital Venue. So happy you're here!</p>
-            <form><button onclick='changeCurrentIcon("concert", 0)' formaction="concerts/2020/copresence.html" target="content"><h3>Watch Newest</h3><p>Jump to the latest Digital Concert at The Barn</p></button></form>
+            <form><button onclick='changeCurrentIcon("concert", 1)' formaction="concerts/2020/mountcarmel.html" target="content"><h3>Watch Newest</h3><p>Jump to the latest Digital Concert at The Barn</p></button></form>
             <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='_blank'><h3>Donate</h3><p>Make a tax deductible donation to support this experience</p></button></form>
             <form><button onclick='contentContractFromInside()'><h3>Explore</h3><p>Visit and experience layers of digital concerts</p></button></form>
             <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
@@ -61,8 +61,13 @@
                         <th>Date</th>
                         <th>Concert</th>
                       </tr> -->
+
                       <tr>
-                        <td><h2>April 20</h2></td>
+                        <td><p>Premiere Date</p></td>
+                        <td><p>Concert</p></td>
+                      </tr>
+                      <tr>
+                        <td><h2>April 26</h2></td>
                         <td><h2><a onclick='changeCurrentIcon("concert", 0)' href='concerts/2020/copresence.html' target="content">
                         Ben Finley,  
                         Co-Presence</a></h2></td>
@@ -82,19 +87,19 @@
                       </tr>
 
                       <tr>
-                        <td><h2>September 15</h2></td>
+                        <td><h2>September ??</h2></td>
                         <td><h2>Debra McGrath, Colin Mochrie & Friends, For The Birds
                         </h2></td>
                       </tr>
 
                       <tr>
-                        <td><h2>October 15</h2></td>
+                        <td><h2>October ??</h2></td>
                         <td><h2>Brian Manker, Solo Cello
                         </h2></td>
                       </tr>
 
                       <tr>
-                        <td><h2>November 15</h2></td>
+                        <td><h2>November ??</h2></td>
                         <td><h2>Jordan Mowat, Ojibway Drum / Singer-Songwriter
                           
                         </h2></td>
@@ -107,6 +112,11 @@
                 <div class="program" id="pcr2020" style="display: none;">
                   <!-- <h2>Performer/Composer Residency // 2020</h2> -->
                   <table class="schedule">
+                    <tr>
+                      <td><p>Premiere Date</p></td>
+                      <td><p>Concert</p></td>
+                    </tr>
+                    
                     <tr>
                       <td><h2>July 6</h2></td>
                       <td>
@@ -208,9 +218,7 @@
                 </p>
 
             <hr>
-              <p>Westben's Digital Venue is run by <a href="https://www.westben.ca" target="_blank">Westben</a></p>
-              <p>a <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>
-              <br>
+              <div id="endMatter" class="endMatter"></div>
             </div>
         </div>
       </div>

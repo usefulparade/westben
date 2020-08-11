@@ -78,10 +78,16 @@ table.toggles {
 }
 
 table.toggles td {
-    /* border: 2px solid black; */
+    display: table-cell;
     width: 50px;
-    height: 30px;
-    vertical-align: center;
+    height: 50px;
+    padding: 5px;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+table.toggles .palette svg {
+    transform: rotate(0deg);
 }
 
 table.schedule {
@@ -91,9 +97,7 @@ table.schedule {
     border-collapse: collapse;
 }
 
-table.schedule tr:hover {
-    /* background-color: rgba(0,0,0,0.2); */
-}
+
 
 table.schedule td {
     padding-right: 20px;
@@ -120,8 +124,22 @@ table.schedule td:nth-child(even){
     border-left: 2px solid var(--fg-color);
     border-bottom: 2px dashed var(--fg-color);
     padding-left: 20px;
-    
 }
+
+table.schedule tr:nth-child(1){
+    /* background-color: rgba(0,0,0,0.2); */
+    border-bottom: 2px dashed var(--fg-color);
+}
+
+table.schedule tr:nth-child(1) td:nth-child(1){
+    text-align: right;
+}
+table.schedule tr:last-child td:nth-child(even){
+    border-bottom: 0px;
+    /* border-bottom: 2px dashed var(--fg-color); */
+}
+
+
 
 form {
     display: inline-block;
@@ -205,62 +223,58 @@ button:hover {
 .mapContainer .theme {
     display: block;
     position: relative;
-    margin-top: -10px;
-    font-size: 3em;
     cursor: pointer;
-    user-select: none;
-}
-
-.mapContainer .theme p {
-    margin: 0px;
-    
     user-select: none;
     transform: scale(1);
 }
 
-.mapContainer .theme p:hover {
+.mapContainer .theme:hover {
     transform: scale(1.5);
 }
 
 .mapContainer .palette {
     display: block;
     position: relative;
-    font-size: 2em;
-    cursor: pointer;
-    user-select: none;
-}
-
-.mapContainer .palette p {
-    margin: 0px;
+    margin-top: 2px;
     user-select: none;
     transform: scale(1);
 }
 
-.mapContainer .palette p:hover {
+.mapContainer .palette:hover {
     transform: scale(1.5);
+    cursor: pointer;
 }
 
 .mapContainer .layer {
     display: block;
     position: relative;
-    margin-top: -6px;
+    /* width: 100%;
+    height: 100%; */
+    margin-top: 5px;
     font-size: 1em;
     cursor: pointer;
     user-select: none;
     transform: scale(1);
 }
 
-.mapContainer .layer p:nth-child(1) {
-    margin: 0px;
-    padding: 0px;
-    font-size: 3em;
-    user-select: none;
-    transform: scale(1);
+.mapContainer svg {
+    fill: var(--fg-color);
 }
 
-.mapContainer .layer p:nth-child(2){
-    margin-top: -45px;
-    margin-left: -5px;
+.mapContainer .theme svg {
+    fill: none;
+    stroke: var(--fg-color);
+    stroke-width: 15px;
+}
+
+
+.mapContainer .layer p{
+    display: block;
+    position: fixed;
+    top: 20%;
+    left: 35%;
+    margin: 0px;
+    padding: 0px;
     font-size: 1em;
 }
 
@@ -269,19 +283,26 @@ button:hover {
 }   
 
 .layerCaption {
-    display: none;
+    display: block;
     position: fixed;
-    top: 0px;
-    margin-left: 25%;
+    top: -100px;
     margin-top: 0px;
-    vertical-align: center;
+    margin-bottom: 0px;
+    margin-left: 25%;
+    /* vertical-align: middle; */
     padding-top: 25px;
     padding-bottom: 25px;
     /* height: 100px; */
     width: 50%;
     background-color: var(--fg-color);
     color: var(--bg-color);
+    /* animation: fadeIn 0.5s ease forwards; */
     /* z-index: -200; */
+}
+
+.layerCaption#caption {
+    top: 0px;
+    background-color: rgba(0,0,0,0);
 }
 
 .logo {
@@ -314,7 +335,6 @@ button:hover {
     position: absolute;
     width: 70px;
     height: 70px;
-    
     top: 10px;
     left: calc(50% - 115px);
     z-index: 100;
@@ -398,7 +418,7 @@ button:hover {
 
 .contentIcon {
     display: block;
-    position: fixed;
+    position: absolute;
     width: 70px;
     height: 70px;
     margin-top: 10px;
@@ -606,6 +626,8 @@ select.programSelect:hover {
 
     table.toggles td{
         width: 30px;
+        height: 30px;
+        padding: 2px;
     }
 
     .mapContainer .theme {
@@ -614,16 +636,28 @@ select.programSelect:hover {
     }
 
     .mapContainer .palette {
-        
-        font-size: 1.5em;
+        margin-top: 4px;
+        /* font-size: 2em;  */
     }
+    
 
     .mapContainer .layer {
-        
         font-size: 0.8em;
     }
 
-    .mapContainer .layer p:nth-child(2) {
-        margin-top: -35px;
+    .mapContainer .layer p {
+        top: 12%;
+        left: 32%;
     }
+}
+
+
+@keyframes fadeOut {
+    0% {top: 0px;}
+    100% {top: -100px;}
+}
+
+@keyframes fadeIn {
+    0% {top: -100px;}
+    100% {top: 0px;}
 }

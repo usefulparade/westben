@@ -86,7 +86,8 @@ function themeToggle(){
 
 function paletteToggle(){
     colorPalette = (colorPalette+1)%4;
-    document.getElementById('paletteIcon').innerHTML = paletteIcons[colorPalette];
+    // document.getElementById('paletteIcon').innerHTML = paletteIcons[colorPalette];
+    document.getElementById('paletteSvg').style.setProperty('transform', 'rotate(' + paletteIcons[colorPalette] + 'deg)');
     if (colorPalette == 0){
         document.getElementById('paletteCaption').innerHTML = 'Palette: Blossom';
     } else if (colorPalette == 1){
@@ -112,10 +113,10 @@ function layerToggle(_layer){
     document.getElementById('layerNumber').innerHTML = currentLayer+1;
 
     if (currentLayer == 0){
-        document.getElementById('layerIcon').innerHTML = '❏';
+        // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
     } else if (currentLayer == 1) {
-        document.getElementById('layerIcon').innerHTML = '❏';
+        // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
     }
 }
@@ -128,13 +129,13 @@ function layerToggleFromInside(_x){
 
     if (_x.value == 0){
         window.parent.pcr2020Toggle = true;
-        window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 PCR';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
     } else if (_x.value == 1) {
         window.parent.pcr2020Toggle = false;
-        window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Map Layer: 2020 Digital Concerts';
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
@@ -161,54 +162,98 @@ function programLayerMatch(){
 
 function navHover(_nav){
     var navCaption = document.getElementById('navCaption');
+
     if (_nav == 'barn'){
         navCaption.innerHTML = "Go back to The Barn";
-        navCaption.style.setProperty('display', 'block');
+        
     } else if (_nav == 'map'){
         if (!contentContainerHidden){
             navCaption.innerHTML = "Explore the map";
         } else {
             navCaption.innerHTML = "See current content";
         }
-        navCaption.style.setProperty('display', 'block');
     } else if (_nav == 'westben'){
         navCaption.innerHTML = "Head to <u>westben.ca</u>";
-        navCaption.style.setProperty('display', 'block');
     } else if (_nav == 'latest'){
         navCaption.innerHTML = "Watch the latest concert";
-        navCaption.style.setProperty('display', 'block');
+    }
+
+    navCaption.style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+}
+
+function navType(_nav){
+    var navCaption = document.getElementById('navCaption');
+
+    if (_nav == 'barn'){
+        navCaption.innerHTML = "Go back to The Barn";
+        
+    } else if (_nav == 'map'){
+        if (!contentContainerHidden){
+            navCaption.innerHTML = "Explore the map";
+        } else {
+            navCaption.innerHTML = "See current content";
+        }
+    } else if (_nav == 'westben'){
+        navCaption.innerHTML = "Head to <u>westben.ca</u>";
+    } else if (_nav == 'latest'){
+        navCaption.innerHTML = "Watch the latest concert";
     }
 }
 
-function navHide(){
+function navTouch(_nav){
     document.getElementById('navCaption').style.setProperty('display', 'none');
+    // var type = _nav;
+    // navHover(type);
+    // setTimeout(navHide, 2000);
+    // navHide();
+
+}
+
+function navHide(){
+    document.getElementById('navCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
 }
 
 function layerHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('layerCaption').style.setProperty('display', 'block');
+        document.getElementById('layerCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        // setTimeout(layerHover, 1000);
     } else {
-        document.getElementById('layerCaption').style.setProperty('display', 'none');
+        document.getElementById('layerCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
     }
+}
+
+function layerTouch(){
+    document.getElementById('layerCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+    setTimeout(layerHover, 1000);
 }
 
 function paletteHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('paletteCaption').style.setProperty('display', 'block');
+        document.getElementById('paletteCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
     } else {
-        document.getElementById('paletteCaption').style.setProperty('display', 'none');
+        document.getElementById('paletteCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
     }
+}
+
+function paletteTouch(){
+    document.getElementById('paletteCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+    setTimeout(paletteHover, 1000);
 }
 
 function themeHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('themeCaption').style.setProperty('display', 'block');
+        document.getElementById('themeCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
     } else {
-        document.getElementById('themeCaption').style.setProperty('display', 'none');
+        document.getElementById('themeCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
     }
+}
+
+function themeTouch(){
+    document.getElementById('themeCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+    setTimeout(themeHover, 1000);
 }
 
 function closeDonateModal(){
@@ -229,7 +274,8 @@ function nightTheme(){
     document.documentElement.style.setProperty('--bg-color-transparent', darkHexColors[colorPalette] + 'f3');
     document.documentElement.style.setProperty('--fg-color', lightHexColors[colorPalette]);
 
-    document.getElementById('themeIcon').innerHTML = '☽';
+    document.getElementById('sunSvg').style.setProperty('display', 'none');
+    document.getElementById('moonSvg').style.setProperty('display', 'block');
     foregroundColor = lightColors[colorPalette];
     backgroundColor = darkColors[colorPalette];
     theme = 'night';
@@ -245,7 +291,8 @@ function dayTheme(){
     document.documentElement.style.setProperty('--bg-color-transparent', lightHexColors[colorPalette] + 'f3');
     document.documentElement.style.setProperty('--fg-color', darkHexColors[colorPalette]);
 
-    document.getElementById('themeIcon').innerHTML = '☼';
+    document.getElementById('sunSvg').style.setProperty('display', 'block');
+    document.getElementById('moonSvg').style.setProperty('display', 'none');
     foregroundColor = darkColors[colorPalette];
     backgroundColor = lightColors[colorPalette];
     theme = 'day';
@@ -265,6 +312,18 @@ function matchTheme(){
     } else {
         nightTheme();
     }
+}
+
+function iframeLoaded(){
+    
+    matchTheme();
+    var iframe = document.getElementById('content');
+    var endMatter = iframe.contentDocument.getElementById('endMatter');
+    if (endMatter != null){
+        endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" + 
+        '<p>A <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>';
+    }
+    console.log('themeMatched');
 }
 
 function matchThemeInner(){
