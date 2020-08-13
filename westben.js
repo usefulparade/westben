@@ -20,6 +20,8 @@ var touchIsDown;
 var fieldRecordings = [];
 var contentContainerHidden;
 
+var roadPoints = [];
+
 var slideIn;
 var overSomething;
 
@@ -320,13 +322,34 @@ function roads(){
         noFill();
         stroke(foregroundColor);
         strokeWeight(1);
+
         var x1 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.1);
         var y1 = bezierPoint(0, height, height, height*0.66, 0.1);
-        // ellipse(x1, y1, 100);
+        roadPoints[0] = createVector(x1, y1);
+        roadPoints[1] = createVector(width*0.56, height*0.1);
+        roadPoints[2] = createVector(width*0.51, height*0.38);
+        roadPoints[3] = createVector(width*0.48, height*0.51);
+        // roadPoints[4] = createVector(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
+        roadPoints[4] = createVector(width*0.56, height*0.47);
+        roadPoints[5] = createVector(width*0.71, height*0.38);
+        // roadPoints[6] = createVector(width*0.75, height*0.45);
+        roadPoints[6] = createVector(landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
 
-        bezier(x1, y1, width*0.7, 0, width*0.4, height*0.7, landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
-        bezier(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half, width*0.7, height*0.4, width*0.75, height*0.45, landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
 
+        // bezier(x1, y1, width*0.7, 0, width*0.4, height*0.7, landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
+        // bezier(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half, width*0.7, height*0.4, width*0.75, height*0.45, landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
+
+        stroke(foregroundColor);
+        beginShape();
+            vertex(roadPoints[0].x, roadPoints[0].y);
+            quadraticVertex(roadPoints[1].x, roadPoints[1].y, roadPoints[2].x, roadPoints[2].y);
+            quadraticVertex(roadPoints[3].x, roadPoints[3].y, roadPoints[4].x, roadPoints[4].y);
+            quadraticVertex(roadPoints[5].x, roadPoints[5].y, roadPoints[6].x, roadPoints[6].y);
+        endShape();
+
+        // for(var i=0;i<roadPoints.length;i++){
+        //     ellipse(roadPoints[i].x, roadPoints[i].y, 10,10);
+        // }
         // var x2 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.27);
         // var y2 = bezierPoint(0, height, height, height*0.66, 0.27);
         // var x3 = bezierPoint(x1, width*0.7, width*0.3, landmarks[0].pos.x, 0.75);
@@ -924,22 +947,46 @@ var Landmark = function(_pos, _type, _link){
 
     this.sparkle = function(){
         push();
-            translate(0, this.size*2.2 + sin(frameCount*0.1)*5);
-            translate(this.pos.x, this.pos.y - this.size*1.2);
-            noStroke();
-            fill(foregroundColor);
-            rectMode(CENTER);
-            rect(0,0, 50, 30);
+            
+            // translate(0, this.size*2.2 + sin(frameCount*0.1)*5);
+            // translate(this.pos.x, this.pos.y - this.size*1.2);
+            // noStroke();
+            // fill(foregroundColor);
+            // rectMode(CENTER);
+            // rect(0,0, 50, 30);
+            // beginShape();
+            //     vertex(5, -15);
+            //     vertex(0, -20);
+            //     vertex(-5, -15);
+            // endShape(CLOSE);
+            // fill(backgroundColor);
+            // textFont(font);
+            // textSize(16);
+            // textAlign(CENTER, CENTER);
+            // text('NEW!', 0, -2);
+
+            translate(this.pos.x, this.pos.y);
+            if (!this.over){
+                translate(0, -this.size*0.9);
+            } else {
+                translate(0, -this.size*1.15);
+            }
+
+            scale(0.7);
+            noFill();
+            stroke(foregroundColor);
+            strokeWeight(3);
             beginShape();
-                vertex(5, -15);
-                vertex(0, -20);
-                vertex(-5, -15);
-            endShape(CLOSE);
-            fill(backgroundColor);
-            textFont(font);
-            textSize(16);
-            textAlign(CENTER, CENTER);
-            text('NEW!', 0, -2);
+                vertex(0, this.half);
+                vertex(0, this.half*0.8);
+                quadraticVertex(this.half*0.8, this.half*0.8, 
+                                this.half*0.8, this.half*0.2);
+                vertex(this.half, this.half*0.2);
+                vertex(this.half*0.8, 0);
+                quadraticVertex(this.half*0.5, -this.half*0.8, 
+                                -this.half*0.8, this.half*0.55);
+                vertex(0, this.half*0.8);
+            endShape();
         pop();
 
     };
