@@ -87,10 +87,12 @@ function setup(){
                     ];
 
     concertNames = ['Co-Presence',
-                    'Mount Carmel'];
+                    'Mount Carmel',
+                    'Valérie Milot'];
 
     concertLinks = ['concerts/2020/copresence.html',
-                    'concerts/2020/mountcarmel.html'
+                    'concerts/2020/mountcarmel.html',
+                    'concerts/2020/valeriemilot.html'
                     ];
 
     contentContainerHidden = true;
@@ -134,6 +136,7 @@ function setup(){
     concertVectors = [
                     new p5.Vector(width*0.8, height*0.55), //Co-presence
                     new p5.Vector(width*0.4, height*0.15), //Mt Carmel
+                    new p5.Vector(width*0.75, height*0.4), //Valérie Milot
     ];
 
 
@@ -761,7 +764,30 @@ var Landmark = function(_pos, _type, _link){
                     rect(this.half*0.65, 0, this.half*0.1, this.half*0.6);
                     
                 pop();
-            }
+            } else if (this.ensembleNum == 2){ // harp
+                push();
+                    translate(this.half*0.3, 0);
+                    rectMode(CORNER);
+                    fill(accentColors[1]);
+                    noFill();
+                    stroke(accentColors[1]);
+                    beginShape();
+                        vertex(-this.half*0.4, this.half*0.7);
+                        vertex(this.half*0.4, -this.half*0.1);
+                        quadraticVertex(this.half*0.4, -this.half*0.4, this.half*0.2, -this.half*0.3);
+                        quadraticVertex(0, -this.half*0.1, -this.half*0.1, -this.half*0.4);
+                        quadraticVertex(-this.half*0.3, -this.half*0.9, -this.half*0.6, -this.half*0.7);
+                        vertex(-this.half*0.6, this.half*0.7);
+                    endShape(CLOSE);
+
+                    line(-this.half*0.45, -this.half*0.7, -this.half*0.45, this.half*0.7);
+                    line(-this.half*0.3, -this.half*0.7, -this.half*0.3, this.half*0.6);
+                    line(-this.half*0.15, -this.half*0.5, -this.half*0.15, this.half*0.4);
+                    line(0, -this.half*0.2, 0, this.half*0.3);
+                    line(this.half*0.15, -this.half*0.25, this.half*0.15, this.half*0.1);
+                    line(this.half*0.3, -this.half*0.3, this.half*0.3, 0);
+                pop();
+            }   
 
         pop();
     };
@@ -1159,6 +1185,7 @@ function windowResized(){
     concertVectors = [
                         new p5.Vector(width*0.8, height*0.55), //Co-presence
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
+                        new p5.Vector(width*0.75, height*0.4), //Valérie Milot
     ];
 
     for (var i in landmarks){
