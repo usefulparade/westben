@@ -2,6 +2,7 @@
 <html lang="">
 
 <head>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5699788-2"></script>
     <script>
@@ -11,6 +12,14 @@
 
     gtag('config', 'UA-5699788-2');
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MPQQDHJ');</script>
+    <!-- End Google Tag Manager -->
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="expires" content="0">
@@ -29,6 +38,11 @@
 </head>
 
 <body onload="changeCurrentIcon('landmark', 0)">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPQQDHJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div class="programNotes">
         
         
@@ -36,7 +50,7 @@
           <h1>Welcome to The Barn</h1>
           <p>The Barn is your hub at the Westben Digital Venue. So happy you're here!</p>
             <form><button onclick='changeCurrentIcon("concert", 1)' formaction="concerts/2020/mountcarmel.html" target="content"><h3>Watch</h3><p>Jump to the latest Digital Concert at The Barn.</p></button></form>
-            <form><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='_blank'><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button></form>
+            <form id="donateButton"><button onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='_blank'><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button></form>
             <form><button onclick='contentContractFromInside()'><h3>Explore</h3><p>Roam the Digital Venue grounds & make your own discoveries!</p></button></form>
             <!-- <form><button onclick='layerToggle()' formaction="pcr2020program.html" target="content"><h3>See the 2020 PCR</h3></button></form> -->
             <hr>
