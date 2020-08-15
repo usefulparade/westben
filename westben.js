@@ -165,7 +165,7 @@ function setup(){
         ensembles[i].ensembleNum = i;
     }
 
-    for (j=0;j<concertLinks.length-1;j++){
+    for (j=0;j<concertLinks.length;j++){
         concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
         concerts[j].names = concertNames[j];
         concerts[j].rotation = random(0, TWO_PI);
@@ -398,7 +398,6 @@ var Landmark = function(_pos, _type, _link){
             // if this is the current content, put it at the top of the screen
             if (this.isCurrentContent && !contentContainerHidden){
                 this.scale = 1;
-                this.sinCounter = (this.sinCounter + 0.01)%TWO_PI;
                 if (width < 720){
                     translate(-this.pos.x + width/2, -this.pos.y + slideIn);
                 } else {
@@ -458,7 +457,7 @@ var Landmark = function(_pos, _type, _link){
             }
 
             if (this.newest && !this.visited && contentContainerHidden){
-                this.sparkle();
+                this.bird();
             }
 
             if (this.type == 'Barn'){
@@ -971,7 +970,7 @@ var Landmark = function(_pos, _type, _link){
         pop();
     };
 
-    this.sparkle = function(){
+    this.bird = function(){
         push();
             
             // translate(0, this.size*2.2 + sin(frameCount*0.1)*5);
@@ -999,6 +998,7 @@ var Landmark = function(_pos, _type, _link){
             }
 
             scale(0.7);
+            // scale(-1, 0);
             noFill();
             stroke(foregroundColor);
             strokeWeight(3);
