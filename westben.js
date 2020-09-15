@@ -88,11 +88,13 @@ function setup(){
 
     concertNames = ['Co-Presence',
                     'Mount Carmel',
-                    'Valérie Milot'];
+                    'Valérie Milot',
+                    'For the Birds'];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html',
-                    'concerts/2020/valeriemilot.html'
+                    'concerts/2020/valeriemilot.html',
+                    'concerts/2020/forthebirds.html'
                     ];
 
     contentContainerHidden = true;
@@ -137,6 +139,7 @@ function setup(){
                     new p5.Vector(width*0.8, height*0.55), //Co-presence
                     new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                     new p5.Vector(width*0.75, height*0.4), //Valérie Milot
+                    new p5.Vector(width*0.15, height*0.6), //For the Birds
     ];
 
 
@@ -1186,6 +1189,7 @@ function windowResized(){
                         new p5.Vector(width*0.8, height*0.55), //Co-presence
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                         new p5.Vector(width*0.75, height*0.4), //Valérie Milot
+                        new p5.Vector(width*0.15, height*0.6), //For the Birds
     ];
 
     for (var i in landmarks){
