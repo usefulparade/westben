@@ -789,6 +789,51 @@ var Landmark = function(_pos, _type, _link){
                     line(this.half*0.15, -this.half*0.25, this.half*0.15, this.half*0.1);
                     line(this.half*0.3, -this.half*0.3, this.half*0.3, 0);
                 pop();
+            }   else if (this.ensembleNum == 3){ // CHAIR
+                push();
+                    // back frame
+                    noFill();
+                    stroke(accentColors[1]);
+                    beginShape();
+
+                        
+                        vertex(0, this.half*0.7);
+                        vertex(-this.half*0.7, -this.half*0.5);
+                        vertex(0, -this.half*0.7);
+                        vertex(this.half*0.7, this.half*0.5);
+                    endShape();
+                    
+                    //back pad
+                    fill(accentColors[1]);
+                    noStroke();
+                    beginShape();
+                        
+                        vertex(-this.half*0.7, -this.half*0.5);
+                        vertex(0, -this.half*0.7);
+                        vertex(this.half*0.18, -this.half*0.4);
+                        vertex(-this.half*0.48, -this.half*0.2);
+                    endShape();
+
+                    push();
+                        translate(-this.half*0.1, 0);
+                        //chair pad
+                        fill(accentColors[1]);
+                        stroke(accentColors[1]);
+                        noStroke();
+                        beginShape();
+                            vertex(this.half*0.2, this.half*0.3);
+                            vertex(this.half*0.9, this.half*0.1);
+                            vertex(this.half*0.4, -this.half*0.1);
+                            vertex(-this.half*0.3, this.half*0.1);
+                        endShape(CLOSE);
+                        
+                        stroke(accentColors[1]);
+                        //back legs
+                        line(this.half*0.4, -this.half*0.1, this.half*0.4, this.half*0.4);    
+                        line(-this.half*0.3, this.half*0.1, -this.half*0.3, this.half*0.6);
+                    pop();
+                
+                pop();
             }   
 
         pop();
