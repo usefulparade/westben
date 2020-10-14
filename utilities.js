@@ -599,7 +599,7 @@ function startFromHash(){
     var params = new URLSearchParams(document.location.search.substring(1));
     var page = params.get("page");
     var layer = params.get("layer");
-    var map = params.get("map");
+    var barndoor = params.get("barndoor");
 
     if (url.hash == ""){
         document.getElementById('content').src = 'welcome.html';
@@ -620,8 +620,10 @@ function startFromHash(){
     if (layer != null){
         if (layer == "pcr2020"){
             layerToggle(0);
-        } else if (layer == "digital2020"){
+        } else if (layer == "concerts2020"){
             layerToggle(1);
+        } else {
+            layerToggle(0);
         }
     }
 
@@ -632,9 +634,18 @@ function startFromHash(){
             document.getElementById('content').src = 'milkshed.html';
         } else if (page == "ticketshed"){
             
-            
         } else {
             document.getElementById('content').src = 'welcome.html';
+        }
+    }
+
+    if (barndoor != null){
+        if (barndoor == "up"){
+            contentExpand();
+        } else if (barndoor == "down"){
+            contentContract();
+        } else {
+            contentExpand();
         }
     }
 
