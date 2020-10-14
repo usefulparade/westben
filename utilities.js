@@ -594,8 +594,51 @@ function sectionToggle(_num){
 
 }
 
-function startWithWelcome(){
-    document.getElementById('content').src = 'welcome.html';
+function startFromHash(){
+    var url = new URL(window.location);
+    var params = new URLSearchParams(document.location.search.substring(1));
+    var page = params.get("page");
+    var layer = params.get("layer");
+    var map = params.get("map");
+
+    if (url.hash == ""){
+        document.getElementById('content').src = 'welcome.html';
+    } else if (url.hash == "#milkshed"){
+        document.getElementById('content').src = 'milkshed.html';
+    }
+
+    if (url.hash == "#pcr2020"){
+        layerToggle(0);
+    } else {
+        layerToggle(1);
+    }
+
+    if (url.hash == "#map"){
+        contentContract();
+    }
+
+    if (layer != null){
+        if (layer == "pcr2020"){
+            layerToggle(0);
+        } else if (layer == "digital2020"){
+            layerToggle(1);
+        }
+    }
+
+    if (page != null){
+        if (page == "barn" || page == "home"){
+            document.getElementById('content').src = 'welcome.html';
+        } else if (page == "milkshed"){
+            document.getElementById('content').src = 'milkshed.html';
+        } else if (page == "ticketshed"){
+            
+            
+        } else {
+            document.getElementById('content').src = 'welcome.html';
+        }
+    }
+
+    programLayerMatch();
 
 }
 

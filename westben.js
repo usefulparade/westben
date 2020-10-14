@@ -89,12 +89,14 @@ function setup(){
     concertNames = ['Co-Presence',
                     'Mount Carmel',
                     'Valérie Milot',
-                    'For the Birds'];
+                    'For the Birds',
+                    'Brian Manker'];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html',
                     'concerts/2020/valeriemilot.html',
-                    'concerts/2020/forthebirds.html'
+                    'concerts/2020/forthebirds.html',
+                    'concerts/2020/brianmanker.html'
                     ];
 
     contentContainerHidden = true;
@@ -140,6 +142,7 @@ function setup(){
                     new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                     new p5.Vector(width*0.75, height*0.4), //Valérie Milot
                     new p5.Vector(width*0.15, height*0.6), //For the Birds
+                    new p5.Vector(width*0.65, height*0.7), //Brian Manker
     ];
 
 
@@ -207,16 +210,18 @@ function setup(){
         themeToggle();
     }
 
-    matchTheme();
-    startWithWelcome();
-    contentExpand();
-
     pcr2020Toggle = true;
     currentLayer = 1;
     slideIn = -35;
 
-    layerToggle();
-    layerToggle();
+    matchTheme();
+    contentExpand();
+    startFromHash();
+   
+
+
+    // layerToggle();
+    // layerToggle();
 
     
 }
@@ -834,7 +839,17 @@ var Landmark = function(_pos, _type, _link){
                     pop();
                 
                 pop();
-            }   
+            } else if (this.ensembleNum == 4){ // brian manker
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+                    line(this.half, 0, -this.half, 0);
+                    line(-this.half*0.2, this.half, -this.half*0.2, -this.half);
+                    line(-this.half*0.067, this.half, -this.half*0.067, -this.half);
+                    line(this.half*0.067, this.half, this.half*0.067, -this.half);
+                    line(this.half*0.2, this.half, this.half*0.2, -this.half);
+                pop();
+            }
 
         pop();
     };
@@ -1235,6 +1250,7 @@ function windowResized(){
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                         new p5.Vector(width*0.75, height*0.4), //Valérie Milot
                         new p5.Vector(width*0.15, height*0.6), //For the Birds
+                        new p5.Vector(width*0.65, height*0.7), //Brian Manker
     ];
 
     for (var i in landmarks){
@@ -1303,7 +1319,10 @@ function deviceTurned(){
     concertVectors = [
                         new p5.Vector(width*0.8, height*0.55), //Co-presence
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
-            ];
+                        new p5.Vector(width*0.75, height*0.4), //Valérie Milot
+                        new p5.Vector(width*0.15, height*0.6), //For the Birds
+                        new p5.Vector(width*0.65, height*0.7), //Brian Manker
+                    ];
 
     for (var i in landmarks){
         var landmarkSize = map(((width+height)/2), 500, 1200, 30, 50);
