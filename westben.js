@@ -332,7 +332,7 @@ function roads(){
     push();
         noFill();
         stroke(foregroundColor);
-        strokeWeight(1);
+        strokeWeight(2);
 
         var x1 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.1);
         var y1 = bezierPoint(0, height, height, height*0.66, 0.1);
