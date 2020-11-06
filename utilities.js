@@ -114,10 +114,10 @@ function layerToggle(_layer){
 
     if (currentLayer == 0){
         // document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Performer-Composer Residency';
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Performer-Composer Residency';
     } else if (currentLayer == 1) {
         // document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Digital Concerts';
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Digital Concerts';
     }
 }
 
