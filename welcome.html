@@ -53,7 +53,8 @@
           </div>
           <p>Welcome to Westben’s Digital Venue, a sound-playground inspired by the geography of this special place. The Barn is a hub for navigating the site. Most of all, we encourage you to play.</p>
             <form><button onclick='changeCurrentIcon("concert", 4)' formaction="concerts/2020/brianmanker.html" target="content"><h3>Watch</h3><p>Jump to the latest Digital Concert at The Barn.</p></button></form>
-            <form target='_blank'><button id="donateButton" formaction='https://tickets.westben.ca/TheatreManager/1/login?donationcampaigns' ><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button></form>
+            <form target='_blank' method="GET"><button id="donateButton" formaction='https://tickets.westben.ca/TheatreManager/1/login'><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button>
+            <input type="hidden" name="donationcampaigns"></form>
             <form><button onclick='contentContractFromInside()'><h3>Explore</h3><p>Roam the Digital Venue grounds & make your own discoveries!</p></button></form>
             
             <hr>
