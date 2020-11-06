@@ -48,14 +48,17 @@
         
         <div class="programNotesInner">
           <h1>Welcome to The Barn</h1>
-          <p>The Barn is your hub at the Westben Digital Venue. So happy you're here!</p>
+          <div class="barnheader">
+            <img src="img/barn-header.jpg">
+          </div>
+          <p>Welcome to Westben’s Digital Venue, a sound-playground inspired by the geography of this special place. The Barn is a hub for navigating the site. Most of all, we encourage you to play.</p>
             <form><button onclick='changeCurrentIcon("concert", 4)' formaction="concerts/2020/brianmanker.html" target="content"><h3>Watch</h3><p>Jump to the latest Digital Concert at The Barn.</p></button></form>
-            <form><button id="donateButton" onclick='changeCurrentIcon("landmark", 2)' formaction='https://www.westben.ca/donate' target='_blank'><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button></form>
+            <form target='_blank'><button id="donateButton" formaction='https://tickets.westben.ca/TheatreManager/1/login?donationcampaigns' ><h3>Donate</h3><p>Support this experience with a tax deductible donation.</p></button></form>
             <form><button onclick='contentContractFromInside()'><h3>Explore</h3><p>Roam the Digital Venue grounds & make your own discoveries!</p></button></form>
             
             <hr>
             <div class="schedlule">
-              <h1 class="concertSchedule">❏ Concert Schedule:
+              <h1 class="concertSchedule">Choose a Concert Series:
                 
               <select class="programSelect" name='layers' id='layers' autocomplete="off" onchange="layerToggleFromInside(this)">
                 <option value='1' selected>2020 Digital Concerts</option>
@@ -127,9 +130,10 @@
 
                 <div class="program" id="pcr2020" style="display: none;">
                   <!-- <h2>Performer/Composer Residency // 2020</h2> -->
-                  <p>PCR usually meets in person. But with the disruptions of COVID-19, Westben invited anyone who applied to PCR to participate in a digitally facilitated residency. What you experience on this site is the creative harvest of a month-long experiment in international musical collaborations from 61 participants in over 10 countries. </p>
+                  
 
                   <!-- <p>Westben welcomes you to listen and engage during the week of the premieres (​July 5-July 11, 2020)​ and beyond, right here in Westben’s new digital venue​! On this program, you'll find 13 pieces co-created by the 2020 PCR ensembles, as well as other exciting offerings, and more information about PCR.</p> -->
+                  <h2 style="text-align: center;"><a href="bios.html">Participant Bios</a></h2>
                   <table class="schedule">
                     <tr>
                       <td><p>Premiere Date</p></td>
@@ -213,14 +217,19 @@
                     </tr>
                   </table>
 
+                  <div class="videoWrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/iwbI9XmU3n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+
+                  <p>PCR usually meets in person. But with the disruptions of COVID-19, Westben invited anyone who applied to PCR to participate in a digitally facilitated residency. What you experience on this site is the creative harvest of a month-long experiment in international musical collaborations from 61 participants in over 10 countries.</p>
+                
+
                   <!-- <hr> -->
                   <h2>⬊ <a href="javascript:void(0)" onclick="sectionToggle(0)">more about the 2020 PCR</a></h2>
                   
                   <div class="toggleSection">
                     
-                    <div class="videoWrapper">
-                      <iframe width="560" height="315" src="https://www.youtube.com/embed/iwbI9XmU3n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                    
                     <h2>A hello from the PCR’s Creative Director Ben Finley</h2>
                     <p>The international and intergenerational Westben Performer-Composer Residency (PCR) is a supportive and vibrant meeting ​space​ welcoming all kinds of listeners and music makers who have some hybrid of compositional and performance practices. PCR—digitally and in person—is a ​place t​o exchange and connect diverse musical backgrounds in community.</p>
                     <p>For the past two years, Westben’s PCR has had the in-person capacity to accept 11 applicants. This year, with COVID-19, Westben flipped the adjudication script and invited anyone who applied to join. 62 were able to participate. These multi-geographical performer-composers, all in isolation, digitally collaborated across 10 countries and many time zones, including: Argentina, Mexico, Germany, Iran, Tunisia, Panama, China, Netherlands, and all across the United States and Canada. Participants were assigned to one of 13 unique ensembles of intersecting interests. They collaborated from June 1st-June 30th, 2020. They started by getting to know each other and their environments, creating work from their local soil. With the organizing of facilitators Ben Finley, Sarah Belle Reid and Davy Sumner, each ensemble has co-created a 15 minute multimedia work to share with you here.</p>

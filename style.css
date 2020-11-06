@@ -324,6 +324,8 @@ button:hover {
     stroke: none;
     background-color: var(--bg-color);
     border-radius: 100px;
+    border: 20px var(--fg-color);
+    
 }
 
 .svgLogo:hover {
@@ -345,8 +347,9 @@ button:hover {
 }
 
 .svgBarn {
-    fill: var(--fg-color);
-    stroke: none;
+    fill: none;
+    stroke: var(--fg-color);
+    stroke-width: 14px;
     background-color: var(--bg-color);
     border: 3px solid var(--fg-color);
     border-radius: 100px;
@@ -356,7 +359,7 @@ button:hover {
 
 .svgBarn:hover {
     /* transform: scale(1.2); */
-    fill: var(--bg-color);
+    stroke: var(--bg-color);
     background-color: var(--fg-color);
     border: 3px solid var(--bg-color);
 }
@@ -535,6 +538,18 @@ select.programSelect:hover {
     border: 1px solid var(--bg-color);
     background-color: var(--fg-color);
     cursor: pointer;
+}
+
+.barnheader img {
+    display: block;
+    position: relative;
+    width: 80%;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18px;
+    vertical-align: top;
+    border: 4px solid var(--fg-color);
 }
 
 .behindTheScenes img {
