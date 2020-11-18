@@ -1,14 +1,19 @@
 var contentContainerHidden;
 var content;
+var paletteParam, themeParam;
 
 // ☼ ☽
 
 function contentToggle(){
+    
     if (contentContainerHidden){
-        contentExpand();
+        contentExpand(); 
     } else {
         contentContract();
     }
+
+    
+    
 }
 
 function contentExpand(){
@@ -26,7 +31,7 @@ function contentExpand(){
     }
     document.getElementById('aboveContent').style = 'height: 70px';
     currentIcon.isCurrentContent = true;
-    setTimeout(function(){contentContainerHidden = false;}, 400);
+    setTimeout(function(){contentContainerHidden = false;updateURL();}, 400);
     resizeIframe();
     matchTheme();
 
@@ -45,7 +50,7 @@ function contentContract(){
     mapIcon.style.setProperty('display', 'none');
     pinIcon.style.setProperty('display', 'block');
 
-    setTimeout(function(){contentContainerHidden = true;}, 400);
+    setTimeout(function(){contentContainerHidden = true;updateURL();}, 400);
     // currentIcon.isCurrentContent = false;
     document.getElementById('aboveContent').style = 'height: 0px';
     content.style = 'height: 10%';
@@ -98,6 +103,8 @@ function paletteToggle(){
         document.getElementById('paletteCaption').innerHTML = 'Palette: Snow';
     }
     matchTheme();
+
+    paletteParam = colorPalette;
 }
 
 
@@ -119,6 +126,8 @@ function layerToggle(_layer){
         // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Digital Concerts';
     }
+
+    updateURL();
 }
 
 function layerToggleFromInside(_x){
@@ -130,25 +139,27 @@ function layerToggleFromInside(_x){
     if (_x.value == 0){
         window.parent.pcr2020Toggle = true;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Performer-Composer Residency';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Performer-Composer Residency';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
     } else if (_x.value == 1) {
         window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Schedule: 2020 Digital Concerts';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Digital Concerts';
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
     }
-    
+
+    updateURLFromInside();
+
 }
 
 function programLayerMatch(){
     var iframe = document.getElementById('content');
-    var layerSelect = iframe.contentDocument.getElementById('layers');
-    layerSelect.value = currentLayer;
-
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
+        var layerSelect = iframe.contentDocument.getElementById('layers');
+        layerSelect.value = currentLayer;
+    
         // console.log('hi');
         if (currentLayer == 0){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
@@ -182,7 +193,11 @@ function navHover(_nav){
         navCaption.innerHTML = "Watch the latest concert";
     }
 
-    navCaption.style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+    if (contentContainerHidden){
+        navCaption.style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+    } else {
+        navCaption.style.setProperty('animation', 'fadeIn 0.01s ease forwards');
+    }
 }
 
 function navType(_nav){
@@ -214,16 +229,28 @@ function navTouch(_nav){
 }
 
 function navHide(){
-    document.getElementById('navCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+    if (contentContainerHidden){
+        document.getElementById('navCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+    } else {
+        document.getElementById('navCaption').style.setProperty('animation', 'fadeOut 0.01s ease forwards');
+    }
 }
 
 function layerHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('layerCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
-        // setTimeout(layerHover, 1000);
+        if (contentContainerHidden){
+            document.getElementById('layerCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        } else {
+            document.getElementById('layerCaption').style.setProperty('animation', 'fadeIn 0.01s ease forwards');
+        }
+        
     } else {
-        document.getElementById('layerCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        if (contentContainerHidden){
+            document.getElementById('layerCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        } else {
+            document.getElementById('layerCaption').style.setProperty('animation', 'fadeOut 0.01s ease forwards');
+        }
     }
 }
 
@@ -235,9 +262,18 @@ function layerTouch(){
 function paletteHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('paletteCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        if (contentContainerHidden){
+            document.getElementById('paletteCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        } else {
+            document.getElementById('paletteCaption').style.setProperty('animation', 'fadeIn 0.01s ease forwards');
+        }
+        
     } else {
-        document.getElementById('paletteCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        if (contentContainerHidden){
+            document.getElementById('paletteCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        } else {
+            document.getElementById('paletteCaption').style.setProperty('animation', 'fadeOut 0.01s ease forwards');
+        }
     }
 }
 
@@ -249,9 +285,18 @@ function paletteTouch(){
 function themeHover(_inOut){
 
     if (_inOut == 1){
-        document.getElementById('themeCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        if (contentContainerHidden){
+            document.getElementById('themeCaption').style.setProperty('animation', 'fadeIn 0.5s ease forwards');
+        } else {
+            document.getElementById('themeCaption').style.setProperty('animation', 'fadeIn 0.01s ease forwards');
+        }
+        
     } else {
-        document.getElementById('themeCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        if (contentContainerHidden){
+            document.getElementById('themeCaption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
+        } else {
+            document.getElementById('themeCaption').style.setProperty('animation', 'fadeOut 0.01s ease forwards');
+        }
     }
 }
 
@@ -305,6 +350,7 @@ function dayTheme(){
 function loadNewIframeContent(_link){
     
     window.frames[0].location = _link;
+    
     // console.log('changing iframe');
     // matchTheme();
 
@@ -319,7 +365,6 @@ function matchTheme(){
 }
 
 function iframeLoaded(){
-    
     matchTheme();
     var iframe = document.getElementById('content');
     var endMatter = iframe.contentDocument.getElementById('endMatter');
@@ -327,9 +372,9 @@ function iframeLoaded(){
         endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" + 
         '<p>A <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>';
     }
-
     programLayerMatch();
-    // console.log('themeMatched');
+    // startFromHash();
+    updateURL(); 
 }
 
 function matchThemeInner(){
@@ -343,21 +388,186 @@ function matchThemeInner(){
 }
 
 function changeCurrentIcon(type, num){
-    console.log('hi!');
-    window.parent.currentIcon.isCurrentContent = false;
-    // window.parent.currentIcon = null;
-    if (type == 'ensemble'){
-        window.parent.currentIcon = window.parent.ensembles[num];
-        window.parent.ensembles[num].isCurrentContent = true;
-    } else if (type == 'landmark'){
-        window.parent.currentIcon = window.parent.landmarks[num];
-        window.parent.landmarks[num].isCurrentContent = true;
-    } else if (type == 'concert'){
-        window.parent.currentIcon = window.parent.concerts[num];
-        window.parent.concerts[num].isCurrentContent = true;
+    // console.log('hi!');
+    //if it's not null
+    if (window.parent.currentIcon){
+        window.parent.currentIcon.isCurrentContent = false;
+
+        if (type == 'ensemble'){
+            window.parent.currentIcon = window.parent.ensembles[num];
+            window.parent.ensembles[num].isCurrentContent = true;
+        } else if (type == 'landmark'){
+            window.parent.currentIcon = window.parent.landmarks[num];
+            window.parent.landmarks[num].isCurrentContent = true;
+        } else if (type == 'concert'){
+            window.parent.currentIcon = window.parent.concerts[num];
+            window.parent.concerts[num].isCurrentContent = true;
+        }
     }
 }
 
+function startFromHash(){
+    var url = new URL(window.location);
+    var params = new URLSearchParams(document.location.search.substring(1));
+    var page = params.get("page");
+    var layer = params.get("layer");
+    var state = params.get("state");
+
+    var mapIcon = document.getElementById('mapIcon');
+    var pinIcon = document.getElementById('pinIcon');
+    
+
+    if (url.hash == ""){
+        document.getElementById('content').src = 'welcome.html';
+    } else if (url.hash == "#milkshed"){
+        document.getElementById('content').src = 'milkshed.html';
+    }
+
+    if (url.hash == "#pcr2020"){
+        layerToggle(0);
+    } else {
+        layerToggle(1);
+    }
+
+    if (url.hash == "#map"){
+        contentContract();
+    }
+
+    if (layer != null){
+        if (layer == "1"){
+            layerToggle(0);
+        } else if (layer == "2"){
+            layerToggle(1);
+        } else {
+            layerToggle(0);
+        }
+    }
+
+    if (page != null){
+        document.getElementById('content').src = page + '.html';
+        if (page == "apple" || page == "banana" || page == "cedar" || page == "green" || page == "lemon" || page == "maple" || page == "oak" || page == "pine" || page == "pink" || page == "purple" || page == "turquoise" || page == "watermelon" || page == "yellow"){
+            document.getElementById('content').src = 'ensembles/' + page + '.html';
+            if (currentLayer != 0){
+                layerToggle();
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "ensembles/" + page + ".html";
+            currentIcon = ensembles[ensembleLinks.indexOf(lookup)];
+            ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
+
+
+        } else if (page == "whatyousaw"){
+            document.getElementById('content').src = 'ensembles/mightnotfindwhatyousaw/index' + page + '.html';
+            if (currentLayer != 0){
+                layerToggle();
+                
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            currentIcon = ensembles[0];
+            ensembles[0].isCurrentContent = true;
+        } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot"){
+            document.getElementById('content').src = 'concerts/2020/' + page + '.html';
+            if (currentLayer != 1){
+                layerToggle();
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "concerts/2020/" + page + ".html";
+            currentIcon = concerts[concertLinks.indexOf(lookup)];
+            concerts[concertLinks.indexOf(lookup)].isCurrentContent = true;
+
+        } else {
+            document.getElementById('content').src = '' + page + '.html';
+        }
+        contentExpand();
+        
+    } else {
+        mapIcon.style.setProperty('display', 'none');
+        pinIcon.style.setProperty('display', 'block');
+    }
+
+    if (state != null){
+        if (barndoor == "content"){
+            contentExpand();
+        } else if (barndoor == "map"){
+            contentContract();
+        } else {
+            contentContract();
+        }
+    }
+
+    hashAnalyzed = true;
+    programLayerMatch();
+
+}
+
+function updateURL(){
+    
+    var page = "" + window.frames[0].location;
+    page.slice(0, page.indexOf('.'));
+    var currentLocation = "" + window.location;
+    var cleanPage = page.slice(page.lastIndexOf("/") + 1, page.lastIndexOf("."));
+    if (cleanPage == "index"){
+        cleanPage = "whatyousaw";
+    }
+    
+
+    var paramStart = "/?";
+    var newPage;
+    if (contentContainerHidden){
+        newPage = "";
+    } else {
+        newPage = "page=" + cleanPage + "&";
+    }
+    var newLayer = "layer=" + (parseInt(currentLayer) + 1);
+    var newTitle = "";
+
+    var baseURL = currentLocation.slice(0, currentLocation.lastIndexOf('/'));
+
+    var newURL = baseURL + paramStart + newPage + newLayer;
+    var newState = { additionalInformation: 'Updated the URL with JS' };
+    console.log(newURL);
+
+    if (hashAnalyzed){
+        window.history.replaceState(newState, newTitle, newURL);
+    }
+}
+
+function updateURLFromInside(){
+    
+    var page = "" + window.parent.window.frames[0].location;
+    page.slice(0, page.indexOf('.'));
+    var currentLocation = "" + window.parent.window.location;
+    var cleanPage = page.slice(page.lastIndexOf("/") + 1, page.lastIndexOf("."));
+    if (cleanPage == "index"){
+        cleanPage = "whatyousaw";
+    }
+    // console.log(cleanPage);
+    var paramStart = "/?";
+    var newPage = "page=" + cleanPage + "&";
+    // var thisLayer = window.parent.currentLayer;
+    var newLayer = "layer=" + (parseInt(window.parent.currentLayer) + 1);
+    var newTitle = "";
+    var baseURL = currentLocation.slice(0, currentLocation.lastIndexOf('/'));
+    var newURL = baseURL + paramStart + newPage + newLayer;
+    var newState = { additionalInformation: 'Updated the URL with JS' };
+    console.log(newURL);
+
+    if (window.parent.hashAnalyzed){
+        window.parent.window.history.replaceState(newState, newTitle, newURL);
+    }
+}
+
+
+
+
+
+
+
+
+/// PCR 2020 SPECIFIC STUFF
 
 
 
@@ -593,63 +803,3 @@ function sectionToggle(_num){
     }
 
 }
-
-function startFromHash(){
-    var url = new URL(window.location);
-    var params = new URLSearchParams(document.location.search.substring(1));
-    var page = params.get("page");
-    var layer = params.get("layer");
-    var barndoor = params.get("barndoor");
-
-    if (url.hash == ""){
-        document.getElementById('content').src = 'welcome.html';
-    } else if (url.hash == "#milkshed"){
-        document.getElementById('content').src = 'milkshed.html';
-    }
-
-    if (url.hash == "#pcr2020"){
-        layerToggle(0);
-    } else {
-        layerToggle(1);
-    }
-
-    if (url.hash == "#map"){
-        contentContract();
-    }
-
-    if (layer != null){
-        if (layer == "pcr2020"){
-            layerToggle(0);
-        } else if (layer == "concerts2020"){
-            layerToggle(1);
-        } else {
-            layerToggle(0);
-        }
-    }
-
-    if (page != null){
-        if (page == "barn" || page == "home"){
-            document.getElementById('content').src = 'welcome.html';
-        } else if (page == "milkshed"){
-            document.getElementById('content').src = 'milkshed.html';
-        } else if (page == "ticketshed"){
-            
-        } else {
-            document.getElementById('content').src = 'welcome.html';
-        }
-    }
-
-    if (barndoor != null){
-        if (barndoor == "up"){
-            contentExpand();
-        } else if (barndoor == "down"){
-            contentContract();
-        } else {
-            contentExpand();
-        }
-    }
-
-    programLayerMatch();
-
-}
-

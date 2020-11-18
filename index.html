@@ -27,6 +27,7 @@
     <title>Westben Digital Venue</title>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="landmarks.js"></script>
     <script src="westben.js"></script>
     <script src="utilities.js"></script>
     <link rel="icon" href="img/favi-3.png"  type="image/png">
@@ -619,7 +620,7 @@
             </div>
         
             <div class="contentIcon" onclick="contentToggle()" onmouseover="navHover('map')" onmouseout="navHide()" ontouchstart="navTouch('map')">
-                <!-- <h1 id="contentIcon">&#10548;&#xFE0E;</h1> -->
+               
                 <svg version="1.1" id="mapIcon" style="display: block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                     <g>
@@ -658,7 +659,7 @@
             <button onclick="closeDonateModal()"><h3>No thanks, just give me the music!</h3></button>
         </div>
         
-        <iframe id='content' name='content' onload="iframeLoaded()" src="welcome.html" allow="fullscreen" allowfullscreen></iframe>
+        <iframe id='content' name='content' onload="iframeLoaded()" src="" allow="fullscreen" allowfullscreen></iframe>
 
     </div>
     
