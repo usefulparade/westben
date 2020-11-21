@@ -176,7 +176,7 @@ function setup(){
         ensembles[i].ensembleNum = i;
     }
 
-    for (j=0;j<concertLinks.length-1;j++){
+    for (j=0;j<concertLinks.length;j++){
         concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
         concerts[j].names = concertNames[j];
         concerts[j].rotation = random(0, TWO_PI);
