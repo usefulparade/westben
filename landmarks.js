@@ -488,13 +488,54 @@ var Landmark = function(_pos, _type, _link){
                     line(this.half*0.067, this.half, this.half*0.067, -this.half);
                     line(this.half*0.2, this.half, this.half*0.2, -this.half);
                 pop();
-            }  else if (this.ensembleNum == 5){ // jordan mowat
+            } else if (this.ensembleNum == 5){ // jordan mowat
                 push();
                     noFill();
                     stroke(accentColors[1]);
                     rectMode(CENTER);
                     rect(0, 0, this.half*0.2, this.half*0.4);
                     line(0, this.half*0.2, 0, this.half*1.5);
+                pop();
+            }  else if (this.ensembleNum == 6){ // christmas
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+                    beginShape();
+                        vertex(0, this.half*0.7);
+                        // right side
+                        vertex(this.half*0.3, this.half*0.4);
+                        vertex(this.half*0.15, this.half*0.4);
+                        vertex(this.half*0.4, 0);
+                        vertex(this.half*0.2, 0);
+                        vertex(this.half*0.5, -this.half*0.4);
+                        vertex(this.half*0.1, -this.half*0.4);
+                        // trunk
+                        vertex(this.half*0.1, -this.half*0.7);
+                        vertex(-this.half*0.1, -this.half*0.7);
+                        // left side
+                        vertex(-this.half*0.1, -this.half*0.4);
+                        vertex(-this.half*0.5, -this.half*0.4);
+                        vertex(-this.half*0.2, 0);
+                        vertex(-this.half*0.4, 0);
+                        vertex(-this.half*0.15, this.half*0.4);
+                        vertex(-this.half*0.3, this.half*0.4);
+                    endShape(CLOSE);
+
+                    push();
+                        stroke(lightColors[colorPalette]);
+                        strokeWeight(random(1.5,2.5));
+                        point(this.half*0.2,-this.half*0.3);
+                        point(this.half*0.3,-this.half*0.25);
+                        point(-this.half*0.3,-this.half*0.2);
+                        point(0,0);
+                        point(-this.half*0.2,this.half*0.1);
+                        point(this.half*0.25,this.half*0.15);
+                        point(-this.half*0.08,this.half*0.3);
+                        // point(this.half*0.2,this.half*0.4);
+                        point(-this.half*0.1,this.half*0.5);
+                        point(this.half*0.05,this.half*0.6);
+                    pop();
+                    
                 pop();
             }
 
