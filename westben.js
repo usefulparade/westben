@@ -150,7 +150,7 @@ function setup(){
                     new p5.Vector(width*0.15, height*0.6), //For the Birds
                     new p5.Vector(width*0.65, height*0.7), //Brian Manker
                     new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
-                    new p5.Vector(width*0.1, height*0.2), //Christmas
+                    new p5.Vector(width*0.55, height*0.2), //Christmas
     ];
 
 
@@ -555,7 +555,7 @@ function windowResized(){
                         new p5.Vector(width*0.15, height*0.6), //For the Birds
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
-                        new p5.Vector(width*0.1, height*0.2), //Christmas
+                        new p5.Vector(width*0.55, height*0.2), //Christmas
     ];
 
     for (var i in landmarks){
@@ -628,7 +628,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.15, height*0.6), //For the Birds
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
-                        new p5.Vector(width*0.1, height*0.2), //Christmas
+                        new p5.Vector(width*0.55, height*0.2), //Christmas
                     ];
 
     for (var i in landmarks){
