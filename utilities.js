@@ -124,7 +124,7 @@ function layerToggle(_layer){
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Performer-Composer Residency';
     } else if (currentLayer == 1) {
         // document.getElementById('layerIcon').innerHTML = '❏';
-        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Digital Concerts';
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
     }
 
     updateURL();
@@ -145,7 +145,7 @@ function layerToggleFromInside(_x){
     } else if (_x.value == 1) {
         window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
-        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Digital Concerts';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
     }

@@ -139,6 +139,16 @@ table.schedule tr:last-child td:nth-child(even){
     /* border-bottom: 2px dashed var(--fg-color); */
 }
 
+table.schedule tr.season td{
+    background-color: var(--fg-color);
+}
+
+table.schedule tr.season td h1 {
+    color: var(--bg-color);
+    text-align: left;
+    vertical-align: bottom;
+}
+
 
 
 form {
