@@ -537,6 +537,33 @@ var Landmark = function(_pos, _type, _link){
                     pop();
                     
                 pop();
+            }   else if (this.ensembleNum == 7){ // barbra lica
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+                    rectMode(CENTER);
+                    rect(0, 0, this.half*0.75, this.half, 7);
+                    line(-this.half*0.25, this.half*0.3, 0, this.half*0.3);
+                    line(-this.half*0.25, this.half*0.15, 0, this.half*0.15);
+                    line(-this.half*0.25, 0, 0, 0);
+                    line(-this.half*0.25, -this.half*0.15, 0, -this.half*0.15);
+
+                    line(this.half*0.25, this.half*0.3, this.half*0.15, this.half*0.3);
+                    line(this.half*0.25, this.half*0.15, this.half*0.15, this.half*0.15);
+                    line(this.half*0.25, 0, this.half*0.15, 0);
+                    line(this.half*0.25, -this.half*0.15, this.half*0.15, -this.half*0.15);
+
+                    line(0, -this.half*0.4, 0, -this.half*0.3);
+                    line(this.half*0.15, -this.half*0.4, this.half*0.15, -this.half*0.3);
+                    line(-this.half*0.15, -this.half*0.4, -this.half*0.15, -this.half*0.3);
+
+                    line(-this.half*0.05, this.half, -this.half*0.05, this.half*0.65);
+                    line(this.half*0.05, this.half, this.half*0.05, this.half*0.65);
+                    // line(-this.half*0.4, this.half*0.7, this.half*0.4, this.half*0.7);
+                    // line(-this.half*0.25, -this.half*0.3, 0, -this.half*0.3);
+
+                pop();
+                    
             }
 
         pop();

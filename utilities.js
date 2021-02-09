@@ -467,7 +467,7 @@ function startFromHash(){
             currentIcon.isCurrentContent = false;
             currentIcon = ensembles[0];
             ensembles[0].isCurrentContent = true;
-        } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot" || page == "treeoflight"){
+        } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot" || page == "treeoflight" || page == "barbralica"){
             document.getElementById('content').src = 'concerts/2020/' + page + '.html';
             if (currentLayer != 1){
                 layerToggle();
@@ -559,12 +559,6 @@ function updateURLFromInside(){
         window.parent.window.history.replaceState(newState, newTitle, newURL);
     }
 }
-
-
-
-
-
-
 
 
 /// PCR 2020 SPECIFIC STUFF

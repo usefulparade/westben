@@ -94,7 +94,8 @@ function setup(){
                     'For the Birds',
                     'Brian Manker',
                     'Jordan Mowat',
-                    'Tree of Light'];
+                    'Tree of Light',
+                    'Barbra Lica'];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html',
@@ -102,7 +103,8 @@ function setup(){
                     'concerts/2020/forthebirds.html',
                     'concerts/2020/brianmanker.html',
                     'concerts/2020/jordanmowat.html',
-                    'concerts/2020/treeoflight.html'
+                    'concerts/2020/treeoflight.html',
+                    'concerts/2020/barbralica.html'
                     ];
 
     contentContainerHidden = true;
@@ -151,6 +153,7 @@ function setup(){
                     new p5.Vector(width*0.65, height*0.7), //Brian Manker
                     new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                     new p5.Vector(width*0.55, height*0.2), //Christmas
+                    new p5.Vector(width*0.1, height*0.4), //Barbra Lica
     ];
 
 
@@ -556,6 +559,7 @@ function windowResized(){
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
+                        new p5.Vector(width*0.1, height*0.4), //Barbra Lica
     ];
 
     for (var i in landmarks){
@@ -629,6 +633,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
+                        new p5.Vector(width*0.1, height*0.4), //Barbra Lica
                     ];
 
     for (var i in landmarks){
