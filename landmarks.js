@@ -564,6 +564,36 @@ var Landmark = function(_pos, _type, _link){
 
                 pop();
                     
+            }   else if (this.ensembleNum == 8){ // fitzgeralds
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+                    translate(0, this.half*0.1);
+                    rectMode(CENTER);
+                    //scroll
+                    rect(0, this.half*0.4, this.half*0.3, this.half*0.5);
+                    line(-this.half*0.25, this.half*0.55, -this.half*0.25, this.half*0.25);
+                    line(-this.half*0.35, this.half*0.45, -this.half*0.35, this.half*0.35);
+                    line(this.half*0.25, this.half*0.55, this.half*0.25, this.half*0.25);
+                    line(this.half*0.35, this.half*0.45, this.half*0.35, this.half*0.35);
+
+                    //rest of head
+                    rect(0, -this.half*0.3, this.half*0.25, this.half*0.9);
+
+                    //tuning pegs
+                    line(this.half*0.25, 0, this.half*0.15, 0);
+                    line(-this.half*0.25, -this.half*0.2, -this.half*0.15, -this.half*0.2);
+                    line(this.half*0.25, -this.half*0.4, this.half*0.15, -this.half*0.4);
+                    line(-this.half*0.25, -this.half*0.6, -this.half*0.15, -this.half*0.6);
+
+                    arc(this.half*0.4, 0, this.half*0.3, this.half*0.3, -QUARTER_PI, HALF_PI+QUARTER_PI);
+                    ellipse(-this.half*0.4, -this.half*0.2, this.half*0.3, this.half*0.3);
+                    ellipse(this.half*0.4, -this.half*0.4, this.half*0.3, this.half*0.3);
+                    arc(-this.half*0.4, -this.half*0.6, this.half*0.3, this.half*0.3, HALF_PI+QUARTER_PI, PI+HALF_PI+QUARTER_PI);
+
+
+                pop();
+                    
             }
 
         pop();

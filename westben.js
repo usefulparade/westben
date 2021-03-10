@@ -95,7 +95,8 @@ function setup(){
                     'Brian Manker',
                     'Jordan Mowat',
                     'Tree of Light',
-                    'Barbra Lica'];
+                    'Barbra Lica',
+                    'Fitzgeralds'];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html',
@@ -104,7 +105,8 @@ function setup(){
                     'concerts/2020/brianmanker.html',
                     'concerts/2020/jordanmowat.html',
                     'concerts/2020/treeoflight.html',
-                    'concerts/2020/barbralica.html'
+                    'concerts/2020/barbralica.html',
+                    'concerts/2020/fitzgeralds.html'
                     ];
 
     contentContainerHidden = true;
@@ -154,6 +156,7 @@ function setup(){
                     new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                     new p5.Vector(width*0.55, height*0.2), //Christmas
                     new p5.Vector(width*0.1, height*0.4), //Barbra Lica
+                    new p5.Vector(width*0.85, height*0.25), //Fitzgeralds
     ];
 
 
@@ -190,7 +193,6 @@ function setup(){
     }
     concerts[concerts.length-1].newest = true;
 
-    // landmarks.push(pond);
 
     mouseOrTouch = p5.Vector(0,0);
     totalVisited = 0;
@@ -560,6 +562,7 @@ function windowResized(){
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
                         new p5.Vector(width*0.1, height*0.4), //Barbra Lica
+                        new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
     ];
 
     for (var i in landmarks){
@@ -634,6 +637,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
                         new p5.Vector(width*0.1, height*0.4), //Barbra Lica
+                        new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                     ];
 
     for (var i in landmarks){
