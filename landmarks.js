@@ -594,6 +594,69 @@ var Landmark = function(_pos, _type, _link){
 
                 pop();
                     
+            }  else if (this.ensembleNum == 9){ // new orford string quartet
+                push();
+                    push();
+                                                //wave 1
+                        noFill();
+                        stroke(accentColors[1]);
+                        translate(0, -this.half*0.5);
+                        rectMode(CENTER);
+                        beginShape();
+                            for (i=-this.half*0.5; i<=this.half*0.5; i+=this.half*0.05){
+                                vertex(i, sin(i+frameCount*0.1)*this.half*0.1);
+                            }
+
+                        endShape();
+                    pop();
+
+                    push();
+                                                //wave 2
+                        noFill();
+                        stroke(accentColors[1]);
+                        translate(0, -this.half*0.18);
+                        rectMode(CENTER);
+                        beginShape();
+                            for (i=-this.half*0.5; i<=this.half*0.5; i+=this.half*0.1){
+                                vertex(i, cos(i+frameCount*0.08)*this.half*0.1);
+                            }
+
+                        endShape();
+                    pop();
+
+                    push();
+                                                //wave 4
+                        noFill();
+                        stroke(accentColors[1]);
+                        translate(0, this.half*0.18);
+                        rectMode(CENTER);
+                        beginShape();
+                            for (i=-this.half*0.5; i<=this.half*0.5; i+=this.half*0.15){
+                                vertex(i, cos(i+frameCount*0.06)*this.half*0.1);
+                            }
+
+                        endShape();
+                    pop();
+
+                    push();
+                                                //wave 4
+                        noFill();
+                        stroke(accentColors[1]);
+                        translate(0, this.half*0.5);
+                        rectMode(CENTER);
+                        beginShape();
+                            for (i=-this.half*0.5; i<=this.half*0.6; i+=this.half*0.2){
+                                vertex(i, cos(i+frameCount*0.02)*this.half*0.1);
+                            }
+
+                        endShape();
+                    pop();
+                    
+
+
+
+                pop();
+                    
             }
 
         pop();
