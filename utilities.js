@@ -176,9 +176,9 @@ function navHover(_nav){
 
     if (_nav == 'barn'){
         if (currentIcon.type == "Barn"){
-            navCaption.innerHTML = "The Barn (you're already here!)";
+            navCaption.innerHTML = "The Barn (home)";
         } else {
-            navCaption.innerHTML = "Go back to The Barn";
+            navCaption.innerHTML = "The Barn (home)";
         }
         
     } else if (_nav == 'map'){
