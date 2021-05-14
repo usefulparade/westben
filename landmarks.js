@@ -657,6 +657,114 @@ var Landmark = function(_pos, _type, _link){
 
                 pop();
                     
+            } else if (this.ensembleNum == 10){ // ken tizzard
+
+                //goat idea
+
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+                    translate(-this.half*0.5, this.half*0.25);
+                    rectMode(CENTER);
+                    push();
+                        //goat beard
+                        arc(0, this.half*0.1, this.half*0.5, this.half*0.5, 0, HALF_PI);
+                        line(0, this.half*0.1, 0, this.half*0.35);
+
+                    pop();
+
+                    //main head
+                        //chin
+                        line(0, this.half*0.1, -this.half*0.2, this.half*0.1);
+                        line(-this.half*0.2, this.half*0.1, -this.half*0.25, -this.half*0.2);
+                        //forehead
+                        line(-this.half*0.25, -this.half*0.2, this.half*0.5, -this.half*0.65)
+
+                        //ear
+                        line(this.half*0.5, -this.half*0.65, this.half, -this.half*0.3);
+                        push();
+                            translate(this.half*0.8, -this.half*0.4);
+                            rotate(QUARTER_PI);
+                            arc(0, 0, this.half*0.5, this.half*0.5, 0, PI*0.7);
+                        pop();
+                        // line(this.half*0.5, -this.half*0.65, this.half*0.75, -this.half*0.3);
+
+                        //neck
+
+                        line(this.half*0.3, this.half*0.1, this.half*0.5, this.half*0.1);
+                        line(this.half*0.4, this.half*0.1, this.half*0.5, this.half*0.5)
+                        line(this.half*0.8, -this.half*0.1, this.half, this.half*0.2);
+
+
+                        //horn
+                        push();
+                            translate(this.half*0.75, -this.half*0.4);
+                            rotate(PI*1.25);
+                            arc(0, 0, this.half*0.75, this.half*0.75, 0, PI*0.6);
+
+                        pop();
+
+                        //eye
+                        push();
+                        strokeWeight(this.weight*2);
+                        point(this.half*0.35, -this.half*0.3);
+                        pop();
+                    
+
+
+                pop();
+
+
+                // cowboy hat idea
+
+                // push();
+                //     noFill();
+                //     stroke(accentColors[1]);
+                //     translate(0, -this.half*0.1);
+                //     rectMode(CENTER);
+                //     // brim
+                //     line(-this.half*0.6, -this.half*0.1, -this.half*0.5, 0);
+                //     line(-this.half*0.5, 0, this.half*0.5, 0);
+                //     line(-this.half*0.35, -this.half*0.2, this.half*0.35, -this.half*0.2);
+                //     line(this.half*0.6, -this.half*0.1, this.half*0.5, 0);
+
+                //     //dome
+
+                //     line(-this.half*0.4, 0, -this.half*0.3, -this.half*0.55)
+                //     line(-this.half*0.3, -this.half*0.55, this.half*0.3, -this.half*0.55);
+                //     line(this.half*0.4, 0, this.half*0.3, -this.half*0.55)
+
+                    
+
+                    
+                // pop();
+
+                // push();
+                //     // eyes
+                //     noFill();
+                //     stroke(accentColors[1]);
+                //     translate(0, 0);
+                //     rectMode(CENTER);
+                //     point(-this.half*0.2, 0);
+                //     point(this.half*0.2, 0);
+
+                // pop();
+
+
+                // push();
+
+                //     //beard
+
+                //     noFill();
+                //     stroke(accentColors[1]);
+                //     translate(0, this.half*0.45);
+                //     rectMode(CENTER);
+                //     rect(0, 0, this.half*0.6, this.half*0.4, this.half*0.1);
+                //     line(0, -this.half*0.3, -this.half*0.45, 0);
+                //     line(0, -this.half*0.3, this.half*0.45, 0);
+
+                // pop();
+                    
             }
 
         pop();

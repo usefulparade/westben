@@ -97,7 +97,9 @@ function setup(){
                     'Tree of Light',
                     'Barbra Lica',
                     'Fitzgeralds',
-                    'New Orford String Quartet'];
+                    'New Orford String Quartet',
+                    'Ken Tizzard'
+                ];
 
     concertLinks = ['concerts/2020/copresence.html',
                     'concerts/2020/mountcarmel.html',
@@ -108,7 +110,8 @@ function setup(){
                     'concerts/2020/treeoflight.html',
                     'concerts/2020/barbralica.html',
                     'concerts/2020/fitzgeralds.html',
-                    'concerts/2020/neworford.html'
+                    'concerts/2020/neworford.html',
+                    'concerts/2020/kentizzard.html'
                     ];
 
     contentContainerHidden = true;
@@ -158,8 +161,9 @@ function setup(){
                     new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                     new p5.Vector(width*0.55, height*0.2), //Christmas
                     new p5.Vector(width*0.1, height*0.4), //Barbra Lica
-                    new p5.Vector(width*0.85, height*0.25), //Fitzgeralds
+                    new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                     new p5.Vector(width*0.22, height*0.5), //New Orford
+                    new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
     ];
 
 
@@ -567,6 +571,7 @@ function windowResized(){
                         new p5.Vector(width*0.1, height*0.4), //Barbra Lica
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
+                        new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
     ];
 
     for (var i in landmarks){
@@ -643,6 +648,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.1, height*0.4), //Barbra Lica
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
+                        new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
                     ];
 
     for (var i in landmarks){
