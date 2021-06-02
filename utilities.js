@@ -467,7 +467,7 @@ function startFromHash(){
             currentIcon.isCurrentContent = false;
             currentIcon = ensembles[0];
             ensembles[0].isCurrentContent = true;
-        } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot" || page == "treeoflight" || page == "barbralica" || page == "fitzgeralds" || page == "neworford" || page == "kentizzard"){
+        } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot" || page == "treeoflight" || page == "barbralica" || page == "fitzgeralds" || page == "neworford" || page == "kentizzard" || page == "goodlovelies"){
             document.getElementById('content').src = 'concerts/2020/' + page + '.html';
             if (currentLayer != 1){
                 layerToggle();

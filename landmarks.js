@@ -765,6 +765,29 @@ var Landmark = function(_pos, _type, _link){
 
                 // pop();
                     
+            }  else if (this.ensembleNum == 11){ // good lovelies
+                push();
+                    noFill();
+                    stroke(accentColors[1]);
+
+                    push(); // triangle
+                        translate(0, -this.half*0.5);
+                        triangle(0, -this.half*0.3,
+                                -this.half*0.3, this.half*0.2,
+                                this.half*0.3, this.half*0.2);
+                    pop();
+                    push(); // square
+                        rectMode(CENTER);
+                        rotate(radians(120));
+                        translate(0, -this.half*0.5);
+                        rect(0, 0, this.half*0.5);
+                    pop();
+                    push(); // circle
+                        rotate(radians(-120));
+                        translate(0, -this.half*0.5);
+                        ellipse(0, 0, this.half*0.6);
+                    pop();
+                pop();
             }
 
         pop();

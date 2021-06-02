@@ -98,7 +98,8 @@ function setup(){
                     'Barbra Lica',
                     'Fitzgeralds',
                     'New Orford String Quartet',
-                    'Ken Tizzard'
+                    'Ken Tizzard',
+                    'Good Lovelies'
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -111,7 +112,8 @@ function setup(){
                     'concerts/2020/barbralica.html',
                     'concerts/2020/fitzgeralds.html',
                     'concerts/2020/neworford.html',
-                    'concerts/2020/kentizzard.html'
+                    'concerts/2020/kentizzard.html',
+                    'concerts/2020/goodlovelies.html'
                     ];
 
     contentContainerHidden = true;
@@ -164,6 +166,7 @@ function setup(){
                     new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                     new p5.Vector(width*0.22, height*0.5), //New Orford
                     new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
+                    new p5.Vector(width*0.5, height*0.8), //Good Lovelies
     ];
 
 
@@ -572,6 +575,7 @@ function windowResized(){
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
+                        new p5.Vector(width*0.5, height*0.8), //Good Lovelies
     ];
 
     for (var i in landmarks){
@@ -649,6 +653,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
+                        new p5.Vector(width*0.5, height*0.8), //Good Lovelies
                     ];
 
     for (var i in landmarks){
