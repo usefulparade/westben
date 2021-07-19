@@ -11,7 +11,7 @@ var ensembleVectors = [];
 var ensembleLinks = [];
 var secrets = [];
 var secretVectors = [];
-var barn, tree, ticketShed, milkShed, maple, watermelon;
+var barn, tree, ticketShed, milkShed, campfire, maple, watermelon;
 var ensembleVectors = [];
 var pond, parkingLot, tractor;
 var totalVisited, pondExists, lotExists, tractorExists;
@@ -37,7 +37,6 @@ var darkColors = [];
 var darkHexColors = [];
 var colorPalette, paletteIcons;
 
-var pcr2020Toggle;
 var currentLayer;
 
 var hashAnalyzed;
@@ -69,6 +68,19 @@ function setup(){
                 'Arc Diffusion',
                 'Generations of Decay',
                 'Iso-',
+                            // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                'Starfruit',
+                'Kiwi',
+                'Pomelo',
+                'Robin',
+                'Bobolink',
+                'Dove',
+                'Kelp',
+                'Coral',
+                'Algae',
+                'Basil',
+                'Herb2',
+                'Herb3',
                 ];
 
     
@@ -86,6 +98,19 @@ function setup(){
                     'ensembles/maple.html',
                     'ensembles/pine.html',
                     'ensembles/banana.html',
+                            // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                    'ensembles/2021/starfruit/index.html',
+                    'ensembles/2021/kiwi.html',
+                    'ensembles/2021/pomelo.html',
+                    'ensembles/2021/robin.html',
+                    'ensembles/2021/bobolink.html',
+                    'ensembles/2021/dove.html',
+                    'ensembles/2021/kelp.html',
+                    'ensembles/2021/coral.html',
+                    'ensembles/2021/algae.html',
+                    'ensembles/2021/basil.html',
+                    'ensembles/2021/herb2.html',
+                    'ensembles/2021/herb3.html',
                     ];
 
     concertNames = ['Co-Presence',
@@ -129,7 +154,9 @@ function setup(){
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37)]; //milkshed
+                        new p5.Vector(width*0.64, height*0.37), //milkshed
+                        new p5.Vector(width*0.53, height*0.44), //campfire
+                        ];
 
     
 
@@ -145,7 +172,22 @@ function setup(){
                         new p5.Vector(width*0.2, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3)]; //banana
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                                // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                        new p5.Vector(width*0.85, height*0.6), //starfruit
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                        ];
                         
                         
 
@@ -166,7 +208,7 @@ function setup(){
                     new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                     new p5.Vector(width*0.22, height*0.5), //New Orford
                     new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
-                    new p5.Vector(width*0.5, height*0.8), //Good Lovelies
+                    new p5.Vector(width*0.53, height*0.7), //Good Lovelies
     ];
 
 
@@ -176,24 +218,32 @@ function setup(){
     tree = new Landmark(landmarkVectors[1], 'Conservancy', 'https://www.westben.ca/music-for-seeds');
     ticketShed = new Landmark(landmarkVectors[2], 'Ticket Shed', 'https://www.westben.ca/donate');
     milkShed = new Landmark(landmarkVectors[3], 'Milkshed', 'milkshed.html');
-
-    
-    // maple = new Landmark(ensembleVectors[0], 'maple group', 'ensembles/maple.html');
-    // watermelon = new Landmark(ensembleVectors[1], 'watermelon group', 'ensembles/watermelon.html');
-
+    campfire = new Landmark(landmarkVectors[4], 'Campfire', 'campfire.html');
 
     landmarks.push(barn);
     landmarks.push(tree);
     landmarks.push(ticketShed);
     landmarks.push(milkShed);
+    // landmarks.push(campfire);
 
-    
-    for (var i = 0; i<13; i++){
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
+
+    for (var i = 0; 
+        i<13;     // <--------------------- THIS IS THE END POINT! 
+        i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble', ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
-        ensembles[i].rotation = random(0, TWO_PI);
+        if (i<13){
+            ensembles[i].rotation = random(0, TWO_PI);
+        } else {
+            ensembles[i].rotation = 0;
+            ensembles[i].plant =  new Plant(new p5.Vector(0,0), new p5.Vector(0,-ensembles[i].half*0.75), accentColors[0], radians(map(i, 13, 29, 5, 60)));
+            ensembles[i].plant.germinate();
+        }
         ensembles[i].ensembleNum = i;
     }
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP ^^^^^^^^^^^^^^
 
     for (j=0;j<concertLinks.length;j++){
         concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
@@ -234,7 +284,7 @@ function setup(){
         themeToggle();
     }
 
-    pcr2020Toggle = true;
+    // pcr2020Toggle = true;
     currentLayer = 1;
     slideIn = -35;
 
@@ -244,8 +294,6 @@ function setup(){
     startFromHash();
 
 
-    // layerToggle();
-    // layerToggle();
 
     
 }
@@ -270,22 +318,35 @@ function draw(){
         
     }
 
-    if (currentLayer == 0){
+    if (currentLayer == 0){ // 2020 PCR
         for (var j in ensembles){
-            ensembles[j].show();
-            if (ensembles[j].over){
-                overSomething++;
+            if (j < 13){
+                ensembles[j].show();
+                if (ensembles[j].over){
+                    overSomething++;
+                }
             }
         }
         
-    } else if (currentLayer == 1){
+    } else if (currentLayer == 1){ //2020-21 Digital Concerts
         for (var l in concerts){
             concerts[l].show();
             if (concerts[l].over){
                 overSomething++;
             }
         }
+    } else if (currentLayer == 2){ // 2021 PCR
+        for (var m in ensembles){
+            if (m >= 13){
+                ensembles[m].show();
+                if (ensembles[m].over){
+                    overSomething++;
+                }
+            }
+        }
     }
+
+
     for (var i in landmarks){
         landmarks[i].show();
         if (landmarks[i].over){
@@ -543,7 +604,9 @@ function windowResized(){
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+                        new p5.Vector(width*0.64, height*0.37), //milkshed
+                        new p5.Vector(width*0.53, height*0.44), //campfire
+                        ];
 
     ensembleVectors = [new p5.Vector(width*0.85, height*0.6), //apple (might not find)
                         new p5.Vector(width*0.6, height*0.68), //turquoise
@@ -557,7 +620,22 @@ function windowResized(){
                         new p5.Vector(width*0.2, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3)]; //banana
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                                // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                        new p5.Vector(width*0.85, height*0.6), //starfruit
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                        ];
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
                         new p5.Vector(width*0.6, height*0.3),//pond;
@@ -575,7 +653,7 @@ function windowResized(){
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
-                        new p5.Vector(width*0.5, height*0.8), //Good Lovelies
+                        new p5.Vector(width*0.53, height*0.7), //Good Lovelies
     ];
 
     for (var i in landmarks){
@@ -596,6 +674,7 @@ function windowResized(){
         ensembles[j].size = ensembleSize;
         ensembles[j].half = ensembleSize*0.5;
         ensembles[j].collide = ensembleSize*0.7;
+        
     }
     for (var k in secrets){
         var secretSize = map(((width+height)/2), 500, 1200, 30, 50);
@@ -621,7 +700,9 @@ function deviceTurned(){
     landmarkVectors = [ new p5.Vector(width*0.66, height*0.5), //barn
                         new p5.Vector(width*0.2, height*0.3), //tree
                         new p5.Vector(width*0.54, height*0.55), //ticketShed
-                        new p5.Vector(width*0.64, height*0.37)]; //milkShed
+                        new p5.Vector(width*0.64, height*0.37), //milkshed
+                        new p5.Vector(width*0.53, height*0.44), //campfire
+                        ];
 
     ensembleVectors = [new p5.Vector(width*0.85, height*0.6), //apple (might not find)
                         new p5.Vector(width*0.6, height*0.68), //turquoise
@@ -635,7 +716,22 @@ function deviceTurned(){
                         new p5.Vector(width*0.2, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3)]; //banana
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                                // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                        new p5.Vector(width*0.85, height*0.6), //starfruit
+                        new p5.Vector(width*0.6, height*0.68), //turquoise
+                        new p5.Vector(width*0.25, height*0.5), //lemon
+                        new p5.Vector(width*0.4, height*0.65), //green
+                        new p5.Vector(width*0.15, height*0.4), //watermelon
+                        new p5.Vector(width*0.79, height*0.4), //purple
+                        new p5.Vector(width*0.15, height*0.21), //oak
+                        new p5.Vector(width*0.8, height*0.52), //yellow
+                        new p5.Vector(width*0.35, height*0.19), //pink
+                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.05, height*0.3), //maple
+                        new p5.Vector(width*0.8, height*0.2), //pine
+                        new p5.Vector(width*0.9, height*0.3), //banana
+                        ];
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
                         new p5.Vector(width*0.6, height*0.3),//pond;
@@ -653,7 +749,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.7, height*0.25), //Fitzgeralds
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
-                        new p5.Vector(width*0.5, height*0.8), //Good Lovelies
+                        new p5.Vector(width*0.53, height*0.7), //Good Lovelies
                     ];
 
     for (var i in landmarks){
@@ -686,8 +782,8 @@ function keyTyped(){
         // makePond();
         // makeTractor();
 
-        currentLayer = (currentLayer + 1)%2;
-        pcr2020Toggle = !pcr2020Toggle;
+        // currentLayer = (currentLayer + 1)%2;
+        // pcr2020Toggle = !pcr2020Toggle;
     }
 
 }

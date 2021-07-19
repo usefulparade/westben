@@ -27,8 +27,7 @@ var Landmark = function(_pos, _type, _link){
     this.ensembleNum = 0;
     this.vol = 0;
     this.isCurrentContent = false;
-    
-    
+    this.plant;
 
     this.newest = false;
 
@@ -37,6 +36,9 @@ var Landmark = function(_pos, _type, _link){
             // if this is the current content, put it at the top of the screen
             if (this.isCurrentContent && !contentContainerHidden){
                 this.scale = 1;
+                if (this.ensembleNum >= 13){
+                    this.scale = 0.75;
+                }
                 if (width < 720){
                     translate(-this.pos.x + width/2, -this.pos.y + slideIn);
                 } else {
@@ -45,15 +47,7 @@ var Landmark = function(_pos, _type, _link){
                 push();
                     fill(foregroundColor);
                     noStroke();
-                    // strokeWeight(3);
-                    // ellipse(this.pos.x, this.pos.y, this.size*1.8);
                     rectMode(CENTER);
-                    // if (width < 720){
-                    //     rect(this.pos.x + ((2*width/3) - (width/2)), this.pos.y, 2*width/3, 70);
-                    // } else {
-                    //     rect(this.pos.x, this.pos.y, width/2, 70);
-                    // }
-
 
                     fill(backgroundColor);
                     stroke(backgroundColor);
@@ -64,8 +58,6 @@ var Landmark = function(_pos, _type, _link){
                         textSize(14);
                     }
                     if (width < 720){
-                        // textAlign(LEFT, CENTER);
-                        // text("You're at", this.pos.x+this.size*2, this.pos.y - this.half);
                         textAlign(LEFT, CENTER);
                         rectMode(CORNER);
                         if (this.type == 'concert'){
@@ -89,13 +81,15 @@ var Landmark = function(_pos, _type, _link){
                     }
                 pop();
 
-                translate(0, sin(this.sinCounter)*5);
+                // translate(0, sin(this.sinCounter)*5);
+
                 if (this.type == 'Barn'){
                     translate(0, 2);
                 } else if (this.type == "Conservancy"){
                     translate(0,5);
+                } else if (this.ensembleNum >= 13){
+                    translate(0,7);
                 }
-                // this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
                 
                 document.getElementById('caption').innerHTML = '';
                 document.getElementById('caption').style.setProperty('display', 'none');
@@ -115,6 +109,8 @@ var Landmark = function(_pos, _type, _link){
                 this.maple();
             } else if (this.type == 'Milkshed'){
                 this.milk();
+            } else if (this.type == 'Campfire'){
+                this.campfire();
             } else if (this.type == 'parking lot'){
                 this.parking();
             } else if (this.type == 'pond'){
@@ -158,20 +154,27 @@ var Landmark = function(_pos, _type, _link){
                     // document.getElementById('caption').style.setProperty('animation', 'fadeOut 0.5s ease forwards');
                 }
             }
+            if (this.scale < 1.5){
+                this.scale += 0.175;
+            } else {
+                this.scale = 1.5;
+            }
 
-            this.scale = 1.5;
+            // while (this.scale < 1.5){
+            //     this.scale += 0.1;
+            // }
         } else {
-            
-            this.scale = 1;
+            if (this.scale > 1){
+                this.scale -= 0.08;
+            } else {
+                this.scale = 1;
+            }
 
         }   
 
     };
 
     this.clicked = function(){
-
-        // loadNewIframeContent(this.link);
-        // contentExpand();
 
         if (this.linkIsAudio){
             
@@ -229,13 +232,14 @@ var Landmark = function(_pos, _type, _link){
     };
 
     this.barn = function(){
-        // this.barnScale = this.scale + 0.5;
         push();
             translate(this.pos.x, this.pos.y + this.half*0.3);
             scale(this.scale);
+
             noFill();
             if (!this.isCurrentContent){
                 stroke(foregroundColor);
+                
             } else if (!contentContainerHidden){
                 stroke(backgroundColor);
             } else {
@@ -376,6 +380,34 @@ var Landmark = function(_pos, _type, _link){
 
         pop();
     };
+
+    this.campfire = function(){
+        push();
+            translate(this.pos.x, this.pos.y);
+            rotate(0);
+            scale(this.scale);
+            noFill();
+            strokeWeight(4);
+            if (!this.isCurrentContent){
+                stroke(foregroundColor);
+            } else if (!contentContainerHidden){
+                stroke(backgroundColor);
+            } else {
+                stroke(foregroundColor);
+            }
+
+            // ellipse(0,0,this.half);
+            for(var i=0;i<TWO_PI;i+=TWO_PI/7){
+              
+                push();
+                    rotate(i);
+                    translate(0,this.half*0.5);
+                    point(0,0);
+                pop();
+            }
+
+        pop();
+    }
 
     this.concert = function(){
         this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
@@ -531,7 +563,6 @@ var Landmark = function(_pos, _type, _link){
                         point(-this.half*0.2,this.half*0.1);
                         point(this.half*0.25,this.half*0.15);
                         point(-this.half*0.08,this.half*0.3);
-                        // point(this.half*0.2,this.half*0.4);
                         point(-this.half*0.1,this.half*0.5);
                         point(this.half*0.05,this.half*0.6);
                     pop();
@@ -559,8 +590,6 @@ var Landmark = function(_pos, _type, _link){
 
                     line(-this.half*0.05, this.half, -this.half*0.05, this.half*0.65);
                     line(this.half*0.05, this.half, this.half*0.05, this.half*0.65);
-                    // line(-this.half*0.4, this.half*0.7, this.half*0.4, this.half*0.7);
-                    // line(-this.half*0.25, -this.half*0.3, 0, -this.half*0.3);
 
                 pop();
                     
@@ -687,7 +716,6 @@ var Landmark = function(_pos, _type, _link){
                             rotate(QUARTER_PI);
                             arc(0, 0, this.half*0.5, this.half*0.5, 0, PI*0.7);
                         pop();
-                        // line(this.half*0.5, -this.half*0.65, this.half*0.75, -this.half*0.3);
 
                         //neck
 
@@ -715,55 +743,7 @@ var Landmark = function(_pos, _type, _link){
                 pop();
 
 
-                // cowboy hat idea
-
-                // push();
-                //     noFill();
-                //     stroke(accentColors[1]);
-                //     translate(0, -this.half*0.1);
-                //     rectMode(CENTER);
-                //     // brim
-                //     line(-this.half*0.6, -this.half*0.1, -this.half*0.5, 0);
-                //     line(-this.half*0.5, 0, this.half*0.5, 0);
-                //     line(-this.half*0.35, -this.half*0.2, this.half*0.35, -this.half*0.2);
-                //     line(this.half*0.6, -this.half*0.1, this.half*0.5, 0);
-
-                //     //dome
-
-                //     line(-this.half*0.4, 0, -this.half*0.3, -this.half*0.55)
-                //     line(-this.half*0.3, -this.half*0.55, this.half*0.3, -this.half*0.55);
-                //     line(this.half*0.4, 0, this.half*0.3, -this.half*0.55)
-
-                    
-
-                    
-                // pop();
-
-                // push();
-                //     // eyes
-                //     noFill();
-                //     stroke(accentColors[1]);
-                //     translate(0, 0);
-                //     rectMode(CENTER);
-                //     point(-this.half*0.2, 0);
-                //     point(this.half*0.2, 0);
-
-                // pop();
-
-
-                // push();
-
-                //     //beard
-
-                //     noFill();
-                //     stroke(accentColors[1]);
-                //     translate(0, this.half*0.45);
-                //     rectMode(CENTER);
-                //     rect(0, 0, this.half*0.6, this.half*0.4, this.half*0.1);
-                //     line(0, -this.half*0.3, -this.half*0.45, 0);
-                //     line(0, -this.half*0.3, this.half*0.45, 0);
-
-                // pop();
+            
                     
             }  else if (this.ensembleNum == 11){ // good lovelies
                 push();
@@ -793,17 +773,24 @@ var Landmark = function(_pos, _type, _link){
         pop();
     };
 
+
     this.ensemble = function(){
         this.sinCounter = (this.sinCounter+random(0.001, 0.01))%TWO_PI;
         push();
             translate(this.pos.x, this.pos.y);
-            rotate(this.rotation + this.sinCounter);
+            if (this.ensembleNum < 13){
+                rotate(this.rotation + this.sinCounter);
+            } else {
+                rotate(this.rotation);
+            }
             scale(this.scale);
             noFill();
             stroke(accentColors[0]);
             strokeWeight(this.weight);
-            ellipse(0, 0, this.size, this.size);
-            
+            if (this.ensembleNum < 13){
+                ellipse(0, 0, this.size, this.size);
+            }
+                                                                            // PCR 1 ENSEMBLES (2020)
             if (this.ensembleNum == 0){                 // POINTS
                 strokeWeight(5);
                 point(this.half*0.3, 0);
@@ -875,6 +862,23 @@ var Landmark = function(_pos, _type, _link){
                 push();
                     rectMode(CENTER);
                     rect(0, 0, this.half, this.half);
+                pop();
+
+                                                                                // PCR 2 ENSEMBLES (2021)
+            } else if (this.ensembleNum >= 13){          // STARFRUIT
+                push();
+                    translate(0, this.half);
+                    if (this.over || this.isCurrentContent){
+                        this.plant.grow();
+                        // console.log(this.plant);
+                    }
+                    this.plant.show();
+                    
+                    // rectMode(CENTER);
+                    // rect(0, 0, this.half, this.half);
+                pop();
+                push();
+                    arc(0, 0, this.size, this.size, 0, PI);
                 pop();
             } else {
                 strokeWeight(5);
@@ -974,23 +978,6 @@ var Landmark = function(_pos, _type, _link){
 
     this.bird = function(){
         push();
-            
-            // translate(0, this.size*2.2 + sin(frameCount*0.1)*5);
-            // translate(this.pos.x, this.pos.y - this.size*1.2);
-            // noStroke();
-            // fill(foregroundColor);
-            // rectMode(CENTER);
-            // rect(0,0, 50, 30);
-            // beginShape();
-            //     vertex(5, -15);
-            //     vertex(0, -20);
-            //     vertex(-5, -15);
-            // endShape(CLOSE);
-            // fill(backgroundColor);
-            // textFont(font);
-            // textSize(16);
-            // textAlign(CENTER, CENTER);
-            // text('NEW!', 0, -2);
 
             translate(this.pos.x, this.pos.y);
             if (!this.over){
@@ -1018,4 +1005,155 @@ var Landmark = function(_pos, _type, _link){
         pop();
 
     };
+
+    this.grow = function(){
+        
+
+    }
 };
+
+function Branch(begin, end, tree){
+    this.begin = begin;
+    this.end = end;
+    this.progress = p5.Vector.lerp(this.begin, this.end, 0);
+    this.grown = false;
+    this.lerp = 0;
+    this.newCap = false;
+    this.parentTree = tree;
+
+    this.spawnA = function(){
+        var dir = p5.Vector.sub(this.end, this.begin);
+        dir.rotate(this.parentTree.theta);
+        dir.mult(random(0.75, 0.9));
+        var newEnd = p5.Vector.add(this.end, dir);
+        var a = new Branch(this.end, newEnd, this.parentTree);
+        return a;
+    };
+
+    this.spawnB = function(){
+        var dir = p5.Vector.sub(this.end, this.begin);
+        dir.rotate(-this.parentTree.theta);
+        dir.mult(random(0.75, 0.9));
+        var newEnd = p5.Vector.add(this.end, dir);
+        var b = new Branch(this.end, newEnd, this.parentTree);
+        return b;
+    };
+
+    this.show = function(){
+
+        this.progress = p5.Vector.lerp(this.begin, this.end, this.lerp);
+        line(this.begin.x, this.begin.y, this.progress.x, this.progress.y);
+        
+        
+    };
+
+    this.grow = function(){
+        if (this.lerp < 1){
+            this.lerp += 0.05;
+        } else {
+            this.lerp = 1;
+        }
+    };
+
+    this.jitter = function(){
+        this.end.x += random(-0.03, 0.03);
+        this.end.y += random(-0.03, 0.03);
+    };
+
+    this.mouseMagnet = function(){
+        let mouseVec = createVector(mouseX, mouseY);
+        if (p5.Vector.dist(mouseVec, this.begin) < 50){
+            var dir = p5.Vector.sub(mouseVec, this.end);
+            dir.mult(0.005);
+            this.end.add(dir);
+        }
+    };
+
+}
+
+function Plant(seedPos, dir, col, theta){
+    this.branches = [];
+    this.a = seedPos.copy();
+    this.dir = dir.copy();
+    this.b = p5.Vector.add(this.a, createVector(this.dir.x, this.dir.y));
+    this.germinated = false;
+    this.c = col
+    this.alpha = 255;
+    this.decayLerp = 0;
+    this.allGrown = false;
+    this.theta = theta;
+    this.skew = random(-10, 10);
+
+    this.germinate = function(){
+        this.branches[0] = new Branch(this.a, this.b, this);
+        this.germinated = true;
+    };
+
+    this.grow = function(){
+        for (var i=0;i<this.branches.length;i++){
+            this.branches[i].grow();
+        }
+    }
+
+    this.show = function(){
+        push();
+            rotate(radians(this.skew));
+            strokeWeight(2);
+            stroke(accentColors[0]);
+            for (var i=0;i<this.branches.length;i++){
+                this.branches[i].show();
+                this.branches[i].jitter();
+
+                // if (i%2 == 1){
+                //     this.branches[i].mouseMagnet();
+                // }
+
+               
+                if (this.branches[i].lerp >= 1 && !this.branches[i].grown){
+                    if (this.branches.length < 100){
+                        var probA = random(0,1);
+                        var probB = random(0,1);
+                        if (this.branches.length < 4){ // make sure it doesn't dead-end right away
+                            if (probA < 0.2){
+                                probB = 1;
+                            } else if (probB < 0.2){
+                                probA = 1;
+                            }
+                        }
+
+                        if (probA >= 0.2){
+                            this.branches.push(this.branches[i].spawnA());
+                        }
+                        if (probB >= 0.2){
+                            this.branches.push(this.branches[i].spawnB());
+                        }
+                    }
+                    this.branches[i].grown = true;
+                }
+                
+            }
+
+            if (!this.allGrown){ // if it's not yet fully grown
+                let notYet = false;
+                for (var j=0;j<this.branches.length;j++){ // loop through branches to check if they're grown
+                    if (!this.branches[j].grown){ // if any branch isn't grown yet
+                       notYet = true;
+                    }
+                }
+                if (!notYet){
+                    this.allGrown = true; // otherwise, everything is grown, so this tree is grown
+                }
+                
+                
+            } else { // if the tree has grown
+                // this.color = 255;
+                this.alpha = 255 - lerp(0, 205, this.decayLerp); // start fading out
+                if (this.decayLerp < 1){
+                    this.decayLerp += 0.0005;
+                }
+            }
+        pop();
+        
+    };
+
+}

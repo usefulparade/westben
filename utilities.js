@@ -7,7 +7,7 @@ var paletteParam, themeParam;
 function contentToggle(){
     
     if (contentContainerHidden){
-        contentExpand(); 
+        contentExpand();
     } else {
         contentContract();
     }
@@ -109,12 +109,12 @@ function paletteToggle(){
 
 
 function layerToggle(_layer){
-    pcr2020Toggle = !pcr2020Toggle;
+    // pcr2020Toggle = !pcr2020Toggle;
     
     if (_layer != null){
         currentLayer = _layer;
     } else {
-        currentLayer = (currentLayer+1)%2;
+        currentLayer = (currentLayer+1)%3;
     }
 
     document.getElementById('layerNumber').innerHTML = currentLayer+1;
@@ -125,6 +125,8 @@ function layerToggle(_layer){
     } else if (currentLayer == 1) {
         // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
+    } else if (currentLayer == 2){
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
     }
 
     updateURL();
@@ -137,17 +139,25 @@ function layerToggleFromInside(_x){
     window.parent.document.getElementById('layerNumber').innerHTML = currentLayerNum;
 
     if (_x.value == 0){
-        window.parent.pcr2020Toggle = true;
+        // window.parent.pcr2020Toggle = true;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Performer-Composer Residency';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
+        document.getElementById('pcr2021').style.setProperty('display', 'none');
     } else if (_x.value == 1) {
-        window.parent.pcr2020Toggle = false;
+        // window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2021').style.setProperty('display', 'none');
+    } else if (_x.value == 2){
+        // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
+        document.getElementById('concerts2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2021').style.setProperty('display', 'inline-block');
     }
 
     updateURLFromInside();
@@ -164,9 +174,16 @@ function programLayerMatch(){
         if (currentLayer == 0){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'inline-block');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
         } else if (currentLayer == 1){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+        } else if (currentLayer == 2){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'inline-block');
+
         }
     }
 }
@@ -176,16 +193,16 @@ function navHover(_nav){
 
     if (_nav == 'barn'){
         if (currentIcon.type == "Barn"){
-            navCaption.innerHTML = "The Barn (home)";
+            navCaption.innerHTML = "Return to The Barn (home)";
         } else {
-            navCaption.innerHTML = "The Barn (home)";
+            navCaption.innerHTML = "Return to The Barn (home)";
         }
         
     } else if (_nav == 'map'){
         if (!contentContainerHidden){
             navCaption.innerHTML = "Explore the map";
         } else {
-            navCaption.innerHTML = "See current content";
+            navCaption.innerHTML = "See current location";
         }
     } else if (_nav == 'westben'){
         navCaption.innerHTML = "Head to <u>westben.ca</u>";
@@ -350,7 +367,7 @@ function dayTheme(){
 function loadNewIframeContent(_link){
     
     window.frames[0].location = _link;
-    
+    barnNavToggle();
     // console.log('changing iframe');
     // matchTheme();
 
@@ -368,13 +385,24 @@ function iframeLoaded(){
     matchTheme();
     var iframe = document.getElementById('content');
     var endMatter = iframe.contentDocument.getElementById('endMatter');
+    var barnNav = document.getElementById('barnNav');
     if (endMatter != null){
         endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" + 
         '<p>A <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>';
     }
     programLayerMatch();
     // startFromHash();
-    updateURL(); 
+    updateURL();
+    barnNavToggle();
+}
+
+function barnNavToggle(){
+    if (currentIcon == landmarks[0]){
+        barnNav.style.setProperty('top', '-200px');
+
+    } else {
+        barnNav.style.setProperty('top', '10px');
+    }
 }
 
 function matchThemeInner(){
@@ -403,6 +431,13 @@ function changeCurrentIcon(type, num){
             window.parent.currentIcon = window.parent.concerts[num];
             window.parent.concerts[num].isCurrentContent = true;
         }
+    }
+
+    if (window.parent.currentIcon == landmarks[0]){
+        barnNav.style.setProperty('top', '-200px');
+
+    } else {
+        barnNav.style.setProperty('top', '10px');
     }
 }
 
@@ -438,9 +473,13 @@ function startFromHash(){
             layerToggle(0);
         } else if (layer == "2"){
             layerToggle(1);
+        } else if (layer == "3"){
+            layerToggle(2);
         } else {
-            layerToggle(0);
+            layerToggle(1);
         }
+    } else {
+        layerToggle(1);  /// default layer if no url slug
     }
 
     if (page != null){

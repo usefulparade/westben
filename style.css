@@ -72,21 +72,44 @@ hr {
 table.toggles {
     display: block;
     position: fixed;
-    top: 5px;
-    left: 10px;
+    bottom: 100px;
+    left: 0px;
     border-collapse: collapse;
+    font-size: 18px;
+    background-color: var(--bg-color);
 }
 
 table.toggles td {
     display: table-cell;
     width: 50px;
     height: 50px;
-    padding: 5px;
+    padding: 8px;
     margin: 0px;
     vertical-align: middle;
 }
 
-table.toggles .palette svg {
+table.paletteToggles {
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: -10px;
+    padding: 10px;
+    border-collapse: collapse;
+    /* transition: background-color 1s; */
+    z-index: 0;
+}
+table.paletteToggles td {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    margin: 0px;
+    vertical-align: middle;
+    
+    /* background-color: var(--bg-color-transparent); */
+}
+
+table.paletteToggles .palette svg {
     transform: rotate(0deg);
 }
 
@@ -307,7 +330,7 @@ button:hover {
     background-color: var(--fg-color);
     color: var(--bg-color);
     /* animation: fadeIn 0.5s ease forwards; */
-    /* z-index: -200; */
+    /* z-index: 200; */
 }
 
 .layerCaption#caption {
@@ -320,8 +343,9 @@ button:hover {
     position: absolute;
     width: 70px;
     height: 70px;
-    top: 10px;
-    right: calc(50% - 115px);
+    bottom: 0px;
+    /* right: calc(50% - 115px); */
+    left: 10px;
     z-index: 100;
 }
 
@@ -335,11 +359,12 @@ button:hover {
     background-color: var(--bg-color);
     border-radius: 100px;
     border: 20px var(--fg-color);
+    transition: transform 0.3s;
     
 }
 
 .svgLogo:hover {
-    transform: scale(1.2);
+    transform: rotate(20deg);
 }
 
 .barnNav {
@@ -349,7 +374,9 @@ button:hover {
     height: 70px;
     top: 10px;
     left: calc(50% - 115px);
+    /* left: -300px; */
     z-index: 100;
+    transition: top 1s;
 }
 
 .barnNav a:hover {
@@ -385,7 +412,7 @@ button:hover {
     text-align: center;
     border-top: 2px solid var(--fg-color);
     box-sizing: border-box;
-    background-color: var(--bg-color-transparent);
+    background-color: var(--bg-color);
     color: var(--fg-color);
     transition: height 0.5s, background-color 1s, color 0.5s;
     overflow: hidden;
@@ -438,6 +465,7 @@ button:hover {
     right: calc(50% - 35px);
     padding: 10px;
     /* transition: border 1s; */
+    /* transition: color 0.5s, fill 0.5s, background-color 0.5s; */
     box-sizing: border-box;
     border: 3px solid var(--fg-color);
     border-radius: 100px;
@@ -449,6 +477,7 @@ button:hover {
 
 .contentIcon svg {
     fill: var(--fg-color);
+    /* transition: color 0.5s, fill 0.5s, background-color 0.5s; */
 }
 
 
@@ -608,6 +637,10 @@ select.programSelect:hover {
     overflow: hidden;
 }
 
+.endMatter {
+    padding-bottom: 80px;
+}
+
 ::-webkit-scrollbar {
     background-color: var(--bg-color-transparent);
 }
@@ -668,14 +701,26 @@ select.programSelect:hover {
     }
 
     table.toggles {
-        top: 10px;
-        left: 5px;
+        /* top: 10px;
+        left: 5px; */
     }
 
     table.toggles td{
+        /* width: 30px;
+        height: 30px;
+        padding: 2px; */
+    }
+
+    table.paletteToggles {
+        bottom: 90px;
+        left: -10px;
+        height: 50px;
+    }
+
+    table.paletteToggles td {
         width: 30px;
         height: 30px;
-        padding: 2px;
+        padding: 10px;
     }
 
     .mapContainer .theme {
@@ -690,12 +735,12 @@ select.programSelect:hover {
     
 
     .mapContainer .layer {
-        font-size: 0.8em;
+        /* font-size: 0.8em; */
     }
 
     .mapContainer .layer p {
-        top: 12%;
-        left: 32%;
+        /* top: 12%;
+        left: 32%; */
     }
 }
 
