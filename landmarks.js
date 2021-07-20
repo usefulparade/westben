@@ -160,6 +160,8 @@ var Landmark = function(_pos, _type, _link){
                 this.scale = 1.5;
             }
 
+            
+
             // while (this.scale < 1.5){
             //     this.scale += 0.1;
             // }
@@ -865,7 +867,7 @@ var Landmark = function(_pos, _type, _link){
                 pop();
 
                                                                                 // PCR 2 ENSEMBLES (2021)
-            } else if (this.ensembleNum >= 13){          // STARFRUIT
+            } else if (this.ensembleNum >= 13){ 
                 push();
                     translate(0, this.half);
                     if (this.over || this.isCurrentContent){
@@ -878,7 +880,14 @@ var Landmark = function(_pos, _type, _link){
                     // rect(0, 0, this.half, this.half);
                 pop();
                 push();
+                    // stroke(accentColors[2]);
                     arc(0, 0, this.size, this.size, 0, PI);
+
+                pop();
+                push();
+                    noStroke();
+                    fill(accentColors[2]);
+                    // arc(0,0,this.size,this.size,PI*0.1,PI*0.9, CHORD);
                 pop();
             } else {
                 strokeWeight(5);

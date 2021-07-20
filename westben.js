@@ -99,7 +99,7 @@ function setup(){
                     'ensembles/pine.html',
                     'ensembles/banana.html',
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                    'ensembles/2021/starfruit/index.html',
+                    'ensembles/2021/starfruit.html',
                     'ensembles/2021/kiwi.html',
                     'ensembles/2021/pomelo.html',
                     'ensembles/2021/robin.html',
@@ -169,7 +169,7 @@ function setup(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -183,7 +183,7 @@ function setup(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -200,7 +200,7 @@ function setup(){
                     new p5.Vector(width*0.8, height*0.55), //Co-presence
                     new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                     new p5.Vector(width*0.75, height*0.4), //Valérie Milot
-                    new p5.Vector(width*0.15, height*0.6), //For the Birds
+                    new p5.Vector(width*0.25, height*0.6), //For the Birds
                     new p5.Vector(width*0.65, height*0.7), //Brian Manker
                     new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                     new p5.Vector(width*0.55, height*0.2), //Christmas
@@ -229,7 +229,7 @@ function setup(){
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
 
     for (var i = 0; 
-        i<13;     // <--------------------- THIS IS THE END POINT! 
+        i<ensembleNames.length;     // <--------------------- THIS IS THE END POINT! 
         i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble', ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
@@ -305,7 +305,6 @@ function draw(){
 
     document.getElementById('caption').innerHTML = '';
     document.getElementById('caption').style.setProperty('display', 'none');
-    // cursor('wait');
 
     
     overSomething = 0;
@@ -357,6 +356,12 @@ function draw(){
     youAreHerePanel();
     if (!contentContainerHidden){
         currentIcon.show();
+    }
+
+    if (overSomething >= 0){
+        cursor('crosshair');
+    } else {
+        cursor('auto');
     }
 
     
@@ -427,15 +432,9 @@ function roads(){
         roadPoints[1] = createVector(width*0.56, height*0.1);
         roadPoints[2] = createVector(width*0.51, height*0.38);
         roadPoints[3] = createVector(width*0.48, height*0.51);
-        // roadPoints[4] = createVector(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
         roadPoints[4] = createVector(width*0.56, height*0.47);
         roadPoints[5] = createVector(width*0.71, height*0.38);
-        // roadPoints[6] = createVector(width*0.75, height*0.45);
         roadPoints[6] = createVector(landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
-
-
-        // bezier(x1, y1, width*0.7, 0, width*0.4, height*0.7, landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half);
-        // bezier(landmarks[0].pos.x-(landmarks[0].size), landmarks[0].pos.y-landmarks[0].half, width*0.7, height*0.4, width*0.75, height*0.45, landmarks[0].pos.x+(landmarks[0].size), landmarks[0].pos.y);
 
         stroke(foregroundColor);
         beginShape();
@@ -445,15 +444,6 @@ function roads(){
             quadraticVertex(roadPoints[5].x, roadPoints[5].y, roadPoints[6].x, roadPoints[6].y);
         endShape();
 
-        // for(var i=0;i<roadPoints.length;i++){
-        //     ellipse(roadPoints[i].x, roadPoints[i].y, 10,10);
-        // }
-        // var x2 = bezierPoint(width*0.25, width*0.33, width*0.5, width, 0.27);
-        // var y2 = bezierPoint(0, height, height, height*0.66, 0.27);
-        // var x3 = bezierPoint(x1, width*0.7, width*0.3, landmarks[0].pos.x, 0.75);
-        // var y3 = bezierPoint(y1, 0, height*0.8, landmarks[0].pos.y+landmarks[0].half, 0.75);
-
-        // line(x2, y2, x3, y3);
 
     pop();
 
@@ -617,7 +607,7 @@ function windowResized(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -631,7 +621,7 @@ function windowResized(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -645,7 +635,7 @@ function windowResized(){
                         new p5.Vector(width*0.8, height*0.55), //Co-presence
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                         new p5.Vector(width*0.75, height*0.4), //Valérie Milot
-                        new p5.Vector(width*0.15, height*0.6), //For the Birds
+                        new p5.Vector(width*0.25, height*0.6), //For the Birds
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
@@ -713,7 +703,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -727,7 +717,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.15, height*0.21), //oak
                         new p5.Vector(width*0.8, height*0.52), //yellow
                         new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.2, height*0.6), //cedar
+                        new p5.Vector(width*0.24, height*0.6), //cedar
                         new p5.Vector(width*0.05, height*0.3), //maple
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
@@ -741,7 +731,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.8, height*0.55), //Co-presence
                         new p5.Vector(width*0.4, height*0.15), //Mt Carmel
                         new p5.Vector(width*0.75, height*0.4), //Valérie Milot
-                        new p5.Vector(width*0.15, height*0.6), //For the Birds
+                        new p5.Vector(width*0.25, height*0.6), //For the Birds
                         new p5.Vector(width*0.65, height*0.7), //Brian Manker
                         new p5.Vector(width*0.45, height*0.65), //Jordan Mowat
                         new p5.Vector(width*0.55, height*0.2), //Christmas
@@ -778,12 +768,7 @@ function deviceTurned(){
 
 function keyTyped(){
     if (key == 'b'){
-        // makeParkingLot();
-        // makePond();
-        // makeTractor();
-
-        // currentLayer = (currentLayer + 1)%2;
-        // pcr2020Toggle = !pcr2020Toggle;
+        layerToggle(2);
     }
 
 }

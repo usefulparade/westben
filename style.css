@@ -76,16 +76,21 @@ table.toggles {
     left: 0px;
     border-collapse: collapse;
     font-size: 16px;
-    background-color: var(--bg-color);
+    border-top: 2px solid var(--fg-color);
+    border-right: 2px solid var(--fg-color);
+    box-sizing: border-box;
+    
 }
 
 table.toggles td {
     display: table-cell;
     width: 50px;
     height: 50px;
-    padding: 8px;
+    padding: 6px;
     margin: 0px;
     vertical-align: middle;
+    background-color: var(--bg-color);
+    
 }
 
 table.paletteToggles {
@@ -259,6 +264,7 @@ button:hover {
     cursor: pointer;
     user-select: none;
     transform: scale(1);
+    transition: transform 0.05s;
 }
 
 .mapContainer .theme:hover {
@@ -271,6 +277,7 @@ button:hover {
     margin-top: 2px;
     user-select: none;
     transform: scale(1);
+    transition: transform 0.05s;
 }
 
 .mapContainer .palette:hover {
@@ -288,6 +295,7 @@ button:hover {
     cursor: pointer;
     user-select: none;
     transform: scale(1);
+    transition: transform 0.05s;
 }
 
 .mapContainer svg {
@@ -312,7 +320,7 @@ button:hover {
 }
 
 .mapContainer .layer:hover {
-   transform: scale(1.5);
+   transform: scale(1.2);
 }   
 
 .layerCaption {
@@ -341,11 +349,11 @@ button:hover {
 .logo {
     display: block;
     position: absolute;
-    width: 70px;
-    height: 70px;
-    bottom: 0px;
+    width: 60px;
+    height: 60px;
+    bottom: 5px;
     /* right: calc(50% - 115px); */
-    left: 10px;
+    right: 10px;
     z-index: 100;
 }
 
@@ -373,7 +381,7 @@ button:hover {
     width: 70px;
     height: 70px;
     top: 10px;
-    left: calc(50% - 115px);
+    right: calc(50% - 115px);
     /* left: -300px; */
     z-index: 100;
     transition: top 1s;
@@ -638,11 +646,17 @@ select.programSelect:hover {
 }
 
 .endMatter {
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 
 ::-webkit-scrollbar {
     background-color: var(--bg-color-transparent);
+}
+
+/* GROUP-SPECIFIC STYLES */
+
+body#starfruit {
+    padding-top: 0px;
 }
 
 @media only screen and (max-width: 720px){
