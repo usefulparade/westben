@@ -655,6 +655,10 @@ select.programSelect:hover {
 
 /* GROUP-SPECIFIC STYLES */
 
+body#campfire {
+    padding-top: 0px;
+}
+
 body#starfruit {
     padding-top: 0px;
 }

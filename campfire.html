@@ -20,20 +20,21 @@
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
   <title>campfire</title>
   
-  <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/content-style.css">
-    <script src="/utilities.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="content-style.css">
+  <script src="/p5.min.js"></script>
+  <script src="/utilities.js"></script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
 </head>
 
-<body onload="changeCurrentIcon('landmark', 4)">
-    <div class="programNotes">
+<body id="campfire" onload="changeCurrentIcon('landmark', 4)">
+    <iframe src="campfire-twine.html" style="width: 100vw; height: 100vh; border: none;"></iframe>
+    <div class="programNotes" style="z-index: -500;">
       
       <div class="programNotesInner">
-        <h1>The Campfire</h1>
-        
+        <div style="width: 100vw; height: 100vh"></div>
 
         
         <hr>
@@ -42,3 +43,5 @@
     </div> 
 
 </body>
+
+</html>

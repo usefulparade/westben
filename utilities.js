@@ -1,6 +1,7 @@
 var contentContainerHidden;
 var content;
 var paletteParam, themeParam;
+var crowSongChoice;
 
 // ☼ ☽
 
@@ -835,4 +836,59 @@ function sectionToggle(_num){
         sections[_num] = false;
     }
 
+}
+
+function crowSong(_choice){
+    let type = int(random(0,2));
+    let song;
+    let alive = new Array(ensembles[4], ensembles[5], concerts[1], concerts[2], concerts[5], concerts[10], concerts[11]);
+    let cry = new Array(ensembles[9], concerts[4], concerts[9]);
+    let interactive = new Array(ensembles[0], ensembles[8]);
+    let smile = new Array(ensembles[7],concerts[3],concerts[8]);
+    let trance = new Array(ensembles[1],concerts[6],concerts[7]);
+    let wild = new Array(ensembles[2],ensembles[3],ensembles[6],ensembles[10],ensembles[11],ensembles[12],concerts[0]);
+    var crowSongsSorted = new Array(alive, smile, cry, trance, interactive, wild);
+    
+    if (!_choice){
+        console.log('take me to a random concert!');
+        
+        if (type == 0){
+            song = int(random(0, ensembles.length));
+            ensembles[song].clicked();
+        } else {
+            song = int(random(0, concerts.length));
+            concerts[song].clicked();
+        }
+
+        if (type == 0){
+            if (song < 13){
+                layerToggle(0);
+            } else {
+                layerToggle(2);
+            }
+        } else {
+            layerToggle(1);
+        }
+    } else {
+        console.log("play a " + _choice + " song");
+        if (_choice == "alive"){
+            song = int(random(crowSongsSorted[0].length));
+            crowSongsSorted[0][song].clicked();
+        } else if (_choice == "smile"){
+            song = int(random(crowSongsSorted[1].length));
+            crowSongsSorted[1][song].clicked();
+        } else if (_choice == "cry"){
+            song = int(random(crowSongsSorted[2].length));
+            crowSongsSorted[2][song].clicked();
+        } else if (_choice == "trance"){
+            song = int(random(crowSongsSorted[3].length));
+            crowSongsSorted[3][song].clicked();
+        } else if (_choice == "interactive"){
+            song = int(random(crowSongsSorted[4].length));
+            crowSongsSorted[4][song].clicked();
+        } else if (_choice == "wild"){
+            song = int(random(crowSongsSorted[5].length));
+            crowSongsSorted[5][song].clicked();
+        }
+    }
 }

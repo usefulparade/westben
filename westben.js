@@ -224,7 +224,7 @@ function setup(){
     landmarks.push(tree);
     landmarks.push(ticketShed);
     landmarks.push(milkShed);
-    // landmarks.push(campfire);
+    landmarks.push(campfire);
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
 
@@ -347,7 +347,13 @@ function draw(){
 
 
     for (var i in landmarks){
-        landmarks[i].show();
+        if (i < 4){
+            landmarks[i].show();
+        } else if (i >= 4){
+            if (currentLayer >=2){
+                landmarks[i].show();
+            }
+        }
         if (landmarks[i].over){
             overSomething++;
         }
