@@ -73,14 +73,14 @@ function setup(){
                 'Kiwi',
                 'Pomelo',
                 'Robin',
-                'Bobolink',
+                'As Within, So Without',
                 'Dove',
                 'Kelp',
                 'Coral',
                 'Algae',
                 'Basil',
-                'Herb2',
-                'Herb3',
+                'Sage',
+                'Mint',
                 ];
 
     
@@ -109,8 +109,8 @@ function setup(){
                     'ensembles/2021/coral.html',
                     'ensembles/2021/algae.html',
                     'ensembles/2021/basil.html',
-                    'ensembles/2021/herb2.html',
-                    'ensembles/2021/herb3.html',
+                    'ensembles/2021/sage.html',
+                    'ensembles/2021/mint.html',
                     ];
 
     concertNames = ['Co-Presence',

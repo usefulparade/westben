@@ -518,6 +518,18 @@ function startFromHash(){
             currentIcon = concerts[concertLinks.indexOf(lookup)];
             concerts[concertLinks.indexOf(lookup)].isCurrentContent = true;
 
+        } else if (page == "algae" || page == "basil" || page == "bobolink" || page == "coral" || page == "dove" || page == "kelp" || page == "kiwi" || page == "pomelo" || page == "robin" || page == "starfruit" || page == "sage" || page == "mint"){
+            document.getElementById('content').src = 'ensembles/2021/' + page + '.html';
+            if (currentLayer != 2){
+                layerToggle(2);
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "ensembles/2021/" + page + ".html";
+            currentIcon = ensembles[ensembleLinks.indexOf(lookup)];
+            ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
+
+
         } else {
             document.getElementById('content').src = '' + page + '.html';
         }
@@ -860,15 +872,15 @@ function crowSong(_choice){
             concerts[song].clicked();
         }
 
-        if (type == 0){
-            if (song < 13){
-                layerToggle(0);
-            } else {
-                layerToggle(2);
-            }
-        } else {
-            layerToggle(1);
-        }
+        // if (type == 0){
+        //     if (song < 13){
+        //         layerToggle(0);
+        //     } else {
+        //         layerToggle(2);
+        //     }
+        // } else {
+        //     layerToggle(1);
+        // }
     } else {
         console.log("play a " + _choice + " song");
         if (_choice == "alive"){

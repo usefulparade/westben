@@ -1,0 +1,23 @@
+table.bobolinkTable td {
+    width: 50vw;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table.bobolinkTable td:nth-child(odd){
+    text-align: right;
+
+}
+
+table.bobolinkTable td:nth-child(3n+3){
+    display: none;
+}
+
+button {
+    display: block;
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}

@@ -18,29 +18,163 @@
   <meta http-equiv=“Pragma” content=”no-cache”>
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-  <title>pomelo</title>
+  <title>bobolink</title>
   
   <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/content-style.css">
+    <link rel="stylesheet" href="/ensembles/2021/css/bobolink.css">
+    <script src="/p5.min.js"></script>
+    <script src="/p5.sound.min.js"></script>
+    <script src="/ensembles/2021/js/bobolink.js"></script>
     <script src="/utilities.js"></script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
 </head>
 
-<body onload='matchThemeInner()'>
+<body onload='matchThemeInner(); slidersInit()'>
     <div class="programNotes">
       
       <div class="programNotesInner">
-        <h2>Name / Name / Name / Name</h2>
-        <h1>Title</h1>
-        
+        <h2>Vaibhav Batra, Delhi, India / Namie Rasman, Singapore / Arthur Song, Kuala Lumpur, Malaysia / Annick Odom, Den Haag, The Netherlands</h2>
+        <h1>As Within, So Without</h1>
+        <p>“Your visions will become clear only when you can look into your own heart.<br>
+          Who looks outside, dreams; who looks inside, awakes.” - Carl Jung
+        </p>
+        <p>We invite you to sit with yourself and listen to how you are feeling today.</p>
+        <p><strong>Important note</strong>: Please don’t force anything. If you are not ready to participate in the listening exercise detailed below, you could listen to our piece, instead, linked below. If you feel uncomfortable or overwhelmed at any point, please stop the exercise immediately.</p>
+        <p><strong>Disclaimer</strong>: The listening exercise isn’t meant to replace professional mental health counseling and care. If you require support please reach out to your health care provider/support network and remember to be gentle with yourself! </p>
+        <p><strong>Instructions</strong>:</p>
+        <ol style="font-style: italic;">
+          <li>Breathe... In... And out...</li>
+          <li>What are you feeling?</li>
+          <li>Slide the faders to unveil the sound of your feelings.</li>
+          <li>Sit with the sounds.</li>
+          <li>Breathe... In... And out...</li>
+          <li>If your feelings change, adjust the sliders accordingly.</li>
+          <li>Now, look within...</li>
+          <li>Keep your eyes closed for as long as you want to.</li>
+        </ol>
+
+        <p>“Until you make the unconscious conscious,<br>
+          it will direct your life and you will call it fate.” - Carl Jung 
+        </p>
+
+        <table class="bobolinkTable">
+          <!-- ARTHUR -->
+          <tr>
+            <td><p>Depletion</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="depletionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="depletionOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Joy</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="joySlider"></td>
+            <td><p class="bobolinkOutputVal" id="joyOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Respite</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="respiteSlider"></td>
+            <td><p class="bobolinkOutputVal" id="respiteOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Rage</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="rageSlider"></td>
+            <td><p class="bobolinkOutputVal" id="rageOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Exhaustion</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="exhaustionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="exhaustionOutputVal">0</p></td>
+          </tr>
+          <!-- NAMIE -->
+          <tr>
+            <td><p>Curiosity</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="depletionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="depletionOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Longing</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="joySlider"></td>
+            <td><p class="bobolinkOutputVal" id="joyOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Gratitude</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="respiteSlider"></td>
+            <td><p class="bobolinkOutputVal" id="respiteOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Despair</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="rageSlider"></td>
+            <td><p class="bobolinkOutputVal" id="rageOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Hopeful</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="exhaustionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="exhaustionOutputVal">0</p></td>
+          </tr>
+          <!-- Annick -->
+          <tr>
+            <td><p>Frustration</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="depletionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="depletionOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Drive</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="joySlider"></td>
+            <td><p class="bobolinkOutputVal" id="joyOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Playfulness</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="respiteSlider"></td>
+            <td><p class="bobolinkOutputVal" id="respiteOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Apathy</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="rageSlider"></td>
+            <td><p class="bobolinkOutputVal" id="rageOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Stillness</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="exhaustionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="exhaustionOutputVal">0</p></td>
+          </tr>
+          <!-- Vaibhav -->
+          <tr>
+            <td><p>Anxiety</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="depletionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="depletionOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Numb</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="joySlider"></td>
+            <td><p class="bobolinkOutputVal" id="joyOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Devastation</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="respiteSlider"></td>
+            <td><p class="bobolinkOutputVal" id="respiteOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Contentment</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="rageSlider"></td>
+            <td><p class="bobolinkOutputVal" id="rageOutputVal">0</p></td>
+          </tr>
+          <tr>
+            <td><p>Indifference</p></td>
+            <td><input type="range" min="0" max="100" value="0" class="bobolinkSlider" id="exhaustionSlider"></td>
+            <td><p class="bobolinkOutputVal" id="exhaustionOutputVal">0</p></td>
+          </tr>
+        </table>
+        <button type="button" onclick="bobolinkAllOff()">ALL OFF</button>
+
+        <p>We have also made a 15-minute piece with the emotions and sounds listed here. It is our sonic interpretation of our emotions. There is also an exquisite corpse we made - our own Frankenstein’s monster - to lighten the mood, a little. You can check out the piece here.</p>
+        <p style="font-style: italic;">*This is an exercise in self-awareness. Our hope beyond the pandemic is to live in a world where people are more self-aware and are unafraid of acknowledging their emotions. We hope our listening piece encourages a sense of intimacy between the listener and the myriad of emotions that may present themselves.</p>
+        <p></p>
+
         <div class="videoWrapper">
           <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/iZ-Uzn6b910" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         </div>
-        <h2>HEADING</h2>
-
-        <p>Body text.</p>
 
         
         <hr>
