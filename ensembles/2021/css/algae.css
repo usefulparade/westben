@@ -1,0 +1,19 @@
+.algae{
+  /* margin: 0 5%; */
+  margin: 65px 0 15px 0;
+  text-align: center;
+}
+
+.algae h2 {
+  text-align: right;
+}
+
+.algae p {
+  text-align: right;
+}
+
+.algae video {
+    display: inline-block;
+    position: relative;
+    max-width: 80%;
+}
