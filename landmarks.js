@@ -71,12 +71,13 @@ var Landmark = function(_pos, _type, _link){
                         textAlign(RIGHT, CENTER);
                         text("You're at", this.pos.x-this.size, this.pos.y);
                         textAlign(LEFT, CENTER);
+                        rectMode(CORNER);
                         if (this.type == 'concert'){
-                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y-35, width/6, 70);
                         } else if (this.type == 'ensemble'){
-                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                            text(this.names.toUpperCase(), this.pos.x+this.size, this.pos.y-35, width/6, 70);
                         } else {
-                            text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y);
+                            text('THE ' + this.type.toUpperCase(), this.pos.x+this.size, this.pos.y-35, width/3-10, 70);
                         }
                     }
                 pop();

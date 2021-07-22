@@ -1,0 +1,44 @@
+.robinContainer {
+    display: block;
+    position: relative;
+    margin-top: 25%;
+    margin-bottom: 25%;
+    width: 100%;
+    height: auto;
+}
+
+.goldRecord {
+    display: block;
+    position: absolute;
+    background-image: url("/ensembles/2021/media/robin/gold.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150%;
+    height: 150%;
+    margin-left: -25%;
+    margin-top: -25%;
+    z-index: -500;
+}
+
+.robinTable {
+    border-collapse: collapse;
+    /* background-image: url("/ensembles/2021/media/robin/gold.png"); */
+    background-size: contain;
+}
+
+.robinTable td {
+    border: 2px solid var(--fg-color);
+    margin: 0px;
+    padding: 0px;
+    max-width: 33%;
+}
+
+.robinTable td:hover {
+    background-color: var(--fg-color);
+    opacity: 0.5;
+}
+
+.robinTable video {
+    display: block;
+    width:100%;
+}

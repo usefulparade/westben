@@ -18,29 +18,75 @@
   <meta http-equiv=“Pragma” content=”no-cache”>
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-  <title>pomelo</title>
+  <title>robin</title>
   
   <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/content-style.css">
+    <link rel="stylesheet" href="/ensembles/2021/css/robin.css">
     <script src="/utilities.js"></script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
+
+  <script>
+    function disappear(vid){
+      if (vid.paused){
+        vid.style.opacity = 0;
+      } else {
+        vid.style.opacity = 1;
+      }
+    }
+  </script>
 </head>
 
 <body onload='matchThemeInner()'>
     <div class="programNotes">
       
       <div class="programNotesInner">
-        <h2>Name / Name / Name / Name</h2>
-        <h1>Title</h1>
-        
-        <div class="videoWrapper">
-          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/iZ-Uzn6b910" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-        </div>
-        <h2>HEADING</h2>
+        <h2>Sean Hayward, Surakarta, Central Java, Indonesia / Giorgos Gargalas, Athens, Greece / Adam Paroussos - London, England</h2>
+        <h1>This World, This Time</h1>
 
-        <p>Body text.</p>
+        <p>The Golden Record, included on the Voyager spacecraft in 1977, marked an attempt to represent the diversity of life, language, and music on Earth to any intelligent being that might find it. Here, we reimagine this concept. Our own “Golden Record” does not attempt to paint a broad picture of life on Earth, but rather focuses on the subtle details of our individual locations, languages, and sonic experiences. This piece brings together sounds, walks, and tongue twisters from England, Greece and Indonesia into an interactive grid. Each square presents a work which can be played on its own or together with any other square in the grid. The audience is encouraged to explore the different combinations of each square, creating their own unique version or ‘mix’ of the piece. </p>
+        <p>The title of this piece is borrowed from the phrase etched into the original record, “To the Makers of Music - All Worlds, All Times.”</p>
+
+        <div class="robinContainer">
+          <div class="goldRecord"></div>
+          <table class="robinTable">
+            <tr>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A1.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B1.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C1.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A2.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B2.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C2.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A3.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B3.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C3.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+              </td>
+            </tr>
+          </table>
+        </div>
 
         
         <hr>
