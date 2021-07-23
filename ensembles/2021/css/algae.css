@@ -12,8 +12,17 @@
   text-align: right;
 }
 
-.algae video {
+.algaeVideoWrapper {
     display: inline-block;
     position: relative;
-    max-width: 80%;
+    height: 0;
+    width: 80%;
+    padding-bottom: 45%; /* 16:9 = *56.25 */
+}
+.algaeVideoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
