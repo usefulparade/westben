@@ -69,18 +69,19 @@ function setup(){
                 'Generations of Decay',
                 'Iso-',
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                'Starfruit',
-                'Kiwi',
-                'Pomelo',
-                'This World, This Time',
-                'As Within, So Without',
-                'Dove',
-                'Kelp',
-                'Coral',
-                'Algae',
-                'Basil',
-                'Sage',
-                'Mint',
+                '12 Studies for Change', //basil
+                'parasomniac dances: a mosaic of translucent memories', //mint
+                'This World, This Time', //robin
+                'Connections', //dove
+                'remember me otherwise', //starfruit
+                'Moment/Memory/Tumbling/Passage', //pomelo
+                'The Rivers We Live By', //algae
+                'kelp collage ikebana', //kelp
+                'Rhinebeck', //sage
+                'releasing a jar', //kiwi
+                'Plastiglomerate', //coral
+                'As Within, So Without', //bobolink
+                
                 ];
 
     
@@ -99,18 +100,19 @@ function setup(){
                     'ensembles/pine.html',
                     'ensembles/banana.html',
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                    'ensembles/2021/starfruit.html',
-                    'ensembles/2021/kiwi.html',
-                    'ensembles/2021/pomelo.html',
-                    'ensembles/2021/robin.html',
-                    'ensembles/2021/bobolink.html',
-                    'ensembles/2021/dove.html',
-                    'ensembles/2021/kelp.html',
-                    'ensembles/2021/coral.html',
-                    'ensembles/2021/algae.html',
                     'ensembles/2021/basil.html',
-                    'ensembles/2021/sage.html',
                     'ensembles/2021/mint.html',
+                    'ensembles/2021/robin.html',
+                    'ensembles/2021/dove.html',
+                    'ensembles/2021/starfruit.html',
+                    'ensembles/2021/pomelo.html',
+                    'ensembles/2021/algae.html',
+                    'ensembles/2021/kelp.html',
+                    'ensembles/2021/sage.html',
+                    'ensembles/2021/kiwi.html',
+                    'ensembles/2021/coral.html',
+                    'ensembles/2021/bobolink.html',
+                    
                     ];
 
     concertNames = ['Co-Presence',
@@ -174,19 +176,18 @@ function setup(){
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
                                 // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                        new p5.Vector(width*0.85, height*0.6), //starfruit
-                        new p5.Vector(width*0.6, height*0.68), //turquoise
-                        new p5.Vector(width*0.25, height*0.5), //lemon
-                        new p5.Vector(width*0.4, height*0.65), //green
-                        new p5.Vector(width*0.15, height*0.4), //watermelon
-                        new p5.Vector(width*0.79, height*0.4), //purple
-                        new p5.Vector(width*0.15, height*0.21), //oak
-                        new p5.Vector(width*0.8, height*0.52), //yellow
-                        new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.24, height*0.6), //cedar
-                        new p5.Vector(width*0.05, height*0.3), //maple
-                        new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3), //banana
+                        new p5.Vector(width*0.85, height*0.6), //basil
+                        new p5.Vector(width*0.6, height*0.68), //mint
+                        new p5.Vector(width*0.25, height*0.5), //robin
+                        new p5.Vector(width*0.4, height*0.65), //dove
+                        new p5.Vector(width*0.15, height*0.4), //starfruit
+                        new p5.Vector(width*0.79, height*0.4), //pomelo
+                        new p5.Vector(width*0.15, height*0.21), //algae
+                        new p5.Vector(width*0.8, height*0.52), //kelp
+                        new p5.Vector(width*0.35, height*0.19), //sage
+                        new p5.Vector(width*0.24, height*0.6), //kiwi
+                        new p5.Vector(width*0.05, height*0.3), //coral
+                        new p5.Vector(width*0.8, height*0.2), //bobolink
                         ];
                         
                         
@@ -618,19 +619,18 @@ function windowResized(){
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
                                 // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                        new p5.Vector(width*0.85, height*0.6), //starfruit
-                        new p5.Vector(width*0.6, height*0.68), //turquoise
-                        new p5.Vector(width*0.25, height*0.5), //lemon
-                        new p5.Vector(width*0.4, height*0.65), //green
-                        new p5.Vector(width*0.15, height*0.4), //watermelon
-                        new p5.Vector(width*0.79, height*0.4), //purple
-                        new p5.Vector(width*0.15, height*0.21), //oak
-                        new p5.Vector(width*0.8, height*0.52), //yellow
-                        new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.24, height*0.6), //cedar
-                        new p5.Vector(width*0.05, height*0.3), //maple
-                        new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3), //banana
+                        new p5.Vector(width*0.85, height*0.6), //basil
+                        new p5.Vector(width*0.6, height*0.68), //mint
+                        new p5.Vector(width*0.25, height*0.5), //robin
+                        new p5.Vector(width*0.4, height*0.65), //dove
+                        new p5.Vector(width*0.15, height*0.4), //starfruit
+                        new p5.Vector(width*0.79, height*0.4), //pomelo
+                        new p5.Vector(width*0.15, height*0.21), //algae
+                        new p5.Vector(width*0.8, height*0.52), //kelp
+                        new p5.Vector(width*0.35, height*0.19), //sage
+                        new p5.Vector(width*0.24, height*0.6), //kiwi
+                        new p5.Vector(width*0.05, height*0.3), //coral
+                        new p5.Vector(width*0.8, height*0.2), //bobolink
                         ];
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
@@ -714,19 +714,18 @@ function deviceTurned(){
                         new p5.Vector(width*0.8, height*0.2), //pine
                         new p5.Vector(width*0.9, height*0.3), //banana
                                 // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                        new p5.Vector(width*0.85, height*0.6), //starfruit
-                        new p5.Vector(width*0.6, height*0.68), //turquoise
-                        new p5.Vector(width*0.25, height*0.5), //lemon
-                        new p5.Vector(width*0.4, height*0.65), //green
-                        new p5.Vector(width*0.15, height*0.4), //watermelon
-                        new p5.Vector(width*0.79, height*0.4), //purple
-                        new p5.Vector(width*0.15, height*0.21), //oak
-                        new p5.Vector(width*0.8, height*0.52), //yellow
-                        new p5.Vector(width*0.35, height*0.19), //pink
-                        new p5.Vector(width*0.24, height*0.6), //cedar
-                        new p5.Vector(width*0.05, height*0.3), //maple
-                        new p5.Vector(width*0.8, height*0.2), //pine
-                        new p5.Vector(width*0.9, height*0.3), //banana
+                        new p5.Vector(width*0.85, height*0.6), //basil
+                        new p5.Vector(width*0.6, height*0.68), //mint
+                        new p5.Vector(width*0.25, height*0.5), //robin
+                        new p5.Vector(width*0.4, height*0.65), //dove
+                        new p5.Vector(width*0.15, height*0.4), //starfruit
+                        new p5.Vector(width*0.79, height*0.4), //pomelo
+                        new p5.Vector(width*0.15, height*0.21), //algae
+                        new p5.Vector(width*0.8, height*0.52), //kelp
+                        new p5.Vector(width*0.35, height*0.19), //sage
+                        new p5.Vector(width*0.24, height*0.6), //kiwi
+                        new p5.Vector(width*0.05, height*0.3), //coral
+                        new p5.Vector(width*0.8, height*0.2), //bobolink
                         ];
 
     secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
