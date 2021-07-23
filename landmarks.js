@@ -1112,7 +1112,7 @@ function Plant(seedPos, dir, col, theta){
             stroke(accentColors[0]);
             for (var i=0;i<this.branches.length;i++){
                 this.branches[i].show();
-                this.branches[i].jitter();
+                // this.branches[i].jitter();
 
                 // if (i%2 == 1){
                 //     this.branches[i].mouseMagnet();
