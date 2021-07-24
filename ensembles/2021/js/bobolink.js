@@ -15,6 +15,11 @@ function setup(){
         tracks[i].setVolume(0);
         tracks[i].loop();
     }
+    var bobolinkTable = document.getElementsByClassName("bobolinkTable");
+    bobolinkTable[0].style.display = "block";
+
+    var offButton = document.getElementById("offButton");
+    offButton.style.display = "block";
 }
 
 function slidersInit(){

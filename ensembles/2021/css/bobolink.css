@@ -1,3 +1,7 @@
+table.bobolinkTable {
+    display: none;
+}
+
 table.bobolinkTable td {
     width: 50vw;
     padding-left: 10px;
@@ -14,7 +18,7 @@ table.bobolinkTable td:nth-child(3n+3){
 }
 
 button {
-    display: block;
+    display: none;
     position: relative;
     width: 50%;
     margin-left: auto;
