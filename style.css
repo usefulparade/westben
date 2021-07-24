@@ -663,6 +663,10 @@ body#starfruit {
     padding-top: 0px;
 }
 
+.avoidwrap {
+    display: inline-block;
+}
+
 @media only screen and (max-width: 720px){
 
     .programNotes h1 {
