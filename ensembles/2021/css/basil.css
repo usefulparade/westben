@@ -1,0 +1,26 @@
+.basilTablesContainer {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.basilTable {
+    display: block;
+    position: absolute;
+    width: 18%;
+}
+
+img.basilTable {
+    filter: saturate(0%);
+    transition: filter 0.2s;
+}
+
+img.basilTable:hover{
+    filter: saturate(50%);
+}
+
+.basilText {
+    display: none;
+
+}

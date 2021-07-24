@@ -76,7 +76,7 @@ function setup(){
                 'remember me otherwise', //starfruit
                 'Moment/Memory/Tumbling/Passage', //pomelo
                 'The Rivers We Live By', //algae
-                'kelp collage ikebana', //kelp
+                'kelp collage', //kelp
                 'Rhinebeck', //sage
                 'releasing a jar', //kiwi
                 'Plastiglomerate', //coral
