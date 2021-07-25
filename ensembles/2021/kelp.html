@@ -33,23 +33,33 @@
 </head>
 
 <body id='kelp' onload='matchThemeInner()'>
-  <input type="range" min="0" max="1000" value="750" style="z-index: 10000" class="rateSlider" id="rateSlider">
 
-  <div class="kelpCanvas" id="kelpCanvas"></div>
-    <div class="programNotes" style="z-index:-500; display: inline-block; position: relative;">
-      
+  
+    <div class="programNotes">
       
       <div class="programNotesInner">
+        
         <h2><span class="avoidwrap">reina</span> / <span class="avoidwrap">andres crovetti</span> / <span class="avoidwrap">pompey</span> / <span class="avoidwrap">Shanika Maria</span></h2>
         <div id="p5_loading" class="loadingclass" style="width: 100%;">
           <p style="text-align: center;">[ loading... ]</p>
         </div>
-        <!-- <h1>kelp collage</h1> -->
+        
+      </div>
 
-        
-        
-        
+      <div class="kelpUI" id="kelpUI">
+        <div class="buttons">
+          <button class="sceneSwitch" id="0"></button>
+          <button class="sceneSwitch" id="1"></button>
+          <button class="sceneSwitch" id="2"></button>
+        </div>
 
+        <input type="range" min="0" max="1000" value="750" class="rateSlider" id="rateSlider">
+      </div>
+
+      <div class="kelpCanvas" id="kelpCanvas"> </div>
+      
+      <div class="programNotesInner">
+        
         
         <hr>
         <div id="endMatter" class="endMatter"></div>

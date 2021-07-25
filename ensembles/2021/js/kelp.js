@@ -1,17 +1,19 @@
 let c, cparent;
 
-let corpseImages = [];
-let atlantisImages = [];
-
-
 let corpsebg, atlantisbg;
 let bgSize;
 
+let corpseImages = [];
+let atlantisImages = [];
+let lastImages = [];
+
 let corpseSounds = [];
 let atlantisSounds = [];
+let lastSounds = [];
 
 let corpseFlowers = [];
 let atlantisFlowers = [];
+let lastFlowers = [];
 
 let allFlowers = [];
 
@@ -23,6 +25,7 @@ let corpseVectors;
 let atlantisVectors;
 
 let rateSlider;
+let sceneButtons;
 
 
 function preload(){
@@ -97,6 +100,17 @@ function setup(){
 
     rateSlider = document.getElementById('rateSlider');
     rateSlider.oninput = changeRate;
+
+    sceneButtons = document.getElementsByClassName('sceneSwitch');
+
+    for (var j = 0; j < sceneButtons.length; j++){
+        sceneButtons[j].onclick = function(){
+            activeScene = int(this.id);
+        }
+    }
+
+    var kelpUI = document.getElementById('kelpUI');
+    kelpUI.style.display = "inline-block";
 }
 
 function draw(){

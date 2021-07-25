@@ -1,15 +1,68 @@
-.kelpCanvas {
+.programNotes {
+    height: auto;
+}
+
+.kelpUI {
+    display: none;
+    position: relative;
+    z-index: 1000;
+    width: 800px;
+    height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid var(--fg-color);
+    border-bottom: 0px;
+    /* box-sizing: border-box; */
+}
+.rateSlider {
     display: block;
-    position: absolute;
+    float: right;
+    z-index: 10000; 
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 15px;
+}
+.buttons {
+    display: block;
+    float: left;
+    z-index: 10000;
+    margin-left: 5%;
+}
+
+.kelpCanvas {
+    
+    display: block;
+    position: relative;
     width: 100vw;
-    height: 100vh;
-    top: 200px;
+    /* height: 100vh; */
+
     /* margin-top: 200px; */
 }
+
+
+
+.sceneSwitch {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+
 
 canvas.p5Canvas{
     display: block;
     position: relative;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media only screen and (max-width: 800px){
+    .kelpUI {
+        max-width: 95%;
+    }
+
 }
