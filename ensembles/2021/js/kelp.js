@@ -198,7 +198,8 @@ function flowerSize(){
                 } else {
                     allFlowers[i][j].size = constrain(map(windowWidth, 300, 800, 30, 60), 30, 60);
                 }
-                allFlowers[i][j].pos = new p5.Vector(corpseFlowers[i].posRel.x * width, corpseFlowers[i].posRel.y * height);
+
+                allFlowers[i][j].pos = new p5.Vector(allFlowers[i][j].posRel.x * width, allFlowers[i][j].posRel.y * height);
             }
             
         }
