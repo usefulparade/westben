@@ -1,6 +1,6 @@
 let c, cparent;
 
-let corpsebg, atlantisbg;
+let corpsebg, atlantisbg, lastbg;
 let bgSize;
 
 let corpseImages = [];
@@ -23,6 +23,7 @@ let cursorPos;
 
 let corpseVectors;
 let atlantisVectors;
+let lastVectors = [];
 
 let rateSlider;
 let sceneButtons;
@@ -39,8 +40,15 @@ function preload(){
         atlantisSounds[i] = loadSound("/ensembles/2021/media/kelp/mp3/atlantis/" + i + ".mp3");
     }
 
+    for (var i=0;i<28;i++){
+        lastImages[i] = loadImage("/ensembles/2021/media/kelp/img/last/" + i + ".png");
+        lastSounds[i] = loadSound("/ensembles/2021/media/kelp/mp3/last/" + i + ".mp3");
+    }
+
     corpsebg = loadImage("/ensembles/2021/media/kelp/img/corpse/bg1.png");
     atlantisbg = loadImage("/ensembles/2021/media/kelp/img/atlantis/bg2.png");
+    lastbg = loadImage("/ensembles/2021/media/kelp/img/last/bg3.png");
+
     cursorPos = new p5.Vector(0,0);
 }   
 
@@ -67,6 +75,10 @@ function setup(){
         createVector(width*0.53, height*0.32), //atlantis alex 1
         createVector(width*0.85, height*0.6), //atlantis andres 2
     ];
+
+    for (var k = 0; k < 28; k++){
+        lastVectors[k] = createVector(random(width*0.1, width*0.9), random(height*0.8, height*0.9));
+    }
 
     for (var i=0;i<corpseImages.length;i++){
         corpseFlowers[i] = new Flower(corpseVectors[i], corpseImages[i], corpseSounds[i]);
@@ -96,7 +108,25 @@ function setup(){
         }
     }
 
-    allFlowers = [corpseFlowers, atlantisFlowers];
+    for (var i=0;i<lastImages.length;i++){
+        lastFlowers[i] = new Flower(lastVectors[i], lastImages[i], lastSounds[i]);
+        lastFlowers[i].scene = 1;
+
+        lastFlowers[i].vol = lastFlowers[i].findVol();
+        lastFlowers[i].pan = lastFlowers[i].findPan();
+        lastFlowers[i].sound.setVolume(lastFlowers[i].vol);
+        lastFlowers[i].sound.pan(lastFlowers[i].pan);
+
+        if (activeScene == lastFlowers[i].scene){
+            lastFlowers[i].sound.loop();
+        }
+    }
+
+    
+
+    allFlowers = [corpseFlowers, atlantisFlowers, lastFlowers];
+
+    flowerSize();
 
     rateSlider = document.getElementById('rateSlider');
     rateSlider.oninput = changeRate;
@@ -104,9 +134,7 @@ function setup(){
     sceneButtons = document.getElementsByClassName('sceneSwitch');
 
     for (var j = 0; j < sceneButtons.length; j++){
-        sceneButtons[j].onclick = function(){
-            activeScene = int(this.id);
-        }
+        sceneButtons[j].onclick = function(){changeScene(int(this.id));};
     }
 
     var kelpUI = document.getElementById('kelpUI');
@@ -127,6 +155,11 @@ function draw(){
         for (var i=0;i<atlantisFlowers.length;i++){
             atlantisFlowers[i].show();
         }
+    } else if (activeScene == 2){
+        image(lastbg, width*0.5, width*0.3, bgSize, bgSize*0.6);
+        for (var i=0;i<lastFlowers.length;i++){
+            lastFlowers[i].show();
+        }
     }
 
     cursorPos = new p5.Vector(mouseX, mouseY);
@@ -143,19 +176,33 @@ function windowResized(){
         resizeCanvas(windowWidth, windowWidth*0.8);
     }
 
-    for (var i = 0; i < corpseFlowers.length;i++){
-        if (windowWidth > 800){
-            corpseFlowers[i].size = 140;
-        } else {
-            corpseFlowers[i].size = constrain(map(windowWidth, 300, 800, 70, 120), 70, 120);
-            corpseFlowers[i].pos = new p5.Vector(corpseFlowers[i].posRel.x * width, corpseFlowers[i].posRel.y * height);
-        }
-        
-    }
+    flowerSize();
 
     
 
     bgSize = width;
+}
+
+function flowerSize(){
+    for (var i = 0; i < allFlowers.length;i++){
+        for (var j=0;j<allFlowers[i].length;j++){
+            if (windowWidth > 800){
+                if (i < 2){
+                    allFlowers[i][j].size = 140;
+                } else {
+                    allFlowers[i][j].size = 60;
+                }
+            } else {
+                if (i < 2){
+                    allFlowers[i][j].size = constrain(map(windowWidth, 300, 800, 70, 120), 70, 120);
+                } else {
+                    allFlowers[i][j].size = constrain(map(windowWidth, 300, 800, 30, 60), 30, 60);
+                }
+                allFlowers[i][j].pos = new p5.Vector(corpseFlowers[i].posRel.x * width, corpseFlowers[i].posRel.y * height);
+            }
+            
+        }
+    }
 }
 
 function Flower(pos, img, sound){
@@ -163,7 +210,7 @@ function Flower(pos, img, sound){
     this.posRel = createVector(this.pos.x / width, this.pos.y / height);
     this.img = img;
     this.sound = sound;
-    this.size = constrain(map(windowWidth, 300, 800, 70, 120), 70, 120);
+    this.size = 140;
     this.offset = new p5.Vector(0,0);
     this.selected = false;
     this.pan = 0
