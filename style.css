@@ -659,10 +659,9 @@ body#campfire {
     padding-top: 0px;
 }
 
-body#starfruit, body#coral {
+body#starfruit, body#coral, body#kelp {
     padding-top: 0px;
 }
-
 
 .avoidwrap {
     display: inline-block;

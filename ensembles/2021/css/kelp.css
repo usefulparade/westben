@@ -1,0 +1,15 @@
+.kelpCanvas {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 200px;
+    /* margin-top: 200px; */
+}
+
+canvas.p5Canvas{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}

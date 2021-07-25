@@ -70,7 +70,7 @@ function setup(){
                 'Iso-',
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
                 '12 Studies for Change', //basil
-                'parasomniac dances: a mosaic of translucent memories', //mint
+                'parasomniac dances', //mint
                 'This World, This Time', //robin
                 'Connections', //dove
                 'remember me otherwise', //starfruit

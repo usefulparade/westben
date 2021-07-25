@@ -18,29 +18,37 @@
   <meta http-equiv=“Pragma” content=”no-cache”>
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-  <title>pomelo</title>
+  <title>kelp</title>
   
-  <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/content-style.css">
+    <link rel="stylesheet" href="/ensembles/2021/css/kelp.css">
     <script src="/utilities.js"></script>
+    <script src="/p5.min.js"></script>
+    <script src="/p5.sound.min.js"></script>
+    <script src="/ensembles/2021/js/kelp.js"></script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
 </head>
 
-<body onload='matchThemeInner()'>
-    <div class="programNotes">
+<body id='kelp' onload='matchThemeInner()'>
+  <input type="range" min="0" max="1000" value="750" style="z-index: 10000" class="rateSlider" id="rateSlider">
+
+  <div class="kelpCanvas" id="kelpCanvas"></div>
+    <div class="programNotes" style="z-index:-500; display: inline-block; position: relative;">
+      
       
       <div class="programNotesInner">
-        <h2>Name / Name / Name / Name</h2>
-        <h1>Title</h1>
-        
-        <div class="videoWrapper">
-          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/iZ-Uzn6b910" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <h2><span class="avoidwrap">reina</span> / <span class="avoidwrap">andres crovetti</span> / <span class="avoidwrap">pompey</span> / <span class="avoidwrap">Shanika Maria</span></h2>
+        <div id="p5_loading" class="loadingclass" style="width: 100%;">
+          <p style="text-align: center;">[ loading... ]</p>
         </div>
-        <h2>HEADING</h2>
+        <!-- <h1>kelp collage</h1> -->
 
-        <p>Body text.</p>
+        
+        
+        
 
         
         <hr>
