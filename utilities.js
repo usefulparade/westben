@@ -477,10 +477,10 @@ function startFromHash(){
         } else if (layer == "3"){
             layerToggle(2);
         } else {
-            layerToggle(1);
+            layerToggle(2);
         }
     } else {
-        layerToggle(1);  /// default layer if no url slug
+        layerToggle(2);  /// default layer if no url slug
     }
 
     if (page != null){
@@ -855,10 +855,10 @@ function crowSong(_choice){
     let song;
     let alive = new Array(ensembles[4], ensembles[5], concerts[1], concerts[2], concerts[5], concerts[10], concerts[11]);
     let cry = new Array(ensembles[9], concerts[4], concerts[9]);
-    let interactive = new Array(ensembles[0], ensembles[8]);
+    let interactive = new Array(ensembles[0], ensembles[8],ensembles[13]);
     let smile = new Array(ensembles[7],concerts[3],concerts[8]);
     let trance = new Array(ensembles[1],concerts[6],concerts[7]);
-    let wild = new Array(ensembles[2],ensembles[3],ensembles[6],ensembles[10],ensembles[11],ensembles[12],concerts[0]);
+    let wild = new Array(ensembles[2],ensembles[3],ensembles[6],ensembles[10],ensembles[11],ensembles[12],concerts[0],ensembles[14]);
     var crowSongsSorted = new Array(alive, smile, cry, trance, interactive, wild);
     
     if (!_choice){
