@@ -34,6 +34,14 @@ function slidersInit(){
     }
 }
 
+function mousePressed(){
+    userStartAudio();
+}
+
+function touchStarted(){
+    userStartAudio();
+}
+
 function bobolinkAllOff(){
     for(let i = 0;i<sliders.length;i++){
         sliders[i].value = 0;
