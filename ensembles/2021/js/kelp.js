@@ -166,6 +166,16 @@ function draw(){
     if (touches[0] != null){
         cursorPos = new p5.Vector(touches[0].x, touches[0].y);
     }
+
+    if (getAudioContext().state != "running"){
+        push();
+            noStroke();
+            fill(255);
+            textSize(30);
+            textAlign(CENTER);
+            text("click to start", width*0.5, height*0.5);
+        pop();
+    }
     
 }
 
@@ -290,9 +300,20 @@ function mousePressed(){
                 allFlowers[activeScene][i].selected = true;
                 rateSlider.value = allFlowers[activeScene][i].rateVal;
 
-                allFlowers[activeScene].sort((a,b) => a.selected);
+                // allFlowers[activeScene].sort((a,b) => a.selected);
+                allFlowers[activeScene].sort(function(a,b){
+                    if (a.selected){
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                });
                 break;
             }
+        }
+
+        if (getAudioContext().state != "running"){
+            userStartAudio();
         }
 }
 

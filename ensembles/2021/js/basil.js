@@ -32,6 +32,7 @@ function setup(){
 }
 
 function tableClick(tableImg){
+
     var ind;
    
     for (var i=0;i<tables.length;i++){
@@ -43,19 +44,15 @@ function tableClick(tableImg){
     if (!songs[ind].isPlaying()){
         songs[ind].play(songs[ind].duration-1);
         tableImg.style.filter = "saturate(100%)";
-        // if (ind != 3){
-            // for (var j=0;j<texts.length;j++){
-            //     texts[j].style.display = "none";
-            // }
-            texts[ind].style.display = "inline-block"
-        // }
+        texts[ind].style.display = "inline-block"
+        
     } else {
         songs[ind].pause();
         tableImg.style.filter = "saturate(0%)";
-        // if (ind != 3){
-            texts[ind].style.display = "none"
-        // }
+        texts[ind].style.display = "none"
+       
     }
+    
 }
 
 function tableEnd(){
