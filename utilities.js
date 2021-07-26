@@ -115,7 +115,7 @@ function layerToggle(_layer){
     if (_layer != null){
         currentLayer = _layer;
     } else {
-        currentLayer = (currentLayer+1)%2;
+        currentLayer = (currentLayer+1)%3;
     }
 
     document.getElementById('layerNumber').innerHTML = currentLayer+1;

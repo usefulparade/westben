@@ -24,22 +24,15 @@
     <link rel="stylesheet" href="/content-style.css">
     <link rel="stylesheet" href="/ensembles/2021/css/robin.css">
     <script src="/utilities.js"></script>
+    <script src="/ensembles/2021/js/robin.js"></script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2020 westben residency">
   <meta property="og:image" content="">
 
-  <script>
-    function disappear(vid){
-      if (vid.paused){
-        vid.style.opacity = 0;
-      } else {
-        vid.style.opacity = 1;
-      }
-    }
-  </script>
+
 </head>
 
-<body onload='matchThemeInner()'>
+<body onload='matchThemeInner(); robinInit();'>
     <div class="programNotes">
       
       <div class="programNotesInner">
@@ -53,40 +46,42 @@
         <p>The Golden Record, included on the Voyager spacecraft in 1977, marked an attempt to represent the diversity of life, language, and music on Earth to any intelligent being that might find it. Here, we reimagine this concept. Our own “Golden Record” does not attempt to paint a broad picture of life on Earth, but rather focuses on the subtle details of our individual locations, languages, and sonic experiences. This piece brings together sounds, walks, and tongue twisters from England, Greece and Indonesia into an interactive grid. Each square presents a work which can be played on its own or together with any other square in the grid. The audience is encouraged to explore the different combinations of each square, creating their own unique version or ‘mix’ of the piece. </p>
         <p>The title of this piece is borrowed from the phrase etched into the original record, “To the Makers of Music - All Worlds, All Times.”</p>
 
-        <div class="robinContainer">
+        
+
+        <div class="robinContainer" id="robinContainer">
           <div class="goldRecord"></div>
           <table class="robinTable">
             <tr>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A1.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A1.mp4" style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B1.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B1.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C1.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
-              </td>
-              <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
-              </td>
-              <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C1.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
             </tr>
             <tr>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
               <td>
-                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);"></video>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C2.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/A3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/B3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
+              </td>
+              <td>
+                <video class="robinVideo" loop src="/ensembles/2021/media/robin/C3.mp4" playsinline style="opacity: 0" onclick="this.paused ? this.play() : this.pause(); disappear(this);" type="video/mp4"></video>
               </td>
             </tr>
           </table>

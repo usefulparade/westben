@@ -230,7 +230,7 @@ function setup(){
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
 
     for (var i = 0; 
-        i<ensembleNames.length;     // <--------------------- THIS IS THE END POINT! 
+        i<13;     // <--------------------- THIS IS THE END POINT! 
         i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble', ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
