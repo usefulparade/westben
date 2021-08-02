@@ -6,10 +6,10 @@ let lastLoaded = [];
 let loadingText;
 
 function preload(){
-    for (let i=0;i<12;i++){
-        songs[i] = loadSound("/ensembles/2021/media/basil/songs/" + i + ".mp3");
-    }
-    // songs[0] = loadSound("/ensembles/2021/media/basil/songs/0.mp3");
+    // for (let i=0;i<12;i++){
+    //     songs[i] = loadSound("/ensembles/2021/media/basil/songs/" + i + ".mp3");
+    // }
+    songs[0] = loadSound("/ensembles/2021/media/basil/songs/0.mp3");
 }
 
 function setup(){
