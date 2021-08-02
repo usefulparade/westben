@@ -27,9 +27,11 @@ let lastVectors = [];
 
 let rateSlider;
 let sceneButtons;
+// console.log('started preload');
 
 
 function preload(){
+    
     for (var i=0;i<3;i++){
         corpseImages[i] = loadImage("/ensembles/2021/media/kelp/img/corpse/" + i + ".png");
         corpseSounds[i] = loadSound("/ensembles/2021/media/kelp/mp3/corpse/" + i + ".mp3");

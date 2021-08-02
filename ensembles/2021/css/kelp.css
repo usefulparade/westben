@@ -60,9 +60,21 @@ canvas.p5Canvas{
     margin-right: auto;
 }
 
+.mobileWarning {
+    display: none;
+    position: relative;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    padding: 10%;
+}
+
 @media only screen and (max-width: 800px){
     .kelpUI {
         max-width: 95%;
+    }
+
+    .mobileWarning{
+        display: inline-block;
     }
 
 }
