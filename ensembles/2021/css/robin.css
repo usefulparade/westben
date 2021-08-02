@@ -43,3 +43,20 @@
     position: relative;
     width:100%;
 }
+
+.mobileWarning {
+    display: none;
+    position: relative;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    padding: 10%;
+}
+
+
+@media only screen and (max-width: 720px){
+
+    .mobileWarning{
+        display: inline-block;
+    }
+
+}
