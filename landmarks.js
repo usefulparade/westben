@@ -29,6 +29,9 @@ var Landmark = function(_pos, _type, _link){
     this.isCurrentContent = false;
     this.plant;
 
+    this.polyLerp = 0;
+    this.polyNum = 2;
+
     this.newest = false;
 
     this.show = function(){
@@ -417,12 +420,23 @@ var Landmark = function(_pos, _type, _link){
 
         push();
             translate(this.pos.x, this.pos.y);
-            rotate(this.rotation + this.sinCounter);
+
+            if (this.ensembleNum <=11){
+                rotate(this.rotation + this.sinCounter);
+            } else {
+                rotate(this.rotation);
+            }
+
             scale(this.scale);
             noFill();
             stroke(accentColors[1]);
             strokeWeight(this.weight);
-            ellipse(0, 0, this.size, this.size);
+            if (this.ensembleNum <=11){
+                ellipse(0, 0, this.size, this.size);
+            } else {
+                //rectMode(CENTER);
+                //square(0,0,this.size,this.size,5);
+            }
 
             if (this.ensembleNum == 0){ // bass
                 for (i=-this.half*0.5;i<=this.half*0.5;i+=(this.half*0.33)){
@@ -770,6 +784,34 @@ var Landmark = function(_pos, _type, _link){
                         translate(0, -this.half*0.5);
                         ellipse(0, 0, this.half*0.6);
                     pop();
+                pop();
+            }                                                                  // 2021 DIGITAL CONCERTS!!!
+            else if (this.ensembleNum >= 12 && this.ensembleNum < 22) // Lydia & Christine
+            { 
+                push();
+
+                    if (this.over || this.isCurrentContent){
+                        if (this.polyLerp < 1){
+                            this.polyLerp = constrain(this.polyLerp + map(this.ensembleNum, 12, 22, 0.05, 0.005),0,1);
+                        } else {
+                            this.polyLerp = 1;
+                        }
+                    } else {
+                        if (this.polyLerp > 0){
+                            this.polyLerp = constrain(this.polyLerp + map(this.ensembleNum, 12, 22, 0.05, 0.005),0,1);
+                        } else {
+                            this.polyLerp = 0;
+                        }
+                    }
+                    this.polyNum = lerp(2, this.ensembleNum-9, this.polyLerp);
+                    stroke(accentColors[1]);
+                    fill(accentColors[1]);
+                    push();
+                        rotate(radians(-90));
+                        polygon(0,0,this.half,this.polyNum);
+
+                    pop();
+                    
                 pop();
             }
 
@@ -1167,3 +1209,14 @@ function Plant(seedPos, dir, col, theta){
     };
 
 }
+
+function polygon(x, y, radius, npoints) {
+    let angle = TWO_PI / npoints;
+    beginShape();
+    for (let a = 0; a < TWO_PI; a += angle) {
+      let sx = x + cos(a) * radius;
+      let sy = y + sin(a) * radius;
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+  }

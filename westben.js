@@ -126,7 +126,9 @@ function setup(){
                     'Fitzgeralds',
                     'New Orford String Quartet',
                     'Ken Tizzard',
-                    'Good Lovelies'
+                    'Good Lovelies',
+                                    // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    "Lydia Persaud & Christine Bougie",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -140,7 +142,9 @@ function setup(){
                     'concerts/2020/fitzgeralds.html',
                     'concerts/2020/neworford.html',
                     'concerts/2020/kentizzard.html',
-                    'concerts/2020/goodlovelies.html'
+                    'concerts/2020/goodlovelies.html',
+                                    // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    'concerts/2021/lydiachristine.html',
                     ];
 
     contentContainerHidden = true;
@@ -210,6 +214,9 @@ function setup(){
                     new p5.Vector(width*0.22, height*0.5), //New Orford
                     new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
                     new p5.Vector(width*0.53, height*0.7), //Good Lovelies
+                    // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
+
     ];
 
 
@@ -249,7 +256,13 @@ function setup(){
     for (j=0;j<concertLinks.length;j++){
         concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
         concerts[j].names = concertNames[j];
-        concerts[j].rotation = random(0, TWO_PI);
+        if (j<11){
+            concerts[j].rotation = random(0, TWO_PI);
+        } else {
+            concerts[j].rotation = 0;
+        }
+        
+
         concerts[j].ensembleNum = j;
     }
     concerts[concerts.length-1].newest = true;
@@ -330,9 +343,11 @@ function draw(){
         
     } else if (currentLayer == 1){ //2020-21 Digital Concerts
         for (var l in concerts){
-            concerts[l].show();
-            if (concerts[l].over){
-                overSomething++;
+            if (l <= 11){
+                concerts[l].show();
+                if (concerts[l].over){
+                    overSomething++;
+                }
             }
         }
     } else if (currentLayer == 2){ // 2021 PCR
@@ -340,6 +355,15 @@ function draw(){
             if (m >= 13){
                 ensembles[m].show();
                 if (ensembles[m].over){
+                    overSomething++;
+                }
+            }
+        }
+    }  else if (currentLayer == 3){ // 2021-22 Digital Concerts
+        for (var n in concerts){
+            if (n > 11){
+                concerts[n].show();
+                if (concerts[n].over){
                     overSomething++;
                 }
             }
@@ -650,6 +674,8 @@ function windowResized(){
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
                         new p5.Vector(width*0.53, height*0.7), //Good Lovelies
+                        // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
     ];
 
     for (var i in landmarks){
@@ -745,6 +771,8 @@ function deviceTurned(){
                         new p5.Vector(width*0.22, height*0.5), //New Orford
                         new p5.Vector(width*0.9, height*0.3), //Ken Tizzard
                         new p5.Vector(width*0.53, height*0.7), //Good Lovelies
+                        // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     ];
 
     for (var i in landmarks){

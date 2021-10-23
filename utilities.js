@@ -115,7 +115,7 @@ function layerToggle(_layer){
     if (_layer != null){
         currentLayer = _layer;
     } else {
-        currentLayer = (currentLayer+1)%3;
+        currentLayer = (currentLayer+1)%4;
     }
 
     document.getElementById('layerNumber').innerHTML = currentLayer+1;
@@ -128,6 +128,8 @@ function layerToggle(_layer){
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
     } else if (currentLayer == 2){
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
+    } else if (currentLayer == 3){
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021-22 Digital Concerts';
     }
 
     updateURL();
@@ -146,6 +148,7 @@ function layerToggleFromInside(_x){
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2021').style.setProperty('display', 'none');
+        document.getElementById('concerts2021').style.setProperty('display', 'none');
     } else if (_x.value == 1) {
         // window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
@@ -153,12 +156,21 @@ function layerToggleFromInside(_x){
         document.getElementById('concerts2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
         document.getElementById('pcr2021').style.setProperty('display', 'none');
+        document.getElementById('concerts2021').style.setProperty('display', 'none');
     } else if (_x.value == 2){
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
         document.getElementById('pcr2020').style.setProperty('display', 'none');
         document.getElementById('pcr2021').style.setProperty('display', 'inline-block');
+        document.getElementById('concerts2021').style.setProperty('display', 'none');
+    } else if (_x.value == 3){
+        // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021-22 Digital Concerts';
+        document.getElementById('concerts2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2021').style.setProperty('display', 'none');
+        document.getElementById('concerts2021').style.setProperty('display', 'inline-block');
     }
 
     updateURLFromInside();
@@ -176,14 +188,23 @@ function programLayerMatch(){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
         } else if (currentLayer == 1){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
         } else if (currentLayer == 2){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'inline-block');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
+
+        } else if (currentLayer == 3){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'inline-block');
 
         }
     }
@@ -476,11 +497,13 @@ function startFromHash(){
             layerToggle(1);
         } else if (layer == "3"){
             layerToggle(2);
+        } else if (layer == "4"){
+            layerToggle(3);
         } else {
-            layerToggle(2);
+            layerToggle(3);
         }
     } else {
-        layerToggle(2);  /// default layer if no url slug
+        layerToggle(3);  /// default layer if no url slug
     }
 
     if (page != null){
@@ -500,7 +523,7 @@ function startFromHash(){
         } else if (page == "whatyousaw"){
             document.getElementById('content').src = 'ensembles/mightnotfindwhatyousaw/index' + page + '.html';
             if (currentLayer != 0){
-                layerToggle();
+                layerToggle(0);
                 
             }
             // change icon
@@ -510,7 +533,7 @@ function startFromHash(){
         } else if (page == "brianmanker" || page == "copresence" || page == "forthebirds" || page == "jordanmowat" || page == "mountcarmel" || page == "valeriemilot" || page == "treeoflight" || page == "barbralica" || page == "fitzgeralds" || page == "neworford" || page == "kentizzard" || page == "goodlovelies"){
             document.getElementById('content').src = 'concerts/2020/' + page + '.html';
             if (currentLayer != 1){
-                layerToggle();
+                layerToggle(1);
             }
             // change icon
             currentIcon.isCurrentContent = false;
@@ -529,6 +552,17 @@ function startFromHash(){
             currentIcon = ensembles[ensembleLinks.indexOf(lookup)];
             ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
 
+
+        } else if (page == "lydiachristine"){
+            document.getElementById('content').src = 'concerts/2021/' + page + '.html';
+            if (currentLayer != 3){
+                layerToggle(3);
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "concerts/2021/" + page + ".html";
+            currentIcon = concerts[concertLinks.indexOf(lookup)];
+            concerts[concertLinks.indexOf(lookup)].isCurrentContent = true;
 
         } else {
             document.getElementById('content').src = '' + page + '.html';
