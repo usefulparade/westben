@@ -113,7 +113,7 @@ function layerToggle(_layer){
     // pcr2020Toggle = !pcr2020Toggle;
     
     if (_layer != null){
-        currentLayer = _layer;
+        currentLayer = parseInt(_layer);
     } else {
         currentLayer = (currentLayer+1)%4;
     }
