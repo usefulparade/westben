@@ -129,6 +129,7 @@ function setup(){
                     'Good Lovelies',
                                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     "Lydia Persaud & Christine Bougie",
+                    "Amy Hillis",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -145,6 +146,7 @@ function setup(){
                     'concerts/2020/goodlovelies.html',
                                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     'concerts/2021/lydiachristine.html',
+                    'concerts/2021/amyhillis.html',
                     ];
 
     contentContainerHidden = true;
@@ -216,6 +218,7 @@ function setup(){
                     new p5.Vector(width*0.53, height*0.7), //Good Lovelies
                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
+                    new p5.Vector(width*0.4, height*0.15), //Amy Hillis
 
     ];
 
@@ -676,6 +679,7 @@ function windowResized(){
                         new p5.Vector(width*0.53, height*0.7), //Good Lovelies
                         // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
+                    new p5.Vector(width*0.4, height*0.15), //Amy Hillis
     ];
 
     for (var i in landmarks){
@@ -773,6 +777,7 @@ function deviceTurned(){
                         new p5.Vector(width*0.53, height*0.7), //Good Lovelies
                         // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
+                    new p5.Vector(width*0.4, height*0.15), //Amy Hillis
                     ];
 
     for (var i in landmarks){
