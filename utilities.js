@@ -119,6 +119,8 @@ function layerToggle(_layer){
     }
 
     document.getElementById('layerNumber').innerHTML = currentLayer+1;
+    var layerSelect = document.getElementById('layers');
+        layerSelect.value = currentLayer;
 
     if (currentLayer == 0){
         // document.getElementById('layerIcon').innerHTML = '❏';
@@ -140,6 +142,7 @@ function layerToggleFromInside(_x){
     window.parent.currentLayer = _x.value;
     var currentLayerNum = (parseInt(_x.value, 10)+1);
     window.parent.document.getElementById('layerNumber').innerHTML = currentLayerNum;
+    window.parent.document.getElementById('layers').value = window.parent.currentLayer;
 
     if (_x.value == 0){
         // window.parent.pcr2020Toggle = true;
@@ -180,8 +183,8 @@ function layerToggleFromInside(_x){
 function programLayerMatch(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
-        var layerSelect = iframe.contentDocument.getElementById('layers');
-        layerSelect.value = currentLayer;
+        // var layerSelect = iframe.contentDocument.getElementById('layers');
+        // layerSelect.value = currentLayer;
     
         // console.log('hi');
         if (currentLayer == 0){
