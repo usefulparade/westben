@@ -556,7 +556,7 @@ function startFromHash(){
             ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
 
 
-        } else if (page == "lydiachristine" || page == "amyhillis"){
+        } else if (page == "lydiachristine" || page == "amyhillis" || page == "treeoflight2"){
             document.getElementById('content').src = 'concerts/2021/' + page + '.html';
             if (currentLayer != 3){
                 layerToggle(3);

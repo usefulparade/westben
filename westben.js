@@ -130,6 +130,7 @@ function setup(){
                                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     "Lydia Persaud & Christine Bougie",
                     "Amy Hillis",
+                    "Tree of Light",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -147,6 +148,7 @@ function setup(){
                                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     'concerts/2021/lydiachristine.html',
                     'concerts/2021/amyhillis.html',
+                    'concerts/2021/treeoflight2.html',
                     ];
 
     contentContainerHidden = true;
@@ -219,6 +221,7 @@ function setup(){
                     // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
+                    new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
 
     ];
 
@@ -680,6 +683,7 @@ function windowResized(){
                         // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
+                    new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
     ];
 
     for (var i in landmarks){
@@ -778,6 +782,7 @@ function deviceTurned(){
                         // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
+                    new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
                     ];
 
     for (var i in landmarks){
