@@ -131,6 +131,7 @@ function setup(){
                     "Lydia Persaud & Christine Bougie",
                     "Amy Hillis",
                     "Tree of Light",
+                    "Mowat & Yates",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -149,6 +150,7 @@ function setup(){
                     'concerts/2021/lydiachristine.html',
                     'concerts/2021/amyhillis.html',
                     'concerts/2021/treeoflight2.html',
+                    'concerts/2021/mowatyates.html',
                     ];
 
     contentContainerHidden = true;
@@ -222,6 +224,7 @@ function setup(){
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
+                    new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
 
     ];
 
@@ -684,6 +687,7 @@ function windowResized(){
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
+                    new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
     ];
 
     for (var i in landmarks){
@@ -783,6 +787,7 @@ function deviceTurned(){
                     new p5.Vector(width*0.8, height*0.55), //Lydia & Christine
                     new p5.Vector(width*0.4, height*0.15), //Amy Hillis
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
+                    new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     ];
 
     for (var i in landmarks){
