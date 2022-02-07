@@ -1,0 +1,147 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16;
+    font-weight: 100;
+    background-color: rgb(44, 33, 55);
+    cursor: crosshair; 
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+    font-size: 1em;
+  }
+  
+  a:hover {
+    color: black;
+    background: white;
+    transition: color, 0.2s;
+  }
+
+.canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    display: block;
+    position: absolute;
+    margin-left: calc(50% - 100vh * .28125);
+    margin-top: 10px;
+}
+
+.options {
+    display: block;
+    color: white;
+    padding: 30px;
+    text-justify: inter-word;
+}
+
+.sixteen-nine {
+    width: calc(100vh * .5625);
+    /* width: 50%; */
+}
+
+#controls {
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.3s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* imported from dotp! */
+
+input {
+    display: inline-block;
+}
+
+select {
+	display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1em;
+  color: white;
+  padding: 5px;
+	width: 30%;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 4px;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: rgb(44, 33, 55);
+}
+
+select#halfsize {
+  display: inline-block;
+  width: 15%;
+}
+
+.sliders select {
+  width: 100%;
+}
+
+select::-ms-expand {
+	display: none;
+}
+select:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+select:focus {
+	
+	outline: none;
+}
+select option {
+	font-weight: normal;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 1px;
+    background: white;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    user-select: none;
+  }
+  
+  
+  .slider.halfsize {
+    display: inline-block;
+    width: 60px;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: white; 
+    border: 0px; 
+    border-radius: 50px;
+    cursor: pointer; /* Cursor on hover */
+    user-select: none;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: white;
+    border: 0px;
+    border-radius: 50px;
+    cursor: pointer; /* Cursor on hover */
+    user-select: none;
+  }
+  
+  .sliderP {
+    margin-bottom: 0px;
+  }

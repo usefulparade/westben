@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>a pond</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="./js/p5.js"></script>
+  <script src="./js/p5.sound.js"></script>
+  <script src="./js/pond.js"></script>
+</head>
+
+<body>
+  <div class="container sixteen-nine">
+    <div class="options">
+      <div class="toggle" onclick="controlsToggle()"><a id="toggle">+ controls</a></div>
+      <div id="controls">
+
+        <p class="sliderP" id="volumeP">vol
+          <input type="range" min="0" max="100" value="100" class="slider" id="volume" oninput="volumeSliderChange()"></p>
+
+        <p class="sliderP" id="volumeP">root:
+          <input type="range" min="-12" max="12" value="0" class="slider" id="transpose" oninput="transposeSliderChange()"> <span id="root">C</span></p>
+        <p>scale
+            <select onchange="scaleSelector(this)" id="scaleSelect">
+              <option value="0" selected>major</option>
+              <option value="1">minor</option>
+              <option value="2">fifths</option>
+              <option value="3">fourths</option>
+              <option value="4">chromatic</option>
+            </select></p>
+
+        <p>type
+          <select onchange="typeSelector(this)" id="typeSelect">
+            <option value="0" selected>square</option>
+            <option value="1">sawtooth</option>
+            <option value="2">triangle</option>
+            <option value="3">sine</option>
+          </select></p>
+        
+        </div>
+      <!-- <p>“At sunrise he summoned all hands; and separating those who had rebelled from those who had taken no part in the mutiny, he told the former that he had a good mind to flog them all round—thought, upon the whole, he would do so—he ought to—justice demanded it; but for the present, considering their timely surrender, he would let them go with a reprimand, which he accordingly administered in the vernacular.</p> -->
+    </div>
+</div>
+
+  <div class="canvas" id="canv">
+</body>
+
+</html>

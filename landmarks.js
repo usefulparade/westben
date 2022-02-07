@@ -215,21 +215,19 @@ var Landmark = function(_pos, _type, _link){
         if (totalVisited >= 7 && fieldRecordings[2].isLoaded() && lotExists){
             if (!tractorExists){
                 makeTractor();
-                tractorExists = true;
+                
             }
         }
 
         if (totalVisited >= 5 && fieldRecordings[1].isLoaded() && lotExists){
             if (!pondExists){
                 makePond();
-                pondExists = true;
             }
         }
 
         if (totalVisited >= 3 && fieldRecordings[0].isLoaded()){
             if (!lotExists){
                 makeParkingLot();
-                lotExists = true;
             }
         }
 
@@ -943,8 +941,8 @@ var Landmark = function(_pos, _type, _link){
     this.pond = function(){
         push();
 
-            translate(this.pos.x, this.pos.y + sin(this.sinCounter)*5);
-            rotate(-PI/12);
+            translate(this.pos.x-this.half*0.5, this.pos.y + sin(this.sinCounter)*5);
+            rotate(0);
             scale(this.scale);
             noFill();
             strokeWeight(this.weight);

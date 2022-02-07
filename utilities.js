@@ -567,6 +567,14 @@ function startFromHash(){
             currentIcon = concerts[concertLinks.indexOf(lookup)];
             concerts[concertLinks.indexOf(lookup)].isCurrentContent = true;
 
+        } else if (page == "pond"){
+            document.getElementById('content').src = 'games/' + page + '.html';
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "games/" + page + ".html";
+            currentIcon = secrets[gameLinks.indexOf(lookup)];
+            secrets[gameLinks.indexOf(lookup)].isCurrentContent = true;
+            
         } else {
             document.getElementById('content').src = '' + page + '.html';
         }

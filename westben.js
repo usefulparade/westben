@@ -29,6 +29,8 @@ var concerts = [];
 var concertVectors = [];
 var concertLinks = [];
 
+var gameLinks = [];
+
 var currentIconTarget, currentIcon;
 
 var lightColors = [];
@@ -152,6 +154,10 @@ function setup(){
                     'concerts/2021/treeoflight2.html',
                     'concerts/2021/mowatyates.html',
                     ];
+    
+
+
+    gameLinks = ['games/pond.html'];
 
     contentContainerHidden = true;
     content = document.getElementById('contentContainer');
@@ -202,8 +208,8 @@ function setup(){
                         
                         
 
-    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                    new p5.Vector(width*0.6, height*0.3),//pond;
+    secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond;
+                    new p5.Vector(width*0.38, height*0.3), //parking lot
                     new p5.Vector(landmarkVectors[2].x - map(((width+height)/2), 500, 1200, 30, 50)*1.9, landmarkVectors[2].y - 50)]; //tractor
     
 
@@ -242,6 +248,8 @@ function setup(){
     landmarks.push(ticketShed);
     landmarks.push(milkShed);
     landmarks.push(campfire);
+
+    makePond();
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
 
@@ -337,7 +345,6 @@ function draw(){
         if (secrets[k].over){
             overSomething++;
         }
-        
     }
 
     if (currentLayer == 0){ // 2020 PCR
@@ -490,21 +497,24 @@ function roads(){
 }
 
 function makePond(){
-    pond = new Landmark(secretVectors[1], 'pond', fieldRecordings[1]);
-    pond.linkIsAudio = true;
+    pond = new Landmark(secretVectors[0], 'pond', gameLinks[0]);
+    // pond.linkIsAudio = true;
     secrets.push(pond);
+    pondExists = true;
 }
 
 function makeParkingLot(){
-    parkingLot = new Landmark(secretVectors[0], 'parking lot', fieldRecordings[0]);
+    parkingLot = new Landmark(secretVectors[1], 'parking lot', fieldRecordings[0]);
     parkingLot.linkIsAudio = true;
     secrets.push(parkingLot);
+    lotExists = true;
 }
 
 function makeTractor(){
     tractor = new Landmark(secretVectors[2], 'tractor', fieldRecordings[2]);
     tractor.linkIsAudio = true;
     secrets.push(tractor);
+    tractorExists = true;
 }
 
 
@@ -666,8 +676,8 @@ function windowResized(){
                         new p5.Vector(width*0.8, height*0.2), //bobolink
                         ];
 
-    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                        new p5.Vector(width*0.6, height*0.3),//pond;
+    secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond
+                    new p5.Vector(width*0.38, height*0.3), //parking lot
                         new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
 
     concertVectors = [
@@ -766,8 +776,8 @@ function deviceTurned(){
                         new p5.Vector(width*0.8, height*0.2), //bobolink
                         ];
 
-    secretVectors = [new p5.Vector(width*0.38, height*0.3), //parking lot
-                        new p5.Vector(width*0.6, height*0.3),//pond;
+    secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond;
+                        new p5.Vector(width*0.38, height*0.3), //parking lot
                         new p5.Vector(landmarkVectors[2].x - landmarks[2].size*1.9, landmarkVectors[2].y - 50)]; //tractor
 
     concertVectors = [
