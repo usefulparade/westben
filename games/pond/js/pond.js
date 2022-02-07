@@ -36,6 +36,8 @@ function setup(){
     parentDiv = document.getElementById("canv");
     c.parent();
 
+    getAudioContext().suspend();
+
     voice = 0;
     maxVoices = 12;
 
@@ -405,6 +407,7 @@ function transposeSliderChange(){
     
 
 function mousePressed(){
+    userStartAudio();
     let rockPos;
 
     if (mouseX > width/2 - gWidth/2 && mouseX < width/2 + gWidth/2){
@@ -417,6 +420,7 @@ function mousePressed(){
 }
 
 function touchStarted(){
+    userStartAudio();
     let rockPos;
 
     if (touches[0].x > width/2 - gWidth/2 && touches[0].x < width/2 + gWidth/2){
