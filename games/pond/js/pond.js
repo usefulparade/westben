@@ -184,7 +184,7 @@ function GameBorder(){
 
 function GameFrame(){
     push();
-        fill(44, 33, 55);
+        fill(0);
         noStroke();
         rectMode(CORNER);
         rect(0, 0, (width-gWidth)*0.5, height);
