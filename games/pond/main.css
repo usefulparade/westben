@@ -6,6 +6,9 @@ body {
     font-weight: 100;
     background-color: rgb(15, 15, 19);
     cursor: crosshair; 
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 a {
@@ -20,11 +23,20 @@ a {
     transition: color, 0.2s;
   }
 
+  .mobileWarning {
+    margin-top: 50px;
+    display: none;
+    position: relative;
+    color: white;
+    padding: 10%;
+}
+
 .canvas {
     display: block;
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: all;
 }
 
 .container {
@@ -38,11 +50,13 @@ a {
     display: block;
     color: white;
     padding: 30px;
+    padding-top: 100px;
     text-justify: inter-word;
 }
 
 .sixteen-nine {
     width: calc(100vh * .5625);
+    overflow: hidden;
     /* width: 50%; */
 }
 
@@ -145,3 +159,19 @@ select option {
   .sliderP {
     margin-bottom: 0px;
   }
+
+  /* @media only screen and (max-width: 800px){
+
+    .options{
+      display: none;
+    }
+    canvas {
+      display: none;
+      pointer-events: none;
+    }
+
+    .mobileWarning{
+        display: inline-block;
+    }
+
+} */

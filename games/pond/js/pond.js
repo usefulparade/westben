@@ -60,7 +60,7 @@ function setup(){
     keyboard = [90, 83, 88, 68, 67, 86, 71, 66, 72, 78, 74, 77, 188,
                 81, 50, 87, 51, 69, 82, 53, 84, 54, 89, 55, 85, 73,
                 57, 79, 48, 80, 219];
-    semitones = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72,
+    semitones = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 72,
                 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85,
                 86, 87, 88, 89, 90, 91];
 
@@ -176,7 +176,7 @@ function GameBorder(){
         noFill();
         stroke(255);
         rectMode(CENTER);
-        rect(width/2, height/2, gWidth, gHeight);
+        rect(width/2, height/2+36, gWidth, gHeight-75);
     pop();
 
     
@@ -189,7 +189,7 @@ function GameFrame(){
         rectMode(CORNER);
         rect(0, 0, (width-gWidth)*0.5, height);
         rect(width*0.5 + gWidth*0.5, 0, (width-gWidth)*0.5,height);
-        rect(0,0,width,25);
+        rect(0,0,width,100);
         rect(0,height-25,width, 25);
     pop();
 }
