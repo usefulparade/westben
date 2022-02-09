@@ -31,6 +31,8 @@ let types = [];
 let roots = [];
 let currentScale;
 
+p5.disableFriendlyErrors = true; // disables FES
+
 function setup(){
     c = createCanvas(windowWidth, windowHeight);
     parentDiv = document.getElementById("canv");
@@ -46,8 +48,8 @@ function setup(){
     uiHeight = gHeight/10;
 
     startPositions = [
-        width/2-gWidth*0.33,
-        width/2+gWidth*0.33
+        width/2-gWidth*0.5,
+        width/2+gWidth*0.5
     ]
 
     majorScale = [60, 62, 64, 65, 67, 69, 71, 
@@ -90,10 +92,10 @@ function setup(){
         //make our envelopes
         envelopes[i] = new p5.Envelope();
         envelopes[i].setADSR(attack, decay, sustain, release);
-        envelopes[i].setRange(1, 0);
+        envelopes[i].setRange(0.2, 0);
 
         //make our amp oscillators
-        oscillators[i] = new p5.Oscillator('square');
+        oscillators[i] = new p5.Oscillator('sine');
         oscillators[i].amp(envelopes[i]);
         oscillators[i].start();
 
@@ -116,16 +118,16 @@ function setup(){
 
     fft = new p5.FFT(1, 1024);
     biggestSkip = 0;
-    transpose = 0;
+    transpose = -7;
 
     types = ['square', 'sawtooth', 'triangle', 'sine'];
     roots = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B','C'];
+
+    frameRate(60);
 }
 
 function draw(){
-    background(44, 33, 55);
-
-    
+    background(32, 123, 212);
 
     for (i=0;i<rocks.length;i++){
         rocks[i].show();
@@ -170,13 +172,14 @@ function PondSurface(){
 
 }
 
+
 function GameBorder(){
     
     push(); 
         noFill();
         stroke(255);
         rectMode(CENTER);
-        rect(width/2, height/2+36, gWidth, gHeight-75);
+        rect(width/2, height/2+37, gWidth, gHeight-75);
     pop();
 
     
@@ -184,7 +187,7 @@ function GameBorder(){
 
 function GameFrame(){
     push();
-        fill(0);
+        fill(50, 127, 75);
         noStroke();
         rectMode(CORNER);
         rect(0, 0, (width-gWidth)*0.5, height);
@@ -252,6 +255,7 @@ function Rock(note, _x){
     this.show = function(){
         push();
             fill(255);
+            noStroke();
             translate(this.pos.x, this.pos.y);
             ellipse(0,0, this.size);
         pop();
@@ -264,8 +268,10 @@ function Rock(note, _x){
     }
 
     this.physics = function(){
+        
         // Velocity changes according to acceleration
         this.velocity.add(this.acceleration);
+        
         // position changes by velocity
         this.pos.add(this.velocity);
         // We must clear acceleration each frame
@@ -407,16 +413,22 @@ function transposeSliderChange(){
     
 
 function mousePressed(){
-    userStartAudio();
-    let rockPos;
+   if(touches[0] == null){
+        userStartAudio();
+        let rockPos;
+        let rockNote;
 
-    if (mouseX > width/2 - gWidth/2 && mouseX < width/2 + gWidth/2){
-        rockPos = mouseX;
-    } else {
-        rockPos = random(startPositions[0], startPositions[1]);
+        if (mouseX > width/2 - gWidth/2 && mouseX < width/2 + gWidth/2){
+            rockPos = mouseX;
+            rockNote = constrain(int(map(mouseX, startPositions[0], startPositions[1], 0, scales[currentScale].length)), 0, scales[currentScale].length-1);
+            
+        } else {
+            rockPos = random(startPositions[0], startPositions[1]);
+            rockNote = int(random(scales[currentScale].length));
+        }
+
+        throwRock(scales[currentScale][rockNote], rockPos);
     }
-
-    throwRock(scales[currentScale][int(random(scales[currentScale].length))], rockPos);
 }
 
 function touchStarted(){

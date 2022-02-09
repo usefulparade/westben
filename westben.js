@@ -43,6 +43,8 @@ var currentLayer;
 
 var hashAnalyzed;
 
+p5.disableFriendlyErrors = true; // disables FES
+
 
 function preload(){
     font = loadFont('RobotoMono-ExtraLight.ttf');
