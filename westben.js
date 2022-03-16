@@ -137,6 +137,7 @@ function setup(){
                     "Tree of Light",
                     "Mowat & Yates",
                     "Next Gen Leahy",
+                    "Caitlin Wood",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -157,6 +158,7 @@ function setup(){
                     'concerts/2021/treeoflight2.html',
                     'concerts/2021/mowatyates.html',
                     'concerts/2021/leahy.html',
+                    'concerts/2021/caitlinwood.html',
                     ];
     
 
@@ -236,6 +238,7 @@ function setup(){
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
+                    new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
 
     ];
 
@@ -704,6 +707,7 @@ function windowResized(){
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
+                    new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
     ];
 
     for (var i in landmarks){
@@ -805,6 +809,7 @@ function deviceTurned(){
                     new p5.Vector(width*0.75, height*0.4), //Tree of Light 2
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
+                    new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
                     ];
 
     for (var i in landmarks){
