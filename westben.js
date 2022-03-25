@@ -138,6 +138,9 @@ function setup(){
                     "Mowat & Yates",
                     "Next Gen Leahy",
                     "Caitlin Wood",
+                    "Sammy Jackson & Tom Flemming",
+                    "Laila Biali",
+                    "The Pencil Salesman"
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -159,6 +162,9 @@ function setup(){
                     'concerts/2021/mowatyates.html',
                     'concerts/2021/leahy.html',
                     'concerts/2021/caitlinwood.html',
+                    'concerts/2021/sammyjackson.html',
+                    'concerts/2021/lailabiali.html',
+                    'concerts/2021/pencilsalesman.html',
                     ];
     
 
@@ -239,6 +245,9 @@ function setup(){
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
                     new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
+                    new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
+                    new p5.Vector(width*0.1, height*0.4), //Laila Biali
+                    new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
 
     ];
 
@@ -260,9 +269,9 @@ function setup(){
     makePond();
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
-
+    var ensemblesPublished = 25; // <--------------------- THIS IS THE END POINT!
     for (var i = 0; 
-        i<25;     // <--------------------- THIS IS THE END POINT! the number + 2 each day
+        i<ensemblesPublished;    
         i++){
         ensembles[i] = new Landmark(ensembleVectors[i], 'ensemble', ensembleLinks[i]);
         ensembles[i].names = ensembleNames[i];
@@ -276,9 +285,11 @@ function setup(){
         ensembles[i].ensembleNum = i;
     }
 
-    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP ^^^^^^^^^^^^^^
-
-    for (j=0;j<concertLinks.length;j++){
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'CONCERTS' LOOP ^^^^^^^^^^^^^^
+    var concertsPublished = 18;  // <--------------------- THIS IS THE END POINT!
+    for (j=0;
+        j<concertsPublished;
+        j++){
         concerts[j] = new Landmark(concertVectors[j], 'concert', concertLinks[j]);
         concerts[j].names = concertNames[j];
         if (j<11){
@@ -290,7 +301,7 @@ function setup(){
 
         concerts[j].ensembleNum = j;
     }
-    concerts[concerts.length-1].newest = true;
+    concerts[concertsPublished-1].newest = true;
 
 
     mouseOrTouch = p5.Vector(0,0);
@@ -708,6 +719,9 @@ function windowResized(){
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
                     new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
+                    new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
+                    new p5.Vector(width*0.1, height*0.4), //Laila Biali
+                    new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
     ];
 
     for (var i in landmarks){
@@ -810,6 +824,9 @@ function deviceTurned(){
                     new p5.Vector(width*0.25, height*0.6), //Mowat & Yates
                     new p5.Vector(width*0.65, height*0.7), //Leahy
                     new p5.Vector(width*0.45, height*0.65), //Caitlin Wood
+                    new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
+                    new p5.Vector(width*0.1, height*0.4), //Laila Biali
+                    new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
                     ];
 
     for (var i in landmarks){
