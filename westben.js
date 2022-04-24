@@ -286,7 +286,7 @@ function setup(){
     }
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'CONCERTS' LOOP ^^^^^^^^^^^^^^
-    var concertsPublished = 19;  // <--------------------- THIS IS THE END POINT!
+    var concertsPublished = 21;  // <--------------------- THIS IS THE END POINT!
     for (j=0;
         j<concertsPublished;
         j++){
@@ -301,7 +301,7 @@ function setup(){
 
         concerts[j].ensembleNum = j;
     }
-    concerts[concertsPublished-1].newest = true;
+    concerts[18].newest = true;
 
 
     mouseOrTouch = p5.Vector(0,0);
