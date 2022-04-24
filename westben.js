@@ -286,7 +286,7 @@ function setup(){
     }
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'CONCERTS' LOOP ^^^^^^^^^^^^^^
-    var concertsPublished = 18;  // <--------------------- THIS IS THE END POINT!
+    var concertsPublished = 19;  // <--------------------- THIS IS THE END POINT!
     for (j=0;
         j<concertsPublished;
         j++){
