@@ -301,7 +301,7 @@ function setup(){
 
         concerts[j].ensembleNum = j;
     }
-    concerts[18].newest = true;
+    concerts[19].newest = true;
 
 
     mouseOrTouch = p5.Vector(0,0);
