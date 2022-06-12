@@ -34,6 +34,7 @@ let currentScale;
 p5.disableFriendlyErrors = true; // disables FES
 
 function setup(){
+
     c = createCanvas(windowWidth, windowHeight);
     parentDiv = document.getElementById("canv");
     c.parent();
@@ -123,16 +124,19 @@ function setup(){
     types = ['square', 'sawtooth', 'triangle', 'sine'];
     roots = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B','C'];
 
-    frameRate(60);
+    frameRate(50);
 }
 
 function draw(){
+    console.log(frameRate());
     background(32, 123, 212);
 
     for (i=0;i<rocks.length;i++){
         rocks[i].show();
 
         let gravity = new p5.Vector(0, 0.1*rocks[i].mass);
+        // let gravity = new p5.Vector(0,0.3);
+
         rocks[i].applyForce(gravity);
         rocks[i].physics();
         rocks[i].skip();
@@ -274,8 +278,10 @@ function Rock(note, _x){
         
         // position changes by velocity
         this.pos.add(this.velocity);
+
         // We must clear acceleration each frame
         this.acceleration.mult(0);
+
     }
 
     this.skip = function(){

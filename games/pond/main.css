@@ -175,8 +175,8 @@ select option {
     background-image: url("/games/pond/assets/photocopy.jpg");
     background-size:auto;
     z-index: 100;
-    filter: opacity(0.5);
-    mix-blend-mode: overlay;
+    filter: opacity(0.2);
+    /* mix-blend-mode: overlay; */
     pointer-events: none;
   }
 
