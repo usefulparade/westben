@@ -123,15 +123,15 @@ function layerToggle(_layer){
         layerSelect.value = currentLayer;
 
     if (currentLayer == 0){
-        // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020 Performer-Composer Residency';
     } else if (currentLayer == 1) {
-        // document.getElementById('layerIcon').innerHTML = '❏';
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2020-21 Digital Concerts';
     } else if (currentLayer == 2){
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
     } else if (currentLayer == 3){
         document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021-22 Digital Concerts';
+    }  else if (currentLayer == 4){
+        document.getElementById('layerCaption').innerHTML = 'Concert Series: 2022 Performer-Composer Residency';
     }
 
     updateURL();
@@ -460,7 +460,6 @@ function changeCurrentIcon(type, num){
 
     if (window.parent.currentIcon == landmarks[0]){
         barnNav.style.setProperty('top', '-200px');
-
     } else {
         barnNav.style.setProperty('top', '10px');
     }
@@ -575,6 +574,18 @@ function startFromHash(){
             currentIcon = secrets[gameLinks.indexOf(lookup)];
             secrets[gameLinks.indexOf(lookup)].isCurrentContent = true;
             
+        } else if (page == "aurora" || page == "comet" || page == "eclipse" || page == "mars" || page == "neptune" || page == "nova" || page == "pluto" || page == "star" || page == "sun"){
+            document.getElementById('content').src = 'ensembles/2022/' + page + '.html';
+            if (currentLayer != 4){
+                layerToggle(4);
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "ensembles/2022/" + page + ".html";
+            currentIcon = ensembles[ensembleLinks.indexOf(lookup)];
+            ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
+
+
         } else {
             document.getElementById('content').src = '' + page + '.html';
         }

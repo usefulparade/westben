@@ -34,6 +34,9 @@ var Landmark = function(_pos, _type, _link){
 
     this.newest = false;
 
+    this.phase = random(0,1);
+    this.zoff = random(0,1);
+
     this.show = function(){
         push();
             // if this is the current content, put it at the top of the screen
@@ -212,24 +215,24 @@ var Landmark = function(_pos, _type, _link){
             }
         }
 
-        if (totalVisited >= 7 && fieldRecordings[2].isLoaded() && lotExists){
-            if (!tractorExists){
-                makeTractor();
+        // if (totalVisited >= 7 && fieldRecordings[2].isLoaded() && lotExists){
+        //     if (!tractorExists){
+        //         makeTractor();
                 
-            }
-        }
+        //     }
+        // }
 
-        if (totalVisited >= 5 && fieldRecordings[1].isLoaded() && lotExists){
-            if (!pondExists){
-                makePond();
-            }
-        }
+        // if (totalVisited >= 5 && fieldRecordings[1].isLoaded() && lotExists){
+        //     if (!pondExists){
+        //         makePond();
+        //     }
+        // }
 
-        if (totalVisited >= 3 && fieldRecordings[0].isLoaded()){
-            if (!lotExists){
-                makeParkingLot();
-            }
-        }
+        // if (totalVisited >= 3 && fieldRecordings[0].isLoaded()){
+        //     if (!lotExists){
+        //         makeParkingLot();
+        //     }
+        // }
 
         
         
@@ -784,7 +787,7 @@ var Landmark = function(_pos, _type, _link){
                     pop();
                 pop();
             }                                                                  // 2021 DIGITAL CONCERTS!!!
-            else if (this.ensembleNum >= 12 && this.ensembleNum < 22) // Lydia & Christine
+            else if (this.ensembleNum >= 12 && this.ensembleNum < 22) 
             { 
                 push();
 
@@ -908,31 +911,58 @@ var Landmark = function(_pos, _type, _link){
                 pop();
 
                                                                                 // PCR 2 ENSEMBLES (2021)
-            } else if (this.ensembleNum >= 13){ 
+            } else if (this.ensembleNum >= 13 && this.ensembleNum < 25){ 
                 push();
                     translate(0, this.half);
                     if (this.over || this.isCurrentContent){
                         this.plant.grow();
-                        // console.log(this.plant);
                     }
                     this.plant.show();
                     
-                    // rectMode(CENTER);
-                    // rect(0, 0, this.half, this.half);
                 pop();
                 push();
-                    // stroke(accentColors[2]);
                     arc(0, 0, this.size, this.size, 0, PI);
 
                 pop();
                 push();
                     noStroke();
                     fill(accentColors[2]);
-                    // arc(0,0,this.size,this.size,PI*0.1,PI*0.9, CHORD);
+                pop();
+                                                                                    // PCR 3 ENSEMBLES (2022)
+            } else if (this.ensembleNum >= 25) {
+
+
+                push();
+                    if (this.ensembleNum < 28){
+                        beginShape();
+                    } else if (this.ensembleNum >= 28 && this.ensembleNum < 31){
+                        // strokeWeight(3)
+                        beginShape(POINTS);
+                        
+                    } else {
+                        // strokeWeight(1);
+                        beginShape(LINES);
+                    }
+                    let noiseMax = map(this.ensembleNum, 25, 34, 1, 5);
+                    // let noiseMax = 1;
+                        for (let a = 0; a < TWO_PI; a += radians(10)) {
+                            let xoff = map(cos(a + this.phase), -1, 1, 0, noiseMax);
+                            let yoff = map(sin(a + this.phase), -1, 1, 0, noiseMax);
+                            let r = map(noise(xoff, yoff, this.zoff), 0, 1, 0, this.size);
+                            let x = r * cos(a);
+                            let y = r * sin(a);
+                            vertex(x, y);
+                        }
+                    endShape(CLOSE);
+                    
+                    if (this.over){
+                        this.phase += random(0.003, 0.001);
+                        this.zoff += random(0.005, 0.0001);
+                    }
                 pop();
             } else {
-                strokeWeight(5);
-                point(0, 0);
+                // strokeWeight(5);
+                // point(0, 0);
             }
             
         pop();
@@ -1118,6 +1148,10 @@ function Branch(begin, end, tree){
             this.end.add(dir);
         }
     };
+
+}
+
+function NoiseField(){
 
 }
 

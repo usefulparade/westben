@@ -85,6 +85,16 @@ function setup(){
                 'releasing a jar', //kiwi
                 'Plastiglomerate', //coral
                 'As Within, So Without', //bobolink
+                            // ~ ~ ~ 2021 PCR ~ ~ ~ //
+                '??', //aurora
+                '??', //comet
+                '??', //eclipse
+                '??', //mars
+                '??', //neptune
+                '??', //nova
+                '??', //pluto
+                '??', //star
+                '??', //sun
                 
                 ];
 
@@ -116,6 +126,16 @@ function setup(){
                     'ensembles/2021/kiwi.html',
                     'ensembles/2021/coral.html',
                     'ensembles/2021/bobolink.html',
+                            // ~ ~ ~ 2022 PCR ~ ~ ~ //
+                    'ensembles/2022/aurora.html',
+                    'ensembles/2022/comet.html',
+                    'ensembles/2022/eclipse.html',
+                    'ensembles/2022/mars.html',
+                    'ensembles/2022/neptune.html',
+                    'ensembles/2022/nova.html',
+                    'ensembles/2022/pluto.html',
+                    'ensembles/2022/star.html',
+                    'ensembles/2022/sun.html',
                     
                     ];
 
@@ -216,6 +236,16 @@ function setup(){
                         new p5.Vector(width*0.24, height*0.6), //kiwi
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
+                                // ~ ~ ~ 2022 PCR ~ ~ ~ //
+                         new p5.Vector(width*0.85, height*0.6), //aurora
+                         new p5.Vector(width*0.6, height*0.68), //comet
+                         new p5.Vector(width*0.25, height*0.5), //eclipse
+                         new p5.Vector(width*0.4, height*0.65), //mars
+                         new p5.Vector(width*0.15, height*0.4), //neptune
+                         new p5.Vector(width*0.79, height*0.4), //nova
+                         new p5.Vector(width*0.15, height*0.21), //pluto
+                         new p5.Vector(width*0.8, height*0.52), //star
+                         new p5.Vector(width*0.35, height*0.19), //sun
                         ];
                         
                         
@@ -269,7 +299,7 @@ function setup(){
     makePond();
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'ENSEMBLES' LOOP vvvvvvvvvvvvvv
-    var ensemblesPublished = 25; // <--------------------- THIS IS THE END POINT!
+    var ensemblesPublished = 25; // <--------------------- THIS IS THE END POINT! (end of 2021 it was 25)
     for (var i = 0; 
         i<ensemblesPublished;    
         i++){
@@ -277,10 +307,12 @@ function setup(){
         ensembles[i].names = ensembleNames[i];
         if (i<13){
             ensembles[i].rotation = random(0, TWO_PI);
-        } else {
+        } else if (i >= 13 && i<25) {
             ensembles[i].rotation = 0;
             ensembles[i].plant =  new Plant(new p5.Vector(0,0), new p5.Vector(0,-ensembles[i].half*0.75), accentColors[0], radians(map(i, 13, 29, 5, 60)));
             ensembles[i].plant.germinate();
+        } else {
+            ensembles[i].rotation = 0;
         }
         ensembles[i].ensembleNum = i;
     }
@@ -359,52 +391,7 @@ function draw(){
     
     overSomething = 0;
 
-    for (var k in secrets){
-        secrets[k].show();
-        if (secrets[k].over){
-            overSomething++;
-        }
-    }
-
-    if (currentLayer == 0){ // 2020 PCR
-        for (var j in ensembles){
-            if (j < 13){
-                ensembles[j].show();
-                if (ensembles[j].over){
-                    overSomething++;
-                }
-            }
-        }
-        
-    } else if (currentLayer == 1){ //2020-21 Digital Concerts
-        for (var l in concerts){
-            if (l <= 11){
-                concerts[l].show();
-                if (concerts[l].over){
-                    overSomething++;
-                }
-            }
-        }
-    } else if (currentLayer == 2){ // 2021 PCR
-        for (var m in ensembles){
-            if (m >= 13){
-                ensembles[m].show();
-                if (ensembles[m].over){
-                    overSomething++;
-                }
-            }
-        }
-    }  else if (currentLayer == 3){ // 2021-22 Digital Concerts
-        for (var n in concerts){
-            if (n > 11){
-                concerts[n].show();
-                if (concerts[n].over){
-                    overSomething++;
-                }
-            }
-        }
-    }
-
+    //DISPLAY LANDMARKS
 
     for (var i in landmarks){
         if (i < 4){
@@ -418,6 +405,115 @@ function draw(){
             overSomething++;
         }
     }
+    
+
+    //DISPLAY ENSEMBLES
+
+    for (var j in ensembles){
+        if (currentLayer == 0){
+            if (j < 13){
+                ensembles[j].show();
+                if (ensembles[j].over){
+                    overSomething++;
+                }
+            }
+        } else if (currentLayer == 2){
+            if (j >= 13 && j < 25){
+                ensembles[j].show();
+                if (ensembles[j].over){
+                    overSomething++;
+                }
+            }
+        } else if (currentLayer == 4){
+            if (j >= 25){
+                ensembles[j].show();
+                if (ensembles[j].over){
+                    overSomething++;
+                }
+            }
+        }
+    }
+
+    //DISPLAY SECRETS
+
+    for (var k in secrets){
+        secrets[k].show();
+        if (secrets[k].over){
+            overSomething++;
+        }
+    }
+
+    //DISPLAY CONCERTS
+
+    for (var l in concerts){
+        if (currentLayer == 1){
+            if (l < 12){
+                concerts[l].show();
+                if (concerts[l].over){
+                    overSomething++;
+                }
+            }
+        } else if (currentLayer == 3){
+            if (l >= 12){
+                concerts[l].show();
+                if (concerts[l].over){
+                    overSomething++;
+                }
+            }
+        }
+    }
+
+    // if (currentLayer == 0){ // 2020 PCR
+    //     for (var j in ensembles){
+    //         if (j < 13){
+    //             ensembles[j].show();
+    //             if (ensembles[j].over){
+    //                 overSomething++;
+    //             }
+    //         }
+    //     }
+        
+    // } else if (currentLayer == 1){ //2020-21 Digital Concerts
+    //     for (var l in concerts){
+    //         if (l <= 11){
+    //             concerts[l].show();
+    //             if (concerts[l].over){
+    //                 overSomething++;
+    //             }
+    //         }
+    //     }
+    // } else if (currentLayer == 2){ // 2021 PCR
+    //     for (var m in ensembles){
+    //         if (m >= 13 && m < 25){
+    //             ensembles[m].show();
+    //             if (ensembles[m].over){
+    //                 overSomething++;
+    //             }
+    //         }
+    //     }
+    // }  else if (currentLayer == 3){ // 2021-22 Digital Concerts
+    //     for (var n in concerts){
+    //         if (n > 11){
+    //             concerts[n].show();
+    //             if (concerts[n].over){
+    //                 overSomething++;
+    //             }
+    //         }
+    //     }
+    // }  else if (currentLayer == 4){ // 2022 PCR
+    //     for (var o in ensembles){
+    //         if (o >= 25){
+    //             console.log(ensembles[o]);
+    //             ensembles[o].show();
+    //             if (ensembles[o].over){
+    //                 overSomething++;
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    
 
     youAreHerePanel();
     if (!contentContainerHidden){
@@ -693,6 +789,16 @@ function windowResized(){
                         new p5.Vector(width*0.24, height*0.6), //kiwi
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
+                               // ~ ~ ~ 2022 PCR ~ ~ ~ //
+                        new p5.Vector(width*0.85, height*0.6), //aurora
+                        new p5.Vector(width*0.6, height*0.68), //comet
+                        new p5.Vector(width*0.25, height*0.5), //eclipse
+                        new p5.Vector(width*0.4, height*0.65), //mars
+                        new p5.Vector(width*0.15, height*0.4), //neptune
+                        new p5.Vector(width*0.79, height*0.4), //nova
+                        new p5.Vector(width*0.15, height*0.21), //pluto
+                        new p5.Vector(width*0.8, height*0.52), //star
+                        new p5.Vector(width*0.35, height*0.19), //sun
                         ];
 
     secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond
@@ -798,6 +904,16 @@ function deviceTurned(){
                         new p5.Vector(width*0.24, height*0.6), //kiwi
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
+                               // ~ ~ ~ 2022 PCR ~ ~ ~ //
+                        new p5.Vector(width*0.85, height*0.6), //aurora
+                        new p5.Vector(width*0.6, height*0.68), //comet
+                        new p5.Vector(width*0.25, height*0.5), //eclipse
+                        new p5.Vector(width*0.4, height*0.65), //mars
+                        new p5.Vector(width*0.15, height*0.4), //neptune
+                        new p5.Vector(width*0.79, height*0.4), //nova
+                        new p5.Vector(width*0.15, height*0.21), //pluto
+                        new p5.Vector(width*0.8, height*0.52), //star
+                        new p5.Vector(width*0.35, height*0.19), //sun
                         ];
 
     secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond;
