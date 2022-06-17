@@ -1,0 +1,21 @@
+
+.programNotesInner {
+    max-width: 800px;
+}
+
+.comet-videoblock {
+    display: inline-block;
+    width: 30%;
+}
+
+.comet-videoblock iframe {
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 720px){
+
+    .comet-videoblock {
+        width: 95%;
+    }
+}

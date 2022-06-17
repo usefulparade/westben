@@ -152,6 +152,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2020').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
+        document.getElementById('pcr2022').style.setProperty('display', 'none');
     } else if (_x.value == 1) {
         // window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
@@ -160,6 +161,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2020').style.setProperty('display', 'none');
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
+        document.getElementById('pcr2022').style.setProperty('display', 'none');
     } else if (_x.value == 2){
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
@@ -167,6 +169,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2020').style.setProperty('display', 'none');
         document.getElementById('pcr2021').style.setProperty('display', 'inline-block');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
+        document.getElementById('pcr2022').style.setProperty('display', 'none');
     } else if (_x.value == 3){
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021-22 Digital Concerts';
@@ -174,7 +177,16 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2020').style.setProperty('display', 'none');
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'inline-block');
+        document.getElementById('pcr2022').style.setProperty('display', 'none');
+    }  else if (_x.value == 4){
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2022 Performer-Composer Residency';
+        document.getElementById('concerts2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2021').style.setProperty('display', 'none');
+        document.getElementById('concerts2021').style.setProperty('display', 'none');
+        document.getElementById('pcr2022').style.setProperty('display', 'inline-block');
     }
+    
 
     updateURLFromInside();
 
@@ -183,8 +195,8 @@ function layerToggleFromInside(_x){
 function programLayerMatch(){
     var iframe = document.getElementById('content');
     if (iframe.contentDocument.getElementById('layerSpecific') != null){
-        // var layerSelect = iframe.contentDocument.getElementById('layers');
-        // layerSelect.value = currentLayer;
+        var layerSelect = iframe.contentDocument.getElementById('layers');
+        layerSelect.value = currentLayer;
     
         // console.log('hi');
         if (currentLayer == 0){
@@ -192,23 +204,31 @@ function programLayerMatch(){
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
         } else if (currentLayer == 1){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
         } else if (currentLayer == 2){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
-
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
         } else if (currentLayer == 3){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'inline-block');
-
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+        }   else if (currentLayer == 4){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'inline-block');
         }
     }
 }
