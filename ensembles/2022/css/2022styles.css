@@ -12,10 +12,24 @@
     width: 100%;
 }
 
+.nova-textcolumn {
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 6%;
+}
+
 
 @media only screen and (max-width: 720px){
 
     .comet-videoblock {
+        width: 95%;
+    }
+
+    .nova-textcolumn {
+        display: inline-block;
         width: 95%;
     }
 }
