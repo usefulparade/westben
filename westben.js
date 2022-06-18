@@ -333,7 +333,7 @@ function setup(){
 
         concerts[j].ensembleNum = j;
     }
-    concerts[19].newest = true;
+    concerts[20].newest = true;  // <--------------------- THIS IS THE NEWEST LIL BIRD!
 
 
     mouseOrTouch = p5.Vector(0,0);
