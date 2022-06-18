@@ -31,12 +31,19 @@ sun -->
   <meta http-equiv=“Pragma” content=”no-cache”>
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-  <title>eclipse ensemble</title>
+  <title>pluto ensemble</title>
 
   <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/content-style.css">
     <!-- <link rel="stylesheet" href="/ensembles/2021/css/algae.css"> -->
     <script src="/utilities.js"></script>
+
+    <script>
+      function seek(s){
+        document.getElementById("salinemp3").currentTime = s;
+        document.getElementById("salinemp3").play();
+      }
+    </script>
 
   <meta property="og:description" content="a map of virtual collaborations from the 2022 Westben residency">
   <meta property="og:image" content="">
@@ -49,19 +56,33 @@ sun -->
 
               <!-- RESIDENTS -->
           <h2>
-            <span class="avoidwrap">??</span> / 
-            <span class="avoidwrap">??</span> / 
-            <span class="avoidwrap">??</span> / 
-            <span class="avoidwrap">??</span>
+            <span class="avoidwrap">Sarah Jo Kirsch</span> / 
+            <span class="avoidwrap">Ting Luo</span> / 
+            <span class="avoidwrap">Kyle Hutchins</span> / 
+            <span class="avoidwrap">Jack Hui Litster</span>
           </h2>
 
               <!-- TITLE -->
-          <h1>??</h1>
+          <h1>SALINE AURORAS</h1>
 
               <!-- BODY -->
+
           
-
-
+          
+          <audio controls style="display: block; width: 100%;" id="salinemp3" src="./media/salineauroras1-4.mp3"></audio> 
+          <!-- <h2>MOVEMENTS</h2> -->
+          <br>
+          <p>I. <a href="javascript:void(0);" onclick="seek(0)">Pluto's Heart 0:00-1:55</a></p>
+          <p>II. <a href="javascript:void(0);" onclick="seek(115)">The Dead Sea 1:55-5:21</a></p>
+          <p>--- <a href="javascript:void(0);" onclick="seek(321)">The Dead Sea Interlude 5:21-5:49</a></p>
+          <p>III. <a href="javascript:void(0);" onclick="seek(349)">Salt Seller 5:49-8:52</a></p>
+          <p>IV.<a href="javascript:void(0);" onclick="seek(532)">Delicious & Nutritious 8:52-12:22</a></p>
+          <p>--- <a href="javascript:void(0);" onclick="seek(742)">NaCl Postlude 12:22-13:24</a></p>
+          <p>V. Saline Auroras (Live Zoom Session)</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3NAIfcyhZXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br>
+          <br>
+          <p>We, like salt, absorb all that surrounds us. Our cells retain the material and intangible elements of animal experience on this planet. As products of the universe, we must absorb not passively, but consciously. We must process with the same attention.</p>
 
           <hr>
           <div id="endMatter" class="endMatter"></div>
