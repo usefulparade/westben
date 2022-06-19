@@ -86,15 +86,19 @@ function setup(){
                 'Plastiglomerate', //coral
                 'As Within, So Without', //bobolink
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
-                '??', //aurora
-                '??', //comet
-                '??', //eclipse
-                '??', //mars
-                '??', //neptune
-                '??', //nova
-                '??', //pluto
-                '??', //star
-                '??', //sun
+                
+                'Exhale', //comet
+                'La Memoria es un Tejido', //nova
+
+                'The Last Aviary There Ever Was', //star
+                'The Map is Not the Territory', //sun
+                'Saline Auroras', //pluto
+
+                'Go in and out...', //eclipse
+                'From Ireland to Ojai', //aurora
+
+                'Weaving Process in Four Parts', //mars
+                'Pathways', //neptune
                 
                 ];
 
@@ -127,15 +131,19 @@ function setup(){
                     'ensembles/2021/coral.html',
                     'ensembles/2021/bobolink.html',
                             // ~ ~ ~ 2022 PCR ~ ~ ~ //
-                    'ensembles/2022/aurora.html',
+                    
                     'ensembles/2022/comet.html',
-                    'ensembles/2022/eclipse.html',
-                    'ensembles/2022/mars.html',
-                    'ensembles/2022/neptune.html',
                     'ensembles/2022/nova.html',
-                    'ensembles/2022/pluto.html',
+
                     'ensembles/2022/star.html',
                     'ensembles/2022/sun.html',
+                    'ensembles/2022/pluto.html',
+
+                    'ensembles/2022/eclipse.html',
+                    'ensembles/2022/aurora.html',
+
+                    'ensembles/2022/mars.html',
+                    'ensembles/2022/neptune.html',
                     
                     ];
 
@@ -237,15 +245,15 @@ function setup(){
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
                                 // ~ ~ ~ 2022 PCR ~ ~ ~ //
-                         new p5.Vector(width*0.85, height*0.6), //aurora
-                         new p5.Vector(width*0.6, height*0.68), //comet
-                         new p5.Vector(width*0.25, height*0.5), //eclipse
-                         new p5.Vector(width*0.4, height*0.65), //mars
-                         new p5.Vector(width*0.15, height*0.4), //neptune
-                         new p5.Vector(width*0.79, height*0.4), //nova
-                         new p5.Vector(width*0.15, height*0.21), //pluto
-                         new p5.Vector(width*0.8, height*0.52), //star
-                         new p5.Vector(width*0.35, height*0.19), //sun
+                        new p5.Vector(width*0.6, height*0.68), //comet
+                        new p5.Vector(width*0.79, height*0.4), //nova
+                        new p5.Vector(width*0.8, height*0.52), //star
+                        new p5.Vector(width*0.35, height*0.19), //sun
+                        new p5.Vector(width*0.15, height*0.21), //pluto
+                        new p5.Vector(width*0.25, height*0.5), //eclipse
+                        new p5.Vector(width*0.85, height*0.6), //aurora
+                        new p5.Vector(width*0.4, height*0.65), //mars
+                        new p5.Vector(width*0.15, height*0.4), //neptune
                         ];
                         
                         
@@ -790,15 +798,15 @@ function windowResized(){
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
                                // ~ ~ ~ 2022 PCR ~ ~ ~ //
-                        new p5.Vector(width*0.85, height*0.6), //aurora
                         new p5.Vector(width*0.6, height*0.68), //comet
-                        new p5.Vector(width*0.25, height*0.5), //eclipse
-                        new p5.Vector(width*0.4, height*0.65), //mars
-                        new p5.Vector(width*0.15, height*0.4), //neptune
                         new p5.Vector(width*0.79, height*0.4), //nova
-                        new p5.Vector(width*0.15, height*0.21), //pluto
                         new p5.Vector(width*0.8, height*0.52), //star
                         new p5.Vector(width*0.35, height*0.19), //sun
+                        new p5.Vector(width*0.15, height*0.21), //pluto
+                        new p5.Vector(width*0.25, height*0.5), //eclipse
+                        new p5.Vector(width*0.85, height*0.6), //aurora
+                        new p5.Vector(width*0.4, height*0.65), //mars
+                        new p5.Vector(width*0.15, height*0.4), //neptune
                         ];
 
     secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond
@@ -905,15 +913,15 @@ function deviceTurned(){
                         new p5.Vector(width*0.05, height*0.3), //coral
                         new p5.Vector(width*0.8, height*0.2), //bobolink
                                // ~ ~ ~ 2022 PCR ~ ~ ~ //
-                        new p5.Vector(width*0.85, height*0.6), //aurora
                         new p5.Vector(width*0.6, height*0.68), //comet
-                        new p5.Vector(width*0.25, height*0.5), //eclipse
-                        new p5.Vector(width*0.4, height*0.65), //mars
-                        new p5.Vector(width*0.15, height*0.4), //neptune
                         new p5.Vector(width*0.79, height*0.4), //nova
-                        new p5.Vector(width*0.15, height*0.21), //pluto
                         new p5.Vector(width*0.8, height*0.52), //star
                         new p5.Vector(width*0.35, height*0.19), //sun
+                        new p5.Vector(width*0.15, height*0.21), //pluto
+                        new p5.Vector(width*0.25, height*0.5), //eclipse
+                        new p5.Vector(width*0.85, height*0.6), //aurora
+                        new p5.Vector(width*0.4, height*0.65), //mars
+                        new p5.Vector(width*0.15, height*0.4), //neptune
                         ];
 
     secretVectors = [new p5.Vector(width*0.6, height*0.3),//pond;

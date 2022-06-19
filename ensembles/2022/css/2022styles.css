@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
 .programNotesInner {
     max-width: 800px;
 }
@@ -21,6 +23,29 @@
     padding-left: 6%;
 }
 
+.squaredance-font {
+    font-family: 'Special Elite', cursive;
+}
+
+.squaredance-font em {
+    letter-spacing: 0.1em;
+    font-size: 1.2em;
+}
+
+.neptune-img {
+    border-left: 2px var(--fg-color) solid;
+    border-right: 2px var(--fg-color) solid;
+    background-color: white;
+    padding: 10px;
+}
+
+.neptune-last-img {
+    border-left: 2px var(--fg-color) solid;
+    border-right: 2px var(--fg-color) solid;
+    border-bottom: 2px var(--fg-color) solid;
+    background-color: white;
+    padding: 10px;
+}
 
 @media only screen and (max-width: 720px){
 
