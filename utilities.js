@@ -186,7 +186,7 @@ function layerToggleFromInside(_x){
         document.getElementById('concerts2021').style.setProperty('display', 'none');
         document.getElementById('pcr2022').style.setProperty('display', 'inline-block');
     }
-    
+
 
     updateURLFromInside();
 
@@ -521,11 +521,13 @@ function startFromHash(){
             layerToggle(2);
         } else if (layer == "4"){
             layerToggle(3);
+        } else if (layer == "5"){
+            layerToggle(4);
         } else {
-            layerToggle(3);
+            layerToggle(4);
         }
     } else {
-        layerToggle(3);  /// default layer if no url slug
+        layerToggle(4);  /// default layer if no url slug
     }
 
     if (page != null){
