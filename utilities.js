@@ -3,6 +3,8 @@ var content;
 var paletteParam, themeParam;
 var crowSongChoice;
 
+var pathToPage;
+
 // ☼ ☽
 
 function contentToggle(){
@@ -431,9 +433,25 @@ function iframeLoaded(){
     var iframe = document.getElementById('content');
     var endMatter = iframe.contentDocument.getElementById('endMatter');
     var barnNav = document.getElementById('barnNav');
+
+    var pathToPageString = "";
+
+    for(i=0;i<pathToPage.length;i++)
+    {
+        pathToPageString += " → " + pathToPage[i];
+    }
     if (endMatter != null){
-        endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" + 
-        '<p>A <a href="http://www.usefulparade.com" target="_blank">Useful Parade</a> site</p>';
+        endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" 
+        + 
+        "<p>A <a href='http://www.usefulparade.com' target='_blank'>Useful Parade</a> site</p>"
+        // +
+        // "<p>"
+        // +
+        // pathToPageString;
+        // +
+        // "</p>"
+        
+        ;
     }
     programLayerMatch();
     // startFromHash();
@@ -642,7 +660,13 @@ function updateURL(){
     if (cleanPage == "index"){
         cleanPage = "whatyousaw";
     }
+
     
+
+    var fullPath = page.slice(page.indexOf("/") + 2, page.lastIndexOf("."))
+    var pageSplit = fullPath.split("/");
+    pathToPage = pageSplit.slice(1);
+    console.log(pathToPage);
 
     var paramStart = "/?";
     var newPage;
@@ -658,7 +682,7 @@ function updateURL(){
 
     var newURL = baseURL + paramStart + newPage + newLayer;
     var newState = { additionalInformation: 'Updated the URL with JS' };
-    console.log(newURL);
+    // console.log(newURL);
 
     if (hashAnalyzed){
         window.history.replaceState(newState, newTitle, newURL);
