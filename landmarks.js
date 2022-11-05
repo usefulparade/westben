@@ -28,6 +28,10 @@ var Landmark = function(_pos, _type, _link){
     this.vol = 0;
     this.isCurrentContent = false;
     this.plant;
+    this.t = 0;
+    this.px = 0;
+    this.py = 0;
+    this.trailPoints = [];
 
     this.polyLerp = 0;
     this.polyNum = 2;
@@ -102,32 +106,36 @@ var Landmark = function(_pos, _type, _link){
                 document.getElementById('caption').style.setProperty('display', 'none');
             }
 
+
+            
+
+                if (this.type == 'Barn'){
+                    this.barn();
+                } else if (this.type == 'Conservancy'){
+                    this.tree();
+                } else if (this.type == 'Ticket Shed'){
+                    this.ticket();
+                } else if (this.type == 'maple group'){
+                    this.maple();
+                } else if (this.type == 'Milkshed'){
+                    this.milk();
+                } else if (this.type == 'Campfire'){
+                    this.campfire();
+                } else if (this.type == 'parking lot'){
+                    this.parking();
+                } else if (this.type == 'pond'){
+                    this.pond();
+                } else if (this.type == 'tractor'){
+                    this.tractor();
+                } else if (this.type == 'concert'){
+                    this.concert();
+                } else {
+                    this.ensemble();
+                }
+
+
             if (this.newest && !this.visited && contentContainerHidden){
                 this.bird();
-            }
-
-            if (this.type == 'Barn'){
-                this.barn();
-            } else if (this.type == 'Conservancy'){
-                this.tree();
-            } else if (this.type == 'Ticket Shed'){
-                this.ticket();
-            } else if (this.type == 'maple group'){
-                this.maple();
-            } else if (this.type == 'Milkshed'){
-                this.milk();
-            } else if (this.type == 'Campfire'){
-                this.campfire();
-            } else if (this.type == 'parking lot'){
-                this.parking();
-            } else if (this.type == 'pond'){
-                this.pond();
-            } else if (this.type == 'tractor'){
-                this.tractor();
-            } else if (this.type == 'concert'){
-                this.concert();
-            } else {
-                this.ensemble();
             }
         pop();
 
@@ -168,10 +176,6 @@ var Landmark = function(_pos, _type, _link){
             }
 
             
-
-            // while (this.scale < 1.5){
-            //     this.scale += 0.1;
-            // }
         } else {
             if (this.scale > 1){
                 this.scale -= 0.08;
@@ -756,8 +760,6 @@ var Landmark = function(_pos, _type, _link){
                         point(this.half*0.35, -this.half*0.3);
                         pop();
                     
-
-
                 pop();
 
 
@@ -786,8 +788,8 @@ var Landmark = function(_pos, _type, _link){
                         ellipse(0, 0, this.half*0.6);
                     pop();
                 pop();
-            }                                                                  // 2021 DIGITAL CONCERTS!!!
-            else if (this.ensembleNum >= 12 && this.ensembleNum < 22) 
+            }                                                                  // 2021-22 DIGITAL CONCERTS!!!
+            else if (this.ensembleNum >= 12 && this.ensembleNum < 21) 
             { 
                 push();
 
@@ -814,6 +816,97 @@ var Landmark = function(_pos, _type, _link){
                     pop();
                     
                 pop();
+            }
+            else if (this.ensembleNum >= 21)                                    // 2022-23 DIGITAL CONCERTS!!!
+            {
+                this.t += 0.2;
+                let p = this.half*0.2 + (this.ensembleNum*0.5);
+
+                let r;
+                if (this.ensembleNum % 2 == 1)
+                {
+                    r = this.half*(((this.ensembleNum-31)/11));
+                }
+                else
+                {
+                    r = this.half*(1/((this.ensembleNum-18)/11));
+                   
+                }
+                
+                let R = this.half*0.7;
+
+                let k = r/R;
+                let l = p/r;
+                let spiroX = R * ((1-k) * cos(this.t) + l*k*cos((1-k) * this.t/k));
+                let spiroY = R * ((1-k) * sin(this.t) + l*k*sin((1-k) * this.t/k));
+
+                push();
+                    stroke(accentColors[1]);
+                    noFill();
+                    // ellipse(0,0,this.half*0.5);
+
+                    fill(accentColors[1]);
+                    noStroke();
+                    
+
+                    // ellipse(0,0,this.half);
+
+                    if (frameCount > 1)
+                    {
+                        ellipse(spiroX, spiroY, 6);
+                        line(this.px, this.py, spiroX, spiroY);
+                    }
+                    // push();
+                    // for (i=this.ensembleNum-20;i>=1;i--)
+                    // {
+                    //         rotate(this.t*(1/(i+1)));
+                    //         translate(0,(this.half/i));
+                    //        if (i == 1)
+                    //        {
+                    //         fill(foregroundColor);
+                    //         ellipse(0,0,6);
+                    //        }
+                    //        else
+                    //        {
+                    //         ellipse(0,0,2);
+                    //        }
+                            
+
+                    //         if (i == 2)
+                    //         {
+                    //             for (j=0;j<200;j++)
+                    //             {
+                    //                 push();
+                    //                     rotate((this.t*(1/(i)))-(j*0.1));
+                    //                     translate(0,(this.half/1));
+                    //                     ellipse(0,0,2);
+                    //                 pop();
+
+                    //             }
+                    //         }
+
+                    // }
+                    // pop();
+
+                    
+                pop();
+
+                append(this.trailPoints, new p5.Vector(spiroX, spiroY));
+                if (this.trailPoints.length > 1)
+                {
+                    push();
+                        for(j=1;j<this.trailPoints.length;j++)
+                        {
+                            line(this.trailPoints[j-1].x, this.trailPoints[j-1].y, this.trailPoints[j].x, this.trailPoints[j].y);
+                        }
+                    pop();  
+                }
+
+                if (this.trailPoints.length > 75)
+                {
+                    this.trailPoints.shift();
+                }
+                
             }
 
         pop();
@@ -1068,7 +1161,8 @@ var Landmark = function(_pos, _type, _link){
 
             scale(0.7);
             // scale(-1, 0);
-            noFill();
+            // noFill();
+            fill(backgroundColor);
             stroke(foregroundColor);
             strokeWeight(this.weight*1.3);
             beginShape();

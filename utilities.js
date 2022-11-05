@@ -141,8 +141,18 @@ function layerToggle(_layer){
 
 function layerToggleFromInside(_x){
 
-    window.parent.currentLayer = _x.value;
-    var currentLayerNum = (parseInt(_x.value, 10)+1);
+    var currentLayerNum;
+    if (!isNaN(_x))
+    {
+        window.parent.currentLayer = _x;
+        currentLayerNum = _x + 1;
+    }
+    else
+    {
+        window.parent.currentLayer = _x.value;
+        currentLayerNum = (parseInt(_x.value, 10)+1);
+    }
+    
     window.parent.document.getElementById('layerNumber').innerHTML = currentLayerNum;
     window.parent.document.getElementById('layers').value = window.parent.currentLayer;
 
@@ -155,6 +165,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
         document.getElementById('pcr2022').style.setProperty('display', 'none');
+        document.getElementById('concerts2022').style.setProperty('display', 'none');
     } else if (_x.value == 1) {
         // window.parent.pcr2020Toggle = false;
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
@@ -164,6 +175,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
         document.getElementById('pcr2022').style.setProperty('display', 'none');
+        document.getElementById('concerts2022').style.setProperty('display', 'none');
     } else if (_x.value == 2){
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021 Performer-Composer Residency';
@@ -172,6 +184,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2021').style.setProperty('display', 'inline-block');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
         document.getElementById('pcr2022').style.setProperty('display', 'none');
+        document.getElementById('concerts2022').style.setProperty('display', 'none');
     } else if (_x.value == 3){
         // window.parent.document.getElementById('layerIcon').innerHTML = '❏';
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2021-22 Digital Concerts';
@@ -180,6 +193,7 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'inline-block');
         document.getElementById('pcr2022').style.setProperty('display', 'none');
+        document.getElementById('concerts2022').style.setProperty('display', 'none');
     }  else if (_x.value == 4){
         window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2022 Performer-Composer Residency';
         document.getElementById('concerts2020').style.setProperty('display', 'none');
@@ -187,6 +201,15 @@ function layerToggleFromInside(_x){
         document.getElementById('pcr2021').style.setProperty('display', 'none');
         document.getElementById('concerts2021').style.setProperty('display', 'none');
         document.getElementById('pcr2022').style.setProperty('display', 'inline-block');
+        document.getElementById('concerts2022').style.setProperty('display', 'none');
+    }  else if (_x.value == 5){
+        window.parent.document.getElementById('layerCaption').innerHTML = 'Concert Series: 2022 Performer-Composer Residency';
+        document.getElementById('concerts2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2020').style.setProperty('display', 'none');
+        document.getElementById('pcr2021').style.setProperty('display', 'none');
+        document.getElementById('concerts2021').style.setProperty('display', 'none');
+        document.getElementById('pcr2022').style.setProperty('display', 'none');
+        document.getElementById('concerts2022').style.setProperty('display', 'inline-block');
     }
 
 
@@ -207,30 +230,42 @@ function programLayerMatch(){
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'none');
         } else if (currentLayer == 1){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'none');
         } else if (currentLayer == 2){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'none');
         } else if (currentLayer == 3){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'inline-block');
             iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'none');
         }   else if (currentLayer == 4){
             iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
             iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'inline-block');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'none');
+        } else if (currentLayer == 5){
+            iframe.contentDocument.getElementById('concerts2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2020').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2021').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('pcr2022').style.setProperty('display', 'none');
+            iframe.contentDocument.getElementById('concerts2022').style.setProperty('display', 'inline-block');
         }
     }
 }
@@ -428,35 +463,105 @@ function matchTheme(){
     }
 }
 
+function makePathToPageString()
+{
+    var finalPath = "";
+    var pathLayer;
+    var pathLinks = [];
+    var pathStrings = [];
+    var h1s = [];
+    var pieceTitle = "";
+    var iframe = document.getElementById('content');
+
+    h1s = iframe.contentDocument.getElementsByTagName('h1');
+    pieceTitle = h1s[0].innerHTML;
+    console.log(pieceTitle);
+    
+
+    if (pathToPage[0] == 'welcome')
+    {
+        finalPath = "<p></p>";
+        return finalPath;
+    }
+
+    
+    // ALWAYS HAVE THE BARN
+
+    pathLinks[0] = "<a href='/welcome.html'>"
+    pathStrings[0] = "Home</a>";
+
+    // ADD CONCERT LAYER IF APPLICABLE
+
+    if (pathToPage[0] == 'concerts' || pathToPage[0] == 'ensembles')
+    {
+        pathToPageLayer = parseInt(pathToPage[1].slice(-1));
+        if (pathToPage[0] == 'concerts')
+        {
+            pathToPage[0] = "Digital Concerts";
+            pathToPageLayer += 1; // ADD A DIGIT TO GET TO CORRECT LAYER NUMBER;
+        }
+        else
+        {
+            pathToPage[0] = "Performer-Composer Residency"
+        }
+
+
+        pathLinks[1] = "<a onclick='layerToggleFromInside(" + pathToPageLayer + ");' href='/welcome.html#layerSpecific'>";
+        pathStrings[1] = "" + (pathToPage[1] + " " + pathToPage[0]) + "</a>";
+
+        pathLinks[2] = "";
+        pathStrings[2] = "" + pieceTitle;
+    }
+    else // otherwise, this page is not layer specific and can be handled accordingly
+    {
+        // pathLinks[1] = "<a href='/" + pathToPage[0] + ".html'>";
+        // pathStrings[1] = "" + pathToPage[0] + "</a>";
+        pathLinks[1] = "";
+        pathStrings[1] = "" + pathToPage[0].charAt(0).toUpperCase() + pathToPage[0].slice(1);
+        
+    }
+    
+
+    finalPath += "<p>";
+    for (i=0;i<pathStrings.length;i++)
+    {
+        
+        finalPath += " → ";
+        finalPath += pathLinks[i];
+        finalPath += pathStrings[i];
+        
+    }
+    finalPath += "</p>";
+    
+
+    return finalPath;
+}
+
 function iframeLoaded(){
     matchTheme();
     var iframe = document.getElementById('content');
     var endMatter = iframe.contentDocument.getElementById('endMatter');
     var barnNav = document.getElementById('barnNav');
-
-    var pathToPageString = "";
-
-    for(i=0;i<pathToPage.length;i++)
-    {
-        pathToPageString += " → " + pathToPage[i];
-    }
-    if (endMatter != null){
-        endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" 
-        + 
-        "<p>A <a href='http://www.usefulparade.com' target='_blank'>Useful Parade</a> site</p>"
-        // +
-        // "<p>"
-        // +
-        // pathToPageString;
-        // +
-        // "</p>"
-        
-        ;
-    }
+    
     programLayerMatch();
     // startFromHash();
     updateURL();
     barnNavToggle();
+
+    var pathToPageString = makePathToPageString();
+
+
+    if (endMatter != null){
+        endMatter.innerHTML = "<p>Westben Digital Venue is run by <a href='http://www.westben.ca' target='_blank'>Westben</a></p>" 
+        +
+        "<p>A <a href='http://www.usefulparade.com' target='_blank'>Useful Parade</a> site</p>"
+        +
+        "<br>"
+        +
+        pathToPageString
+        
+        ;
+    }
 }
 
 function barnNavToggle(){
@@ -541,29 +646,31 @@ function startFromHash(){
             layerToggle(3);
         } else if (layer == "5"){
             layerToggle(4);
+        }else if (layer == "6"){
+            layerToggle(5);
         } else {
-            layerToggle(4);
+            layerToggle(5);
         }
     } else {
-        layerToggle(4);  /// default layer if no url slug
+        layerToggle(5);  /// THIS IS THE DEFAULT LAYER TO LOAD INTO THE MAP!!
     }
 
     if (page != null){
         document.getElementById('content').src = page + '.html';
         if (page == "apple" || page == "banana" || page == "cedar" || page == "green" || page == "lemon" || page == "maple" || page == "oak" || page == "pine" || page == "pink" || page == "purple" || page == "turquoise" || page == "watermelon" || page == "yellow"){
-            document.getElementById('content').src = 'ensembles/' + page + '.html';
+            document.getElementById('content').src = 'ensembles/2020/' + page + '.html';
             if (currentLayer != 0){
                 layerToggle();
             }
             // change icon
             currentIcon.isCurrentContent = false;
-            var lookup = "ensembles/" + page + ".html";
+            var lookup = "ensembles/2020/" + page + ".html";
             currentIcon = ensembles[ensembleLinks.indexOf(lookup)];
             ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
 
 
         } else if (page == "whatyousaw"){
-            document.getElementById('content').src = 'ensembles/mightnotfindwhatyousaw/index' + page + '.html';
+            document.getElementById('content').src = 'ensembles/2020/mightnotfindwhatyousaw/index' + page + '.html';
             if (currentLayer != 0){
                 layerToggle(0);
                 
@@ -626,6 +733,19 @@ function startFromHash(){
             ensembles[ensembleLinks.indexOf(lookup)].isCurrentContent = true;
 
 
+        } else if (page == "philipchiu")
+        {
+            document.getElementById('content').src = 'concerts/2022/' + page + '.html';
+            if (currentLayer != 5){
+                layerToggle(5);
+            }
+            // change icon
+            currentIcon.isCurrentContent = false;
+            var lookup = "concerts/2022/" + page + ".html";
+            currentIcon = concerts[concertLinks.indexOf(lookup)];
+            concerts[concertLinks.indexOf(lookup)].isCurrentContent = true;
+            
+            
         } else {
             document.getElementById('content').src = '' + page + '.html';
         }
@@ -666,7 +786,7 @@ function updateURL(){
     var fullPath = page.slice(page.indexOf("/") + 2, page.lastIndexOf("."))
     var pageSplit = fullPath.split("/");
     pathToPage = pageSplit.slice(1);
-    console.log(pathToPage);
+    // console.log(pathToPage);
 
     var paramStart = "/?";
     var newPage;
@@ -707,7 +827,7 @@ function updateURLFromInside(){
     var baseURL = currentLocation.slice(0, currentLocation.lastIndexOf('/'));
     var newURL = baseURL + paramStart + newPage + newLayer;
     var newState = { additionalInformation: 'Updated the URL with JS' };
-    console.log(newURL);
+    // console.log(newURL);
 
     if (window.parent.hashAnalyzed){
         window.parent.window.history.replaceState(newState, newTitle, newURL);
@@ -765,7 +885,7 @@ function responseLv1Toggle(_id){
                 randomChoice = (Math.floor(Math.random()*(allContent.length*0.5))*2)-1;
             }
 
-            console.log(randomChoice);
+            // console.log(randomChoice);
             for (var i in allContent){
                 allContent[i].style = 'display: none';
 
@@ -964,7 +1084,7 @@ function crowSong(_choice){
     var crowSongsSorted = new Array(alive, smile, cry, trance, interactive, wild);
     
     if (!_choice){
-        console.log('take me to a random concert!');
+        // console.log('take me to a random concert!');
         
         if (type == 0){
             song = int(random(0, ensembles.length));
@@ -984,7 +1104,7 @@ function crowSong(_choice){
         //     layerToggle(1);
         // }
     } else {
-        console.log("play a " + _choice + " song");
+        // console.log("play a " + _choice + " song");
         if (_choice == "alive"){
             song = int(random(crowSongsSorted[0].length));
             crowSongsSorted[0][song].clicked();

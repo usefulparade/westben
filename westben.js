@@ -104,19 +104,19 @@ function setup(){
 
     
 
-    ensembleLinks = ['ensembles/mightnotfindwhatyousaw/index.html',
-                    'ensembles/turquoise.html',
-                    'ensembles/lemon.html',
-                    'ensembles/green.html',
-                    'ensembles/watermelon.html',
-                    'ensembles/purple.html',
-                    'ensembles/oak.html',
-                    'ensembles/yellow.html',
-                    'ensembles/pink.html',
-                    'ensembles/cedar.html',
-                    'ensembles/maple.html',
-                    'ensembles/pine.html',
-                    'ensembles/banana.html',
+    ensembleLinks = ['ensembles/2020/mightnotfindwhatyousaw/index.html',
+                    'ensembles/2020/turquoise.html',
+                    'ensembles/2020/lemon.html',
+                    'ensembles/2020/green.html',
+                    'ensembles/2020/watermelon.html',
+                    'ensembles/2020/purple.html',
+                    'ensembles/2020/oak.html',
+                    'ensembles/2020/yellow.html',
+                    'ensembles/2020/pink.html',
+                    'ensembles/2020/cedar.html',
+                    'ensembles/2020/maple.html',
+                    'ensembles/2020/pine.html',
+                    'ensembles/2020/banana.html',
                             // ~ ~ ~ 2021 PCR ~ ~ ~ //
                     'ensembles/2021/basil.html',
                     'ensembles/2021/mint.html',
@@ -168,7 +168,9 @@ function setup(){
                     "Caitlin Wood",
                     "Sammy Jackson & Tom Flemming",
                     "Laila Biali",
-                    "The Pencil Salesman"
+                    "The Pencil Salesman",
+                                // ~ ~ ~ 2021 DIGITAL CONCERTS ~ ~ ~ //
+                    "Philip Chiu",
                 ];
 
     concertLinks = ['concerts/2020/copresence.html',
@@ -193,6 +195,8 @@ function setup(){
                     'concerts/2021/sammyjackson.html',
                     'concerts/2021/lailabiali.html',
                     'concerts/2021/pencilsalesman.html',
+                                    // ~ ~ ~ 2022 DIGITAL CONCERTS ~ ~ ~ //
+                    'concerts/2022/philipchiu.html',
                     ];
     
 
@@ -286,6 +290,16 @@ function setup(){
                     new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
                     new p5.Vector(width*0.1, height*0.4), //Laila Biali
                     new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
+                    // ~ ~ ~ 2022 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Philip Chiu
+                    new p5.Vector(width*0.4, height*0.15), 
+                    new p5.Vector(width*0.75, height*0.4), 
+                    new p5.Vector(width*0.25, height*0.6), 
+                    new p5.Vector(width*0.65, height*0.7), 
+                    new p5.Vector(width*0.45, height*0.65),
+                    new p5.Vector(width*0.55, height*0.2),
+                    new p5.Vector(width*0.1, height*0.4),
+                    new p5.Vector(width*0.7, height*0.25),
 
     ];
 
@@ -326,7 +340,7 @@ function setup(){
     }
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TO UPDATE FOR PREMIERE WEEK, CHANGE THE END POINT OF THIS 'CONCERTS' LOOP ^^^^^^^^^^^^^^
-    var concertsPublished = 21;  // <--------------------- THIS IS THE END POINT!
+    var concertsPublished = 22;  // <--------------------- THIS IS THE END POINT! 22
     for (j=0;
         j<concertsPublished;
         j++){
@@ -341,7 +355,7 @@ function setup(){
 
         concerts[j].ensembleNum = j;
     }
-    concerts[20].newest = true;  // <--------------------- THIS IS THE NEWEST LIL BIRD!
+    concerts[21].newest = true;  // <--------------------- THIS IS THE NEWEST LIL BIRD!
 
 
     mouseOrTouch = p5.Vector(0,0);
@@ -375,7 +389,7 @@ function setup(){
     }
 
     // pcr2020Toggle = true;
-    currentLayer = 1;
+    currentLayer = 5;
     slideIn = -35;
 
     matchTheme();
@@ -384,8 +398,6 @@ function setup(){
     startFromHash();
 
 
-
-    
 }
 
 function draw(){
@@ -462,7 +474,14 @@ function draw(){
                 }
             }
         } else if (currentLayer == 3){
-            if (l >= 12){
+            if (l >= 12 && l < 21){
+                concerts[l].show();
+                if (concerts[l].over){
+                    overSomething++;
+                }
+            }
+        } else if (currentLayer == 5){
+            if (l >= 21){
                 concerts[l].show();
                 if (concerts[l].over){
                     overSomething++;
@@ -836,6 +855,16 @@ function windowResized(){
                     new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
                     new p5.Vector(width*0.1, height*0.4), //Laila Biali
                     new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
+                    // ~ ~ ~ 2022 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Philip Chiu
+                    new p5.Vector(width*0.4, height*0.15), 
+                    new p5.Vector(width*0.75, height*0.4), 
+                    new p5.Vector(width*0.25, height*0.6), 
+                    new p5.Vector(width*0.65, height*0.7), 
+                    new p5.Vector(width*0.45, height*0.65),
+                    new p5.Vector(width*0.55, height*0.2),
+                    new p5.Vector(width*0.1, height*0.4),
+                    new p5.Vector(width*0.7, height*0.25),
     ];
 
     for (var i in landmarks){
@@ -951,6 +980,16 @@ function deviceTurned(){
                     new p5.Vector(width*0.55, height*0.2), //Sammy Jackson
                     new p5.Vector(width*0.1, height*0.4), //Laila Biali
                     new p5.Vector(width*0.7, height*0.25), //Pencil Salesman
+                    // ~ ~ ~ 2022 DIGITAL CONCERTS ~ ~ ~ //
+                    new p5.Vector(width*0.8, height*0.55), //Philip Chiu
+                    new p5.Vector(width*0.4, height*0.15), 
+                    new p5.Vector(width*0.75, height*0.4), 
+                    new p5.Vector(width*0.25, height*0.6), 
+                    new p5.Vector(width*0.65, height*0.7), 
+                    new p5.Vector(width*0.45, height*0.65),
+                    new p5.Vector(width*0.55, height*0.2),
+                    new p5.Vector(width*0.1, height*0.4),
+                    new p5.Vector(width*0.7, height*0.25),
                     ];
 
     for (var i in landmarks){

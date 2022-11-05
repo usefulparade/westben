@@ -46,8 +46,8 @@ a {
 .container {
     display: block;
     position: absolute;
-    margin-left: calc(50% - 100vh * .28125);
-    margin-top: 10px;
+    /* margin-left: calc(50% - 100vh * .28125); */
+    /* margin-top: 10px; */
 }
 
 .options {
@@ -55,6 +55,7 @@ a {
     color: white;
     padding: 30px;
     padding-top: 100px;
+    padding-left: 10%;
     text-justify: inter-word;
 }
 

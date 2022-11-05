@@ -49,8 +49,10 @@ function setup(){
     uiHeight = gHeight/10;
 
     startPositions = [
-        width/2-gWidth*0.5,
-        width/2+gWidth*0.5
+        20,
+        width-20
+        // width/2-gWidth*0.5,
+        // width/2+gWidth*0.5
     ]
 
     majorScale = [60, 62, 64, 65, 67, 69, 71, 
@@ -71,13 +73,13 @@ function setup(){
     currentScale = 0;
 
     attack = 0.01;
-    decay = 0.2;
-    sustain = 0.1;
-    release = 0.1;
+    decay = 0.5;
+    sustain = 0;
+    release = 1;
 
     fattack = 0.01;
     fdecay = 0.2;
-    fsustain = 0.1;
+    fsustain = 0;
     frelease = 0.1;
 
     // filter = new p5.Filter();
@@ -124,18 +126,19 @@ function setup(){
     types = ['square', 'sawtooth', 'triangle', 'sine'];
     roots = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B','C'];
 
-    frameRate(50);
+    frameRate(24);
 }
 
 function draw(){
-    console.log(frameRate());
+    // console.log(frameRate());
     background(32, 123, 212);
+    let gravity = new p5.Vector(0,9.8);
 
     for (i=0;i<rocks.length;i++){
         rocks[i].show();
 
-        let gravity = new p5.Vector(0, 0.1*rocks[i].mass);
-        // let gravity = new p5.Vector(0,0.3);
+        // let gravity = new p5.Vector(0, 0.1*rocks[i].mass);
+        
 
         rocks[i].applyForce(gravity);
         rocks[i].physics();
@@ -146,8 +149,8 @@ function draw(){
         rings[j].show();
     }
 
-    GameFrame();
-    GameBorder();
+    // GameFrame();
+    // GameBorder();
     PondSurface();
     
 }
@@ -167,7 +170,8 @@ function PondSurface(){
         beginShape();
         stroke(255);
         for (let i = 0; i < waveform.length; i++){
-            let x = map(i, 0, waveform.length, width*0.5-gWidth*0.5, width*0.5+gWidth*0.5);
+            // let x = map(i, 0, waveform.length, width*0.5-gWidth*0.5, width*0.5+gWidth*0.5);
+            let x = map(i, 0, waveform.length, 0, width);
             let y = map( waveform[i], -1, 1,  2*(height/3) - 2,  2*(height/3) + 2);
             vertex(x,y);
         }
@@ -243,7 +247,7 @@ function Rock(note, _x){
     // this.mass = 5;
     this.surface = random(8*(height/9), 5*(height/6));
     this.pos = new p5.Vector(_x, height);
-    this.velocity = new p5.Vector(random(-0.2,0.2),random(-5, -7));
+    this.velocity = new p5.Vector(random(-0.2,0.2),random(-20, -25));
     this.acceleration = new p5.Vector(0,0);
     this.size = this.mass;
     
@@ -279,7 +283,7 @@ function Rock(note, _x){
         // position changes by velocity
         this.pos.add(this.velocity);
 
-        // We must clear acceleration each frame
+        // clear acceleration each frame
         this.acceleration.mult(0);
 
     }
@@ -290,7 +294,7 @@ function Rock(note, _x){
         if (this.velocity.y > 0 && this.pos.y + this.size*0.5 > this.surface){
             //if this is the first skip, give it some height
             if (this.skips == 0){
-                this.velocity.y = random(-3, -5);
+                this.velocity.y = random(-3, -19);
             } else {
                 this.velocity.y *= random(-0.2,-1.1);
             }
@@ -424,14 +428,14 @@ function mousePressed(){
         let rockPos;
         let rockNote;
 
-        if (mouseX > width/2 - gWidth/2 && mouseX < width/2 + gWidth/2){
+        // if (mouseX > width/2 - gWidth/2 && mouseX < width/2 + gWidth/2){
             rockPos = mouseX;
             rockNote = constrain(int(map(mouseX, startPositions[0], startPositions[1], 0, scales[currentScale].length)), 0, scales[currentScale].length-1);
             
-        } else {
-            rockPos = random(startPositions[0], startPositions[1]);
-            rockNote = int(random(scales[currentScale].length));
-        }
+        // } else {
+        //     rockPos = random(startPositions[0], startPositions[1]);
+        //     rockNote = int(random(scales[currentScale].length));
+        // }
 
         throwRock(scales[currentScale][rockNote], rockPos);
     }
