@@ -117,7 +117,7 @@ function layerToggle(_layer){
     if (_layer != null){
         currentLayer = parseInt(_layer);
     } else {
-        currentLayer = (currentLayer+1)%5;
+        currentLayer = (currentLayer+1)%6;
     }
 
     document.getElementById('layerNumber').innerHTML = currentLayer+1;
@@ -495,6 +495,8 @@ function makePathToPageString()
     if (pathToPage[0] == 'concerts' || pathToPage[0] == 'ensembles')
     {
         pathToPageLayer = parseInt(pathToPage[1].slice(-1));
+        pathToPageLayer*=2;
+
         if (pathToPage[0] == 'concerts')
         {
             pathToPage[0] = "Digital Concerts";
