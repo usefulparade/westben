@@ -499,6 +499,7 @@ function makePathToPageString()
 
         if (pathToPage[0] == 'concerts')
         {
+            pathToPage[1] += "-" + (parseInt(pathToPage[1].slice(-2)) + 1);
             pathToPage[0] = "Digital Concerts";
             pathToPageLayer += 1; // ADD A DIGIT TO GET TO CORRECT LAYER NUMBER;
         }
@@ -508,7 +509,7 @@ function makePathToPageString()
         }
 
 
-        pathLinks[1] = "<a onclick='layerToggleFromInside(" + pathToPageLayer + ");' href='/welcome.html#layerSpecific'>";
+        pathLinks[1] = "<a onclick='layerToggleFromInside(" + pathToPageLayer + ");' href='/welcome.html#scheduleSection'>";
         pathStrings[1] = "" + (pathToPage[1] + " " + pathToPage[0]) + "</a>";
 
         pathLinks[2] = "";
